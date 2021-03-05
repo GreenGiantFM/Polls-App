@@ -144,7 +144,7 @@
             align-items: center;
             justify-content: center;
             width: 375px;
-            height: 200px;
+            height: 175px;
             padding: 20px 0;
             font-size: 30px;
         }
@@ -164,17 +164,6 @@
             font-size: 50px;
         }
 
-        /*----- Percentage -----*/
-        .percent {
-            grid-column: 1 / -1;
-            padding-top: none;
-            height: 25px;
-            color: #74aa4e;
-            font-size: 25px;
-            font-weight: light;
-            letter-spacing: 2px;
-        }
-
         /*----- Album photo -----*/
         .album {
             box-shadow: 0 5px 7px 0 rgba(0,0,0,0.24), 0 8px 24px 0 rgba(0,0,0,0.19);
@@ -188,10 +177,18 @@
         }
 
         /*----- Song description (title) -----*/
-        .description em {
+        .title {
             font-style: normal;
             font-size: 20px;
             color: #000000;
+        }
+
+        /*----- Song description (percentage) -----*/
+        .percent {
+            font-style: normal;
+            color: #74aa4e;
+            font-size: 20px;
+            font-weight: light;
         }
 
         /*----- Voting buttons -----*/
@@ -208,12 +205,12 @@
         }
 
         /*----- Hover over voting buttons -----*/
-        #voteSubmit:hover, #doneVote:hover {
+        #voteSubmit:hover, #doneVote:hover, #confirmVote:hover, #cancelVote:hover {
             box-shadow: 0 10px 14px 0 rgba(0,0,0,0.24), 0 15px 48px 0 rgba(0,0,0,0.19);
         }
 
         /*----- Voting buttons -----*/
-        #voteSubmit:focus, #doneVote:focus {
+        #voteSubmit:focus, #doneVote:focus, #confirmVote:focus, #cancelVote:focus {
             outline:none;
         }
 
@@ -221,24 +218,44 @@
         #overlay {
             position: fixed;
             display: none;
-            width: 100%;
-            height: 100%;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
+            width: 100%;
+            height: 100%;
+            text-align: center;
             background-color: #cacaca46;
-            z-index: 2;
+            z-index: 1;
         }
 
         /*----- Overlay contents -----*/
-        #overlayItems{
-            position: absolute;
-            top: 50%;
-            left: 50%;
+        .overlayItems {
+            position:relative;
+            top:40%;
             color: #161616;
-            transform: translate(-50%,-50%);
-            -ms-transform: translate(-50%,-50%);
+        }
+
+        /*----- Overlay Confirmation -----*/
+        #confirmation {
+            display: none;
+        }
+
+        /*----- Overlay Vote Confirmed -----*/
+        #confirmVote, #cancelVote {
+            background-color: #569429;
+            cursor: pointer;
+            color: #ffffff;
+            border:none;
+            border-radius: 8px;
+            width: 100px;
+            height: 35px;
+            font-size: large;
+            font-weight: bolder;
+            letter-spacing: 2px;
+        }
+
+        /*----- Overlay Vote Confirmed -----*/
+        #voteConfirmed {
+            display: none;
         }
 
         /*----- Tab -----*/
@@ -335,7 +352,7 @@
                                 </label>
                             </div>
                             <div class="grid-item-song">
-                                <p class="description"><em>Brain Damage</em><br />Pink Floyd</p>
+                                <p id="songOne" class="description"><em class="title">Brain Damage</em><br />Pink Floyd</p>
                             </div>
                         </div>
                     </div>
@@ -350,7 +367,7 @@
                                 </label>
                             </div>
                             <div class="grid-item-song">
-                                <p class="description"><em>Strawberry Fields<br />Forever</em><br />The Beatles</p>
+                                <p id="songTwo" class="description"><em class="title">Strawberry Fields<br />Forever</em><br />The Beatles</p>
                             </div>
                         </div>
                     </div>
@@ -365,7 +382,7 @@
                                 </label>
                             </div>
                             <div class="grid-item-song">
-                                <p class="description"><em>My Fairy King</em><br />Queen</p>
+                                <p id="songThree" class="description"><em class="title">My Fairy King</em><br />Queen</p>
                             </div>
                         </div>
                     </div>
@@ -380,7 +397,7 @@
                                 </label>
                             </div>
                             <div class="grid-item-song">
-                                <p class="description"><em>Space Oddity</em><br />David Bowie</p>
+                                <p id="songFour" class="description"><em class="title">Space Oddity</em><br />David Bowie</p>
                             </div>
                         </div>
                     </div>
@@ -395,7 +412,7 @@
                                 </label>
                             </div>
                             <div class="grid-item-song">
-                                <p class="description"><em>Rhymes Like<br />Dimes</em><br />MF DOOM</p>
+                                <p id="songFive" class="description"><em class="title">Rhymes Like<br />Dimes</em><br />MF DOOM</p>
                             </div>
                         </div>
                     </div>
@@ -410,7 +427,7 @@
                                 </label>
                             </div>
                             <div class="grid-item-song">
-                                <p class="description"><em>Ruthless</em><br />The Marias</p>
+                                <p id="songSix" class="description"><em class="title">Ruthless</em><br />The Marias</p>
                             </div>
                         </div>
                     </div>
@@ -425,7 +442,7 @@
                                 </label>
                             </div>
                             <div class="grid-item-song">
-                                <p class="description"><em>The Valley of<br />The Pagans</em><br />Gorillaz</p>
+                                <p id="songSeven" class="description"><em class="title">The Valley of<br />The Pagans</em><br />Gorillaz</p>
                             </div>
                         </div>
                     </div>
@@ -438,7 +455,12 @@
 
         <!-- Voting Tab Overlay -->
         <div id="overlay">
-            <div id="overlayItems">
+            <div id="confirmation" class="overlayItems">
+                <h1 style="text-align: center; font-weight: bold; letter-spacing: 2px;">CONFIRM VOTE</h1>
+                <button id="confirmVote" onclick="submitVote()" style="margin-right:5px;">Yes</button>
+                <button id="cancelVote" onclick="cancelVote()" style="margin-left:5px;">Cancel</button>
+            </div>
+            <div id="voteConfirmed" class="overlayItems">
                 <h1 style="text-align: center; font-weight: bold; letter-spacing: 2px;">VOTE CONFIRMED</h1>
                 <button id="doneVote" onclick="closeConfirm()">DONE</button>
             </div>
@@ -456,10 +478,7 @@
                             <img class="album" src="assets\img\1.png" alt='Brain Damage' style="width:80px; height:80px">
                         </div>
                         <div class="grid-item-song">
-                            <p class="description"><em>Brain Damage</em><br />Pink Floyd</p>
-                        </div>
-                        <div class="grid-item-song percent">
-                            22.3%
+                            <p class="description"><em class="title">Brain Damage</em><br />Pink Floyd<br /><em class="percent">22.3%</em></p>
                         </div>
                     </div>
                 </div>
@@ -472,7 +491,7 @@
                             <img class="album" src="assets\img\2.jpg" alt='Strawberry Fields Forever' style="width:80px; height:80px">
                         </div>
                         <div class="grid-item-song">
-                            <p class="description"><em>Strawberry Fields<br />Forever</em><br />The Beatles</p>
+                            <p class="description"><em class="title">Strawberry Fields<br />Forever</em><br />The Beatles<br /><em class="percent"></em></p>
                         </div>
                         <div class="grid-item-song percent">
                             <h3></h3>
@@ -488,7 +507,7 @@
                             <img class="album" src="assets\img\3.jpg" alt='My Fairy King' style="width:80px; height:80px">
                         </div>
                         <div class="grid-item-song">
-                            <p class="description"><em>My Fairy King</em><br />Queen</p>
+                            <p class="description"><em class="title">My Fairy King</em><br />Queen<br /><em class="percent"></em></p>
                         </div>
                         <div class="grid-item-song percent">
                             <h3></h3>
@@ -504,7 +523,7 @@
                             <img class="album" src="assets\img\4.jpg" alt='Space Oddity' style="width:80px; height:80px">
                         </div>
                         <div class="grid-item-song">
-                            <p class="description"><em>Space Odditiy</em><br />David Bowie</p>
+                            <p class="description"><em class="title">Space Odditiy</em><br />David Bowie<br /><em class="percent"></em></p>
                         </div>
                         <div class="grid-item-song percent">
                             <h3></h3>
@@ -520,7 +539,7 @@
                             <img class="album" src="assets\img\5.jpg" alt='Rhymes Like Dimes' style="width:80px; height:80px">
                         </div>
                         <div class="grid-item-song">
-                            <p class="description"><em>Rhymes Like Dimes</em><br />MF DOOM</p>
+                            <p class="description"><em class="title">Rhymes Like Dimes</em><br />MF DOOM<br /><em class="percent"></em></p>
                         </div>
                         <div class="grid-item-song percent">
                             <h3></h3>
@@ -536,7 +555,7 @@
                             <img class="album" src="assets\img\6.jpg" alt='Ruthless' style="width:80px; height:80px">
                         </div>
                         <div class="grid-item-song">
-                            <p class="description"><em>Ruthless</em><br />The Marias</p>
+                            <p class="description"><em class="title">Ruthless</em><br />The Marias<br /><em class="percent"></em></p>
                         </div>
                         <div class="grid-item-song percent">
                             <h3></h3>
@@ -552,7 +571,7 @@
                             <img class="album" src="assets\img\7.jpg" alt='The Valley of The Pagans' style="width:80px; height:80px">
                         </div>
                         <div class="grid-item-song">
-                            <p class="description"><em>The Valley of<br />The Pagans</em><br />Gorillaz</p>
+                            <p class="description"><em class="title">The Valley of<br />The Pagans</em><br />Gorillaz<br /><em class="percent"></em></p>
                         </div>
                         <div class="grid-item-song percent">
                             <h3></h3>
@@ -580,82 +599,120 @@
             var song1Check = document.getElementById("song1Check");
             if(song1Check.checked == true){
                 document.getElementById("song1").style.backgroundColor = "#569429cb";
+                document.getElementById("songOne").style.color = "#3a3a3a";
             }else{
                 document.getElementById("song1").style.backgroundColor = "#ffffff";
+                document.getElementById("songOne").style.color = "#8d8d8d";
             }
 
             var song2Check = document.getElementById("song2Check");
             if (song2Check.checked == true) {
                 document.getElementById("song2").style.backgroundColor = "#569429cb";
+                document.getElementById("songTwo").style.color = "#3a3a3a";
             } else {
                 document.getElementById("song2").style.backgroundColor = "#ffffff";
+                document.getElementById("songTwo").style.color = "#8d8d8d";
             }
 
             var song3Check = document.getElementById("song3Check");
             if (song3Check.checked == true) {
                 document.getElementById("song3").style.backgroundColor = "#569429cb";
+                document.getElementById("songThree").style.color = "#3a3a3a";
             } else {
                 document.getElementById("song3").style.backgroundColor = "#ffffff";
+                document.getElementById("songThree").style.color = "#8d8d8d";
             }
 
             var song4Check = document.getElementById("song4Check");
             if (song4Check.checked == true) {
                 document.getElementById("song4").style.backgroundColor = "#569429cb";
+                document.getElementById("songFour").style.color = "#3a3a3a";
             } else {
                 document.getElementById("song4").style.backgroundColor = "#ffffff";
+                document.getElementById("songFour").style.color = "#8d8d8d";
             }
 
             var song5Check = document.getElementById("song5Check");
             if (song5Check.checked == true) {
                 document.getElementById("song5").style.backgroundColor = "#569429cb";
+                document.getElementById("songFive").style.color = "#3a3a3a";
             } else {
                 document.getElementById("song5").style.backgroundColor = "#ffffff";
+                document.getElementById("songFive").style.color = "#8d8d8d";
             }
 
             var song6Check = document.getElementById("song6Check");
             if (song6Check.checked == true) {
                 document.getElementById("song6").style.backgroundColor = "#569429cb";
+                document.getElementById("songSix").style.color = "#3a3a3a";
             } else {
                 document.getElementById("song6").style.backgroundColor = "#ffffff";
+                document.getElementById("songSix").style.color = "#8d8d8d";
             }
 
             var song7Check = document.getElementById("song7Check");
             if (song7Check.checked == true) {
                 document.getElementById("song7").style.backgroundColor = "#569429cb";
+                document.getElementById("songSeven").style.color = "#3a3a3a";
             } else {
                 document.getElementById("song7").style.backgroundColor = "#ffffff";
+                document.getElementById("songSeven").style.color = "#8d8d8d";
             }
         }
 
-        /*----- Vote Submission -----*/
+        /*----- Confirm Vote -----*/
         function openConfirm() {
             document.getElementById("overlay").style.display = "block";
+            document.getElementById("voteConfirmed").style.display = "none";
+            document.getElementById("confirmation").style.display = "block";
+        }
 
+        /*----- Cancel Vote -----*/
+        function cancelVote() {
+            document.getElementById("overlay").style.display = "none";
+            document.getElementById("voteConfirmed").style.display = "none";
+            document.getElementById("confirmation").style.display = "none";
+        }
+
+        /*----- Vote Submitted -----*/
+        function submitVote() {
             document.getElementById("song1Check").checked = false;
             document.getElementById("song1").style.backgroundColor = "#ffffff";
+            document.getElementById("songOne").style.color = "#8d8d8d";
 
             document.getElementById("song2Check").checked = false;
             document.getElementById("song2").style.backgroundColor = "#ffffff";
+            document.getElementById("songTwo").style.color = "#8d8d8d";
 
             document.getElementById("song3Check").checked = false;
             document.getElementById("song3").style.backgroundColor = "#ffffff";
+            document.getElementById("songThree").style.color = "#8d8d8d";
 
             document.getElementById("song4Check").checked = false;
             document.getElementById("song4").style.backgroundColor = "#ffffff";
+            document.getElementById("songFour").style.color = "#8d8d8d";
 
             document.getElementById("song5Check").checked = false;
             document.getElementById("song5").style.backgroundColor = "#ffffff";
+            document.getElementById("songFive").style.color = "#8d8d8d";
 
             document.getElementById("song6Check").checked = false;
             document.getElementById("song6").style.backgroundColor = "#ffffff";
+            document.getElementById("songSix").style.color = "#8d8d8d";
 
             document.getElementById("song7Check").checked = false;
             document.getElementById("song7").style.backgroundColor = "#ffffff";
+            document.getElementById("songSeven").style.color = "#8d8d8d";
+
+            document.getElementById("confirmation").style.display = "none";
+            document.getElementById("voteConfirmed").style.display = "block";
         }
 
         /*----- Close Overlay -----*/
         function closeConfirm() {
             document.getElementById("overlay").style.display = "none";
+            document.getElementById("voteConfirmed").style.display = "none";
+            document.getElementById("confirmation").style.display = "none";
         }
 
         /*----- Open selected Tab -----*/
