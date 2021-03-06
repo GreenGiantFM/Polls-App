@@ -8,71 +8,7 @@ function closeNav() {
     document.getElementById("sideMenu").style.width = "0";
 }
 
-/*----- Change BG of selected songs -----*/
-function changeBackground() {
-    var song1Check = document.getElementById("song1Check");
-    if(song1Check.checked == true){
-        document.getElementById("song1").style.backgroundColor = "#569429cb";
-        document.getElementById("songOne").style.color = "#3a3a3a";
-    }else{
-        document.getElementById("song1").style.backgroundColor = "#ffffff";
-        document.getElementById("songOne").style.color = "#8d8d8d";
-    }
 
-    var song2Check = document.getElementById("song2Check");
-    if (song2Check.checked == true) {
-        document.getElementById("song2").style.backgroundColor = "#569429cb";
-        document.getElementById("songTwo").style.color = "#3a3a3a";
-    } else {
-        document.getElementById("song2").style.backgroundColor = "#ffffff";
-        document.getElementById("songTwo").style.color = "#8d8d8d";
-    }
-
-    var song3Check = document.getElementById("song3Check");
-    if (song3Check.checked == true) {
-        document.getElementById("song3").style.backgroundColor = "#569429cb";
-        document.getElementById("songThree").style.color = "#3a3a3a";
-    } else {
-        document.getElementById("song3").style.backgroundColor = "#ffffff";
-        document.getElementById("songThree").style.color = "#8d8d8d";
-    }
-
-    var song4Check = document.getElementById("song4Check");
-    if (song4Check.checked == true) {
-        document.getElementById("song4").style.backgroundColor = "#569429cb";
-        document.getElementById("songFour").style.color = "#3a3a3a";
-    } else {
-        document.getElementById("song4").style.backgroundColor = "#ffffff";
-        document.getElementById("songFour").style.color = "#8d8d8d";
-    }
-
-    var song5Check = document.getElementById("song5Check");
-    if (song5Check.checked == true) {
-        document.getElementById("song5").style.backgroundColor = "#569429cb";
-        document.getElementById("songFive").style.color = "#3a3a3a";
-    } else {
-        document.getElementById("song5").style.backgroundColor = "#ffffff";
-        document.getElementById("songFive").style.color = "#8d8d8d";
-    }
-
-    var song6Check = document.getElementById("song6Check");
-    if (song6Check.checked == true) {
-        document.getElementById("song6").style.backgroundColor = "#569429cb";
-        document.getElementById("songSix").style.color = "#3a3a3a";
-    } else {
-        document.getElementById("song6").style.backgroundColor = "#ffffff";
-        document.getElementById("songSix").style.color = "#8d8d8d";
-    }
-
-    var song7Check = document.getElementById("song7Check");
-    if (song7Check.checked == true) {
-        document.getElementById("song7").style.backgroundColor = "#569429cb";
-        document.getElementById("songSeven").style.color = "#3a3a3a";
-    } else {
-        document.getElementById("song7").style.backgroundColor = "#ffffff";
-        document.getElementById("songSeven").style.color = "#8d8d8d";
-    }
-}
 
 /*----- Confirm Vote -----*/
 function openConfirm() {
@@ -88,39 +24,7 @@ function cancelVote() {
     document.getElementById("confirmation").style.display = "none";
 }
 
-/*----- Vote Submitted -----*/
-function submitVote() {
-    document.getElementById("song1Check").checked = false;
-    document.getElementById("song1").style.backgroundColor = "#ffffff";
-    document.getElementById("songOne").style.color = "#8d8d8d";
 
-    document.getElementById("song2Check").checked = false;
-    document.getElementById("song2").style.backgroundColor = "#ffffff";
-    document.getElementById("songTwo").style.color = "#8d8d8d";
-
-    document.getElementById("song3Check").checked = false;
-    document.getElementById("song3").style.backgroundColor = "#ffffff";
-    document.getElementById("songThree").style.color = "#8d8d8d";
-
-    document.getElementById("song4Check").checked = false;
-    document.getElementById("song4").style.backgroundColor = "#ffffff";
-    document.getElementById("songFour").style.color = "#8d8d8d";
-
-    document.getElementById("song5Check").checked = false;
-    document.getElementById("song5").style.backgroundColor = "#ffffff";
-    document.getElementById("songFive").style.color = "#8d8d8d";
-
-    document.getElementById("song6Check").checked = false;
-    document.getElementById("song6").style.backgroundColor = "#ffffff";
-    document.getElementById("songSix").style.color = "#8d8d8d";
-
-    document.getElementById("song7Check").checked = false;
-    document.getElementById("song7").style.backgroundColor = "#ffffff";
-    document.getElementById("songSeven").style.color = "#8d8d8d";
-
-    document.getElementById("confirmation").style.display = "none";
-    document.getElementById("voteConfirmed").style.display = "block";
-}
 
 /*----- Close Overlay -----*/
 function closeConfirm() {
