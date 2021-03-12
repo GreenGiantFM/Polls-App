@@ -449,21 +449,20 @@
                     <br>
                     <br>
                 </div>
-                <button id="voteSubmit" onclick="openConfirm()">VOTE</button>
+                <input type="button" id="voteSubmit" onclick="openConfirm()" value="VOTE">
+                <!-- Voting Tab Overlay -->
+                <div id="overlay">
+                    <div id="confirmation" class="overlayItems">
+                        <h1 style="text-align: center; font-weight: bold; letter-spacing: 2px;">CONFIRM VOTE</h1>
+                        <input type="button" id="confirmVote" onclick="submitVote()" style="margin-right:5px;" value="Yes">
+                        <input type="button" id="cancelVote" onclick="cancelVote()" style="margin-left:5px;" value="Cancel">
+                    </div>
+                    <div id="voteConfirmed" class="overlayItems">
+                        <h1 style="text-align: center; font-weight: bold; letter-spacing: 2px;">VOTE CONFIRMED</h1>
+                        <input type="submit" value="Submit" id="doneVote" onclick="closeConfirm()" value="DONE">
+                    </div>
+                </div>
             </form>
-        </div>
-
-        <!-- Voting Tab Overlay -->
-        <div id="overlay">
-            <div id="confirmation" class="overlayItems">
-                <h1 style="text-align: center; font-weight: bold; letter-spacing: 2px;">CONFIRM VOTE</h1>
-                <button id="confirmVote" onclick="submitVote()" style="margin-right:5px;">Yes</button>
-                <button id="cancelVote" onclick="cancelVote()" style="margin-left:5px;">Cancel</button>
-            </div>
-            <div id="voteConfirmed" class="overlayItems">
-                <h1 style="text-align: center; font-weight: bold; letter-spacing: 2px;">VOTE CONFIRMED</h1>
-                <button id="doneVote" onclick="closeConfirm()">DONE</button>
-            </div>
         </div>
 
         <!-- Live Polls -->
