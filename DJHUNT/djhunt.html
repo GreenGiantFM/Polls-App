@@ -10,6 +10,7 @@
 
     <body>
         <!-- Header -->
+        
         <header class="w3-container tab" style="text-align: center;">
             <h1 style="font-weight: bolder; color: #569429">The Hitlist</h1>
             <p style="color: #569429">Voting Ends 03/06/21 | 05:03:30:21 </p>
@@ -39,131 +40,151 @@
         <div id="vote" class="tabcontent w3-center" style="display: block;">
             <form action="#">
                 <div class="grid-container">
-                    <div class="grid-item-dj">
+                    <a class="grid-item-dj grid-item-dj-vote"  href="djpage.html">
                         <img class="dj-background" src="assets/img/d1.jpg">
                         <p class="dj-name">Cora</p>
+                        
+                          
                         <div class="round">
-                            <input type="checkbox" id="checkbox1" />
+                            <input type="checkbox" id="checkbox1" class="dj-check" />
                              <label for="checkbox1"></label>
                         </div> 
-                    </div>
-                    <div class="grid-item-dj">
+                       
+                    </a>
+                    <a class="grid-item-dj grid-item-dj-vote" href="djpage.html">
                         <img class="dj-background" src="assets/img/d2.jpg">
                         <p class="dj-name">Javi</p>
+                        
                         <div class="round">
-                            <input type="checkbox" id="checkbox2" />
+                            <input type="checkbox" id="checkbox2" class="dj-check" />
                              <label for="checkbox2"></label>
                         </div> 
-                    </div>
-                    <div class="grid-item-dj">
+                    </a>
+                    <a class="grid-item-dj grid-item-dj-vote"  href="djpage.html">
                         <img class="dj-background" src="assets/img/d3.jpg">
                         <p class="dj-name">Joaquin</p>
                         <div class="round">
-                            <input type="checkbox" id="checkbox3" />
+                            <input type="checkbox" id="checkbox3" name="dj-check" />
                              <label for="checkbox3"></label>
                         </div> 
-                    </div>
-                    <div class="grid-item-dj">
+                    </a>
+                    <a class="grid-item-dj grid-item-dj-vote"  href="djpage.html">
                         <img class="dj-background" src="assets/img/d4.jpg">
                         <p class="dj-name">Macoy</p>
                         <div class="round">
-                            <input type="checkbox" id="checkbox4" />
+                            <input type="checkbox" id="checkbox4"name="dj-check" />
                              <label for="checkbox4"></label>
                         </div> 
-                    </div>
-                    <div class="grid-item-dj">
+                    </a>
+                    <a class="grid-item-dj grid-item-dj-vote"  href="djpage.html">
                         <img class="dj-background" src="assets/img/d5.jpg">
                         <p class="dj-name">Michael</p>
                         <div class="round">
-                            <input type="checkbox" id="checkbox5" />
+                            <input type="checkbox" id="checkbox5" name="dj-check"/>
                              <label for="checkbox5"></label>
                         </div> 
-                    </div>
-                    <div class="grid-item-dj">
+                    </a>
+                    <a class="grid-item-dj grid-item-dj-vote"  href="djpage.html">
                         <img class="dj-background" src="assets/img/d6.jpg">
                         <p class="dj-name">Fonz</p>
                         <div class="round">
-                            <input type="checkbox" id="checkbox6" />
+                            <input type="checkbox" id="checkbox6" name="dj-check"/>
                              <label for="checkbox6"></label>
                         </div> 
-                    </div>
-                    <div class="grid-item-dj">
+                    </a>
+                    <a class="grid-item-dj grid-item-dj-vote"  href="djpage.html">
                         <img class="dj-background" src="assets/img/d7.jpg">
                         <p class="dj-name">Robby</p>
                         <div class="round">
-                            <input type="checkbox" id="checkbox7" />
-                            <label for="checkbox7"></label>
-                        </div>
-                    </div>
-                    <div class="grid-item-dj">
+                            <input type="checkbox" id="checkbox7" name="dj-check"/>
+                             <label for="checkbox7"></label>
+                        </div> 
+                    </a>
+                    <a class="grid-item-dj grid-item-dj-vote"  href="djpage.html">
                         <img class="dj-background" src="assets/img/d8.jpg">
                         <p class="dj-name">Tony</p>
                         <div class="round">
-                            <input type="checkbox" id="checkbox8" />
+                            <input type="checkbox" id="checkbox8" name="dj-check"/>
                              <label for="checkbox8"></label>
                         </div> 
-                    </div>
+                    </a>
                     
                     <br>
                     <br>
+                    
                 </div>
                 <button id="voteSubmit" onclick="openConfirm()">VOTE</button>
             </form>
         </div>
 
         <!-- Voting Tab Overlay -->
-        <div id="overlay">
-            <div id="confirmation" class="overlayItems">
-                <h1 style="text-align: center; font-weight: bold; letter-spacing: 2px;">CONFIRM VOTE</h1>
-                <button id="confirmVote" onclick="submitVote()" style="margin-right:5px;">Yes</button>
-                <button id="cancelVote" onclick="cancelVote()" style="margin-left:5px;">Cancel</button>
+        <div id="djvote-overlay">
+            <div class="votedDjs">
+                <!--
+                <div class="votedDjCard">
+                    <div class="votedBackground">
+                        <img class="votedImage"src="assets/img/d1.jpg" >
+                    </div>
+                    <h2 class="votedName">Cora</h2>
+                    <p class="votedTagline">Tagline</p> 
+                </div>
+                -->
             </div>
+            <div id="confirmation" class="overlayItems">
+                <h1 style="text-align: center; font-weight: 700; letter-spacing: 2px;">Confirm Vote?</h1>
+                <button id="voteConfirm" onclick="submitVote()" style="margin:5px;">Confirm</button>
+                <br>
+                <button id="voteCancel" onclick="cancelVote()" style="margin:5px;">Back</button>
+            </div>
+            
             <div id="voteConfirmed" class="overlayItems">
                 <h1 style="text-align: center; font-weight: bold; letter-spacing: 2px;">VOTE CONFIRMED</h1>
                 <button id="doneVote" onclick="closeConfirm()">DONE</button>
             </div>
+                
         </div>
 
         <!-- Live Polls -->
         <div id="live" class="tabcontent">
             <div class="grid-container">
-                <div class="grid-item-dj">
+                <a class="grid-item-dj"  href="djpage.html">
                     <img class="dj-background" src="assets/img/d1.jpg">
                     <p class="dj-name">Cora</p>
-                </div>
-                <div class="grid-item-dj">
+                </a>
+                <a class="grid-item-dj"  href="djpage.html">
                     <img class="dj-background" src="assets/img/d2.jpg">
                     <p class="dj-name">Javi</p>
-                </div>
-                <div class="grid-item-dj">
+                </a>
+                <a class="grid-item-dj"  href="djpage.html">
                     <img class="dj-background" src="assets/img/d3.jpg">
                     <p class="dj-name">Joaquin</p>
-                </div>
-                <div class="grid-item-dj">
+                </a>
+                <a class="grid-item-dj"  href="djpage.html">
                     <img class="dj-background" src="assets/img/d4.jpg">
                     <p class="dj-name">Macoy</p>
-                </div>
-                <div class="grid-item-dj">
+                </a>
+                <a class="grid-item-dj"  href="djpage.html">
                     <img class="dj-background" src="assets/img/d5.jpg">
                     <p class="dj-name">Michael</p>
-                </div>
-                <div class="grid-item-dj">
+                </a>
+                <a class="grid-item-dj"  href="djpage.html">
                     <img class="dj-background" src="assets/img/d6.jpg">
                     <p class="dj-name">Fonz</p>
-                </div>
-                <div class="grid-item-dj">
+                </a>
+                <a class="grid-item-dj"  href="djpage.html">
                     <img class="dj-background" src="assets/img/d7.jpg">
                     <p class="dj-name">Robby</p>
-                </div>
-                <div class="grid-item-dj">
+                </a>
+                <a class="grid-item-dj"  href="djpage.html">
                     <img class="dj-background" src="assets/img/d8.jpg">
                     <p class="dj-name">Tony</p>
-                </div>
+                </a>
                 <br>
                 <br>
             </div>
         </div>
-
+        
+        
     <script src="djhuntScript.js"></script>
     </body>
 </html>
