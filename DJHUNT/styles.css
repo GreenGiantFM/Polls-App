@@ -109,7 +109,6 @@ input.checkSong {
 .dj-background {
   width: 100%;
   height: auto;
-  z-index: 1;
 }
 
 .dj-name {
@@ -122,11 +121,11 @@ input.checkSong {
   color: white;
 }
 
-/*----- check button style -----*/
+/*----- vote  button style -----*/
+
 
 .round {
   position: absolute;
-  z-index: 2;
   bottom: 5px;
   left: 5px;
 }
@@ -170,6 +169,7 @@ input.checkSong {
   opacity: 1;
 }
 
+
 /*----- Voting buttons -----*/
 #voteSubmit,
 #doneVote {
@@ -202,15 +202,62 @@ input.checkSong {
 }
 
 /*----- Overlay -----*/
-#overlay {
+
+.voteDjs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.votedDjCard {
+  width: 100%;
+  height: 100px;
+  background-color: #fff;
+  box-shadow: 0 5px 7px 0 rgba(0, 0, 0, 0.24), 0 8px 24px 0 rgba(0, 0, 0, 0.19);
+  position: relative;
+  margin: 10px 0;
+}
+
+.votedBackground {
+  top: 10px;
+  left: 15px;
+  position: absolute;
+  overflow: hidden;
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+}
+
+.votedName {
+  position: absolute;
+  left: 110px;
+  top: -5px;
+  font-weight: bolder;
+  color: black;
+}
+
+.votedTagline {
+  position: absolute;
+  left: 110px;
+  top: 30px;
+  font-weight: bolder;
+  color: rgb(75, 75, 75);
+}
+.votedImage {
+  width: 100%;
+  height: auto;
+}
+#djvote-overlay {
   position: fixed;
   display: none;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  min-height: 90vh;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   text-align: center;
-  background-color: #cacaca46;
+  background-color: #ffffff;
   z-index: 1;
 }
 
@@ -227,16 +274,27 @@ input.checkSong {
 }
 
 /*----- Overlay Vote Confirmed -----*/
-#confirmVote,
-#cancelVote {
+
+#voteConfirm {
   background-color: #569429;
-  cursor: pointer;
   color: #ffffff;
   border: none;
   border-radius: 8px;
-  width: 100px;
-  height: 35px;
-  font-size: large;
+  width: 330px;
+  height: 45px;
+  font-size: x-large;
+  font-weight: bolder;
+  letter-spacing: 2px;
+}
+
+#voteCancel {
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  width: 330px;
+  height: 45px;
+  font-size: x-large;
   font-weight: bolder;
   letter-spacing: 2px;
 }
