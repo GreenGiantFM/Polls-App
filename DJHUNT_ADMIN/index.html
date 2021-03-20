@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
-    <title>Admin</title>
+    <title>DJ Hunt Admin</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Raleway">
     <script src="https://kit.fontawesome.com/3a29ca12f0.js" crossorigin="anonymous"></script>
+    
     <style>
         body {
             font-family: "Raleway";
@@ -309,6 +310,7 @@
             to {opacity: 1;}
         }
 
+
         /*---Input--*/
         input {
             
@@ -320,22 +322,74 @@
         
         }
 
-        
+        .add-dj-container{
+
+            margin-top: 40px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 450px;
+            height: 500px;
+            
+            
+
+        }
+
+        .add-photo-container{
+
+            margin-top: 40px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 370px;
+            height: 200px;
+            
+            background-color: #ECECEC;
+
+        }
+
+        .inputheader-flex-container{
+
+            
+            
+            width: 120px;
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: left;
+            margin-left: 30px;
+            margin-top: 40px;
+
+        }
+
+        .inputbox-flex-container{
+
+            
+            
+            margin-top: -185px;
+            margin-left: 170px;  
+            width: 235px;
+            height: 200px;
+            display: flex;
+            flex-direction: column;   
+
+        }
+
+        .center-button{
+
+            margin-left: 785px;
+            
+        }
 
     </style>
 
     <body>
+        <!-- Header -->
+        <header class="w3-container tab" style="margin-left: 0px; text-align: center;">
+            <h1 style="font-weight: bolder; color: #569429">DJ Hunt</h1>
 
-        <!-- Admin Header -->
-        <header class="w3-container tab" style="text-align: center">
-
-            <br><br>
-            <br><br>
-            <br><br>
-            <br><br>
-            <br><br>
-
-            <h1 style="font-weight: bolder; color: #569429">Hello, admin!</h1>
+            
+        <!--**have yet to change the open tab parameter names**-->  
+            <button id="voteTab" class="active" onclick="openTab(event, 'Vote')" style="margin-right:35px;">Add</button>
+            <button id="liveTab" class="inactive" onclick="openTab(event, 'Live')" style="margin-left:35px;">Edit</button>
         </header>
 
         <!-- Menu -->
@@ -356,56 +410,59 @@
         <!-- Menu Button -->
         <span id="sideMenuBtn" onclick="openNav()">&#9776;</span>
 
-        <!--Fill details header-->
-        <header class="w3-container tab" style="text-align: center">
-    
-            <h4 style="font-weight: 500; color: #191919;">Fill out the following details.</h3>
-            <br>
+        <!--Add Tab-->
 
-        </header>
-
-        <!--User input-->
-        <div class="w3-container tab" style="text-align: center">
+        <div class="add-dj-container">
             
-            <form>
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username">
+            <div class="add-photo-container"></div>
+            <div class="inputheader-flex-container">
+                <p style="text-align: right;"><b>DJ Name</b></p>
+                <p style="text-align: right;"><b>Real Name</b></p>
+                <p style="text-align: right;"><b>Tagline</b></p>
+                <p style="text-align: right;"><b>Stinger File</b></p>
+            </div>
+
+            
+            <div class="inputbox-flex-container">
+                
+                <label for="username"></label>
+                <input type="text" id="username" name="username">
+                <br>
+                
+                <label for="pass"></label>
+                <input type="password" id="pass" name="password">
+                <br>
+                
+                <label for="username"></label>
+                <input type="text" id="username" name="username">
+                <br>
+                
+                <label for="username"></label>
+                <input type="text" id="username" name="username">
+                <br>
+                
+            </div>
+        </div>
         
-                <br><br>
-
-            <label for="pass">Password</label>
-            <input type="password" id="pass" name="password">
-
-            </form>           
+        <div class="center-button">
+            <input type="button" id="voteSubmit" onclick="openConfirm()" value="Add DJ">
         </div>
 
-        <!--If not admin-->
-        <header class="w3-container tab" style="text-align: center">
-            <br>
-            <h5 style="font-weight: bolder; color: #569429">
-                
-                <a href="#" class="sideLink" style="text-decoration: none">Oops, I'm not an admin.</a>
-
-                </h1>
-        </header>
-
-        <div class="arrow">
-            <div class="arrow-top"></div>
-            <div class="arrow-bottom"></div>
-          </div>
 
 
         <!-- Voting Tab Overlay -->
-        <div id="overlay">
-            <div id="confirmation" class="overlayItems">
-                <h1 style="text-align: center; font-weight: bold; letter-spacing: 2px;">CONFIRM VOTE</h1>
-                <button id="confirmVote" onclick="submitVote()" style="margin-right:5px;">Yes</button>
-                <button id="cancelVote" onclick="cancelVote()" style="margin-left:5px;">Cancel</button>
-            </div>
-            <div id="voteConfirmed" class="overlayItems">
-                <h1 style="text-align: center; font-weight: bold; letter-spacing: 2px;">VOTE CONFIRMED</h1>
-                <button id="doneVote" onclick="closeConfirm()">DONE</button>
-            </div>
+                <div id="overlay">
+                    <div id="confirmation" class="overlayItems">
+                        <h1 style="text-align: center; font-weight: bold; letter-spacing: 2px;">CONFIRM VOTE</h1>
+                        <input type="button" id="confirmVote" onclick="submitVote()" style="margin-right:5px;" value="Yes">
+                        <input type="button" id="cancelVote" onclick="cancelVote()" style="margin-left:5px;" value="Cancel">
+                    </div>
+                    <div id="voteConfirmed" class="overlayItems">
+                        <h1 style="text-align: center; font-weight: bold; letter-spacing: 2px;">VOTE CONFIRMED</h1>
+                        <input type="submit" value="Submit" id="doneVote" onclick="closeConfirm()" value="DONE">
+                    </div>
+                </div>
+            </form>
         </div>
 
         <!-- Live Polls -->
@@ -433,10 +490,7 @@
                             <img class="album" src="assets\img\2.jpg" alt='Strawberry Fields Forever' style="width:80px; height:80px">
                         </div>
                         <div class="grid-item-song">
-                            <p class="description"><em class="title">Strawberry Fields<br />Forever</em><br />The Beatles<br /><em class="percent"></em></p>
-                        </div>
-                        <div class="grid-item-song percent">
-                            <h3></h3>
+                            <p class="description"><em class="title">Strawberry Fields<br />Forever</em><br />The Beatles<br /><em class="percent">11.1%</em></p>
                         </div>
                     </div>
                 </div>
@@ -449,10 +503,7 @@
                             <img class="album" src="assets\img\3.jpg" alt='My Fairy King' style="width:80px; height:80px">
                         </div>
                         <div class="grid-item-song">
-                            <p class="description"><em class="title">My Fairy King</em><br />Queen<br /><em class="percent"></em></p>
-                        </div>
-                        <div class="grid-item-song percent">
-                            <h3></h3>
+                            <p class="description"><em class="title">My Fairy King</em><br />Queen<br /><em class="percent">11.1%</em></p>
                         </div>
                     </div>
                 </div>
@@ -465,10 +516,7 @@
                             <img class="album" src="assets\img\4.jpg" alt='Space Oddity' style="width:80px; height:80px">
                         </div>
                         <div class="grid-item-song">
-                            <p class="description"><em class="title">Space Odditiy</em><br />David Bowie<br /><em class="percent"></em></p>
-                        </div>
-                        <div class="grid-item-song percent">
-                            <h3></h3>
+                            <p class="description"><em class="title">Space Odditiy</em><br />David Bowie<br /><em class="percent">11.1%</em></p>
                         </div>
                     </div>
                 </div>
@@ -481,10 +529,7 @@
                             <img class="album" src="assets\img\5.jpg" alt='Rhymes Like Dimes' style="width:80px; height:80px">
                         </div>
                         <div class="grid-item-song">
-                            <p class="description"><em class="title">Rhymes Like Dimes</em><br />MF DOOM<br /><em class="percent"></em></p>
-                        </div>
-                        <div class="grid-item-song percent">
-                            <h3></h3>
+                            <p class="description"><em class="title">Rhymes Like Dimes</em><br />MF DOOM<br /><em class="percent">11.1%</em></p>
                         </div>
                     </div>
                 </div>
@@ -497,10 +542,7 @@
                             <img class="album" src="assets\img\6.jpg" alt='Ruthless' style="width:80px; height:80px">
                         </div>
                         <div class="grid-item-song">
-                            <p class="description"><em class="title">Ruthless</em><br />The Marias<br /><em class="percent"></em></p>
-                        </div>
-                        <div class="grid-item-song percent">
-                            <h3></h3>
+                            <p class="description"><em class="title">Ruthless</em><br />The Marias<br /><em class="percent">11.1%</em></p>
                         </div>
                     </div>
                 </div>
@@ -513,10 +555,7 @@
                             <img class="album" src="assets\img\7.jpg" alt='The Valley of The Pagans' style="width:80px; height:80px">
                         </div>
                         <div class="grid-item-song">
-                            <p class="description"><em class="title">The Valley of<br />The Pagans</em><br />Gorillaz<br /><em class="percent"></em></p>
-                        </div>
-                        <div class="grid-item-song percent">
-                            <h3></h3>
+                            <p class="description"><em class="title">The Valley of<br />The Pagans</em><br />Gorillaz<br /><em class="percent">11.1%</em></p>
                         </div>
                     </div>
                 </div>
@@ -524,6 +563,14 @@
                 <br>
             </div>
         </div>
+
+
+
+
+
+
+
+
 
     <script>
         /*----- Open Menu -----*/
