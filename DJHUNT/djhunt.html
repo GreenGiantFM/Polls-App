@@ -12,7 +12,7 @@
         <!-- Header -->
         
         <header class="w3-container tab" style="text-align: center;">
-            <h1 style="font-weight: bolder; color: #569429">The Hitlist</h1>
+            <h1 style="font-weight: bolder; color: #569429">DJ Hunt</h1>
             <p style="color: #569429">Voting Ends 03/06/21 | 05:03:30:21 </p>
             <button id="voteTab" class="active" onclick="openTab(event, 'Vote')" style="margin-right:35px;">Vote</button>
             <button id="liveTab" class="inactive" onclick="openTab(event, 'Live')" style="margin-left:35px;">Live Polls</button>
@@ -132,7 +132,7 @@
             </div>
             <div id="confirmation" class="overlayItems">
                 <h1 style="text-align: center; font-weight: 700; letter-spacing: 2px;">Confirm Vote?</h1>
-                <button id="voteConfirm" onclick="submitVote()" style="margin:5px;">Confirm</button>
+                <button id="voteConfirm" onclick="window.location.href='aftervote.html'"  style="margin:5px;">Confirm</button>
                 <br>
                 <button id="voteCancel" onclick="cancelVote()" style="margin:5px;">Back</button>
             </div>
