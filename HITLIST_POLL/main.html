@@ -808,6 +808,13 @@
                     font-weight: light;
                 }
             }
+
+            /*----- Disable submit button -----*/
+            input:disabled,
+            input[disabled] {
+                opacity: 0.5;
+                cursor: not-allowed;
+            }
         
             /*----- Hover over voting buttons -----*/
             #voteSubmit:hover,
@@ -1069,7 +1076,7 @@
                     <br>
                     <br>
                 </div>
-                <input type="button" id="voteSubmit" onclick="openConfirm()" value="VOTE">
+                <input type="button" id="voteSubmit" onclick="openConfirm()" value="VOTE" disabled>
                 <!-- Voting Tab Overlay -->
                 <div id="overlay">
                     <div id="confirmation" class="overlayItems">
@@ -1242,83 +1249,118 @@
             document.getElementById("sideMenu").style.width = "0";
         }
 
+        /*----- Enable / Disable vote Button -----*/
+        function voteButton() {
+            var song1Check = document.getElementById("song1Check");
+            var song2Check = document.getElementById("song2Check");
+            var song3Check = document.getElementById("song3Check");
+            var song4Check = document.getElementById("song4Check");
+            var song5Check = document.getElementById("song5Check");
+            var song6Check = document.getElementById("song6Check");
+            var song7Check = document.getElementById("song7Check");
+            if (song1Check.checked == true || song2Check.checked == true || song3Check.checked == true){
+                document.getElementById("voteSubmit").disabled = false;
+            }else if(song4Check.checked == true || song5Check.checked == true || song6Check.checked == true){
+                document.getElementById("voteSubmit").disabled = false;
+            }else if(song7Check.checked == true){
+                document.getElementById("voteSubmit").disabled = false;
+            }else{
+                document.getElementById("voteSubmit").disabled = true;
+            }
+        }
+
         /*----- Change BG of selected songs -----*/
         function changeBackground() {
             var song1Check = document.getElementById("song1Check");
+            var song2Check = document.getElementById("song2Check");
+            var song3Check = document.getElementById("song3Check");
+            var song4Check = document.getElementById("song4Check");
+            var song5Check = document.getElementById("song5Check");
+            var song6Check = document.getElementById("song6Check");
+            var song7Check = document.getElementById("song7Check");
+
             if(song1Check.checked == true){
                 document.getElementById("song1").style.backgroundColor = "#569429cb";
                 document.getElementById("songOne").style.color = "#3a3a3a";
                 document.getElementById("percentOne").style.color = "#f2f2f2";
+                document.getElementById("voteSubmit").disabled = false;
             }else{
                 document.getElementById("song1").style.backgroundColor = "#ffffff";
                 document.getElementById("songOne").style.color = "#8d8d8d";
                 document.getElementById("percentOne").style.color = "#8d8d8d";
+                voteButton()
             }
 
-            var song2Check = document.getElementById("song2Check");
             if (song2Check.checked == true) {
                 document.getElementById("song2").style.backgroundColor = "#569429cb";
                 document.getElementById("songTwo").style.color = "#3a3a3a";
                 document.getElementById("percentTwo").style.color = "#f2f2f2";
+                document.getElementById("voteSubmit").disabled = false;
             } else {
                 document.getElementById("song2").style.backgroundColor = "#ffffff";
                 document.getElementById("songTwo").style.color = "#8d8d8d";
                 document.getElementById("percentTwo").style.color = "#8d8d8d";
+                voteButton()
             }
 
-            var song3Check = document.getElementById("song3Check");
             if (song3Check.checked == true) {
                 document.getElementById("song3").style.backgroundColor = "#569429cb";
                 document.getElementById("songThree").style.color = "#3a3a3a";
                 document.getElementById("percentThree").style.color = "#f2f2f2";
+                document.getElementById("voteSubmit").disabled = false;
             } else {
                 document.getElementById("song3").style.backgroundColor = "#ffffff";
                 document.getElementById("songThree").style.color = "#8d8d8d";
                 document.getElementById("percentThree").style.color = "#8d8d8d";
+                voteButton()
             }
 
-            var song4Check = document.getElementById("song4Check");
             if (song4Check.checked == true) {
                 document.getElementById("song4").style.backgroundColor = "#569429cb";
                 document.getElementById("songFour").style.color = "#3a3a3a";
                 document.getElementById("percentFour").style.color = "#f2f2f2";
+                document.getElementById("voteSubmit").disabled = false;
             } else {
                 document.getElementById("song4").style.backgroundColor = "#ffffff";
                 document.getElementById("songFour").style.color = "#8d8d8d";
                 document.getElementById("percentFour").style.color = "#8d8d8d";
+                voteButton()
             }
 
-            var song5Check = document.getElementById("song5Check");
             if (song5Check.checked == true) {
                 document.getElementById("song5").style.backgroundColor = "#569429cb";
                 document.getElementById("songFive").style.color = "#3a3a3a";
                 document.getElementById("percentFive").style.color = "#f2f2f2";
+                document.getElementById("voteSubmit").disabled = false;
             } else {
                 document.getElementById("song5").style.backgroundColor = "#ffffff";
                 document.getElementById("songFive").style.color = "#8d8d8d";
                 document.getElementById("percentFive").style.color = "#8d8d8d";
+                voteButton()
             }
 
-            var song6Check = document.getElementById("song6Check");
             if (song6Check.checked == true) {
                 document.getElementById("song6").style.backgroundColor = "#569429cb";
                 document.getElementById("songSix").style.color = "#3a3a3a";
                 document.getElementById("percentSix").style.color = "#f2f2f2";
+                document.getElementById("voteSubmit").disabled = false;
             } else {
                 document.getElementById("song6").style.backgroundColor = "#ffffff";
                 document.getElementById("songSix").style.color = "#8d8d8d";
                 document.getElementById("percentSix").style.color = "#8d8d8d";
+                voteButton()
             }
 
-            var song7Check = document.getElementById("song7Check");
             if (song7Check.checked == true) {
                 document.getElementById("song7").style.backgroundColor = "#569429cb";
                 document.getElementById("songSeven").style.color = "#3a3a3a";
                 document.getElementById("percentSeven").style.color = "#f2f2f2";
+                document.getElementById("voteSubmit").disabled = false;
             } else {
                 document.getElementById("song7").style.backgroundColor = "#ffffff";
                 document.getElementById("songSeven").style.color = "#8d8d8d";
                 document.getElementById("percentSeven").style.color = "#8d8d8d";
+                voteButton()
             }
         }
 
