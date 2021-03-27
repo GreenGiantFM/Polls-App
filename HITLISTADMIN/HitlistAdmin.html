@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html>
+    <title>Hitlist</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Raleway">
+    <script src="https://kit.fontawesome.com/3a29ca12f0.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: "Raleway";
+        }
+
+        /*----- Side Menu Button -----*/
+        #sideMenuBtn {
+            font-size:30px;
+            cursor:pointer;
+            position:absolute;
+            top:0;
+            padding-top:5px;
+            padding-left:5px;
+            color: #569429;
+            font-size: 30px;
+            font-weight: bolder;
+        }
+
+        /*----- Side Menu -----*/
+        .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #569429;
+            color: #ffffff;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        /*----- Side Menu Content -----*/
+        .sidenav a, span {
+            text-decoration: none;
+            width: 250px;
+            font-size: 25px;
+            color: #ffffff;
+            display: block;
+            transition: 0.3s;
+        }
+
+        /*----- Side Menu hover over links -----*/
+        .sidenav a:hover {
+            background-color: #71b342;
+        }
+
+        /*----- Side Menu Close Button -----*/
+        .sidenav .closebtn {
+            padding: 8px 8px 3px 15px;
+            margin-bottom: 100px;
+            position: absolute;
+            top: 0;
+            font-size: 30px;
+            font-weight: bolder;
+            line-height: 40px;
+        }
+
+        /*----- Side Menu Close Button -----*/
+        .sidenav .closebtn em {
+            font-size: 20px;
+            font-style: normal;
+        }
+
+        /*----- Side Menu Links -----*/
+        .sidenav .sideLink {
+            padding: 8px 8px 3px 30px;
+            line-height: 40px;
+            font-size: 15px;
+            font-weight: bolder;
+        }
+
+        /*----- Side Menu Poll Links -----*/
+        .sidenav .pollLink {
+            padding: 8px 8px 3px 60px;
+            line-height: 40px;
+            font-size: 15px;
+            font-weight: bolder;
+        }
+
+        /*----- Checkbox for voting -----*/
+        input.checkSong {
+            width: 20px;
+            height: 20px;
+        }
+
+        /*----- Main Grid Container -----*/
+        .grid-container {
+            display: grid;
+            grid-template-columns: auto;
+            grid-gap: 5px 30px;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+        }
+        
+        /*----- Voting Tab Grid Container -----*/
+        .grid-container-voting {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            grid-gap: 5px 25px;
+            width: 400px;
+            height: 125px;
+            align-items: left;
+            justify-content: left;
+            padding: 10px;
+        }
+
+        /*----- Items in Voting Tab Grid Container -----*/
+        .grid-item-voting {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            width: 375px;
+            padding: none;
+            font-size: 30px;
+        }
+
+        /*----- Live Tab Grid Container -----*/
+        .grid-container-songs {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            grid-template-rows: 140px 30px;
+            grid-gap: 5px 25px;
+            width: 350px;
+            height: 175px;
+            align-items: left;
+            justify-content: left;
+            padding: 10px;
+        }
+
+        /*----- Items in Live Tab Grid Container -----*/
+        .grid-item-live {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 375px;
+            height: 175px;
+            padding: 20px 0;
+            font-size: 30px;
+        }
+
+        /*----- Items in Vote / Live Tab Grid Container -----*/
+        .grid-item-song {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: none;
+        }
+
+        /*----- Position of song -----*/
+        .number {
+            color: #569429;
+            font-weight: bolder;
+            font-size: 50px;
+        }
+
+        /*----- Album photo -----*/
+        .album {
+            box-shadow: 0 5px 7px 0 rgba(0,0,0,0.24), 0 8px 24px 0 rgba(0,0,0,0.19);
+        }
+
+        /*----- Song description (artists) -----*/
+        .description {
+            text-align:left;
+            font-size: 15px;
+            color: #000000;
+            
+        }
+
+       
+
+        /*----- Song description (title) -----*/
+        .title {
+            font-style: normal;
+            font-size: 20px;
+            color: #000000;
+           
+        }
+
+        /*----- Song description (percentage) -----*/
+        .percent {
+            font-style: normal;
+            color: #74aa4e;
+            font-size: 20px;
+            font-weight: light;
+        }
+
+        /*----- Voting buttons -----*/
+        #voteSubmit, #doneVote{
+            background-color: #569429;
+            color: #ffffff;
+            border:none;
+            border-radius: 8px;
+            width: 330px;
+            height: 45px;
+            font-size: x-large;
+            font-weight: bolder;
+            letter-spacing: 2px;
+
+        }
+
+        /*----- Hover over voting buttons -----*/
+        #voteSubmit:hover, #doneVote:hover, #confirmVote:hover, #cancelVote:hover {
+            box-shadow: 0 10px 14px 0 rgba(0,0,0,0.24), 0 15px 48px 0 rgba(0,0,0,0.19);
+        }
+
+        /*----- Voting buttons -----*/
+        #voteSubmit:focus, #doneVote:focus, #confirmVote:focus, #cancelVote:focus {
+            outline:none;
+        }
+
+        /*----- Overlay -----*/
+        #overlay {
+            position: fixed;
+            display: none;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            background-color: #cacaca46;
+            z-index: 1;
+        }
+
+        /*----- Overlay contents -----*/
+        .overlayItems {
+            position:relative;
+            top:40%;
+            color: #161616;
+        }
+
+        /*----- Overlay Confirmation -----*/
+        #confirmation {
+            display: none;
+        }
+
+        /*----- Overlay Vote Confirmed -----*/
+        #confirmVote, #cancelVote {
+            background-color: #569429;
+            cursor: pointer;
+            color: #ffffff;
+            border:none;
+            border-radius: 8px;
+            width: 100px;
+            height: 35px;
+            font-size: large;
+            font-weight: bolder;
+            letter-spacing: 2px;
+        }
+
+        /*----- Overlay Vote Confirmed -----*/
+        #voteConfirmed {
+            display: none;
+        }
+
+        /*----- Tab -----*/
+        .tab {
+            overflow: hidden;
+        }
+        
+        /*----- Tab buttons -----*/
+        .tab button {
+            background-color: inherit;
+            float: center;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-size: 17px;
+        }
+        
+        /*----- Hover over Tab buttons -----*/
+        .tab button:hover {
+            background-color: rgb(240, 236, 236);
+        }
+        
+        /*----- Active Tab -----*/
+        .tab button.active {
+            background-color: #ffffff;
+            border-bottom: 3px solid #569429;
+            color: #000000;
+            font-weight: bolder;
+        }
+
+        /*----- Inactive Tab -----*/
+        .tab button.inactive {
+            background-color: #ffffff;
+            border-bottom: 3px solid #5694298a;
+            color: #8d8d8d;
+            font-weight: bolder;
+        }
+        
+        /*----- Content of each tab -----*/
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            animation: fadeEffect 1.5s;
+        }
+
+        /*----- Animation for Transitions -----*/
+        @keyframes fadeEffect {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+    </style>
+<link rel="stylesheet" href="HitlistAdmin.css">
+
+
+    <body>
+    
+        <!-- Header -->
+        <header class="w3-container tab" style="margin-left: 0px; text-align: center;">
+            <h1 style="font-weight: bolder; color: #569429">The Hitlist</h1>
+
+            
+        <!--**have yet to change the open tab parameter names**-->  
+            <button id="voteTab" class="active" onclick="openTab(event, 'Vote')" style="margin-right:35px;">Add</button>
+            <button id="liveTab" class="inactive" onclick="openTab(event, 'Live')" style="margin-left:35px;">Edit</button>
+        </header>
+
+        <!-- Menu -->
+        <div id="sideMenu" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&#9776;&emsp;<em>Menu</em></a>
+            <a href="#" class="sideLink">Home</a>
+            <a href="#" class="sideLink">About Us</a>
+            <a href="#" class="sideLink">Radio Talents</a>
+            <a href="#" class="sideLink">Events</a>
+            <a href="#" class="sideLink">Blogs</a>
+            <a href="#" class="sideLink">Contact Us</a>
+            <a href="#" class="sideLink">Stream</a>
+            <span class="sideLink">Live Polls</span>
+            <a href="#" class="pollLink"><i class="fas fa-music"></i>&ensp;Hitlist</a>
+            <a href="#" class="pollLink"><i class="fas fa-binoculars"></i>&ensp;DJ Hunt</a>
+        </div>
+
+        <!-- Menu Button -->
+        <span id="sideMenuBtn" onclick="openNav()" style="margin-right:1200px;">&#9776;</span>
+
+<!-- Voting Tab -->
+<div id="vote" class="tabcontent w3-center" style="display: block;">
+    <form action="#">
+        <div class="grid-container">
+            <div class="grid-item-voting" id="song1">
+                <div class="grid-container-voting">
+                    <div class="grid-item-song">
+                       
+                    </div>
+                    <div class="grid-item-song">
+                        <label for="song1">
+                            
+                            <img class="album" src="assets/grey.png" alt='Brain Damage' style="margin-left:100px;margin-bottom:350px;width:150px; height:150px">
+                        </label>
+                    </div>
+                    <div class="grid-item-song">
+                        
+                        
+                        
+                    </div>
+                    
+                    
+                </div>
+                
+            </div>
+           
+
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        
+        
+        
+        
+        
+    </form>
+    <form action="/action_page.php">
+       
+        <div class="icon">
+          
+        </div>
+        <div class="add-dj-container">
+            
+            <div class="add-photo-container"></div>
+            <div class="inputheader-flex-container">
+                <p style="text-align: right;"><b>Title</b></p>
+                <p style="text-align: right;"><b>Artist</b></p>
+                <p style="text-align: right;"><b>Spotify Link</b></p>
+                
+            </div>
+
+            
+            <div class="inputbox-flex-container">
+                
+                <label for="username"></label>
+                <input type="text" id="username" name="username">
+                <br>
+                
+                <label for="pass"></label>
+                <input type="password" id="pass" name="password">
+                <br>
+                
+                <label for="username"></label>
+                <input type="text" id="username" name="username">
+                <br>
+                
+                
+                
+            </div>
+            <button id="voteSubmit" onclick="openConfirm()"style="margin-bottom:300px;">Add Song</button> 
+            <label style="padding-left: -15px">
+                
+          
+            </label>
+        </div>
+        </form>
+        </div>
+        
+       
+
+        
+
+        <!-- Voting Tab Overlay -->
+        <div id="overlay">
+            <div id="confirmation" class="overlayItems">
+                <h1 style="text-align: center; font-weight: bold; letter-spacing: 2px;">CONFIRM</h1>
+                <button id="confirmVote" onclick="submitVote()" style="margin-right:5px;">Yes</button>
+                <button id="cancelVote" onclick="cancelVote()" style="margin-left:5px;">Cancel</button>
+            </div>
+            <div id="voteConfirmed" class="overlayItems">
+                <h1 style="text-align: center; font-weight: bold; letter-spacing: 2px;">EDIT CONFIRMED</h1>
+                <button id="doneVote" onclick="closeConfirm()">DONE</button>
+            </div>
+        </div>
+
+        <!-- Live Polls -->
+        <div id="live" class="tabcontent">
+            
+            <div class="grid-container">
+                <div class="grid-item-live" id="song1">
+                    
+                    <div class="grid-container-songs">
+                        <div class="grid-item-song number">
+                            1
+                            
+                        </div>
+                        
+                        <div class="grid-item-song">
+                            <img class="album" src="assets\img\1.png" alt='Brain Damage' style="width:80px; height:80px">
+                        </div>
+                        <div class="grid-item-song">
+                            <p class="description"><em class="title">Brain Damage</em><br />Pink Floyd<br /><em class="percent"></em></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-item-live" id="song2">
+                    <div class="grid-container-songs">
+                        <div class="grid-item-song number">
+                            2
+                        </div>
+                        <div class="grid-item-song">
+                            <img class="album" src="assets\img\2.jpg" alt='Strawberry Fields Forever' style="width:80px; height:80px">
+                        </div>
+                        <div class="grid-item-song">
+                            <p class="description"><em class="title">Strawberry Fields<br />Forever</em><br />The Beatles<br /><em class="percent"></em></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-item-live" id="song3">
+                    <div class="grid-container-songs">
+                        <div class="grid-item-song number">
+                            3
+                        </div>
+                        <div class="grid-item-song">
+                            <img class="album" src="assets\img\3.jpg" alt='My Fairy King' style="width:80px; height:80px">
+                        </div>
+                        <div class="grid-item-song">
+                            <p class="description"><em class="title">My Fairy King</em><br />Queen<br /><em class="percent"></em></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-item-live" id="song4">
+                    <div class="grid-container-songs">
+                        <div class="grid-item-song number">
+                            4
+                        </div>
+                        <div class="grid-item-song">
+                            <img class="album" src="assets\img\4.jpg" alt='Space Oddity' style="width:80px; height:80px">
+                        </div>
+                        <div class="grid-item-song">
+                            <p class="description"><em class="title">Space Odditiy</em><br />David Bowie<br /><em class="percent"></em></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-item-live" id="song5">
+                    <div class="grid-container-songs">
+                        <div class="grid-item-song number">
+                            5
+                        </div>
+                        <div class="grid-item-song">
+                            <img class="album" src="assets\img\5.jpg" alt='Rhymes Like Dimes' style="width:80px; height:80px">
+                        </div>
+                        <div class="grid-item-song">
+                            <p class="description"><em class="title">Rhymes Like Dimes</em><br />MF DOOM<br /><em class="percent"></em></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-item-live" id="song6">
+                    <div class="grid-container-songs">
+                        <div class="grid-item-song number">
+                            6
+                        </div>
+                        <div class="grid-item-song">
+                            <img class="album" src="assets\img\6.jpg" alt='Ruthless' style="width:80px; height:80px">
+                        </div>
+                        <div class="grid-item-song">
+                            <p class="description"><em class="title">Ruthless</em><br />The Marias<br /><em class="percent"></em></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-item-live" id="song7">
+                    <div class="grid-container-songs">
+                        <div class="grid-item-song number">
+                            7
+                        </div>
+                        <div class="grid-item-song">
+                            <img class="album" src="assets\img\7.jpg" alt='The Valley of The Pagans' style="width:80px; height:80px">
+                        </div>
+                        <div class="grid-item-song">
+                            <p class="description"><em class="title">The Valley of<br />The Pagans</em><br />Gorillaz<br /><em class="percent"></em></p>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <br>
+            </div>
+        </div>
+
+    <script>
+        /*----- Open Menu -----*/
+        function openNav() {
+            document.getElementById("sideMenu").style.width = "250px";
+        }
+
+        /*----- Close Menu -----*/
+        function closeNav() {
+            document.getElementById("sideMenu").style.width = "0";
+        }
+
+        /*----- Change BG of selected songs -----*/
+        function changeBackground() {
+            var song1Check = document.getElementById("song1Check");
+            if(song1Check.checked == true){
+                document.getElementById("song1").style.backgroundColor = "#569429cb";
+                document.getElementById("songOne").style.color = "#3a3a3a";
+            }else{
+                document.getElementById("song1").style.backgroundColor = "#ffffff";
+                document.getElementById("songOne").style.color = "#8d8d8d";
+            }
+
+            var song2Check = document.getElementById("song2Check");
+            if (song2Check.checked == true) {
+                document.getElementById("song2").style.backgroundColor = "#569429cb";
+                document.getElementById("songTwo").style.color = "#3a3a3a";
+            } else {
+                document.getElementById("song2").style.backgroundColor = "#ffffff";
+                document.getElementById("songTwo").style.color = "#8d8d8d";
+            }
+
+            var song3Check = document.getElementById("song3Check");
+            if (song3Check.checked == true) {
+                document.getElementById("song3").style.backgroundColor = "#569429cb";
+                document.getElementById("songThree").style.color = "#3a3a3a";
+            } else {
+                document.getElementById("song3").style.backgroundColor = "#ffffff";
+                document.getElementById("songThree").style.color = "#8d8d8d";
+            }
+
+            var song4Check = document.getElementById("song4Check");
+            if (song4Check.checked == true) {
+                document.getElementById("song4").style.backgroundColor = "#569429cb";
+                document.getElementById("songFour").style.color = "#3a3a3a";
+            } else {
+                document.getElementById("song4").style.backgroundColor = "#ffffff";
+                document.getElementById("songFour").style.color = "#8d8d8d";
+            }
+
+            var song5Check = document.getElementById("song5Check");
+            if (song5Check.checked == true) {
+                document.getElementById("song5").style.backgroundColor = "#569429cb";
+                document.getElementById("songFive").style.color = "#3a3a3a";
+            } else {
+                document.getElementById("song5").style.backgroundColor = "#ffffff";
+                document.getElementById("songFive").style.color = "#8d8d8d";
+            }
+
+            var song6Check = document.getElementById("song6Check");
+            if (song6Check.checked == true) {
+                document.getElementById("song6").style.backgroundColor = "#569429cb";
+                document.getElementById("songSix").style.color = "#3a3a3a";
+            } else {
+                document.getElementById("song6").style.backgroundColor = "#ffffff";
+                document.getElementById("songSix").style.color = "#8d8d8d";
+            }
+
+            var song7Check = document.getElementById("song7Check");
+            if (song7Check.checked == true) {
+                document.getElementById("song7").style.backgroundColor = "#569429cb";
+                document.getElementById("songSeven").style.color = "#3a3a3a";
+            } else {
+                document.getElementById("song7").style.backgroundColor = "#ffffff";
+                document.getElementById("songSeven").style.color = "#8d8d8d";
+            }
+        }
+
+        /*----- Confirm Vote -----*/
+        function openConfirm() {
+            document.getElementById("overlay").style.display = "block";
+            document.getElementById("voteConfirmed").style.display = "none";
+            document.getElementById("confirmation").style.display = "block";
+        }
+
+        /*----- Cancel Vote -----*/
+        function cancelVote() {
+            document.getElementById("overlay").style.display = "none";
+            document.getElementById("voteConfirmed").style.display = "none";
+            document.getElementById("confirmation").style.display = "none";
+        }
+
+        /*----- Vote Submitted -----*/
+        function submitVote() {
+            document.getElementById("song1Check").checked = false;
+            document.getElementById("song1").style.backgroundColor = "#ffffff";
+            document.getElementById("songOne").style.color = "#8d8d8d";
+
+            document.getElementById("song2Check").checked = false;
+            document.getElementById("song2").style.backgroundColor = "#ffffff";
+            document.getElementById("songTwo").style.color = "#8d8d8d";
+
+            document.getElementById("song3Check").checked = false;
+            document.getElementById("song3").style.backgroundColor = "#ffffff";
+            document.getElementById("songThree").style.color = "#8d8d8d";
+
+            document.getElementById("song4Check").checked = false;
+            document.getElementById("song4").style.backgroundColor = "#ffffff";
+            document.getElementById("songFour").style.color = "#8d8d8d";
+
+            document.getElementById("song5Check").checked = false;
+            document.getElementById("song5").style.backgroundColor = "#ffffff";
+            document.getElementById("songFive").style.color = "#8d8d8d";
+
+            document.getElementById("song6Check").checked = false;
+            document.getElementById("song6").style.backgroundColor = "#ffffff";
+            document.getElementById("songSix").style.color = "#8d8d8d";
+
+            document.getElementById("song7Check").checked = false;
+            document.getElementById("song7").style.backgroundColor = "#ffffff";
+            document.getElementById("songSeven").style.color = "#8d8d8d";
+
+            document.getElementById("confirmation").style.display = "none";
+            document.getElementById("voteConfirmed").style.display = "block";
+        }
+
+        /*----- Close Overlay -----*/
+        function closeConfirm() {
+            document.getElementById("overlay").style.display = "none";
+            document.getElementById("voteConfirmed").style.display = "none";
+            document.getElementById("confirmation").style.display = "none";
+        }
+
+        /*----- Open selected Tab -----*/
+        function openTab(evt, tabName) {
+            if(tabName == 'Live'){
+                inactive_content = document.getElementById("vote");
+                inactive_content.style.display = "none";
+                inactive_tab = document.getElementById("voteTab");
+                inactive_tab.className = "inactive";
+
+                active_content = document.getElementById("live");
+                active_content.style.display = "block";
+                active_tab = document.getElementById("liveTab");
+                active_tab.className = "active";
+                evt.currentTarget.className += " active";
+            }else if (tabName == 'Vote') {
+                inactive_content = document.getElementById("live");
+                inactive_content.style.display = "none";
+                inactive_tab = document.getElementById("liveTab");
+                inactive_tab.className = "inactive";
+
+                active_content = document.getElementById("vote");
+                active_content.style.display = "block";
+                active_tab = document.getElementById("voteTab");
+                active_tab.className = "active";
+                evt.currentTarget.className += " active";
+            }
+        }
+    </script>
+    </body>
+</html>

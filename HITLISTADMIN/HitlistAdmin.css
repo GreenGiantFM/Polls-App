@@ -1,0 +1,67 @@
+/* .words{
+    text-align:left;
+    font-size: 30px;
+    color: #000000;  
+    top:100px;
+}
+
+.boxy{
+    text-align:left;
+    font-size: 30px;
+    color: #000000;  
+    top:100px;
+}
+
+.box{
+    text-align:left;
+    font-size: 30px;
+    color: #000000;  
+    top:100px;
+}
+
+.formcontainer {
+    text-align: left;
+    margin: 24px 50px 12px;
+    }
+   
+ .container {
+    padding: 16px 0;
+    text-align:left;
+    } */
+
+    
+        .add-dj-container{
+
+            margin-top: 40px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 450px;
+            height: 500px;
+        }
+        .inputheader-flex-container{
+
+            
+            
+            width: 120px;
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: left;
+            margin-left: 30px;
+            margin-top: 40px;
+
+        }
+
+        .inputbox-flex-container{
+
+            
+            
+            margin-top: -185px;
+            margin-left: 170px;  
+            width: 235px;
+            height: 200px;
+            display: flex;
+            flex-direction: column;   
+
+        }
+       
