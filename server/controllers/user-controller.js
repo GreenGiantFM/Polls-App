@@ -39,17 +39,15 @@ const loginUser = async (req, res) => {
                 payload,
                 keys.secretOrKey,
                 { expiresIn: 28800 }, // 8hours in seconds
-                (err, token) => {                    
-                    res.json({
+                (err, token) => {
+                    req.session.token = token
+
+                    return res.json({
                         success: true,
                         token,
                         user,
                     });
-                    // console.log(`inside ${token}`)
-                    res.cookie('token', token, {
-                        // domain: "localhost",
-                        httpOnly: false
-                    });
+                    
                 }
             );
             // console.log(token)
@@ -61,7 +59,6 @@ const loginUser = async (req, res) => {
             .json({ passwordincorrect: "Password incorrect" });
         }
 
-        // return res.status(200).json({ success: true, data: user })
     })
 
 }
@@ -93,7 +90,6 @@ const registerUser = (req, res) => {
             });
         });
     });    
-    // return res.send("etits")
 }
 
 const deleteUser = async (req, res) => {
@@ -130,7 +126,7 @@ const getAllUser = async (req, res) => {
 }
 
 const getUser = async (req, res) => {
-    const token = req.body.token
+    const token = req.session.token
 
     if (!token) 
         res.status(400).json({ msg: "No token, authorization denied" });
