@@ -7,6 +7,7 @@ const app = express();
 
 const db = require('./db').connection
 const userRouter = require('./routes/user-router')
+const hitlistRouter = require('./routes/hitlist-router')
 
 // Init middleware
 app.use(express.json({ extended: false }))
@@ -16,6 +17,7 @@ app.use(cookieParser());
 app.use(cors())
 
 // Define routers
+app.use('/api', hitlistRouter)
 app.use('/user', userRouter)
 
 app.listen(PORT, () => console.log(`Live at port ${PORT}`))
