@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
+const session = require("express-session")
 const cors = require('cors')
 const PORT = process.env.PORT || 3000;
 const app = express();
@@ -16,7 +17,16 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use(cookieParser());
 app.use(cors())
-app.use(express.static('public'))
+app.use(express.static('uploads'))
+app.use(session({
+    resave: true,
+    name: "webadmin",
+    saveUninitialized: true,
+    secret: require('./db').secretOrKey,
+    cookie: {
+        maxAge: 60 * 60 * 1000 * 24
+    }
+}))
 
 // Define routers
 app.use('/api', hitlistRouter)
