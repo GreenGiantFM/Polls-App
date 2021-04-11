@@ -1,14 +1,19 @@
 const mongoose = require('mongoose')
 
-const songSchema = new mongoose.Schema({
-    title: {
+const rtSchema = new mongoose.Schema({
+    dj_name: {
         type: String,
         required: true
     },
-    artist: {
+    actual_name: {
         type: String,
         required: true
     },
+    tagline: {
+        type: String,
+        required: true
+    },
+    stinger_path: String,
     spotify_link: {
         type: String,
         required: true
@@ -18,14 +23,15 @@ const songSchema = new mongoose.Schema({
         type: Number,
         default: 0
     }
+    
 })
 
-const HitlistSchema = new mongoose.Schema({
-    songs: [songSchema],
+const DjHuntSchema = new mongoose.Schema({
+    radio_talents: [rtSchema],
     start_date: Date,
     end_date: Date
 })
 
-const Hitlist = mongoose.model('hitlist', HitlistSchema)
+const DjHunt = mongoose.model('djhunt', DjHuntSchema)
 
-module.exports = Hitlist;
+module.exports = DjHunt;
