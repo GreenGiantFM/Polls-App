@@ -28,7 +28,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage })
 
 router.post('/DjHunt', hasSession, DjHuntCntrl.createDjHunt)
-router.put('/DjHunt/:id', upload.fields([{ name: 'picture' }, { name: 'stinger' }]), DjHuntCntrl.updateDjHunt)
+router.put('/DjHunt/:id', upload.fields([{ name: 'photo' }, { name: 'stinger' }]), DjHuntCntrl.updateDjHunt)
 router.delete('/DjHunt/:id', hasSession, DjHuntCntrl.deleteDjHunt)
 router.get('/DjHunt/:id', DjHuntCntrl.getDjHuntById)
 router.get('/All-DjHunt', DjHuntCntrl.getAllDjHunt)
