@@ -1,0 +1,310 @@
+/*----- Main Grid Container (Voting / Live) -----*/
+.grid-container-djs {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 30px 70px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+/*----- Main Grid Container (Confirmation) -----*/
+.grid-container-confirm {
+  display: grid;
+  grid-template-columns: auto;
+  grid-gap: 10px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+/*----- Main Grid Container (Confirmation) -----*/
+.grid-container-confirmDJs {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 35px;
+  align-items: center;
+  justify-content: left;
+  padding: 10px;
+}
+
+/*----- DJ Card -----*/
+.grid-item-dj {
+  position: relative;
+  overflow: hidden;
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  box-shadow: 0 5px 7px 0 rgba(0, 0, 0, 0.24), 0 8px 24px 0 rgba(0, 0, 0, 0.19);
+}
+
+#djInfo {
+  display: block;
+  padding: 6px 12px;
+}
+
+/*----- Main Grid Container (Voting / Live) -----*/
+.grid-container-details {
+  display: grid;
+  grid-template-columns: auto;
+  grid-gap: 20px;
+  padding: 10px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/*----- Main Grid Container (Voting / Live) -----*/
+.grid-container-handle {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 30px 10px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+/*----- DJ Card -----*/
+.grid-item-photo {
+  overflow: hidden;
+  width: 115px;
+  height: 115px;
+  border-radius: 10px;
+}
+
+/*----- DJ Handles -----*/
+.handles {
+  width: 30px;
+  height: 30px;
+  margin: 5px;
+}
+
+/*----- DJ Miscellaneous -----*/
+.grid-item-misc {
+  width: 315px;
+}
+
+.stinger {
+  width: 300px;
+  outline: none;
+}
+
+#details-tagline {
+  font-weight: bolder;
+  color: #000000;
+  text-align: left;
+  padding-left: 7px;
+}
+
+.info-tagline {
+  background-color: #ffffff;
+  border: 3px solid #ffffff;
+}
+
+/*----- DJ Card -----*/
+.grid-item-djVoted {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding: none;
+  height: 100px;
+  box-shadow: 0 5px 7px 0 rgba(0, 0, 0, 0.24), 0 8px 24px 0 rgba(0, 0, 0, 0.19);
+}
+
+.dj-background {
+  width: 100%;
+  height: auto;
+}
+
+.dj-name {
+  position: absolute;
+  font-style: inherit;
+  font-weight: bolder;
+  top: -12px;
+  right: 5px;
+  color: white;
+}
+
+/*----- vote  button style -----*/
+.round {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+}
+
+.round label {
+  background-color: #fff;
+  border: 2px solid rgb(25, 148, 0);
+  border-radius: 50%;
+  cursor: pointer;
+  height: 20px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 20px;
+}
+
+.round label:after {
+  border: 2px solid #fff;
+  border-top: none;
+  border-right: none;
+  content: "";
+  height: 6px;
+  left: 3px;
+  opacity: 0;
+  position: absolute;
+  top: 3px;
+  transform: rotate(-45deg);
+  width: 12px;
+}
+
+.round input[type="checkbox"] {
+  visibility: hidden;
+}
+
+.round input[type="checkbox"]:checked + label {
+  background-color: #66bb6a;
+  border-color: #66bb6a;
+}
+
+.round input[type="checkbox"]:checked + label:after {
+  opacity: 1;
+}
+
+audio {
+  border: 2px solid #569429;
+  border-radius: 8px;
+  width: 330px;
+  height: 45px;
+  font-size: x-large;
+  font-weight: bolder;
+  letter-spacing: 2px;
+}
+
+/*----- Voting buttons -----*/
+#voteSubmit,
+#doneVote {
+  background-color: #569429;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  width: 330px;
+  height: 45px;
+  font-size: x-large;
+  font-weight: bolder;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
+/*----- Hover over voting buttons -----*/
+#voteSubmit:hover,
+#doneVote:hover,
+#confirmVote:hover,
+#cancelVote:hover {
+  box-shadow: 0 10px 14px 0 rgba(0, 0, 0, 0.24),
+    0 15px 48px 0 rgba(0, 0, 0, 0.19);
+}
+
+/*----- Voting buttons -----*/
+#voteSubmit:focus,
+#doneVote:focus,
+#confirmVote:focus,
+#cancelVote:focus {
+  outline: none;
+}
+
+.votedDjCard {
+  width: 100%;
+  height: 100px;
+  background-color: #fff;
+  box-shadow: 0 5px 7px 0 rgba(0, 0, 0, 0.24), 0 8px 24px 0 rgba(0, 0, 0, 0.19);
+  margin: 10px 0;
+}
+
+.votedBackground {
+  top: 10px;
+  left: 15px;
+  overflow: hidden;
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+}
+
+.votedName {
+  font-weight: bolder;
+  font-style: normal;
+  font-size: x-large;
+  color: black;
+}
+
+.votedTagline {
+  font-weight: bolder;
+  font-size: small;
+  color: rgb(75, 75, 75);
+}
+.votedImage {
+  width: 100%;
+  height: auto;
+}
+
+/*----- Overlay Confirmation -----*/
+#confirmation {
+  display: none;
+}
+
+/*----- Overlay Vote Confirmed -----*/
+#voteConfirm {
+  background-color: #569429;
+  color: #ffffff;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  width: 330px;
+  height: 45px;
+  font-size: x-large;
+  font-weight: bolder;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
+#voteCancel, #voteBack {
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  width: 330px;
+  height: 45px;
+  font-size: x-large;
+  font-weight: bolder;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
+/*----- Hover over voting buttons -----*/
+#voteConfirm:hover,
+#voteCancel:hover,
+#voteBack:hover {
+  box-shadow: 0 10px 14px 0 rgba(0, 0, 0, 0.24),
+    0 15px 48px 0 rgba(0, 0, 0, 0.19);
+}
+
+/*----- Overlay Vote Confirmed -----*/
+#voteConfirmed {
+  display: none;
+}
+
+/*----- Submitted -----*/
+#voteSubmitted {
+  text-align: center;
+}
+
+#votedImage {
+  width: 180px;
+  margin: 60px 35px 35px 35px;
+}
+
+/*----- Animation -----*/
+#vote {
+  animation: fadeEffect 0.5s;
+}

@@ -1,0 +1,509 @@
+/*----- Main Grid Container -----*/
+.grid-container {
+    display: grid;
+    grid-template-columns: auto;
+    grid-gap: 5px 30px;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 10px;
+}
+
+/*----- Desktop View (at least 1024px) -----*/
+@media screen and (min-width: 1024px) {
+    /*----- Checkbox for voting -----*/
+    input.checkSong {
+        width: 20px;
+        height: 20px;
+    }
+
+    /*----- Voting Tab Grid Container -----*/
+    .grid-container-voting {
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        grid-gap: 5px 0px;
+        width: 550px;
+        height: 150px;
+        align-items: left;
+        justify-content: left;
+        padding: 10px;
+    }
+
+    /*----- Items in Vote / Live Tab Grid Container -----*/
+    .grid-item-song-input {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 20px;
+    }
+
+    /*----- Album photo -----*/
+    .album {
+        box-shadow: 0 1px 3px 1px rgba(85, 85, 85, 0.24);
+        width: 120px;
+        height: 120px;
+    }
+
+    /*----- Song description (artists) -----*/
+    .description {
+        text-align: left;
+        font-size: 15px;
+        color: #8d8d8d;
+    }
+
+    /*----- Song description (title) -----*/
+    .title {
+        font-style: normal;
+        font-size: 20px;
+        color: #000000;
+    }
+
+    /*----- Items in Vote / Live Tab Grid Container -----*/
+    .grid-item-song-desk {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0px 0px 0px 15px;
+        font-weight: bolder;
+    }
+
+    /*----- Items in Vote / Live Tab Grid Container -----*/
+    .grid-item-song-voteDesk, .grid-item-song-liveDesk {
+        display: flex;
+        align-items: center;
+        padding: 0px 0px 0px 10px;
+        width: 300px;
+        height: 120px;
+        box-shadow: 0 1px 3px 1px rgba(85, 85, 85, 0.24);
+        /* Right Bottom Fade Solid */
+    }
+
+    /*----- Voting buttons -----*/
+    #voteSubmit,
+    #doneVote {
+        background-color: #569429;
+        color: #ffffff;
+        border: none;
+        border-radius: 8px;
+        width: 330px;
+        height: 45px;
+        font-size: x-large;
+        font-weight: bolder;
+        letter-spacing: 2px;
+    }
+
+    /*----- Texts for vote submission -----*/
+    #confirm_text, #submit_text{
+        text-align: center;
+        font-weight: bolder;
+        letter-spacing: 2px;
+    }
+
+    /*----- Overlay Vote Confirmed -----*/
+    #confirmVote,
+    #cancelVote {
+        background-color: #569429;
+        cursor: pointer;
+        color: #ffffff;
+        border: none;
+        border-radius: 8px;
+        width: 100px;
+        height: 35px;
+        font-size: large;
+        font-weight: bolder;
+        letter-spacing: 2px;
+    }
+
+    /*----- Live Tab Grid Container -----*/
+    .grid-container-songs {
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        grid-gap: 5px 0px;
+        width: 550px;
+        height: 150px;
+        align-items: left;
+        justify-content: left;
+        padding: 10px;
+    }
+
+    /*----- Items in Live Tab Grid Container -----*/
+    .grid-item-live {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 550px;
+        height: 150px;
+        padding: 20px 0;
+        font-size: 30px;
+    }
+
+    /*----- Items in Vote / Live Tab Grid Container -----*/
+    .grid-item-song {
+        display: flex;
+        justify-content: center;
+        padding: none;
+    }
+
+    /*----- Position of Number -----*/
+    .grid-item-song-number {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: none;
+        color: #569429;
+        font-weight: bolder;
+        font-size: 35px;
+        margin-right: 20px;
+        width: 35px;
+    }
+
+    /*----- Song description (percentage) -----*/
+    .percent {
+        display: none;
+    }
+}
+
+/*----- Mobile View (at least 350 px and at most 1023px) -----*/
+@media screen and (min-width: 350px) and (max-width: 1023px) {
+    /*----- Checkbox for voting -----*/
+    input.checkSong {
+        width: 20px;
+        height: 20px;
+    }
+
+    /*----- Voting Tab Grid Container -----*/
+    .grid-container-voting {
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        grid-gap: 5px 25px;
+        width: 365px;
+        height: 125px;
+        align-items: left;
+        justify-content: left;
+        padding: 10px;
+    }
+
+    /*----- Items in Vote / Live Tab Grid Container -----*/
+    .grid-item-song-input {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 20px;
+    }
+
+    /*----- Album photo -----*/
+    .album {
+        box-shadow: 0 5px 7px 0 rgba(0, 0, 0, 0.24);
+        width: 80px;
+        height: 80px;
+    }
+
+    /*----- Song description (artists) -----*/
+    .description {
+        text-align: left;
+        font-size: 15px;
+        color: #8d8d8d;
+    }
+
+    /*----- Song description (title) -----*/
+    .title {
+        font-style: normal;
+        font-size: 20px;
+        color: #000000;
+    }
+
+    /*----- Items in Vote / Live Tab Grid Container -----*/
+    .grid-item-song-desk {
+        display: none;
+    }
+
+    /*----- Items in Vote / Live Tab Grid Container -----*/
+    .grid-item-song-voteDesk, .grid-item-song-liveDesk {
+        display: flex;
+        align-items: center;
+        padding: 0px 0px 0px 10px;
+        width: 175px;
+    }
+
+    /*----- Voting buttons -----*/
+    #voteSubmit,
+    #doneVote {
+        background-color: #569429;
+        color: #ffffff;
+        border: none;
+        border-radius: 8px;
+        width: 330px;
+        height: 45px;
+        font-size: x-large;
+        font-weight: bolder;
+        letter-spacing: 2px;
+    }
+
+    /*----- Texts in vote submission -----*/
+    #confirm_text, #submit_text{
+        text-align: center;
+        font-weight: bolder;
+        letter-spacing: 2px;
+    }
+
+    /*----- Overlay Vote Confirmed -----*/
+    #confirmVote,
+    #cancelVote {
+        background-color: #569429;
+        cursor: pointer;
+        color: #ffffff;
+        border: none;
+        border-radius: 8px;
+        width: 100px;
+        height: 35px;
+        font-size: large;
+        font-weight: bolder;
+        letter-spacing: 2px;
+    }
+
+    /*----- Live Tab Grid Container -----*/
+    .grid-container-songs {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        grid-gap: 5px 25px;
+        width: 350px;
+        height: 175px;
+        align-items: left;
+        justify-content: left;
+        padding: 10px;
+    }
+    
+    /*----- Items in Live Tab Grid Container -----*/
+    .grid-item-live {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 350px;
+        height: 175px;
+        padding: 20px 0;
+        font-size: 30px;
+    }
+
+    /*----- Items in Vote / Live Tab Grid Container -----*/
+    .grid-item-song {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: none;
+    }
+
+    /*----- Position of Number -----*/
+    .grid-item-song-number {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: none;
+        color: #569429;
+        font-weight: bolder;
+        font-size: 35px;
+        margin-right: 20px;
+        width: 35px;
+    }
+
+    /*----- Song description (percentage) -----*/
+    .percent {
+        font-style: normal;
+        color: #74aa4e;
+        font-size: 20px;
+        font-weight: light;
+    }
+}
+
+/*----- Mobile View (at most 349px) -----*/
+@media screen and (max-width: 349px) {
+    /*----- Checkbox for voting -----*/
+    input.checkSong {
+        width: 15px;
+        height: 15px;
+    }
+
+    /*----- Voting Tab Grid Container -----*/
+    .grid-container-voting {
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        grid-gap: 5px 15px;
+        width: 200px;
+        height: 90px;
+        align-items: left;
+        justify-content: left;
+        padding: 5px;
+    }
+
+    /*----- Items in Vote / Live Tab Grid Container -----*/
+    .grid-item-song-input {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 10px;
+    }
+
+    /*----- Album photo -----*/
+    .album {
+        box-shadow: 0 5px 7px 0 rgba(0, 0, 0, 0.24);
+        width: 50px;
+        height: 50px;
+    }
+
+    /*----- Song description (artists) -----*/
+    .description {
+        text-align: left;
+        font-size: 7px;
+        color: #8d8d8d;
+    }
+
+    /*----- Song description (title) -----*/
+    .title {
+        font-style: normal;
+        font-size: 10px;
+        color: #000000;
+    }
+
+    /*----- Items in Vote / Live Tab Grid Container -----*/
+    .grid-item-song-desk {
+        display: none;
+    }
+
+    /*----- Items in Vote / Live Tab Grid Container -----*/
+    .grid-item-song-voteDesk, .grid-item-song-liveDesk {
+        display: flex;
+        align-items: center;
+        padding: 0px 0px 0px 10px;
+        width: 70px;
+    }
+
+    /*----- Voting buttons -----*/
+    #voteSubmit,
+    #doneVote {
+        background-color: #569429;
+        color: #ffffff;
+        border: none;
+        border-radius: 8px;
+        width: 175px;
+        height: 25px;
+        font-size: large;
+        font-weight: bolder;
+        letter-spacing: 2px;
+    }
+
+    /*----- Texts in vote submission -----*/
+    #confirm_text, #submit_text{
+        text-align: center;
+        font-weight: bolder;
+        font-size: 20px;
+        letter-spacing: 2px;
+    }
+
+    /*----- Overlay Vote Confirmed -----*/
+    #confirmVote,
+    #cancelVote {
+        background-color: #569429;
+        cursor: pointer;
+        color: #ffffff;
+        border: none;
+        border-radius: 8px;
+        width: 65px;
+        height: 30px;
+        font-size: 10px;
+        font-weight: bolder;
+        letter-spacing: 2px;
+    }
+
+    /*----- Live Tab Grid Container -----*/
+    .grid-container-songs {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        grid-gap: 5px 15px;
+        width: 200px;
+        height: 90px;
+        align-items: left;
+        justify-content: left;
+        padding: 10px;
+    }
+
+    /*----- Items in Live Tab Grid Container -----*/
+    .grid-item-live {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 200px;
+        height: 90px;
+        padding: 20px 0;
+        font-size: 30px;
+    }
+
+    /*----- Items in Vote / Live Tab Grid Container -----*/
+    .grid-item-song {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: none;
+    }
+
+    /*----- Position of song -----*/
+    .grid-item-song-number {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: none;
+        color: #569429;
+        font-weight: bolder;
+        font-size: 20px;
+        margin-right: 5px;
+        width: 25px;
+    }
+
+    /*----- Song description (percentage) -----*/
+    .percent {
+        font-style: normal;
+        color: #74aa4e;
+        font-size: 13px;
+        font-weight: light;
+    }
+}
+
+/*----- Disable submit button -----*/
+input:disabled,
+input[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/*----- Hover over voting buttons -----*/
+#voteSubmit:hover,
+#doneVote:hover,
+#confirmVote:hover,
+#cancelVote:hover {
+    box-shadow: 0 10px 14px 0 rgba(0, 0, 0, 0.24), 0 15px 48px 0 rgba(0, 0, 0, 0.19);
+}
+
+/*----- Voting buttons -----*/
+#voteSubmit:focus,
+#doneVote:focus,
+#confirmVote:focus,
+#cancelVote:focus {
+    outline: none;
+}
+
+/*----- Overlay -----*/
+#overlay {
+    position: fixed;
+    display: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-color: #cacaca46;
+    z-index: 1;
+}
+
+/*----- Overlay contents -----*/
+.overlayItems {
+    position:relative;
+    top:40%;
+    color: #161616;
+}

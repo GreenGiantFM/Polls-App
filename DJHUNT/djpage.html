@@ -1,21 +1,39 @@
 <!DOCTYPE html>
 <html>
-    <title>Hitlist</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Raleway">
-    <script src="https://kit.fontawesome.com/3a29ca12f0.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="styles.css">
-
-    <body>
-        <!-- Header -->
-        
-        <header class="w3-container tab" style="text-align: center;">
-            <h1 style="font-weight: bolder; color: #569429">Tony</h1>
-            
+    <head>
+        <title>DJ Hunt</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+        <link rel="stylesheet" href="../assets/fonts/fontawesome-all.min.css">
+        <link rel="stylesheet" href="../assets/fonts/font-awesome.min.css">
+        <link rel="stylesheet" href="../assets/fonts/line-awesome.min.css">
+        <link rel="stylesheet" href="../assets/fonts/fontawesome5-overrides.min.css">
+        <link rel="stylesheet" href="../assets/css/base.css">
+        <link rel="stylesheet" href="assets/css/dj_hunt_css.css">
+        <link rel="icon" href="../assets/img/GGFM/GGFM_ICON.png" type="image/png" />
+    </head>
+    <body style="background-color: #F9F4EF;">
+        <!-- Header (Menu) -->
+        <header id="upper" style="background-color: black;">
+            <ul class="upper-link">
+                <li><img src="../assets/img/GGFM/GGFM_LOGO.png" alt='Green Giant FM' style="width:175px;"></li>
+                <li><a href="#" class="upperLink">Home</a></li>
+                <li><a href="#" class="upperLink">About Us</a></li>
+                <li><a href="#" class="upperLink">Radio Talents</a></li>
+                <li><a href="#" class="upperLink">Events</a></li>
+                <li><a href="#" class="upperLink">Blogs</a></li>
+                <li><a href="#" class="upperLink">Contact Us</a></li>
+                <li><a href="#" class="upperLink">Live Polls</a></li>
+                <li><a href="#" class="upperLink">Stream</a></li>
+                <li>
+                    <input type="text" placeholder="Search..." name="search" id="searchbar">
+                    <a href="#" id="searchbtn"><i class="fa fa-search" aria-hidden="true" id="searchIcon"></i></a>
+                </li>
+            </ul>
         </header>
-
+    
         <!-- Menu -->
         <div id="sideMenu" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&#9776;&emsp;<em>Menu</em></a>
@@ -27,45 +45,54 @@
             <a href="#" class="sideLink">Contact Us</a>
             <a href="#" class="sideLink">Stream</a>
             <span class="sideLink">Live Polls</span>
-            <a href="#" class="pollLink"><i class="fas fa-music"></i>&ensp;Hitlist</a>
-            <a href="#" class="pollLink"><i class="fas fa-binoculars"></i>&ensp;DJ Hunt</a>
+            <a href="../HITLIST_POLL/main.html" class="pollLink"><i class="fas fa-music"></i>&ensp;Hitlist</a>
+            <a href="../DJHUNT/djhunt.html" class="pollLink"><i class="fas fa-binoculars"></i>&ensp;DJ Hunt</a>
         </div>
-
+    
         <!-- Menu Button -->
         <span id="sideMenuBtn" onclick="openNav()">&#9776;</span>
 
-
-        
-        <div class="dj-info-container">
-            <div class="dj-name-soc">
-                <div class="dj-pic-container">
-                    <img class="dj-pic"src="assets/img/d8.jpg" >
-                    
-                   
+        <!-- Voting Tab -->
+        <!---->
+        <div id="djInfo">
+            <h1 style="font-weight: bolder; color: #569429; text-align:center;">Tony</h1>
+            <div class="grid-container-details">
+                <div class="grid-item-misc">
+                    <div class="grid-container-handle">
+                        <div class="grid-item-photo">
+                            <img class="dj-background" src="assets/img/d8.jpg">
+                        </div>
+                        <div class="grid-item-handle">
+                            <h6 style="font-weight: bolder; color: #000000;">Miguel Antonio Lindog</h6>
+                            <a href="https://www.fb.com/Mechanoodle01" class="sideLink"><img id="fb" class="handles"
+                                    src="../assets/img/SOC_MED/FB.png" onmouseover="this.src='../assets/img/SOC_MED/FB_G.png';" onmouseout="this.src='../assets/img/SOC_MED/FB.png';"></a>
+                            <a href="https://www.twitter.com/" class="sideLink"><img id="tw" class="handles" src="../assets/img/SOC_MED/TW.png"
+                                    onmouseover="this.src='../assets/img/SOC_MED/TW_G.png';" onmouseout="this.src='../assets/img/SOC_MED/TW.png';"></a>
+                            <a href="https://www.instagram.com/" class="sideLink"><img id="ig" class="handles" src="../assets/img/SOC_MED/IG.png"
+                                    onmouseover="this.src='../assets/img/SOC_MED/IG_G.png';" onmouseout="this.src='../assets/img/SOC_MED/IG.png';"></a>
+                        </div>
+                    </div>
                 </div>
-                <h6 class="dj-full-name">Miguel Antonio  Lindog</h6>
-                <img class="soc-med-fb" src="assets/img/fb.png">
-                <img class="soc-med-twt" src="assets/img/twitter.png">
-                <img class="soc-med-ig" src="assets/img/ig.png">
+                <div class="grid-item-misc">
+                    <iframe width="300" height="175" src="https://www.youtube.com/embed/bPT_chlLmwU" title="YouTube video player"
+                        frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="grid-item-misc">
+                    <audio class="stinger" controls>
+                        <source src="assets/audio/TONY.mp3" type="audio/mp3">
+                    </audio>
+                </div>
+                <div class="grid-item-misc">
+                    <h3 style="font-weight: bolder; color: #000000; text-align: left; margin-left: 7px;">DJ's Playlist</h3>
+                    <iframe src="https://open.spotify.com/embed/playlist/5LAUkCQ56Y8ytI7U9kVtGB" width="300" height="225" frameborder="0"
+                        allowtransparency="true" allow="encrypted-media"></iframe>
+                </div>
+                <div class="grid-item-misc info-tagline">
+                    <h5 id="details-tagline">Hi! I'm DJ Tony...</h5>
+                </div>
             </div>
-            
-            <iframe class="yt-vid" height="200" width="330" src="https://www.youtube.com/embed/bPT_chlLmwU"> 
-            </iframe> 
-
-
-            <div class="dj-stinger" >
-                <img  style="position: absolute; height: 35px; width: 35px; left: 40px; top: 5px;"src="assets/img/stinger-play.png">
-                Stinger
-            </div>
-
-            <img  style="height: auto; width: 330px; margin-top: 20px;"src="assets/img/playlist.PNG">
-
-            <div class="dj-intro" ><h5 style="font-weight: bold; font-family: inherit; margin-left: 10px">Hi I'm DJ Tony...</h5></div>
-            
-            
         </div>
-       
-        
-    <script src="djhuntScript.js"></script>
+        <!---->
+    <script src="assets/js/djhuntScript.js"></script>
     </body>
 </html>
