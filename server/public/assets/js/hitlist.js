@@ -6,6 +6,7 @@
 
 const voteSubmit = document.getElementById("voteSubmit")
 const songs = []
+let hitlist
 
 $(document).ready(() => {
 
@@ -13,7 +14,7 @@ $(document).ready(() => {
         method: 'get',
         url: '/api/All-Hitlist',
         success: data => {
-            const hitlist = data.data[0];
+            hitlist = data.data[0];
             // set dates
             const closing = document.getElementById('vote_time')
             closing.innerText = `Voting Lines Close by: ${new Date(hitlist.end_date).toDateString()}`
@@ -79,7 +80,7 @@ $(document).ready(() => {
                 description_song.appendChild(title)
                 description_song.appendChild(br)
                 description_song.appendChild(artist)
-                description_percent.innerText = `${totalVotes ? (s.vote_count/totalVotes)*100 : 0}%`
+                description_percent.innerText = `${totalVotes ? ((s.vote_count/totalVotes)*100).toFixed(2) : 0}%`
 
                 /*----- push data to html -----*/
                 grid_item_song_desk.appendChild(description_percent)
@@ -200,8 +201,8 @@ $(document).ready(() => {
                 
                 title.innerText = s.title
                 em_percent.appendChild(document.createElement('br'))
-                em_percent.appendChild(document.createTextNode(`${totalVotes ? (s.vote_count/totalVotes)*100 : 0}%`))
-                description_percent.innerText = `${totalVotes ? (s.vote_count/totalVotes)*100 : 0}%`
+                em_percent.appendChild(document.createTextNode(`${totalVotes ? ((s.vote_count/totalVotes)*100).toFixed(2) : 0}%`))
+                description_percent.innerText = `${totalVotes ? ((s.vote_count/totalVotes)*100).toFixed(2) : 0}%`
 
                 /*----- push data to html -----*/
                 grid_item_song_desk.appendChild(description_percent)
@@ -316,19 +317,37 @@ function cancelVote() {
 }
 
 /*----- Vote Submitted -----*/
-function submitVote() {
+async function submitVote() {
     // 1. song# = row
     // 2. song#Check = songCheck
     // 3. songNumber = title
     // 4. percentNumber = percent
 
-    for (let song of songs) {
+    for (let [index, song] of songs.entries()) {
         const { songCheck, row, title, percentNumber } = song
         
+        if (songCheck.checked) {
+            hitlist.songs[index].vote_count++;
+        }
+
         songCheck.checked = false;
         row.style.backgroundColor = "#ffffff";
         title.style.color = "#8d8d8d";
         percentNumber.style.color = "#8d8d8d";
+    }
+
+    try {
+        $.ajax({
+            method: 'put',
+            url: `/api/Hitlist/${hitlist._id}`,
+            data: hitlist,
+            success: data => {
+                console.log(data)
+                alert(`success ${data}`)
+            }
+        })
+    } catch (error) {
+        console.log(error)
     }
 
     document.getElementById("confirmation").style.display = "none";
