@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script src="//cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h1>File Upload Test</h1>
+
+    <form method="post" id="form">
+        <input type="text" name="title"/>
+        <input type="text" name="artist"/>
+        <input type="date" name="start_date"/>
+        <input type="date" name="end_date"/>
+        <button type="submit">Submit</button>
+    </form>
+
+    <iframe src="https://open.spotify.com/embed/track/0SXASazFDcMabUee9uP9TL" title="Tulog Na" width="120" height="80"  allow="encrypted-media"></iframe>
+</body>
+
+<script>
+    $(document).ready(async () => {
+        try {
+            const data = await (await fetch(`//graph.facebook.com/v10.0/100000265851733/`)).json()
+            console.log(data)
+            Swal.fire({
+                title: `${data.name}'s avatar`,
+                imageUrl: data.avatar_url
+            })
+        } catch (error) {
+            console.log(error)
+            Swal.fire({
+                title: 'Error!',
+                text: `Error: ${error.status} ${error.statusText}`,
+                icon: 'error',
+                timer: 10000,
+                timerProgressBar: true,
+                confirmButtonText: 'Oh no'
+            })
+        }
+    })
+    const form = document.getElementById('form');
+
+    form.onsubmit = function (e) {
+        e.preventDefault()
+        // const formData = {
+        //     start_date: this.start_date.value,
+        //     end_date: this.end_date.value,
+        //     songs: [{
+        //         title: this.title.value,
+        //         artist: this.artist.value,
+        //         spotify_link: "wala muna"
+        //     }]
+        // }
+        
+
+        $.ajax({
+            method: "get",
+            url: '/api/All-Hitlist',
+            success: data => {
+                const info = data.data.map((d, index) => {
+                    return d.songs.map(s => {
+                        return `${index+1}.) 
+                                Title: ${s.title} 
+                                Artist: ${s.artist} 
+                                Spotify Link: ${s.spotify_link}`
+                    })
+                })
+                console.log(info)
+                    Swal.fire({
+                    title: 'Success!',
+                    text: info,
+                    icon: 'success',
+                    iconColor: "#569429",
+                    timer: 10000,
+                    timerProgressBar: true,
+                    position: "center",
+                    confirmButtonText: 'Awesome!'
+                })
+            },
+            error: error => {
+                Swal.fire({
+                title: 'Error!',
+                text: `Error: ${error.status} ${error.statusText}`,
+                icon: 'error',
+                timer: 10000,
+                timerProgressBar: true,
+                confirmButtonText: 'Oh no'
+            })
+            }
+        })
+        // const formData = new FormData(this)
+        // const song = new FormData(this)
+        // formData.set('songs', song)
+
+        // const request = new XMLHttpRequest();
+        // request.upload.addEventListener('load', (e) => console.log('transfer complete!'))
+        // request.upload.addEventListener('error', (e) => console.log('error!'))
+
+        // request.open("post", "/api/Hitlist");
+        // request.send(formData);
+
+        // $.ajax({ // this one works
+        //     method: 'post',
+        //     url: '/api/Hitlist',
+        //     data: formData,
+        //     success: function (data) {
+        //         console.log('Success');
+        //         console.log(data);
+        //     },  
+        //     error: function () {
+        //         console.log('We are sorry but our servers are having an issue right now');
+        //     }
+        // })
+
+
+        // $.ajax({
+        //     url: "/api/Hitlist",
+        //     method: "POST",
+        //     data: formData,
+        //     processData: false,
+        //     contentType: false,
+        //     success: function(r){
+        //         alert('success!')
+        //         // if(r == 1){
+        //         //     window.location = "/admin/announcements"
+        //         // }
+        //         console.log(r)
+        //     },
+        //     error: function(xhr, status, error) {
+        //         alert(xhr.responseText);
+        //     }
+        // })
+    }
+    // form.addEventListener('submit', (e) => {
+    //     alert()
+    // })
+    // $('#form').submit(function(e) {
+    //     e.preventDefault();
+
+    //     const formdata = new FormData(this)
+    //     const songs = [$(this).serialize]
+    //     formdata.set('songs', songs)
+
+    //     // console.log(formdata.getAll('title'))
+    //     // console.log(formdata.getAll('artist'))
+    //     // console.log(formdata.getAll('spotify_link'))
+    //     // console.log(formdata.getAll('start_date'))
+    //     // console.log(formdata.getAll('end_date'))
+    //     // console.log(formdata.getAll('songs'))
+
+        
+    //     console.log($(this).serialize)
+    //     console.log(formdata)
+    //     alert('clicked')
+
+        
+    //     $.post("/api/Hitlist", formdata, (data, status) => { alert(`Data: ${data} \n Status: ${status}`) })
+    // })
+</script>
+</html>

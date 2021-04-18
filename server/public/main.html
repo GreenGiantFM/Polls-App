@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hitlist</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+        <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+        <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+        <link rel="stylesheet" href="assets/fonts/line-awesome.min.css">
+        <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <link rel="stylesheet" href="assets/css/hitlist.css">
+    </head>
+    <body style="font-family: Raleway;">
+        <!-- Header (Menu) -->
+        <header id="upper" class="w3-container" style="background-color: black;">
+            <div class="upperGrid">
+                <div class="grid-item-upper-image">
+                    <img src="assets\img\GGFM_LOGO.png" alt='Green Giant FM' style="width:175px;">
+                </div>
+                <div class="grid-item-upper-link">
+                    <a href="#" class="upperLink">Home</a>
+                    <a href="#" class="upperLink">About Us</a>
+                    <a href="#" class="upperLink">Radio Talents</a>
+                    <a href="#" class="upperLink">Events</a>
+                    <a href="#" class="upperLink">Blogs</a>
+                    <a href="#" class="upperLink">Contact Us</a>
+                    <a href="#" class="upperLink">Live Polls</a>
+                    <a href="#" class="upperLink">Stream</a>
+                </div>
+                <div class="grid-item-upper-link">
+                    <form action="#">
+                        <input type="text" placeholder="Search..." name="search" id="searchbar">
+                        <button type="submit" id="searchbtn"><i class="fa fa-search" aria-hidden="true" id="searchIcon"></i></button>
+                    </form>
+                </div>
+            </div>
+        </header>
+
+        <!-- Tab Contents -->
+        <div class="w3-container tab" style="text-align: center;">
+            <h1 id="page_title" style="font-weight: bolder; color: #569429"><i class="fas fa-music"></i>&ensp;The Hitlist</h1>
+            <p id="vote_time" style="color: #000000">Voting Lines Close by June 1, 2021 8:30PM</p>
+            <button id="voteTab" class="active" onclick="openTab(event, 'Vote')">Vote</button>
+            <button id="liveTab" class="inactive" onclick="openTab(event, 'Live')">Live Polls</button>
+        </div>
+
+        <!-- Menu -->
+        <div id="sideMenu" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&#9776;&emsp;<em>Menu</em></a>
+            <a href="#" class="sideLink">Home</a>
+            <a href="#" class="sideLink">About Us</a>
+            <a href="#" class="sideLink">Radio Talents</a>
+            <a href="#" class="sideLink">Events</a>
+            <a href="#" class="sideLink">Blogs</a>
+            <a href="#" class="sideLink">Contact Us</a>
+            <a href="#" class="sideLink">Stream</a>
+            <span class="sideLink">Live Polls</span>
+            <a href="#" class="pollLink"><i class="fas fa-music"></i>&ensp;Hitlist</a>
+            <a href="#" class="pollLink"><i class="fas fa-binoculars"></i>&ensp;DJ Hunt</a>
+        </div>
+
+        <!-- Menu Button -->
+        <span id="sideMenuBtn" onclick="openNav()">&#9776;</span>
+
+        <!-- Voting Tab -->
+        <div id="vote" class="tabcontent w3-center" style="display: block;">
+            <form action="/" id="hitlist-form">
+                <div class="grid-container" id="grid-container-voting-tab">
+                    
+                    <br>
+                    <br>
+                </div>
+                <input type="button" id="voteSubmit" onclick="openConfirm()" value="VOTE" disabled>
+                <!-- Voting Tab Overlay -->
+                <div id="overlay">
+                    <div id="confirmation" class="overlayItems">
+                        <h1 id="confirm_text">CONFIRM VOTE</h1>
+                        <input type="button" id="confirmVote" onclick="submitVote()" style="margin-right:5px;" value="Yes">
+                        <input type="button" id="cancelVote" onclick="closeConfirm()" style="margin-left:5px;" value="Cancel">
+                    </div>
+                    <div id="voteConfirmed" class="overlayItems">
+                        <h1 id="submit_text">VOTE CONFIRMED</h1>
+                        <input type="submit" id="doneVote" onclick="closeConfirm()" value="DONE">
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Live Polls -->
+        <div id="live" class="tabcontent">
+            <div class="grid-container" id="grid-container-live-tab">
+                
+                <br>
+                <br>
+            </div>
+        </div>
+
+    <script src="assets/js/hitlist.js">
+    </script>
+    </body>
+</html>

@@ -23,7 +23,8 @@ const createHitlist = (req, res) => {
         .then(() => {
             return res.status(201).json({
                 success: true,
-                id: mts._id,
+                id: hitlist._id,
+                data: hitlist,
                 message: 'Hitlist created!',
             })
         })

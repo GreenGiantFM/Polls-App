@@ -18,6 +18,7 @@ app.use(bodyParser.json())
 app.use(cookieParser());
 app.use(cors())
 app.use(express.static('uploads'))
+app.use(express.static('public'))
 app.use(session({
     resave: true,
     name: "webadmin",
@@ -29,6 +30,7 @@ app.use(session({
 }))
 
 // Define routers
+app.get('/', (req, res) => res.sendFile('C:/Users/Jerick/Desktop/Polls-App/server/public/main.html'))
 app.use('/api', hitlistRouter)
 app.use('/api', djHuntRouter)
 app.use('/user', userRouter)

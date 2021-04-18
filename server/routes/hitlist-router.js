@@ -7,10 +7,11 @@ const router = express.Router()
 
 // hasSession
 const hasSession = (req, res, next) => {
-    if (req.session.username)
+    console.log(req.session)
+    if (req.session.token)
         next();
     else
-        res.redirect('/Hitlist') // not sure with this yet, have to test
+        res.send('not logged in') // not sure with this yet, have to test
 }
 
 // multer, storage.array('name-of-input', maxNumberOfUploads)
@@ -27,7 +28,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage })
 
-router.post('/Hitlist', hasSession, HitlistCntrl.createHitlist)
+router.post('/Hitlist', HitlistCntrl.createHitlist)
 router.put('/Hitlist/:id', upload.single('photo'), HitlistCntrl.updateHitlist)
 router.delete('/Hitlist/:id', hasSession, HitlistCntrl.deleteHitlist)
 router.get('/Hitlist/:id', HitlistCntrl.getHitlistById)
