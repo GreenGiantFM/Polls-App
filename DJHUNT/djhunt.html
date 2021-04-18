@@ -1,23 +1,47 @@
 <!DOCTYPE html>
 <html>
-    <title>Hitlist</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Raleway">
-    <script src="https://kit.fontawesome.com/3a29ca12f0.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="styles.css">
-
+    <head>
+        <title>DJ Hunt</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+        <link rel="stylesheet" href="../assets/fonts/fontawesome-all.min.css">
+        <link rel="stylesheet" href="../assets/fonts/font-awesome.min.css">
+        <link rel="stylesheet" href="../assets/fonts/line-awesome.min.css">
+        <link rel="stylesheet" href="../assets/fonts/fontawesome5-overrides.min.css">
+        <link rel="stylesheet" href="../assets/css/base.css">
+        <link rel="stylesheet" href="assets/css/dj_hunt_css.css">
+        <link rel="icon" href="../assets/img/GGFM/GGFM_ICON.png" type="image/png" />
+    </head>
     <body>
-        <!-- Header -->
-        
-        <header class="w3-container tab" style="text-align: center;">
-            <h1 style="font-weight: bolder; color: #569429">DJ Hunt</h1>
-            <p style="color: #569429">Voting Ends 03/06/21 | 05:03:30:21 </p>
-            <button id="voteTab" class="active" onclick="openTab(event, 'Vote')" style="margin-right:35px;">Vote</button>
-            <button id="liveTab" class="inactive" onclick="openTab(event, 'Live')" style="margin-left:35px;">Live Polls</button>
+        <!-- Header (Menu) -->
+        <header id="upper" style="background-color: black;">
+            <ul class="upper-link">
+                <li><img src="../assets/img/GGFM/GGFM_LOGO.png" alt='Green Giant FM' style="width:175px;"></li>
+                <li><a href="#" class="upperLink">Home</a></li>
+                <li><a href="#" class="upperLink">About Us</a></li>
+                <li><a href="#" class="upperLink">Radio Talents</a></li>
+                <li><a href="#" class="upperLink">Events</a></li>
+                <li><a href="#" class="upperLink">Blogs</a></li>
+                <li><a href="#" class="upperLink">Contact Us</a></li>
+                <li><a href="#" class="upperLink">Live Polls</a></li>
+                <li><a href="#" class="upperLink">Stream</a></li>
+                <li>
+                    <input type="text" placeholder="Search..." name="search" id="searchbar">
+                    <a href="#" id="searchbtn"><i class="fa fa-search" aria-hidden="true" id="searchIcon"></i></a>
+                </li>
+            </ul>
         </header>
-
+        
+        <!-- Tab Contents -->
+        <div class="w3-container tab" style="text-align: center;">
+            <h1 id="page_title" style="font-weight: bolder; color: #569429"><i class="fas fa-binoculars"></i>&ensp;DJ Hunt</h1>
+            <p id="vote_time" style="color: #000000">Voting Lines Close by June 1, 2021 8:30PM</p>
+            <button id="voteTab" class="active" onclick="openTab(event, 'Vote')">Vote</button>
+            <button id="liveTab" class="inactive" onclick="openTab(event, 'Live')">Live Polls</button>
+        </div>
+        
         <!-- Menu -->
         <div id="sideMenu" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&#9776;&emsp;<em>Menu</em></a>
@@ -29,34 +53,30 @@
             <a href="#" class="sideLink">Contact Us</a>
             <a href="#" class="sideLink">Stream</a>
             <span class="sideLink">Live Polls</span>
-            <a href="#" class="pollLink"><i class="fas fa-music"></i>&ensp;Hitlist</a>
-            <a href="#" class="pollLink"><i class="fas fa-binoculars"></i>&ensp;DJ Hunt</a>
+            <a href="../HITLIST_POLL/main.html" class="pollLink"><i class="fas fa-music"></i>&ensp;Hitlist</a>
+            <a href="../DJHUNT/djhunt.html" class="pollLink"><i class="fas fa-binoculars"></i>&ensp;DJ Hunt</a>
         </div>
-
+        
         <!-- Menu Button -->
         <span id="sideMenuBtn" onclick="openNav()">&#9776;</span>
 
         <!-- Voting Tab -->
-        <div id="vote" class="tabcontent w3-center" style="display: block;">
+        <div id="votingTab" class="tabcontent w3-center" style="display: block;">
             <form action="#">
-                <div class="grid-container">
+                <div id="vote" class="grid-container-djs">
                     <a class="grid-item-dj grid-item-dj-vote"  href="djpage.html">
                         <img class="dj-background" src="assets/img/d1.jpg">
                         <p class="dj-name">Cora</p>
-                        
-                          
                         <div class="round">
-                            <input type="checkbox" id="checkbox1" class="dj-check" />
+                            <input type="checkbox" id="checkbox1">
                              <label for="checkbox1"></label>
-                        </div> 
-                       
+                        </div>
                     </a>
                     <a class="grid-item-dj grid-item-dj-vote" href="djpage.html">
                         <img class="dj-background" src="assets/img/d2.jpg">
                         <p class="dj-name">Javi</p>
-                        
                         <div class="round">
-                            <input type="checkbox" id="checkbox2" class="dj-check" />
+                            <input type="checkbox" id="checkbox2">
                              <label for="checkbox2"></label>
                         </div> 
                     </a>
@@ -64,7 +84,7 @@
                         <img class="dj-background" src="assets/img/d3.jpg">
                         <p class="dj-name">Joaquin</p>
                         <div class="round">
-                            <input type="checkbox" id="checkbox3" name="dj-check" />
+                            <input type="checkbox" id="checkbox3">
                              <label for="checkbox3"></label>
                         </div> 
                     </a>
@@ -72,7 +92,7 @@
                         <img class="dj-background" src="assets/img/d4.jpg">
                         <p class="dj-name">Macoy</p>
                         <div class="round">
-                            <input type="checkbox" id="checkbox4"name="dj-check" />
+                            <input type="checkbox" id="checkbox4">
                              <label for="checkbox4"></label>
                         </div> 
                     </a>
@@ -80,7 +100,7 @@
                         <img class="dj-background" src="assets/img/d5.jpg">
                         <p class="dj-name">Michael</p>
                         <div class="round">
-                            <input type="checkbox" id="checkbox5" name="dj-check"/>
+                            <input type="checkbox" id="checkbox5">
                              <label for="checkbox5"></label>
                         </div> 
                     </a>
@@ -88,7 +108,7 @@
                         <img class="dj-background" src="assets/img/d6.jpg">
                         <p class="dj-name">Fonz</p>
                         <div class="round">
-                            <input type="checkbox" id="checkbox6" name="dj-check"/>
+                            <input type="checkbox" id="checkbox6">
                              <label for="checkbox6"></label>
                         </div> 
                     </a>
@@ -96,7 +116,7 @@
                         <img class="dj-background" src="assets/img/d7.jpg">
                         <p class="dj-name">Robby</p>
                         <div class="round">
-                            <input type="checkbox" id="checkbox7" name="dj-check"/>
+                            <input type="checkbox" id="checkbox7">
                              <label for="checkbox7"></label>
                         </div> 
                     </a>
@@ -104,49 +124,102 @@
                         <img class="dj-background" src="assets/img/d8.jpg">
                         <p class="dj-name">Tony</p>
                         <div class="round">
-                            <input type="checkbox" id="checkbox8" name="dj-check"/>
+                            <input type="checkbox" id="checkbox8">
                              <label for="checkbox8"></label>
                         </div> 
                     </a>
-                    
                     <br>
                     <br>
-                    
                 </div>
-                <button id="voteSubmit" onclick="openConfirm()">VOTE</button>
-            </form>
-        </div>
-
-        <!-- Voting Tab Overlay -->
-        <div id="djvote-overlay">
-            <div class="votedDjs">
-                <!--
-                <div class="votedDjCard">
-                    <div class="votedBackground">
-                        <img class="votedImage"src="assets/img/d1.jpg" >
+                <input type="button" id="voteSubmit" onclick="openConfirm()" value="VOTE">
+                <div id="djvote" class="tabcontent">
+                    <div class="grid-container-confirm">
+                        <div class="grid-item-djVoted" id="dj1">
+                            <div class="grid-container-confirmDJs">
+                                <div class="votedBackground">
+                                    <img class="votedImage" src="assets/img/d1.jpg">
+                                </div>
+                                <p class="votedTagline"><em class="votedName">Cora</em><br>Tagline</p>
+                            </div>
+                        </div>
+                        <div class="grid-item-djVoted" id="dj2">
+                            <div class="grid-container-confirmDJs">
+                                <div class="votedBackground">
+                                    <img class="votedImage" src="assets/img/d2.jpg">
+                                </div>
+                                <p class="votedTagline"><em class="votedName">Javi</em><br>Tagline</p>
+                            </div>
+                        </div>
+                        <div class="grid-item-djVoted" id="dj3">
+                            <div class="grid-container-confirmDJs">
+                                <div class="votedBackground">
+                                    <img class="votedImage" src="assets/img/d3.jpg">
+                                </div>
+                                <p class="votedTagline"><em class="votedName">Joaquin</em><br>Tagline</p>
+                            </div>
+                        </div>
+                        <div class="grid-item-djVoted" id="dj4">
+                            <div class="grid-container-confirmDJs">
+                                <div class="votedBackground">
+                                    <img class="votedImage" src="assets/img/d4.jpg">
+                                </div>
+                                <p class="votedTagline"><em class="votedName">Macoy</em><br>Tagline</p>
+                            </div>
+                        </div>
+                        <div class="grid-item-djVoted" id="dj5">
+                            <div class="grid-container-confirmDJs">
+                                <div class="votedBackground">
+                                    <img class="votedImage" src="assets/img/d5.jpg">
+                                </div>
+                                <p class="votedTagline"><em class="votedName">Michael</em><br>Tagline</p>
+                            </div>
+                        </div>
+                        <div class="grid-item-djVoted" id="dj6">
+                            <div class="grid-container-confirmDJs">
+                                <div class="votedBackground">
+                                    <img class="votedImage" src="assets/img/d6.jpg">
+                                </div>
+                                <p class="votedTagline"><em class="votedName">Fonz</em><br>Tagline</p>
+                            </div>
+                        </div>
+                        <div class="grid-item-djVoted" id="dj7">
+                            <div class="grid-container-confirmDJs">
+                                <div class="votedBackground">
+                                    <img class="votedImage" src="assets/img/d7.jpg">
+                                </div>
+                                <p class="votedTagline"><em class="votedName">Robby</em><br>Tagline</p>
+                            </div>
+                        </div>
+                        <div class="grid-item-djVoted" id="dj8">
+                            <div class="grid-container-confirmDJs">
+                                <div class="votedBackground">
+                                    <img class="votedImage" src="assets/img/d8.jpg">
+                                </div>
+                                <p class="votedTagline"><em class="votedName">Tony</em><br>Tagline</p>
+                            </div>
+                        </div>
+                        <div id="confirmation" class="overlayItems">
+                            <h1 style="text-align: center; font-weight: 700; letter-spacing: 2px;">Confirm Vote?</h1>
+                            <input type="button" id="voteConfirm" onclick="submitVote()" value="Confirm">
+                            <br>
+                            <br>
+                            <input type="button" id="voteCancel" onclick="cancelVote()" value="Back">
+                        </div>
                     </div>
-                    <h2 class="votedName">Cora</h2>
-                    <p class="votedTagline">Tagline</p> 
                 </div>
-                -->
-            </div>
-            <div id="confirmation" class="overlayItems">
-                <h1 style="text-align: center; font-weight: 700; letter-spacing: 2px;">Confirm Vote?</h1>
-                <button id="voteConfirm" onclick="window.location.href='aftervote.html'"  style="margin:5px;">Confirm</button>
-                <br>
-                <button id="voteCancel" onclick="cancelVote()" style="margin:5px;">Back</button>
-            </div>
-            
-            <div id="voteConfirmed" class="overlayItems">
-                <h1 style="text-align: center; font-weight: bold; letter-spacing: 2px;">VOTE CONFIRMED</h1>
-                <button id="doneVote" onclick="closeConfirm()">DONE</button>
-            </div>
-                
+                <div id="voteSubmitted" style="display:none;">
+                    <img id="votedImage" src="../assets/img/GGFM/GGFM_ICON.png">
+                    <h2 style="text-align: center; font-weight: bold; letter-spacing: 2px; color: #ffffff;">Thank you for voting.</h2>
+                    <br>
+                    <br>
+                    <input type="submit" id="voteBack" onclick="closeConfirm()" value="Back">
+                </div>
+            </form>
         </div>
 
         <!-- Live Polls -->
         <div id="live" class="tabcontent">
-            <div class="grid-container">
+            <div class="grid-container-djs">
                 <a class="grid-item-dj"  href="djpage.html">
                     <img class="dj-background" src="assets/img/d1.jpg">
                     <p class="dj-name">Cora</p>
@@ -183,8 +256,6 @@
                 <br>
             </div>
         </div>
-        
-        
-    <script src="djhuntScript.js"></script>
+    <script src="assets/js/djhuntScript.js"></script>
     </body>
 </html>
