@@ -10,6 +10,9 @@ $(document).ready(() => {
         success: data => {
             djhunt = data.data[0];
 
+            const closing = document.getElementById('vote_time')
+            closing.innerText = `Voting Lines Close by: ${new Date(djhunt.end_date).toDateString()}`
+
             djhunt.radio_talents.map((rt, index) => {
                 const grid_container_djs = document.getElementById("vote")
                 // <a class="grid-item-dj grid-item-dj-vote"  href="djpage.html">
