@@ -181,17 +181,35 @@ function openConfirm() {
 
 /*----- Submit Vote -----*/
 function submitVote(){
-    document.getElementById("vote").style.display = "none";
-    document.getElementById("djvote").style.display = "none";
-    document.getElementById("confirmation").style.display = "none";
-    document.getElementById("voteSubmitted").style.display = "block";
-    document.getElementById("voteTab").style.display = "none";
-    document.getElementById("liveTab").style.display = "none";
-    document.body.style.background = '#aad68a';
-    document.body.style.background = "linear-gradient(to bottom, #f1faeb, #569429)";
+    for (let [index, dj] of djs.entries()) {
+        if (dj.checked)
+            djhunt.radio_talents[index].vote_count++
+    }
 
-    for (let dj of djs)
-        dj.checked = false
+    try {
+        $.ajax({
+            method: 'put',
+            url: `/api/DjHunt/${djhunt._id}`,
+            data: djhunt,
+            success: data => {
+                console.log(data)
+
+                document.getElementById("vote").style.display = "none";
+                document.getElementById("djvote").style.display = "none";
+                document.getElementById("confirmation").style.display = "none";
+                document.getElementById("voteSubmitted").style.display = "block";
+                document.getElementById("voteTab").style.display = "none";
+                document.getElementById("liveTab").style.display = "none";
+                document.body.style.background = '#aad68a';
+                document.body.style.background = "linear-gradient(to bottom, #f1faeb, #569429)";
+            
+                for (let dj of djs)
+                    dj.checked = false
+            }
+        })
+    } catch (error) {
+        console.log(error)
+    }
     // document.getElementById("checkbox1").checked = false;
     // document.getElementById("checkbox2").checked = false;
     // document.getElementById("checkbox3").checked = false;
