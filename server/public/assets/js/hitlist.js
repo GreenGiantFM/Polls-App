@@ -85,7 +85,7 @@ $(document).ready(() => {
                 /*----- push data to html -----*/
                 grid_item_song_desk.appendChild(description_percent)
                 grid_item_song_voteDesk.appendChild(description_song)
-                label.innerHTML = '<iframe src="https://open.spotify.com/embed/track/3YJJjQPAbDT7mGpX3WtQ9A" width="80" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>'
+                label.innerHTML = `<iframe src="${s.spotify_link}" width="80" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`
                 grid_item_song.appendChild(label)
                 grid_item_song_input.appendChild(checkSong)
                 grid_container_voting.appendChild(grid_item_song_input)
@@ -207,7 +207,7 @@ $(document).ready(() => {
                 /*----- push data to html -----*/
                 grid_item_song_desk.appendChild(description_percent)
                 grid_item_song_liveDesk.appendChild(description_song)
-                grid_item_song.innerHTML = '<iframe src="https://open.spotify.com/embed/track/3YJJjQPAbDT7mGpX3WtQ9A" width="80" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>'
+                grid_item_song.innerHTML = `<iframe src="${s.spotify_link}" width="80" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`
                 grid_item_song_number.innerText = live_songs.length-index
                 grid_container_songs.appendChild(grid_item_song_number)
                 grid_container_songs.appendChild(grid_item_song)
@@ -345,6 +345,9 @@ async function submitVote() {
                 console.log(data)
                 document.getElementById("confirmation").style.display = "none";
                 document.getElementById("voteConfirmed").style.display = "block";
+            },
+            error: () => {
+                alert('error')
             }
         })
     } catch (error) {

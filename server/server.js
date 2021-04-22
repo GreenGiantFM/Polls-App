@@ -32,8 +32,8 @@ app.use(session({
 }))
 
 // Define routers
-app.get('/', (req, res) => res.sendFile('C:/Users/Jerick/Desktop/Polls-App/server/public/djhunt.html'))
-app.get('/', (req, res) => res.sendFile('C:/Users/Jerick/Desktop/Polls-App/server/public/main.html'))
+app.get('/dj-hunt', (req, res) => res.sendFile('C:/Users/Jerick/Desktop/Polls-App/server/public/djhunt.html'))
+app.get('/hitlist', (req, res) => res.sendFile('C:/Users/Jerick/Desktop/Polls-App/server/public/main.html'))
 app.use('/api', hitlistRouter)
 app.use('/api', djHuntRouter)
 app.use('/user', userRouter)
