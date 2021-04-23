@@ -7,7 +7,7 @@ const router = express.Router()
 
 // hasSession
 const hasSession = (req, res, next) => {
-    if (req.session.username)
+    if (req.session.token)
         next();
     else
         res.redirect('/DJHunt') // not sure with this yet, have to test

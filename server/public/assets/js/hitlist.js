@@ -85,7 +85,7 @@ $(document).ready(() => {
                 /*----- push data to html -----*/
                 grid_item_song_desk.appendChild(description_percent)
                 grid_item_song_voteDesk.appendChild(description_song)
-                label.appendChild(img)
+                label.innerHTML = `<iframe src="${s.spotify_link}" width="80" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`
                 grid_item_song.appendChild(label)
                 grid_item_song_input.appendChild(checkSong)
                 grid_container_voting.appendChild(grid_item_song_input)
@@ -207,7 +207,7 @@ $(document).ready(() => {
                 /*----- push data to html -----*/
                 grid_item_song_desk.appendChild(description_percent)
                 grid_item_song_liveDesk.appendChild(description_song)
-                grid_item_song.appendChild(img)
+                grid_item_song.innerHTML = `<iframe src="${s.spotify_link}" width="80" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`
                 grid_item_song_number.innerText = live_songs.length-index
                 grid_container_songs.appendChild(grid_item_song_number)
                 grid_container_songs.appendChild(grid_item_song)
@@ -343,15 +343,17 @@ async function submitVote() {
             data: hitlist,
             success: data => {
                 console.log(data)
-                alert(`success ${data}`)
+                document.getElementById("confirmation").style.display = "none";
+                document.getElementById("voteConfirmed").style.display = "block";
+            },
+            error: () => {
+                alert('error')
             }
         })
     } catch (error) {
         console.log(error)
     }
 
-    document.getElementById("confirmation").style.display = "none";
-    document.getElementById("voteConfirmed").style.display = "block";
 }
 
 /*----- Close Overlay -----*/

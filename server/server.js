@@ -19,6 +19,8 @@ app.use(cookieParser());
 app.use(cors())
 app.use(express.static('uploads'))
 app.use(express.static('public'))
+app.use(express.static('../'))
+app.use(express.static('../DJHUNT'))
 app.use(session({
     resave: true,
     name: "webadmin",
@@ -30,7 +32,9 @@ app.use(session({
 }))
 
 // Define routers
-app.get('/', (req, res) => res.sendFile('C:/Users/Jerick/Desktop/Polls-App/server/public/main.html'))
+app.get('/', (req, res) => res.redirect('/hitlist'))
+app.get('/dj-hunt', (req, res) => res.sendFile('C:/Users/Jerick/Desktop/Polls-App/server/public/djhunt.html'))
+app.get('/hitlist', (req, res) => res.sendFile('C:/Users/Jerick/Desktop/Polls-App/server/public/main.html'))
 app.use('/api', hitlistRouter)
 app.use('/api', djHuntRouter)
 app.use('/user', userRouter)
