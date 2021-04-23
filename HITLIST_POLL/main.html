@@ -25,7 +25,19 @@
                 <li><a href="#" class="upperLink">Events</a></li>
                 <li><a href="#" class="upperLink">Blogs</a></li>
                 <li><a href="#" class="upperLink">Contact Us</a></li>
-                <li><a href="#" class="upperLink">Live Polls</a></li>
+                <li>
+                    <div id="drop-menu" class="upperLink" onmouseover="openDrop()" onmouseout="closeDrop()">
+                        <p id="drop-polls" style="margin: 0px;">Live Polls</p>
+                        <div id="drop-inner-div" class="dropdown-content">
+                            <ul id="drop-list">
+                                <li><a href="../HITLIST_POLL/main.html" class="pollsDrop"><i
+                                            class="fas fa-music"></i>&ensp;Hitlist</a></li>
+                                <li><a href="../DJHUNT/djhunt.html" class="pollsDrop"><i class="fas fa-binoculars"></i>&ensp;DJ
+                                        Hunt</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
                 <li><a href="#" class="upperLink">Stream</a></li>
                 <li>
                     <input type="text" placeholder="Search..." name="search" id="searchbar">
@@ -35,9 +47,11 @@
         </header>
 
         <!-- Tab Contents -->
-        <div class="w3-container tab" style="text-align: center;">
+        <div class="w3-container tab">
             <h1 id="page_title" style="font-weight: bolder; color: #569429"><i class="fas fa-music"></i>&ensp;The Hitlist</h1>
-            <p id="vote_time" style="color: #000000">Voting Lines Close by June 1, 2021 8:30PM</p>
+            <p id="vote_details" style="color: #000000;">
+                Voting Lines Close by June 1, 2021 8:30PM | <em id="hitlist_time"></em>
+            </p>
             <button id="voteTab" class="active" onclick="openTab(event, 'Vote')">Vote</button>
             <button id="liveTab" class="inactive" onclick="openTab(event, 'Live')">Live Polls</button>
         </div>
@@ -62,6 +76,14 @@
 
         <!-- Voting Tab -->
         <div id="vote" class="tabcontent w3-center" style="display: block;">
+            <div id="hitlist_end" style="display: none;">
+                <div id="hitlist-outer-div">
+                    <div id="hitlist-inner-div">
+                        <h1 id="hitlist-end-message">VOTING PERIOD HAS ENDED</h1>
+                        <button id="goToPolls">Go to Polls</button>
+                    </div>
+                </div>
+            </div>
             <form action="#">
                 <div class="grid-container">
                     <div class="grid-item-voting" id="song1">
@@ -93,7 +115,8 @@
                                 </label>
                             </div>
                             <div class="grid-item-song-voteDesk">
-                                <p id="songTwo" class="description"><em class="title">Strawberry Fields Forever</em><br />The Beatles</p>
+                                <p id="songTwo" class="description"><em class="title">Strawberry Fields
+                                        Forever</em><br />The Beatles</p>
                             </div>
                             <div class="grid-item-song-desk">
                                 <p id="percentTwo" class="description">20%</p>
@@ -129,7 +152,8 @@
                                 </label>
                             </div>
                             <div class="grid-item-song-voteDesk">
-                                <p id="songFour" class="description"><em class="title">Space Oddity</em><br />David Bowie</p>
+                                <p id="songFour" class="description"><em class="title">Space Oddity</em><br />David Bowie
+                                </p>
                             </div>
                             <div class="grid-item-song-desk">
                                 <p id="percentFour" class="description">9%</p>
@@ -147,7 +171,8 @@
                                 </label>
                             </div>
                             <div class="grid-item-song-voteDesk">
-                                <p id="songFive" class="description"><em class="title">Rhymes Like Dimes</em><br />MF DOOM</p>
+                                <p id="songFive" class="description"><em class="title">Rhymes Like Dimes</em><br />MF DOOM
+                                </p>
                             </div>
                             <div class="grid-item-song-desk">
                                 <p id="percentFive" class="description">8%</p>
@@ -183,7 +208,8 @@
                                 </label>
                             </div>
                             <div class="grid-item-song-voteDesk">
-                                <p id="songSeven" class="description"><em class="title">The Valley of The Pagans</em><br />Gorillaz</p>
+                                <p id="songSeven" class="description"><em class="title">The Valley of The
+                                        Pagans</em><br />Gorillaz</p>
                             </div>
                             <div class="grid-item-song-desk">
                                 <p id="percentSeven" class="description">5%</p>
@@ -199,7 +225,8 @@
                     <div id="confirmation" class="overlayItems">
                         <h1 id="confirm_text">CONFIRM VOTE</h1>
                         <input type="button" id="confirmVote" onclick="submitVote()" style="margin-right:5px;" value="Yes">
-                        <input type="button" id="cancelVote" onclick="closeConfirm()" style="margin-left:5px;" value="Cancel">
+                        <input type="button" id="cancelVote" onclick="closeConfirm()" style="margin-left:5px;"
+                            value="Cancel">
                     </div>
                     <div id="voteConfirmed" class="overlayItems">
                         <h1 id="submit_text">VOTE CONFIRMED</h1>
@@ -349,7 +376,8 @@
                 <br>
             </div>
         </div>
-
-    <script src="assets/js/hitlist_js.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="../assets/js/polls_js.js"></script>
+        <script src="assets/js/hitlist_js.js"></script>
     </body>
 </html>

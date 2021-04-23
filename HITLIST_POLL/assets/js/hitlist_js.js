@@ -1,16 +1,28 @@
-/*----- Open Menu -----*/
-function openNav() {
-    var screen = window.screen.width;
-    if(screen >= 350){
-        document.getElementById("sideMenu").style.width = "250px";
-    }else{
-        document.getElementById("sideMenu").style.width = "125px";
-    }
-}
+/*----- Open selected Tab -----*/
+function openTab(evt, tabName) {
+    if (tabName == 'Live') {
+        inactive_content = document.getElementById("vote");
+        inactive_content.style.display = "none";
+        inactive_tab = document.getElementById("voteTab");
+        inactive_tab.className = "inactive";
 
-/*----- Close Menu -----*/
-function closeNav() {
-    document.getElementById("sideMenu").style.width = "0";
+        active_content = document.getElementById("live");
+        active_content.style.display = "block";
+        active_tab = document.getElementById("liveTab");
+        active_tab.className = "active";
+        evt.currentTarget.className += " active";
+    } else if (tabName == 'Vote') {
+        inactive_content = document.getElementById("live");
+        inactive_content.style.display = "none";
+        inactive_tab = document.getElementById("liveTab");
+        inactive_tab.className = "inactive";
+
+        active_content = document.getElementById("vote");
+        active_content.style.display = "block";
+        active_tab = document.getElementById("voteTab");
+        active_tab.className = "active";
+        evt.currentTarget.className += " active";
+    }
 }
 
 /*----- Enable / Disable vote Button -----*/
@@ -24,12 +36,16 @@ function voteButton() {
     var song7Check = document.getElementById("song7Check");
     if (song1Check.checked == true || song2Check.checked == true || song3Check.checked == true){
         document.getElementById("voteSubmit").disabled = false;
+        document.getElementById("voteSubmit").style.cursor = "pointer";
     }else if(song4Check.checked == true || song5Check.checked == true || song6Check.checked == true){
         document.getElementById("voteSubmit").disabled = false;
+        document.getElementById("voteSubmit").style.cursor = "pointer";
     }else if(song7Check.checked == true){
         document.getElementById("voteSubmit").disabled = false;
+        document.getElementById("voteSubmit").style.cursor = "pointer";
     }else{
         document.getElementById("voteSubmit").disabled = true;
+        document.getElementById("voteSubmit").style.cursor = "not-allowed";
     }
 }
 
@@ -181,6 +197,8 @@ function submitVote() {
 
     document.getElementById("confirmation").style.display = "none";
     document.getElementById("voteConfirmed").style.display = "block";
+    document.getElementById("voteSubmit").disabled = true;
+    document.getElementById("voteSubmit").style.cursor = "not-allowed";
 }
 
 /*----- Close Overlay -----*/
@@ -190,29 +208,72 @@ function closeConfirm() {
     document.getElementById("confirmation").style.display = "none";
 }
 
-/*----- Open selected Tab -----*/
-function openTab(evt, tabName) {
-    if(tabName == 'Live'){
-        inactive_content = document.getElementById("vote");
-        inactive_content.style.display = "none";
-        inactive_tab = document.getElementById("voteTab");
-        inactive_tab.className = "inactive";
+/*----- Countdown Timer -----*/
+/* June 1, 2021 20:30:00 */
+/* April 20, 2021 11:11:00 */
+var votingPeriod = new Date("June 1, 2021 20:30:00").getTime();
+var timer = setInterval(function () {
 
-        active_content = document.getElementById("live");
-        active_content.style.display = "block";
-        active_tab = document.getElementById("liveTab");
-        active_tab.className = "active";
-        evt.currentTarget.className += " active";
-    }else if (tabName == 'Vote') {
-        inactive_content = document.getElementById("live");
-        inactive_content.style.display = "none";
-        inactive_tab = document.getElementById("liveTab");
-        inactive_tab.className = "inactive";
+    var now = new Date().getTime();
+    var distance = votingPeriod - now;
 
-        active_content = document.getElementById("vote");
-        active_content.style.display = "block";
-        active_tab = document.getElementById("voteTab");
-        active_tab.className = "active";
-        evt.currentTarget.className += " active";
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var final_days;
+    if (days < 10) {
+        final_days = "0" + days;
+    } else {
+        final_days = days;
     }
-}
+
+    var hrs = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var final_hrs;
+    if (hrs < 10) {
+        final_hrs = "0" + hrs;
+    } else {
+        final_hrs = hrs;
+    }
+
+    var mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var final_mins;
+    if (mins < 10) {
+        final_mins = "0" + mins;
+    } else {
+        final_mins = mins;
+    }
+
+    var secs = Math.floor((distance % (1000 * 60)) / 1000);
+    var final_secs;
+    if (secs < 10) {
+        final_secs = "0" + secs;
+    } else {
+        final_secs = secs;
+    }
+
+    document.getElementById("hitlist_time").innerHTML = final_days + ":" + final_hrs + ":" + final_mins + ":" + final_secs;
+
+    if ((days == 0 && hrs == 0 && mins == 0 && secs == 0) || distance < 0) {
+        clearInterval(timer);
+        document.getElementById("hitlist_time").innerHTML = "00:00:00:00";
+        document.getElementById("hitlist_time").style.color = "#ff0000";
+        document.getElementById("hitlist_end").style.display = "flex";
+    } else {
+        document.getElementById("hitlist_end").style.display = "none";
+    }
+}, 1000);
+
+/*----- Vote Ended Message -----*/
+$(window).on('scroll', function () {
+    var scrollTop = $(window).scrollTop();
+    if (scrollTop > 25) {
+        $('#hitlist_end').stop().animate({ top: "0" }, 25);
+    }
+    else {
+        if (window.innerWidth >= 1024) {
+            $('#hitlist_end').stop().animate({ top: "350px" }, 100);
+        } else if (window.innerWidth >= 350 && window.innerWidth <= 1023) {
+            $('#hitlist_end').stop().animate({ top: "175px" }, 100);
+        } else if (window.innerWidth <= 349) {
+            $('#hitlist_end').stop().animate({ top: "140px" }, 100);
+        }
+    }
+});

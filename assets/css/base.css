@@ -1,14 +1,74 @@
-/*----- Font -----*/
-body {
-  font-family: "Raleway";
+/*----- Scrollbar -----*/
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background-color: #191919;
+}
+::-webkit-scrollbar-thumb {
+    /*
+    background: linear-gradient(#96d46a, #569429, #315516);
+    */
+    background: #569429;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #5694298f;
+    /*
+    box-shadow: 2px 2px 4px 4px rgba(0, 0, 0, 0.295), 2px 2px 4px 4px rgba(0, 0, 0, 0.295);
+    */
+}
+
+.dropdown-content {
+    display: none;
+    text-align: left;
+    position: absolute;
+    background-color: #191919;
+    border-radius: 3px;
+    min-width: 115px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.445);
+    padding: 10px;
+    z-index: 3;
+}
+#drop-menu {
+    position: relative;
+    display: inline-block;
+}
+#drop-polls {
+    margin: 0px;
+    cursor: pointer;
+}
+#drop-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+#drop-list li {
+    margin: 3px;
+    padding: 1px;
+    display: block;
+}
+.pollsDrop {
+    text-decoration:none;
+    font-weight: bolder;
+    font-size: 12px;
+    color: #ffffff;
+}
+.pollsDrop:hover {
+    color: #569429;
+}
+
+/*----- Body -----*/
+body{
+    font-family: "Raleway";
 }
 
 /*----- Upper Menu List -----*/
 .upper-link {
     list-style-type: none;
-    overflow: hidden;
     padding: 50px 0px 20px 0px;
     text-align: center;
+    margin: 0px;
 }
 
 /*----- Upper Menu List Items (Links) -----*/
@@ -55,6 +115,18 @@ body {
     cursor: pointer;
 }
 
+/*----- Voting Time -----*/
+#hitlist_time, #hunt_time {
+    font-style: normal;
+}
+
+/*----- Disable submit button -----*/
+input:disabled,
+input[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
 /*----- Desktop View (at least 1024px) -----*/
 @media screen and (min-width: 1024px) {
     /*----- Side Menu -----*/
@@ -92,7 +164,6 @@ body {
     }
     #upper {
         display: block;
-        overflow: hidden;
         align-items: center;
         justify-content: center;
     }
@@ -116,6 +187,58 @@ body {
     #liveTab{
         margin-left: 15px;
     }
+
+    /*----- Voting Ended Message -----*/
+    #hitlist_end, #hunt_end {
+        display: flex;
+        position: fixed;
+        top: 350px;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        z-index: 1;
+        background-color: #ffffffa1;
+        background: #ffffffa1;
+        backdrop-filter: blur(3px);
+    }
+
+    /*----- Voting Ended Outer Div -----*/
+    #hitlist-outer-div, #hunt-outer-div {
+        padding-top: 25px;
+    }
+
+    /*----- Voting Ended Inner Div -----*/
+    #hitlist-inner-div, #hunt-inner-div {
+        background-color: #ffffff;
+        height: 125px;
+        width: 550px;
+        box-shadow: 0 1px 3px 1px rgba(85, 85, 85, 0.24);
+    }
+
+    /*----- Voting Ended Message -----*/
+    #hitlist-end-message, #hunt-end-message {
+        font-weight: bold;
+    }
+
+    /*----- Voting Ended Button -----*/
+    #goToPolls {
+        color: #ffffff;
+        background-color: #569429;
+        border: none;
+        outline: none;
+        border-radius: 8px;
+        width: 330px;
+        height: 45px;
+        font-size: x-large;
+        font-weight: bolder;
+        letter-spacing: 2px;
+        cursor: pointer;
+    }
+    #goToPolls:hover {
+        box-shadow: 0 10px 14px 0 rgba(0, 0, 0, 0.24), 0 15px 48px 0 rgba(0, 0, 0, 0.19);
+    }
 }
 
 /*----- Mobile View (at least 350 px and at most 1023px) -----*/
@@ -138,7 +261,7 @@ body {
         height: 100%;
         width: 0;
         position: fixed;
-        z-index: 1;
+        z-index: 2;
         top: 0;
         left: 0;
         background-color: #569429;
@@ -146,6 +269,7 @@ body {
         overflow-x: hidden;
         transition: 0.5s;
         padding-top: 60px;
+        box-shadow: 1px 1px 3px 3px rgba(0, 0, 0, 0.295), 1px 1px 3px 3px rgba(0, 0, 0, 0.295);
     }
 
     /*----- Side Menu Content -----*/
@@ -224,6 +348,58 @@ body {
     #liveTab{
         margin-left: 15px;
     }
+
+    /*----- Voting Ended Message -----*/
+    #hitlist_end, #hunt_end {
+        display: flex;
+        position: fixed;
+        top: 175px;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        z-index: 1;
+        background-color: #ffffffa1;
+        background: #ffffffa1;
+        backdrop-filter: blur(3px);
+    }
+
+    /*----- Voting Ended Outer Div -----*/
+    #hitlist-outer-div, #hunt-outer-div {
+        padding-top: 25px;
+    }
+
+    /*----- Voting Ended Inner Div -----*/
+    #hitlist-inner-div, #hunt-inner-div {
+        background-color: #ffffff;
+        height: 170px;
+        width: 330px;
+        box-shadow: 0 1px 3px 1px rgba(85, 85, 85, 0.24);
+    }
+
+    /*----- Voting Ended Message -----*/
+    #hitlist-end-message, #hunt-end-message {
+        font-weight: bold;
+    }
+
+    /*----- Voting Ended Button -----*/
+    #goToPolls {
+        color: #ffffff;
+        background-color: #569429;
+        border: none;
+        outline: none;
+        border-radius: 8px;
+        width: 300px;
+        height: 35px;
+        font-size: large;
+        font-weight: bolder;
+        letter-spacing: 2px;
+        cursor: pointer;
+    }
+    #goToPolls:hover {
+        box-shadow: 0 10px 14px 0 rgba(0, 0, 0, 0.24), 0 15px 48px 0 rgba(0, 0, 0, 0.19);
+    }
 }
 
 /*----- Mobile View (at most 349px) -----*/
@@ -245,7 +421,7 @@ body {
         height: 100%;
         width: 0;
         position: fixed;
-        z-index: 1;
+        z-index: 2;
         top: 0;
         left: 0;
         background-color: #569429;
@@ -253,6 +429,7 @@ body {
         overflow-x: hidden;
         transition: 0.5s;
         padding-top: 30px;
+        box-shadow: 1px 1px 3px 3px rgba(0, 0, 0, 0.295), 1px 1px 3px 3px rgba(0, 0, 0, 0.295);
     }
 
     /*----- Side Menu Content -----*/
@@ -338,6 +515,65 @@ body {
     #liveTab{
         margin-left: 5px;
     }
+
+    /*----- Voting Ended Message -----*/
+    #hitlist_end, #hunt_end {
+        display: flex;
+        position: fixed;
+        top: 140px;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        z-index: 1;
+        background-color: #ffffffa1;
+        background: #ffffffa1;
+        backdrop-filter: blur(3px);
+    }
+
+    /*----- Voting Ended Outer Div -----*/
+    #hitlist-outer-div, #hunt-outer-div {
+        padding-top: 25px;
+    }
+
+    /*----- Voting Ended Inner Div -----*/
+    #hitlist-inner-div, #hunt-inner-div {
+        background-color: #ffffff;
+        height: 185px;
+        width: 215px;
+        box-shadow: 0 1px 3px 1px rgba(85, 85, 85, 0.24);
+    }
+
+    /*----- Voting Ended Message -----*/
+    #hitlist-end-message, #hunt-end-message {
+        font-size: 30px;
+        font-weight: bold;
+    }
+
+    /*----- Voting Ended Button -----*/
+    #goToPolls {
+        color: #ffffff;
+        background-color: #569429;
+        border: none;
+        outline: none;
+        border-radius: 8px;
+        width: 200px;
+        height: 25px;
+        font-size: medium;
+        font-weight: bolder;
+        letter-spacing: 2px;
+        cursor: pointer;
+    }
+    #goToPolls:hover {
+        box-shadow: 0 10px 14px 0 rgba(0, 0, 0, 0.24), 0 15px 48px 0 rgba(0, 0, 0, 0.19);
+    }
+}
+
+/*----- Tab Contents -----*/
+.tab {
+    text-align: center;
+    background-color: #ffffff;
 }
 
 /*----- Hover over Tab buttons -----*/

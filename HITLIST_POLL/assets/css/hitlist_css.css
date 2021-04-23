@@ -465,13 +465,6 @@
     }
 }
 
-/*----- Disable submit button -----*/
-input:disabled,
-input[disabled] {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
 /*----- Hover over voting buttons -----*/
 #voteSubmit:hover,
 #doneVote:hover,
