@@ -72,9 +72,9 @@ const getAllHitlist = async (req, res) => {
 
 const getHitlistById = async (req, res) => {
     try {
-        const user = await User.findById({ _id: req.params.id })
+        const hitlist = await Hitlist.findById({ _id: req.params.id })
         
-        return res.status(200).json({ success: true, data: user })
+        return res.status(200).json({ success: true, data: hitlist })
         
     } catch (error) {
         console.log(error)

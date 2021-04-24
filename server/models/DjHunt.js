@@ -22,7 +22,10 @@ const rtSchema = new mongoose.Schema({
     vote_count: {
         type: Number,
         default: 0
-    }
+    },
+    facebook: String,
+    twitter: String,
+    spotify: String
     
 })
 

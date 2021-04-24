@@ -23,7 +23,8 @@ const songSchema = new mongoose.Schema({
 const HitlistSchema = new mongoose.Schema({
     songs: [songSchema],
     start_date: Date,
-    end_date: Date
+    end_date: Date,
+    qr_code: String
 })
 
 const Hitlist = mongoose.model('hitlist', HitlistSchema)
