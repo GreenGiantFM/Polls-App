@@ -14,10 +14,11 @@ const rtSchema = new mongoose.Schema({
         required: true
     },
     stinger_path: String,
-    spotify_link: {
+    spotify_playlist: {
         type: String,
         required: true
     },
+    youtube_promotional: String,
     picture_path: String,
     vote_count: {
         type: Number,
@@ -25,7 +26,7 @@ const rtSchema = new mongoose.Schema({
     },
     facebook: String,
     twitter: String,
-    spotify: String
+    instagram: String
     
 })
 
