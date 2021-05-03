@@ -34,9 +34,9 @@ app.use(session({
 
 // Define routers
 app.get('/', (req, res) => res.redirect('/hitlist'))
-app.get('/dj-hunt', (req, res) => res.sendFile('C:/Users/Jerick/Desktop/Polls-App/server/views/djhunt.html'))
-app.get('/hitlist', (req, res) => res.sendFile('C:/Users/Jerick/Desktop/Polls-App/server/views/main.html'))
-app.get('/admin', (req, res) => res.sendFile('C:/Users/Jerick/Desktop/Polls-App/server/views/AdminUserInput.html'))
+app.get('/dj-hunt', (req, res) => res.sendFile( __dirname + '/views/djhunt.html'))
+app.get('/hitlist', (req, res) => res.sendFile( __dirname + '/views/main.html'))
+app.get('/admin', (req, res) => res.sendFile( __dirname + '/views/AdminUserInput.html'))
 app.use('/admin', adminRouter)
 app.use('/admin', userRouter)
 app.use('/api', hitlistRouter)
