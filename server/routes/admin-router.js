@@ -11,8 +11,10 @@ const hasSession = (req, res, next) => {
     console.log(req.session)
     if (req.session.token)
         next();
-    else
-        res.send('not logged in') // not sure with this yet, have to test
+    else {
+        console.log(req.session.token)
+        res.redirect('/admin')
+    }
 }
 
 // multer, storage.array('name-of-input', maxNumberOfUploads)
@@ -27,13 +29,16 @@ const djhuntStorage = multer.diskStorage({
     filename: (req, res, cb) => {
         const { originalname } = file
         const ext = path.extname(originalname)
-        cb(null, `${Date.now()}-${originalname}${ext}`)
+        cb(null, `${originalname}-${Date.now()}${ext}`)
     }
 })
 
 // .single(FORMNAME)
 const djhuntUpload = multer({ djhuntStorage })
 
+router.get('/home', hasSession, (req, res) => res.redirect('/admin/home/hitlist'))
+router.get('/home/hitlist', hasSession, (req, res) => res.sendFile( __dirname + '../views/admin/admin_hitlist.html' ))
+router.get('/home/dj-hunt', hasSession, (req, res) => res.sendFile( __dirname + '../views/admin/admin_djhunt.html' ))
 router.post('/DjHunt', hasSession, DjHuntCntrl.createDjHunt)
 router.post('/Hitlist', hasSession, HitlistCntrl.createHitlist)
 router.put('/DjHunt/:id', djhuntUpload.fields([{ name: 'photo' }, { name: 'stinger' }]), DjHuntCntrl.updateDjHunt)
