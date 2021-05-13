@@ -14,6 +14,7 @@
         <link rel="icon" href="../assets/img/GGFM/GGFM_ICON.png" type="image/png" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script src="DJHuntAdmin.js"></script>
+        <link rel="stylesheet" href="../DJHUNT/assets/css/dj_hunt_css.css">
     </head>
     <body>
         <!-- Header (Menu) -->
@@ -53,8 +54,8 @@
             <p id="vote_details" style="color: #000000;">
                 Voting Lines Close by June 1, 2021 8:30PM | <em id="hitlist_time"></em>
             </p>
-            <button id="voteTab" class="active" onclick="openTab(event, 'Add')">Add</button>
-            <button id="liveTab" class="inactive" onclick="openTab(event, 'Edit')">Edit</button>
+            <button id="addTab" class="active" onclick="openTab(event, 'Add')">Add</button>
+            <button id="editTab" class="inactive" onclick="openTab(event, 'Edit')">Edit</button>
         </div>
 
         <!-- Menu -->
@@ -74,3 +75,459 @@
 
         <!-- Menu Button -->
         <span id="sideMenuBtn" onclick="openNav()">&#9776;</span>
+
+        <!-- Voting Tab -->
+        <div id="votingTab" class="tabcontent w3-center" style="display: block;">
+            
+        </div>
+
+        <!-- Live Polls -->
+        <div id="live" class="tabcontent">
+            <div id="hunt_end" style="display: none;">
+                <div id="hunt-outer-div">
+                    <div id="hunt-inner-div">
+                        <h1 id="hunt-end-message">VOTING PERIOD HAS ENDED</h1>
+                        <button id="goToPolls">Go to Polls</button>
+                    </div>
+                </div>
+            </div>
+            <form action="#">
+                <div id="vote" class="grid-container-djs">
+                    <div class="grid-item-dj">
+                        <div class="grid-container-DJ-desk">
+                            <div class="grid-item-DJ-desk-photo">
+                                <img class="dj-background" src="../DJHUNT/assets/img/DJs/d1.jpg" onclick="openDJPage(1)">
+                                <p class="dj-name">Cora</p>
+                                <div class="round">
+                                    <input type="checkbox" id="dj1" onclick="huntButton()">
+                                    <label for="dj1"></label>
+                                </div>
+                            </div>
+                            <p class="grid-item-DJ-desk-name">Cora</p>
+                        </div>
+                    </div>
+                    <div class="grid-item-dj">
+                        <div class="grid-container-DJ-desk">
+                            <div class="grid-item-DJ-desk-photo">
+                                <img class="dj-background" src="../DJHUNT/assets/img/DJs/d2.jpg" onclick="openDJPage(2)">
+                                <p class="dj-name">Javi</p>
+                                <div class="round">
+                                    <input type="checkbox" id="dj2" onclick="huntButton()">
+                                    <label for="dj2"></label>
+                                </div>
+                            </div>
+                            <p class="grid-item-DJ-desk-name">Javi</p>
+                        </div>
+                    </div>
+                    <div class="grid-item-dj">
+                        <div class="grid-container-DJ-desk">
+                            <div class="grid-item-DJ-desk-photo">
+                                <img class="dj-background" src="../DJHUNT/assets/img/DJs/d3.jpg" onclick="openDJPage(3)">
+                                <p class="dj-name">Joaquin</p>
+                                <div class="round">
+                                    <input type="checkbox" id="dj3" onclick="huntButton()">
+                                    <label for="dj3"></label>
+                                </div>
+                            </div>
+                            <p class="grid-item-DJ-desk-name">Joaquin</p>
+                        </div>
+                    </div>
+                    <div class="grid-item-dj">
+                        <div class="grid-container-DJ-desk">
+                            <div class="grid-item-DJ-desk-photo">
+                                <img class="dj-background" src="../DJHUNT/assets/img/DJs/d4.jpg" onclick="openDJPage(4)">
+                                <p class="dj-name">Macoy</p>
+                                <div class="round">
+                                    <input type="checkbox" id="dj4" onclick="huntButton()">
+                                    <label for="dj4"></label>
+                                </div>
+                            </div>
+                            <p class="grid-item-DJ-desk-name">Macoy</p>
+                        </div>
+                    </div>
+                    <div class="grid-item-dj">
+                        <div class="grid-container-DJ-desk">
+                            <div class="grid-item-DJ-desk-photo">
+                                <img class="dj-background" src="../DJHUNT/assets/img/DJs/d5.jpg" onclick="openDJPage(5)">
+                                <p class="dj-name">Michael</p>
+                                <div class="round">
+                                    <input type="checkbox" id="dj5" onclick="huntButton()">
+                                    <label for="dj5"></label>
+                                </div>
+                            </div>
+                            <p class="grid-item-DJ-desk-name">Michael</p>
+                        </div>
+                    </div>
+                    <div class="grid-item-dj">
+                        <div class="grid-container-DJ-desk">
+                            <div class="grid-item-DJ-desk-photo">
+                                <img class="dj-background" src="../DJHUNT/assets/img/DJs/d6.jpg" onclick="openDJPage(6)">
+                                <p class="dj-name">Fonz</p>
+                                <div class="round">
+                                    <input type="checkbox" id="dj6" onclick="huntButton()">
+                                    <label for="dj6"></label>
+                                </div>
+                            </div>
+                            <p class="grid-item-DJ-desk-name">Fonz</p>
+                        </div>
+                    </div>
+                    <div class="grid-item-dj">
+                        <div class="grid-container-DJ-desk">
+                            <div class="grid-item-DJ-desk-photo">
+                                <img class="dj-background" src="../DJHUNT/assets/img/DJs/d7.jpg" onclick="openDJPage(7)">
+                                <p class="dj-name">Robby</p>
+                                <div class="round">
+                                    <input type="checkbox" id="dj7" onclick="huntButton()">
+                                    <label for="dj7"></label>
+                                </div>
+                            </div>
+                            <p class="grid-item-DJ-desk-name">Robby</p>
+                        </div>
+                    </div>
+                    <div class="grid-item-dj">
+                        <div class="grid-container-DJ-desk">
+                            <div class="grid-item-DJ-desk-photo">
+                                <img class="dj-background" src="../DJHUNT/assets/img/DJs/d8.jpg" onclick="openDJPage(8)">
+                                <p class="dj-name">Tony</p>
+                                <div class="round">
+                                    <input type="checkbox" id="dj8" onclick="huntButton()">
+                                    <label for="dj8"></label>
+                                </div>
+                            </div>
+                            <p class="grid-item-DJ-desk-name">Tony</p>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                </div>
+                <input type="button" id="huntSubmit" onclick="openConfirm()" value="VOTE" disabled>
+                <div id="djvote" class="tabcontent">
+                    <h1 id="confirm_desk">Confirm Vote?</h1>
+                    <div class="grid-container-confirm">
+                        <div class="grid-item-dj" id="votedDJ1_desk">
+                            <div class="grid-container-DJ-desk">
+                                <a class="grid-item-DJ-desk-photo" href="djpage.html">
+                                    <img class="dj-background" src="../DJHUNT/assets/img/DJs/d1.jpg">
+                                    <p class="dj-name">Cora</p>
+                                </a>
+                                <p class="grid-item-DJ-desk-name">Cora</p>
+                            </div>
+                        </div>
+                        <div class="grid-item-djVoted" id="votedDJ1">
+                            <div class="grid-container-confirmDJs">
+                                <div class="votedBackground">
+                                    <img class="votedImage" src="../DJHUNT/assets/img/DJs/d1.jpg">
+                                </div>
+                                <p class="votedTagline"><em class="votedName">Cora</em><br>Tagline</p>
+                            </div>
+                        </div>
+                        <div class="grid-item-dj" id="votedDJ2_desk">
+                            <div class="grid-container-DJ-desk">
+                                <a class="grid-item-DJ-desk-photo" href="djpage.html">
+                                    <img class="dj-background" src="../DJHUNT/assets/img/DJs/d2.jpg">
+                                    <p class="dj-name">Javi</p>
+                                </a>
+                                <p class="grid-item-DJ-desk-name">Javi</p>
+                            </div>
+                        </div>
+                        <div class="grid-item-djVoted" id="votedDJ2">
+                            <div class="grid-container-confirmDJs">
+                                <div class="votedBackground">
+                                    <img class="votedImage" src="../DJHUNT/assets/img/DJs/d2.jpg">
+                                </div>
+                                <p class="votedTagline"><em class="votedName">Javi</em><br>Tagline</p>
+                            </div>
+                        </div>
+                        <div class="grid-item-dj" id="votedDJ3_desk">
+                            <div class="grid-container-DJ-desk">
+                                <a class="grid-item-DJ-desk-photo" href="djpage.html">
+                                    <img class="dj-background" src="../DJHUNT/assets/img/DJs/d3.jpg">
+                                    <p class="dj-name">Joaquin</p>
+                                </a>
+                                <p class="grid-item-DJ-desk-name">Joquin</p>
+                            </div>
+                        </div>
+                        <div class="grid-item-djVoted" id="votedDJ3">
+                            <div class="grid-container-confirmDJs">
+                                <div class="votedBackground">
+                                    <img class="votedImage" src="../DJHUNT/assets/img/DJs/d3.jpg">
+                                </div>
+                                <p class="votedTagline"><em class="votedName">Joaquin</em><br>Tagline</p>
+                            </div>
+                        </div>
+                        <div class="grid-item-dj" id="votedDJ4_desk">
+                            <div class="grid-container-DJ-desk">
+                                <a class="grid-item-DJ-desk-photo" href="djpage.html">
+                                    <img class="dj-background" src="../DJHUNT/assets/img/DJs/d4.jpg">
+                                    <p class="dj-name">Macoy</p>
+                                </a>
+                                <p class="grid-item-DJ-desk-name">Macoy</p>
+                            </div>
+                        </div>
+                        <div class="grid-item-djVoted" id="votedDJ4">
+                            <div class="grid-container-confirmDJs">
+                                <div class="votedBackground">
+                                    <img class="votedImage" src="../DJHUNT/assets/img/DJs/d4.jpg">
+                                </div>
+                                <p class="votedTagline"><em class="votedName">Macoy</em><br>Tagline</p>
+                            </div>
+                        </div>
+                        <div class="grid-item-dj" id="votedDJ5_desk">
+                            <div class="grid-container-DJ-desk">
+                                <a class="grid-item-DJ-desk-photo" href="djpage.html">
+                                    <img class="dj-background" src="../DJHUNT/assets/img/DJs/d5.jpg">
+                                    <p class="dj-name">Michael</p>
+                                </a>
+                                <p class="grid-item-DJ-desk-name">Michael</p>
+                            </div>
+                        </div>
+                        <div class="grid-item-djVoted" id="votedDJ5">
+                            <div class="grid-container-confirmDJs">
+                                <div class="votedBackground">
+                                    <img class="votedImage" src="../DJHUNT/assets/img/DJs/d5.jpg">
+                                </div>
+                                <p class="votedTagline"><em class="votedName">Michael</em><br>Tagline</p>
+                            </div>
+                        </div>
+                        <div class="grid-item-dj" id="votedDJ6_desk">
+                            <div class="grid-container-DJ-desk">
+                                <a class="grid-item-DJ-desk-photo" href="djpage.html">
+                                    <img class="dj-background" src="../DJHUNT/assets/img/DJs/d6.jpg">
+                                    <p class="dj-name">Fonz</p>
+                                </a>
+                                <p class="grid-item-DJ-desk-name">Fonz</p>
+                            </div>
+                        </div>
+                        <div class="grid-item-djVoted" id="votedDJ6">
+                            <div class="grid-container-confirmDJs">
+                                <div class="votedBackground">
+                                    <img class="votedImage" src="../DJHUNT/assets/img/DJs/d6.jpg">
+                                </div>
+                                <p class="votedTagline"><em class="votedName">Fonz</em><br>Tagline</p>
+                            </div>
+                        </div>
+                        <div class="grid-item-dj" id="votedDJ7_desk">
+                            <div class="grid-container-DJ-desk">
+                                <a class="grid-item-DJ-desk-photo" href="djpage.html">
+                                    <img class="dj-background" src="../DJHUNT/assets/img/DJs/d7.jpg">
+                                    <p class="dj-name">Cora</p>
+                                </a>
+                                <p class="grid-item-DJ-desk-name">Robby</p>
+                            </div>
+                        </div>
+                        <div class="grid-item-djVoted" id="votedDJ7">
+                            <div class="grid-container-confirmDJs">
+                                <div class="votedBackground">
+                                    <img class="votedImage" src="../DJHUNT/assets/img/DJs/d7.jpg">
+                                </div>
+                                <p class="votedTagline"><em class="votedName">Robby</em><br>Tagline</p>
+                            </div>
+                        </div>
+                        <div class="grid-item-dj" id="votedDJ8_desk">
+                            <div class="grid-container-DJ-desk">
+                                <a class="grid-item-DJ-desk-photo" href="djpage.html">
+                                    <img class="dj-background" src="../DJHUNT/assets/img/DJs/d8.jpg">
+                                    <p class="dj-name">Tony</p>
+                                </a>
+                                <p class="grid-item-DJ-desk-name">Tony</p>
+                            </div>
+                        </div>
+                        <div class="grid-item-djVoted" id="votedDJ8">
+                            <div class="grid-container-confirmDJs">
+                                <div class="votedBackground">
+                                    <img class="votedImage" src="../DJHUNT/assets/img/DJs/d8.jpg">
+                                </div>
+                                <p class="votedTagline"><em class="votedName">Tony</em><br>Tagline</p>
+                            </div>
+                        </div>
+                        <div id="confirmation">
+                            <p id="confirm_mobile">Confirm Vote?</p>
+                            <input type="button" id="huntConfirm" onclick="submitVote()" value="Confirm">
+                            <input type="button" id="huntCancel" onclick="cancelVote()" value="Back">
+                        </div>
+                    </div>
+                </div>
+                <div id="voteSubmitted" class="grid-container-submitted" style="display:none;">
+                    <div class="grid-item-submitted-photo">
+                        <img id="submittedImage" src="../assets/img/GGFM/GGFM_ICON.png">
+                    </div>
+                    <div class="grid-item-submitted-message">
+                        <p id="submittedMessage">Thank you for voting.</p>
+                        <input type="submit" class="huntBack" onclick="closeConfirm()" value="Back">
+                    </div>
+                </div>
+            </form>
+            <div class="grid-container-djs live-desktop">
+                <div class="grid-item-dj">
+                    <div class="grid-container-DJ-desk">
+                        <div class="grid-item-DJ-desk-photo" onclick="openDJPage(1)">
+                            <img class="dj-background" src="../DJHUNT/assets/img/DJs/d1.jpg">
+                            <p class="dj-name">Cora</p>
+                        </div>
+                        <p class="grid-item-DJ-desk-name">Cora</p>
+                    </div>
+                </div>
+                <div class="grid-item-dj">
+                    <div class="grid-container-DJ-desk">
+                        <div class="grid-item-DJ-desk-photo" onclick="openDJPage(2)">
+                            <img class="dj-background" src="../DJHUNT/assets/img/DJs/d2.jpg">
+                            <p class="dj-name">Javi</p>
+                        </div>
+                        <p class="grid-item-DJ-desk-name">Javi</p>
+                    </div>
+                </div>
+                <div class="grid-item-dj">
+                    <div class="grid-container-DJ-desk">
+                        <div class="grid-item-DJ-desk-photo" onclick="openDJPage(3)">
+                            <img class="dj-background" src="../DJHUNT/assets/img/DJs/d3.jpg">
+                            <p class="dj-name">Joaquin</p>
+                        </div>
+                        <p class="grid-item-DJ-desk-name">Joaquin</p>
+                    </div>
+                </div>
+                <div class="grid-item-dj">
+                    <div class="grid-container-DJ-desk">
+                        <div class="grid-item-DJ-desk-photo" onclick="openDJPage(4)">
+                            <img class="dj-background" src="../DJHUNT/assets/img/DJs/d4.jpg">
+                            <p class="dj-name">Macoy</p>
+                        </div>
+                        <p class="grid-item-DJ-desk-name">Macoy</p>
+                    </div>
+                </div>
+                <div class="grid-item-dj">
+                    <div class="grid-container-DJ-desk">
+                        <div class="grid-item-DJ-desk-photo" onclick="openDJPage(5)">
+                            <img class="dj-background" src="../DJHUNT/assets/img/DJs/d5.jpg">
+                            <p class="dj-name">Michael</p>
+                        </div>
+                        <p class="grid-item-DJ-desk-name">Michael</p>
+                    </div>
+                </div>
+                <div class="grid-item-dj">
+                    <div class="grid-container-DJ-desk">
+                        <div class="grid-item-DJ-desk-photo" onclick="openDJPage(6)">
+                            <img class="dj-background" src="../DJHUNT/assets/img/DJs/d6.jpg">
+                            <p class="dj-name">Fonz</p>
+                        </div>
+                        <p class="grid-item-DJ-desk-name">Fonz</p>
+                    </div>
+                </div>
+                <div class="grid-item-dj">
+                    <div class="grid-container-DJ-desk">
+                        <div class="grid-item-DJ-desk-photo" onclick="openDJPage(7)">
+                            <img class="dj-background" src="../DJHUNT/assets/img/DJs/d7.jpg">
+                            <p class="dj-name">Robby</p>
+                        </div>
+                        <p class="grid-item-DJ-desk-name">Robby</p>
+                    </div>
+                </div>
+                <div class="grid-item-dj">
+                    <div class="grid-container-DJ-desk">
+                        <div class="grid-item-DJ-desk-photo" onclick="openDJPage(8)">
+                            <img class="dj-background" src="../DJHUNT/assets/img/DJs/d8.jpg">
+                            <p class="dj-name">Tony</p>
+                        </div>
+                        <p class="grid-item-DJ-desk-name">Tony</p>
+                    </div>
+                </div>
+                <br>
+                <br>
+            </div>
+        </div>
+
+        <!-- DJ Page -->
+        <div id="djPage-mobile" style="text-align: center; justify-content: center; display: none;">
+            <div id="djInfo-mobile">
+                <h1 id="djName-mobile" style="font-weight: bolder; color: #569429; text-align:center;"></h1>
+                <div class="grid-container-details">
+                    <div class="grid-item-misc">
+                        <div class="grid-container-handle">
+                            <div class="grid-item-photo">
+                                <img id="dj-image-mobile" class="dj-background">
+                            </div>
+                            <div class="grid-item-handle">
+                                <h6 id="fullName-mobile" style="font-weight: bolder; color: #000000;"></h6>
+                                <a href="https://www.fb.com/"><img id="fb" class="handles"
+                                        src="../assets/img/SOC_MED/FB.png"
+                                        onmouseover="this.src='../assets/img/SOC_MED/FB_G.png';"
+                                        onmouseout="this.src='../assets/img/SOC_MED/FB.png';"></a>
+                                <a href="https://www.twitter.com/"><img id="tw" class="handles"
+                                        src="../assets/img/SOC_MED/TW.png"
+                                        onmouseover="this.src='../assets/img/SOC_MED/TW_G.png';"
+                                        onmouseout="this.src='../assets/img/SOC_MED/TW.png';"></a>
+                                <a href="https://www.instagram.com/"><img id="ig" class="handles"
+                                        src="../assets/img/SOC_MED/IG.png"
+                                        onmouseover="this.src='../assets/img/SOC_MED/IG_G.png';"
+                                        onmouseout="this.src='../assets/img/SOC_MED/IG.png';"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid-item-misc">
+                        <iframe id="djVideo-mobile" title="YouTube video player"
+                            frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="grid-item-misc">
+                        <audio id="djAudio-mobile" class="stinger" controls>
+                            <source id="djStinger-mobile" type="audio/mp3">
+                        </audio>
+                    </div>
+                    <div class="grid-item-misc">
+                        <h3 id="djPlaylist-title"
+                            style="font-weight: bolder; color: #000000; text-align: left; margin-left: 7px;">DJ's Playlist</h3>
+                        <iframe id="djPlaylist-mobile" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                    </div>
+                    <div class="grid-item-misc info-tagline">
+                        <h5 id="details-tagline-mobile">Hi! Lorem Ipsum...</h5>
+                    </div>
+                </div>
+            </div>
+            <button id="exitDJPage-mobile" onclick="closeDJPage()"><i class="fa fa-times" aria-hidden="true"></i></button>
+        </div>
+        <div id="djPage-desk" style="text-align: center; justify-content: center; display: none;">
+            <div id="djInfo-desk">
+                <div class="grid-container-details" style="margin-top: 20px;">
+                    <div class="grid-item-misc" style="text-align: right; justify-content: right;">
+                        <div class="grid-item-photo">
+                            <img id="dj-image-desk" class="dj-background">
+                        </div>
+                    </div>
+                    <div class="grid-item-misc">
+                        <div class="grid-item-handle" style="text-align: left;">
+                            <h1 id="djName-desk"></h1>
+                            <h6 id="fullName" style="font-weight: bolder; color: #000000;"></h6>
+                            <h5 id="details-tagline-desk">Lorem Ipsum is simply dummy text of the printing and typesetting
+                                industry. Lorem Ipsum
+                                has been the industry's standard dummy text ever since...</h5>
+                            <audio id="djAudio-desk" class="stinger" controls>
+                                <source id="djStinger-desk" type="audio/mp3">
+                            </audio>
+                        </div>
+                    </div>
+                    <div class="grid-item-misc" style="width: 45px;">
+                        <a href="https://www.fb.com/"><img id="fb" class="handles"
+                                src="../assets/img/SOC_MED/FB.png" onmouseover="this.src='../assets/img/SOC_MED/FB_G.png';"
+                                onmouseout="this.src='../assets/img/SOC_MED/FB.png';"></a>
+                        <a href="https://www.twitter.com/"><img id="tw" class="handles" src="../assets/img/SOC_MED/TW.png"
+                                onmouseover="this.src='../assets/img/SOC_MED/TW_G.png';"
+                                onmouseout="this.src='../assets/img/SOC_MED/TW.png';"></a>
+                        <a href="https://www.instagram.com/"><img id="ig" class="handles" src="../assets/img/SOC_MED/IG.png"
+                                onmouseover="this.src='../assets/img/SOC_MED/IG_G.png';"
+                                onmouseout="this.src='../assets/img/SOC_MED/IG.png';"></a>
+                    </div>
+                    <div class="grid-item-misc" style="grid-column: 1 / span 3;">
+                        <div class="grid-container-handle">
+                            <div class="grid-item-misc">
+                                <iframe id="djVideo-desk" width="350" height="225" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            <div class="grid-item-misc">
+                                <h5 style="font-weight: bolder; color: #000000; text-align: left; margin-left: 7px; margin-top: 0px; padding-top: 0px;">
+                                    DJ's Playlist</h5>
+                                <iframe id="djPlaylist-desk" width="300"
+                                    height="190" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button id="exitDJPage-desk" onclick="closeDJPage()"><i class="fa fa-times" aria-hidden="true"></i></button>
+        </div>
