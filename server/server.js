@@ -18,7 +18,6 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use(cookieParser());
 app.use(cors())
-app.use(express.static('uploads'))
 app.use(express.static('public'))
 app.use(express.static('../'))
 app.use(express.static('../DJHUNT'))
@@ -35,8 +34,8 @@ app.use(session({
 // Define routers
 app.get('/', (req, res) => res.redirect('/hitlist'))
 app.get('/dj-hunt', (req, res) => res.sendFile( __dirname + '/views/djhunt.html'))
-app.get('/hitlist', (req, res) => res.sendFile( __dirname + '/views/main.html'))
-app.get('/admin', (req, res) => res.sendFile( __dirname + '/views/AdminUserInput.html'))
+app.get('/hitlist', (req, res) => res.sendFile( __dirname + '/views/hitlist.html'))
+app.get('/admin', (req, res) => res.sendFile( __dirname + '/views/admin/admin_login.html'))
 app.use('/admin', adminRouter)
 app.use('/admin', userRouter)
 app.use('/api', hitlistRouter)
