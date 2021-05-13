@@ -8,7 +8,7 @@ function openTab(evt, tabName) {
         inactive_tab.className = "inactive";
 
         active_content = document.getElementById("live");
-        active_content.style.display = "block";
+        active_content.style.display = "flex";
         active_tab = document.getElementById("liveTab");
         active_tab.className = "active";
         evt.currentTarget.className += " active";
