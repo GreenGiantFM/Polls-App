@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>DJ Hunt Admin</title>
+        <title>Hitlist</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -10,334 +10,66 @@
         <link rel="stylesheet" href="../assets/fonts/font-awesome.min.css">
         <link rel="stylesheet" href="../assets/fonts/line-awesome.min.css">
         <link rel="stylesheet" href="../assets/fonts/fontawesome5-overrides.min.css">
-        <link rel="stylesheet" href="../assets/css/base.css">  
-        <link rel="icon" href="../assets/img/GGFM/GGFM_ICON.png" type="image/png"/>
-        <link rel="stylesheet" href="DJHuntAdmin.css">
-</head>
-
-<body style="background-color: #F9F4EF;">
-    <!-- Header (Menu) -->
-    <header id="upper" style="background-color: black;">
-        <ul class="upper-link">
-            <li><img src="../assets/img/GGFM/GGFM_LOGO.png" alt='Green Giant FM' style="width:175px;"></li>
-            <li><a href="#" class="upperLink">Home</a></li>
-            <li><a href="#" class="upperLink">About Us</a></li>
-            <li><a href="#" class="upperLink">Radio Talents</a></li>
-            <li><a href="#" class="upperLink">Events</a></li>
-            <li><a href="#" class="upperLink">Blogs</a></li>
-            <li><a href="#" class="upperLink">Contact Us</a></li>
-            <li><a href="#" class="upperLink">Live Polls</a></li>
-            <li><a href="#" class="upperLink">Stream</a></li>
-            <li>
-                <input type="text" placeholder="Search..." name="search" id="searchbar">
-                <a href="#" id="searchbtn"><i class="fa fa-search" aria-hidden="true" id="searchIcon"></i></a>
-            </li>
-        </ul>
-    </header>
-
-    <!-- Menu -->
-    <div id="sideMenu" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&#9776;&emsp;<em>Menu</em></a>
-        <a href="#" class="sideLink">Home</a>
-        <a href="#" class="sideLink">About Us</a>
-        <a href="#" class="sideLink">Radio Talents</a>
-        <a href="#" class="sideLink">Events</a>
-        <a href="#" class="sideLink">Blogs</a>
-        <a href="#" class="sideLink">Contact Us</a>
-        <a href="#" class="sideLink">Stream</a>
-        <span class="sideLink">Live Polls</span>
-        <a href="../HITLIST_POLL/main.html" class="pollLink"><i class="fas fa-music"></i>&ensp;Hitlist</a>
-        <a href="../DJHUNT/djhunt.html" class="pollLink"><i class="fas fa-binoculars"></i>&ensp;DJ Hunt</a>
-    </div>
-
-    <!-- Menu Button -->
-    <span id="sideMenuBtn" onclick="openNav()">&#9776;</span>
-
-<!-- Voting Tab -->
-<div id="vote" class="tabcontent w3-center" style="display: block;"></div>
-    <form action="/action_page.php">
-       
-        <div class="add-dj-container">
-            
-            <div class="add-photo-container"></div>
-            <div class="inputheader-flex-container">
-                <p style="text-align: right;"><b>DJ Name</b></p>
-                <p style="text-align: right;"><b>Full Name</b></p>
-                <p style="text-align: right;"><b>Facebook(optional)</b></p>
-                <p style="text-align: right;"><b>Twitter(optional)</b></p>
-                <p style="text-align: right;"><b>Instagram(optional)</b></p>
-                <p style="text-align: right;"><b>Video Link</b></p>
-                <p style="text-align: right;"><b>Stinger</b></p>
-                <p style="text-align: right;"><b>Spotify Playlist Link</b></p>
-                
-            </div>
-
-            <div class="inputbox-flex-container">
-                
-                <label for="djname"></label>
-                <input type="text" id="djname" name="djname">
-                <br>
-                
-                <label for="fullname"></label>
-                <input type="text" id="fullname" name="fullname">
-                <br>
-                
-                <label for="fb"></label>
-                <input type="text" id="fb" name="fb">
-                <br>
-
-                <label for="tw"></label>
-                <input type="text" id="tw" name="tw">
-                <br>
-
-                <label for="inst"></label>
-                <input type="text" id="inst" name="inst">
-                <br>
-                
-                <label for="video"></label>
-                <input type="text" id="video" name="video">
-                <br>
-
-                <label for="stinger"></label>
-                <input type="text" id="stinger" name="stinger">
-                <br>
-
-                <label for="spotify"></label>
-                <input type="text" id="spotify" name="spotify">
-                <br>
-                
-            </div>
-            <button id="voteSubmit" onclick="openConfirm()"style="margin-bottom:px;">Add DJ</button> 
-            <label style="padding-left: -15px">
-                
-            </label>
-        </div>
-        </form>
-        </div>
-        
-        <!-- Voting Tab Overlay -->
-        <div id="overlay">
-            <div id="confirmation" class="overlayItems">
-                <h1 style="text-align: center; font-weight: bold; letter-spacing: 2px;">CONFIRM</h1>
-                <button id="confirmVote" onclick="submitVote()" style="margin-right:5px;">Yes</button>
-                <button id="cancelVote" onclick="cancelVote()" style="margin-left:5px;">Cancel</button>
-            </div>
-            <div id="voteConfirmed" class="overlayItems">
-                <h1 style="text-align: center; font-weight: bold; letter-spacing: 2px;">EDIT CONFIRMED</h1>
-                <button id="doneVote" onclick="closeConfirm()">DONE</button>
-            </div>
-        </div>
-
-        
-                <!-- Voting Tab Overlay -->
-                <div id="overlay">
-                    <div id="confirmation" class="overlayItems">
-                        <h1 id="confirm_text">CONFIRM VOTE</h1>
-                        <input type="button" id="confirmVote" onclick="submitVote()" style="margin-right:5px;" value="Yes">
-                        <input type="button" id="cancelVote" onclick="closeConfirm()" style="margin-left:5px;" value="Cancel">
+        <link rel="stylesheet" href="../assets/css/base.css">
+        <link rel="stylesheet" href="assets/css/hitlist_css.css">
+        <link rel="icon" href="../assets/img/GGFM/GGFM_ICON.png" type="image/png" />
+    </head>
+    <body>
+        <!-- Header (Menu) -->
+        <header id="upper" style="background-color: black;">
+            <ul class="upper-link">
+                <li><img src="../assets/img/GGFM/GGFM_LOGO.png" alt='Green Giant FM' style="width:175px;"></li>
+                <li><a href="#" class="upperLink">Home</a></li>
+                <li><a href="#" class="upperLink">About Us</a></li>
+                <li><a href="#" class="upperLink">Radio Talents</a></li>
+                <li><a href="#" class="upperLink">Events</a></li>
+                <li><a href="#" class="upperLink">Blogs</a></li>
+                <li><a href="#" class="upperLink">Contact Us</a></li>
+                <li>
+                    <div id="drop-menu" class="upperLink" onmouseover="openDrop()" onmouseout="closeDrop()">
+                        <p id="drop-polls" style="margin: 0px;">Live Polls</p>
+                        <div id="drop-inner-div" class="dropdown-content">
+                            <ul id="drop-list">
+                                <li><a href="../HITLIST_POLL/main.html" class="pollsDrop"><i
+                                            class="fas fa-music"></i>&ensp;Hitlist</a></li>
+                                <li><a href="../DJHUNT/djhunt.html" class="pollsDrop"><i class="fas fa-binoculars"></i>&ensp;DJ
+                                        Hunt</a></li>
+                            </ul>
+                        </div>
                     </div>
-                    <div id="voteConfirmed" class="overlayItems">
-                        <h1 id="submit_text">VOTE CONFIRMED</h1>
-                        <input type="submit" id="doneVote" onclick="closeConfirm()" value="DONE">
-                    </div>
-                </div>
-            </form>
+                </li>
+                <li><a href="#" class="upperLink">Stream</a></li>
+                <li>
+                    <input type="text" placeholder="Search..." name="search" id="searchbar">
+                    <a href="#" id="searchbtn"><i class="fa fa-search" aria-hidden="true" id="searchIcon"></i></a>
+                </li>
+            </ul>
+        </header>
+
+        <!-- Tab Contents -->
+        <div class="w3-container tab">
+            <h1 id="page_title" style="font-weight: bolder; color: #569429"><i class="fas fa-binoculars"></i>&ensp;DJ Hunt</h1>
+            <p id="vote_details" style="color: #000000;">
+                Voting Lines Close by June 1, 2021 8:30PM | <em id="hitlist_time"></em>
+            </p>
+            <button id="voteTab" class="active" onclick="openTab(event, 'Add')">Add</button>
+            <button id="liveTab" class="inactive" onclick="openTab(event, 'Edit')">Edit</button>
         </div>
 
-    <script>
-        /*----- Open Menu -----*/
-        function openNav() {
-            document.getElementById("sideMenu").style.width = "250px";
-        }
+        <!-- Menu -->
+        <div id="sideMenu" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&#9776;&emsp;<em>Menu</em></a>
+            <a href="#" class="sideLink">Home</a>
+            <a href="#" class="sideLink">About Us</a>
+            <a href="#" class="sideLink">Radio Talents</a>
+            <a href="#" class="sideLink">Events</a>
+            <a href="#" class="sideLink">Blogs</a>
+            <a href="#" class="sideLink">Contact Us</a>
+            <a href="#" class="sideLink">Stream</a>
+            <span class="sideLink">Live Polls</span>
+            <a href="../HITLIST_POLL/main.html" class="pollLink"><i class="fas fa-music"></i>&ensp;Hitlist</a>
+            <a href="../DJHUNT/djhunt.html" class="pollLink"><i class="fas fa-binoculars"></i>&ensp;DJ Hunt</a>
+        </div>
 
-        /*----- Close Menu -----*/
-        function closeNav() {
-            document.getElementById("sideMenu").style.width = "0";
-        }
-
-        /*----- Change BG of selected songs -----*/
-        function changeBackground() {
-            var song1Check = document.getElementById("song1Check");
-            var song2Check = document.getElementById("song2Check");
-            var song3Check = document.getElementById("song3Check");
-            var song4Check = document.getElementById("song4Check");
-            var song5Check = document.getElementById("song5Check");
-            var song6Check = document.getElementById("song6Check");
-            var song7Check = document.getElementById("song7Check");
-
-            if(song1Check.checked == true){
-                document.getElementById("song1").style.backgroundColor = "#569429cb";
-                document.getElementById("songOne").style.color = "#3a3a3a";
-                document.getElementById("percentOne").style.color = "#f2f2f2";
-                document.getElementById("voteSubmit").disabled = false;
-            }else{
-                document.getElementById("song1").style.backgroundColor = "#ffffff";
-                document.getElementById("songOne").style.color = "#8d8d8d";
-                document.getElementById("percentOne").style.color = "#8d8d8d";
-                voteButton()
-            }
-
-            if (song2Check.checked == true) {
-                document.getElementById("song2").style.backgroundColor = "#569429cb";
-                document.getElementById("songTwo").style.color = "#3a3a3a";
-                document.getElementById("percentTwo").style.color = "#f2f2f2";
-                document.getElementById("voteSubmit").disabled = false;
-            } else {
-                document.getElementById("song2").style.backgroundColor = "#ffffff";
-                document.getElementById("songTwo").style.color = "#8d8d8d";
-                document.getElementById("percentTwo").style.color = "#8d8d8d";
-                voteButton()
-            }
-
-            if (song3Check.checked == true) {
-                document.getElementById("song3").style.backgroundColor = "#569429cb";
-                document.getElementById("songThree").style.color = "#3a3a3a";
-                document.getElementById("percentThree").style.color = "#f2f2f2";
-                document.getElementById("voteSubmit").disabled = false;
-            } else {
-                document.getElementById("song3").style.backgroundColor = "#ffffff";
-                document.getElementById("songThree").style.color = "#8d8d8d";
-                document.getElementById("percentThree").style.color = "#8d8d8d";
-                voteButton()
-            }
-
-            if (song4Check.checked == true) {
-                document.getElementById("song4").style.backgroundColor = "#569429cb";
-                document.getElementById("songFour").style.color = "#3a3a3a";
-                document.getElementById("percentFour").style.color = "#f2f2f2";
-                document.getElementById("voteSubmit").disabled = false;
-            } else {
-                document.getElementById("song4").style.backgroundColor = "#ffffff";
-                document.getElementById("songFour").style.color = "#8d8d8d";
-                document.getElementById("percentFour").style.color = "#8d8d8d";
-                voteButton()
-            }
-
-            if (song5Check.checked == true) {
-                document.getElementById("song5").style.backgroundColor = "#569429cb";
-                document.getElementById("songFive").style.color = "#3a3a3a";
-                document.getElementById("percentFive").style.color = "#f2f2f2";
-                document.getElementById("voteSubmit").disabled = false;
-            } else {
-                document.getElementById("song5").style.backgroundColor = "#ffffff";
-                document.getElementById("songFive").style.color = "#8d8d8d";
-                document.getElementById("percentFive").style.color = "#8d8d8d";
-                voteButton()
-            }
-
-            if (song6Check.checked == true) {
-                document.getElementById("song6").style.backgroundColor = "#569429cb";
-                document.getElementById("songSix").style.color = "#3a3a3a";
-                document.getElementById("percentSix").style.color = "#f2f2f2";
-                document.getElementById("voteSubmit").disabled = false;
-            } else {
-                document.getElementById("song6").style.backgroundColor = "#ffffff";
-                document.getElementById("songSix").style.color = "#8d8d8d";
-                document.getElementById("percentSix").style.color = "#8d8d8d";
-                voteButton()
-            }
-
-            if (song7Check.checked == true) {
-                document.getElementById("song7").style.backgroundColor = "#569429cb";
-                document.getElementById("songSeven").style.color = "#3a3a3a";
-                document.getElementById("percentSeven").style.color = "#f2f2f2";
-                document.getElementById("voteSubmit").disabled = false;
-            } else {
-                document.getElementById("song7").style.backgroundColor = "#ffffff";
-                document.getElementById("songSeven").style.color = "#8d8d8d";
-                document.getElementById("percentSeven").style.color = "#8d8d8d";
-                voteButton()
-            }
-        }
-
-        /*----- Confirm Vote -----*/
-        function openConfirm() {
-            document.getElementById("overlay").style.display = "block";
-            document.getElementById("voteConfirmed").style.display = "none";
-            document.getElementById("confirmation").style.display = "block";
-        }
-
-        /*----- Cancel Vote -----*/
-        function cancelVote() {
-            document.getElementById("overlay").style.display = "none";
-            document.getElementById("voteConfirmed").style.display = "none";
-            document.getElementById("confirmation").style.display = "none";
-        }
-
-        /*----- Vote Submitted -----*/
-        function submitVote() {
-            document.getElementById("song1Check").checked = false;
-            document.getElementById("song1").style.backgroundColor = "#ffffff";
-            document.getElementById("songOne").style.color = "#8d8d8d";
-            document.getElementById("percentOne").style.color = "#8d8d8d";
-
-            document.getElementById("song2Check").checked = false;
-            document.getElementById("song2").style.backgroundColor = "#ffffff";
-            document.getElementById("songTwo").style.color = "#8d8d8d";
-            document.getElementById("percentTwo").style.color = "#8d8d8d";
-
-            document.getElementById("song3Check").checked = false;
-            document.getElementById("song3").style.backgroundColor = "#ffffff";
-            document.getElementById("songThree").style.color = "#8d8d8d";
-            document.getElementById("percentThree").style.color = "#8d8d8d";
-
-            document.getElementById("song4Check").checked = false;
-            document.getElementById("song4").style.backgroundColor = "#ffffff";
-            document.getElementById("songFour").style.color = "#8d8d8d";
-            document.getElementById("percentFour").style.color = "#8d8d8d";
-
-            document.getElementById("song5Check").checked = false;
-            document.getElementById("song5").style.backgroundColor = "#ffffff";
-            document.getElementById("songFive").style.color = "#8d8d8d";
-            document.getElementById("percentFive").style.color = "#8d8d8d";
-
-            document.getElementById("song6Check").checked = false;
-            document.getElementById("song6").style.backgroundColor = "#ffffff";
-            document.getElementById("songSix").style.color = "#8d8d8d";
-            document.getElementById("percentSix").style.color = "#8d8d8d";
-
-            document.getElementById("song7Check").checked = false;
-            document.getElementById("song7").style.backgroundColor = "#ffffff";
-            document.getElementById("songSeven").style.color = "#8d8d8d";
-            document.getElementById("percentSeven").style.color = "#8d8d8d";
-
-            document.getElementById("confirmation").style.display = "none";
-            document.getElementById("voteConfirmed").style.display = "block";
-        }
-
-        /*----- Close Overlay -----*/
-        function closeConfirm() {
-            document.getElementById("overlay").style.display = "none";
-            document.getElementById("voteConfirmed").style.display = "none";
-            document.getElementById("confirmation").style.display = "none";
-        }
-
-        /*----- Open selected Tab -----*/
-        function openTab(evt, tabName) {
-            if(tabName == 'Live'){
-                inactive_content = document.getElementById("vote");
-                inactive_content.style.display = "none";
-                inactive_tab = document.getElementById("voteTab");
-                inactive_tab.className = "inactive";
-
-                active_content = document.getElementById("live");
-                active_content.style.display = "block";
-                active_tab = document.getElementById("liveTab");
-                active_tab.className = "active";
-                evt.currentTarget.className += " active";
-            }else if (tabName == 'Vote') {
-                inactive_content = document.getElementById("live");
-                inactive_content.style.display = "none";
-                inactive_tab = document.getElementById("liveTab");
-                inactive_tab.className = "inactive";
-
-                active_content = document.getElementById("vote");
-                active_content.style.display = "block";
-                active_tab = document.getElementById("voteTab");
-                active_tab.className = "active";
-                evt.currentTarget.className += " active";
-            }
-        }
-    </script>
-    </body>
-</html>
+        <!-- Menu Button -->
+        <span id="sideMenuBtn" onclick="openNav()">&#9776;</span>
