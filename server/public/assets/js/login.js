@@ -174,7 +174,7 @@ function login() {
                     position: "center",
                     confirmButtonText: 'Awesome!',
                 })
-                .then(() => window.location = "/" )
+                .then(() => window.location = "/admin/home" )
             },  
             error: function () {
                 Swal.fire({

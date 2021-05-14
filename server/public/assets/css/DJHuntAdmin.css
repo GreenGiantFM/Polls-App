@@ -1,0 +1,1059 @@
+* { box-sizing: border-box; }
+
+/*----- Graident Background -----*/
+html {
+  min-height: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: linear-gradient(to bottom, #f1faeb, #569429);
+}
+
+#live {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-left: auto;
+	margin-right: auto;
+}
+
+/*----- Desktop View (at least 1024px) -----*/
+@media screen and (min-width: 1024px) {
+  /*----- Main Grid Container (Voting / Live) -----*/
+  /*----- Main Grid Container (Confirmation) -----*/
+  .grid-container-djs, .grid-container-confirm {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 40px 30px;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  /*----- Main Grid Container (DJs) -----*/
+  .grid-container-DJ-desk {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /*----- DJ Photo (Voting / Live) -----*/
+  .grid-item-dj {
+    position: relative;
+    overflow: hidden;
+    width: 190px;
+    height: 190px;
+  }
+
+  /*----- DJ Photo (Voting / Live) -----*/
+  .grid-item-DJ-desk-photo {
+    position: relative;
+    overflow: hidden;
+    width: 170px;
+    height: 170px;
+    border-radius: 10px;
+    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.24), 0 3px 5px 0 rgba(0, 0, 0, 0.19);
+    cursor: pointer;
+  }
+
+  /*----- DJ Name -----*/
+  .dj-name {
+    display: none;
+  }
+  .grid-item-DJ-desk-name {
+    font-weight: bolder;
+    color: #000000;
+    height: 20px;
+    text-align: center;
+    margin: 0%;
+  }
+
+  /*----- Main Grid Container (Confirmation) -----*/
+  .grid-container-confirm {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 45px;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  /*----- Vote Confirmation Message -----*/
+  #confirmation {
+    display: none;
+    grid-column: 1 / span 4;
+  }
+  #confirm_desk {
+    display: block;
+    text-align: center;
+    font-weight: bolder;
+    letter-spacing: 2px;
+    color: #569429;
+  }
+  #confirm_mobile {
+    display: none;
+  }
+
+  /*----- Voted DJs -----*/
+  .chosen_desk {
+    display: block;
+  }
+  .chosen_mobile {
+    display: none;
+  }
+  .grid-item-djVoted {
+    display: none;
+  }
+
+  /*----- Voting buttons -----*/
+  #huntSubmit, #huntConfirm, #huntCancel, .huntBack {
+    color: #ffffff;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    width: 330px;
+    height: 45px;
+    font-size: x-large;
+    font-weight: bolder;
+    letter-spacing: 2px;
+  }
+  #huntConfirm {
+    margin-right: 20px;
+  }
+  #huntCancel {
+    margin-left: 20px;
+  }
+  .huntBack {
+    margin-top: 5px;
+    margin-bottom: 20px;
+  }
+
+  /*----- Main Grid Container (Submitted) -----*/
+  .grid-container-submitted {
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    justify-content: center;
+  }
+  .grid-iterm-submitted-message {
+    width: 400px;
+    height: 150px;
+  }
+
+
+  /*----- Submitted Page -----*/
+  #submittedImage {
+    width: 300px;
+  }
+  #submittedMessage {
+    text-align: left;
+    width: 400px;
+    font-size: 60px;
+    font-weight: bolder;
+    letter-spacing: 2px;
+    color: #ffffff;
+    margin-bottom: 0px;
+    margin-left: 60px;
+    padding-bottom: 0px;
+  }
+
+  /*----- DJ Pagee -----*/
+  #djPage-desk {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    z-index: 1;
+    background-color: #000000a1;
+    background: #000000a1;
+    backdrop-filter: blur(3px);
+  }
+  .chosen-DJPage-desk {
+    display: flex;
+  }
+  .chosen-DJPage-mobile {
+    display: none;
+  }
+
+  /*----- DJ Page Container -----*/
+  #djInfo-desk {
+    display: block;
+    width: 750px;
+    margin: 10px 12px;
+    overflow-y: auto;
+    background-color: #F9F4EF;
+    box-shadow: 0 5px 7px 0 rgba(0, 0, 0, 0.525), 0 8px 24px 0 rgb(0, 0, 0.525);
+  }
+
+  /*----- DJ Page Exit Button -----*/
+  #exitDJPage-desk {
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    background-color: #ffffff00;
+    color: #ffffff;
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
+    border: none;
+  }
+  #exitDJPage-desk:hover {
+    color: #569429;
+  }
+
+  /*----- Main Grid Container (DJ Page) -----*/
+  .grid-container-details {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 40px;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  /*----- Main Grid Container (DJ Handles) -----*/
+  .grid-container-handle {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 5px 30px;
+    justify-content: center;
+    padding: 10px;
+  }
+  .handles {
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+  }
+  #djName-desk {
+    width: 300px;
+    font-size: 50px;
+    font-weight: bolder;
+    color: #000000;
+    padding: 0px;
+    margin: 0px;
+  }
+
+  /*----- DJ Photo -----*/
+  .grid-item-photo {
+    overflow: hidden;
+    width: 225px;
+    height: 225px;
+    border-radius: 10px;
+    text-align: right;
+    justify-content: right;
+  }
+
+  /*----- Stinger -----*/
+  audio {
+    border: 2px solid #569429;
+    border-radius: 8px;
+    width: 330px;
+    height: 45px;
+    font-size: x-large;
+    font-weight: bolder;
+    letter-spacing: 2px;
+  }
+  .stinger {
+    width: 300px;
+    outline: none;
+  }
+
+  /*----- DJ Tagline -----*/
+  .info-tagline {
+    background-color: #ffffff;
+    border: 3px solid #ffffff;
+  }
+  #details-tagline-desk, #fullName {
+    width: 300px;
+    font-weight: bolder;
+    font-size: 12px;
+    color: #000000;
+    text-align: left;
+  }
+
+  .live-desktop {
+    display: none;
+  }
+
+  .chart {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(101, 1fr);
+    grid-column-gap: 25px;
+    height: 45vh;
+    width: 70vw;
+    padding: 5px 10px;
+  }
+
+  [class*="bar"] {
+    grid-row-end: 101;
+    background-color: #569429;
+  }
+
+  .bar-1-top {
+    grid-row: 1 / 80;
+    border-radius: 5px 5px 0px 0px;
+    background-color: #f0f0f0;
+  }
+  .bar-1-bottom {
+    grid-row: 80 / 101;
+    box-shadow: 1px 1px 5px #838383;
+  }
+  .bar-1-num {
+    grid-row: 101 / 102;
+    border-radius: 0px 0px 5px 5px;
+    box-shadow: 1px 1px 5px #838383;
+  }
+
+  .bar-2-top {
+    grid-row: 1 / 82;
+    border-radius: 5px 5px 0px 0px;
+    background-color: #f0f0f0;
+  }
+  .bar-2-bottom {
+    grid-row: 82 / 101;
+    box-shadow: 1px 1px 5px #838383;
+  }
+  .bar-2-num {
+    grid-row: 101 / 102;
+    border-radius: 0px 0px 5px 5px;
+    box-shadow: 1px 1px 5px #838383;
+  }
+
+  .bar-3-top {
+    grid-row: 1 / 85;
+    border-radius: 5px 5px 0px 0px;
+    background-color: #f0f0f0;
+  }
+  .bar-3-bottom {
+    grid-row: 85 / 101;
+    box-shadow: 1px 1px 5px #838383;
+  }
+  .bar-3-num {
+    grid-row: 101 / 102;
+    border-radius: 0px 0px 5px 5px;
+    box-shadow: 1px 1px 5px #838383;
+  }
+
+  .bar-4-top {
+    grid-row: 1 / 88;
+    border-radius: 5px 5px 0px 0px;
+    background-color: #f0f0f0;
+  }
+  .bar-4-bottom {
+    grid-row: 88 / 101;
+    box-shadow: 1px 1px 5px #838383;
+  }
+  .bar-4-num {
+    grid-row: 101 / 102;
+    border-radius: 0px 0px 5px 5px;
+    box-shadow: 1px 1px 5px #838383;
+  }
+
+  .bar-5-top {
+    grid-row: 1 / 89;
+    border-radius: 5px 5px 0px 0px;
+    background-color: #f0f0f0;
+  }
+  .bar-5-bottom {
+    grid-row: 89 / 101;
+    box-shadow: 1px 1px 5px #838383;
+  }
+  .bar-5-num {
+    grid-row: 101 / 102;
+    border-radius: 0px 0px 5px 5px;
+    box-shadow: 1px 1px 5px #838383;
+  }
+
+  .bar-6-top {
+    grid-row: 1 / 90;
+    border-radius: 5px 5px 0px 0px;
+    background-color: #f0f0f0;
+  }
+  .bar-6-bottom {
+    grid-row: 90 / 101;
+    box-shadow: 1px 1px 5px #838383;
+  }
+  .bar-6-num {
+    grid-row: 101 / 102;
+    border-radius: 0px 0px 5px 5px;
+    box-shadow: 1px 1px 5px #838383;
+  }
+
+  .bar-7-top {
+    grid-row: 1 / 92;
+    border-radius: 5px 5px 0px 0px;
+    background-color: #f0f0f0;
+  }
+  .bar-7-bottom {
+    grid-row: 92 / 101;
+    box-shadow: 1px 1px 5px #838383;
+  }
+  .bar-7-num {
+    grid-row: 101 / 102;
+    border-radius: 0px 0px 5px 5px;
+    box-shadow: 1px 1px 5px #838383;
+  }
+
+  .bar-8-top {
+    grid-row: 1 / 94;
+    border-radius: 5px 5px 0px 0px;
+    background-color: #f0f0f0;
+  }
+  .bar-8-bottom {
+    grid-row: 94 / 101;
+    box-shadow: 1px 1px 5px #838383;
+  }
+  .bar-8-num {
+    grid-row: 101 / 102;
+    border-radius: 0px 0px 5px 5px;
+    box-shadow: 1px 1px 5px #838383;
+  }
+
+  .top {
+    position: relative;
+    font-weight: bolder;
+    font-size: 15px;
+    color: #ffffff;
+  }
+  .num {
+    font-size: 25px;
+    font-style: italic;
+    font-weight: bold;
+    color: #aed890;
+  }
+}
+
+/*----- Mobile View (at least 350 px and at most 1023px) -----*/
+@media screen and (min-width: 350px) and (max-width: 1023px) {
+  /*----- Main Grid Container (Voting / Live) -----*/
+  .grid-container-djs {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 30px 70px;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  /*----- DJ Card -----*/
+  .grid-item-dj {
+    position: relative;
+    overflow: hidden;
+    width: 120px;
+    height: 120px;
+    border-radius: 10px;
+    box-shadow: 0 5px 7px 0 rgba(0, 0, 0, 0.24), 0 8px 24px 0 rgba(0, 0, 0, 0.19);
+    cursor: pointer;
+  }
+
+  /*----- DJ Name -----*/
+  .dj-name {
+    position: absolute;
+    font-style: inherit;
+    font-weight: bolder;
+    top: -12px;
+    right: 5px;
+    color: white;
+  }
+
+  /*----- Main Grid Container (Confirmation) -----*/
+  .grid-container-confirm {
+    display: grid;
+    grid-template-columns: auto;
+    grid-gap: 10px;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  /*----- Sub Grid Container (Confirmation) -----*/
+  .grid-container-confirmDJs {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 35px;
+    align-items: center;
+    justify-content: left;
+    padding: 10px;
+  }
+
+  /*----- Vote Confirmation Message -----*/
+  #confirmation {
+    display: none;
+  }
+  #confirm_desk {
+    display: none;
+  }
+  #confirm_mobile {
+    display: block;
+    text-align: center;
+    font-size: 35px;
+    font-weight: bolder;
+    letter-spacing: 2px;
+  }
+
+  /*----- Voted DJs -----*/
+  .chosen_desk {
+    display: none;
+  }
+  .chosen_mobile {
+    display: display;
+  }
+  .grid-item-djVoted {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: none;
+    height: 100px;
+    box-shadow: 0 5px 7px 0 rgba(0, 0, 0, 0.24), 0 8px 24px 0 rgba(0, 0, 0, 0.19);
+  }
+
+  /*----- Voted DJ Details -----*/
+  .votedBackground {
+    top: 10px;
+    left: 15px;
+    overflow: hidden;
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+  }
+  .votedName {
+    text-align: left;
+    font-weight: bolder;
+    font-style: normal;
+    font-size: x-large;
+    color: black;
+  }
+  .votedTagline {
+    text-align: left;
+    font-weight: bolder;
+    font-size: small;
+    color: rgb(75, 75, 75);
+  }
+
+  /*----- Voting buttons -----*/
+  #huntSubmit, #huntConfirm, #huntCancel, .huntBack {
+    color: #ffffff;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    width: 330px;
+    height: 45px;
+    font-size: x-large;
+    font-weight: bolder;
+    letter-spacing: 2px;
+  }
+  #huntConfirm {
+    margin-bottom: 20px;
+  }
+  #huntCancel {
+    margin-bottom: 20px;
+  }
+  .huntBack {
+    margin-top: 5px;
+    margin-bottom: 20px;
+  }
+
+  /*----- Submitted Image (GGFM Icon) -----*/
+  #submittedImage {
+    width: 180px;
+    margin: 60px 35px 35px 35px;
+  }
+  #submittedMessage {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bolder;
+    letter-spacing: 2px;
+    color: #ffffff;
+  }
+
+  /*----- DJ Page -----*/
+  #djPage-mobile {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    z-index: 1;
+    background-color: #000000a1;
+    background: #000000a1;
+    backdrop-filter: blur(3px);
+  }
+  .chosen-DJPage-desk{
+    display: none;
+  }
+  .chosen-DJPage-mobile{
+    display: flex;
+  }
+
+  /*----- DJ Page Container -----*/
+  #djInfo-mobile {
+    display: block;
+    width: 350px;
+    margin: 6px 12px;
+    overflow-y: scroll;
+    background-color: #F9F4EF;
+  }
+
+  /*----- DJ Page Exit Button -----*/
+  #exitDJPage-mobile {
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    background-color: #ffffff00;
+    color: #ffffff;
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
+    border: none;
+  }
+  #exitDJPage-mobile:hover {
+    color: #569429;
+  }
+
+  /*----- Main Grid Container (DJ Page) -----*/
+  .grid-container-details {
+    display: grid;
+    grid-template-columns: auto;
+    grid-gap: 20px;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  /*----- Main Grid Container (DJ Handles) -----*/
+  .grid-container-handle {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 30px 10px;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+  .handles {
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+  }
+
+  /*----- DJ Photo -----*/
+  .grid-item-photo {
+    overflow: hidden;
+    width: 115px;
+    height: 115px;
+    border-radius: 10px;
+  }
+
+  /*----- Stinger -----*/
+  audio {
+    border: 2px solid #569429;
+    border-radius: 8px;
+    width: 330px;
+    height: 45px;
+    font-size: x-large;
+    font-weight: bolder;
+    letter-spacing: 2px;
+  }
+  .stinger {
+    width: 300px;
+    outline: none;
+  }
+
+  /*----- DJ Video -----*/
+  #djVideo {
+    width: 300px;
+    height: 175px;
+  }
+
+  /*----- DJ Playlist -----*/
+  #djPlaylist {
+    width: 300px;
+    height: 175px;
+  }
+
+  /*----- DJ Tagline -----*/
+  #details-tagline-mobile {
+    font-weight: bolder;
+    color: #000000;
+    text-align: left;
+    padding-left: 7px;
+  }
+  .info-tagline {
+    background-color: #ffffff;
+    border: 3px solid #ffffff;
+  }
+
+  .live-desktop {
+    display: grid;
+  }
+
+  .chart {
+    display: none;
+  }
+}
+
+/*----- Mobile View (at most 349px) -----*/
+@media screen and (max-width: 349px) {
+  /*----- Main Grid Container (Voting / Live) -----*/
+  .grid-container-djs {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 20px;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  /*----- DJ Card -----*/
+  .grid-item-dj {
+    position: relative;
+    overflow: hidden;
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    box-shadow: 0 5px 7px 0 rgba(0, 0, 0, 0.24), 0 8px 24px 0 rgba(0, 0, 0, 0.19);
+    cursor: pointer;
+  }
+
+  /*----- DJ Name -----*/
+  .dj-name {
+    position: absolute;
+    font-style: inherit;
+    font-weight: bolder;
+    top: -12px;
+    right: 5px;
+    color: white;
+  }
+
+  /*----- Main Grid Container (Confirmation) -----*/
+  .grid-container-confirm {
+    display: grid;
+    grid-template-columns: auto;
+    grid-gap: 10px;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  /*----- Sub Grid Container (Confirmation) -----*/
+  .grid-container-confirmDJs {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 15px;
+    align-items: center;
+    justify-content: left;
+    padding: 10px;
+  }
+
+  /*----- Vote Confirmation Message -----*/
+  #confirmation {
+    display: none;
+  }
+  #confirm_desk {
+    display: none;
+  }
+  #confirm_mobile {
+    display: block;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bolder;
+    letter-spacing: 2px;
+  }
+
+  /*----- Voted DJs -----*/
+  .chosen_desk {
+    display: none;
+  }
+  .chosen_mobile {
+    display: block;
+  }
+  .grid-item-djVoted {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: none;
+    height: 100px;
+    box-shadow: 0 5px 7px 0 rgba(0, 0, 0, 0.24), 0 8px 24px 0 rgba(0, 0, 0, 0.19);
+  }
+
+  /*----- Voted DJ Details -----*/
+  .votedBackground {
+    top: 10px;
+    left: 15px;
+    overflow: hidden;
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+  }
+  .votedName {
+    text-align: left;
+    font-weight: bolder;
+    font-style: normal;
+    font-size: large;
+    color: black;
+  }
+  .votedTagline {
+    text-align: left;
+    font-weight: bolder;
+    font-size: small;
+    color: rgb(75, 75, 75);
+  }
+
+  /*----- Voting buttons -----*/
+  #huntSubmit, #huntConfirm, #huntCancel, .huntBack {
+    color: #ffffff;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    width: 175px;
+    height: 25px;
+    font-size: large;
+    font-weight: bolder;
+    letter-spacing: 2px;
+  }
+  #huntConfirm {
+    margin-bottom: 10px;
+  }
+  #huntCancel {
+    margin-bottom: 10px;
+  }
+  .huntBack {
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
+
+  /*----- Submitted Details -----*/
+  #submittedImage {
+    width: 110px;
+    margin: 35px 35px 15px 35px;
+  }
+  #submittedMessage {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bolder;
+    letter-spacing: 2px;
+    color: #ffffff;
+  }
+
+  /*----- DJ Page -----*/
+  #djPage-mobile {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    z-index: 1;
+    background-color: #000000a1;
+    background: #000000a1;
+    backdrop-filter: blur(3px);
+  }
+  .chosen-DJPage-desk{
+    display: none;
+  }
+  .chosen-DJPage-mobile{
+    display: flex;
+  }
+
+  /*----- DJ Page Container -----*/
+  #djInfo-mobile {
+    display: block;
+    width: 180px;
+    margin: 3px 6px;
+    overflow-y: scroll;
+    background-color: #F9F4EF;
+  }
+
+  /*----- DJ Page Exit Button -----*/
+  #exitDJPage-mobile {
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+    background-color: #ffffff00;
+    color: #ffffff;
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
+    border: none;
+  }
+  #exitDJPage-mobile:hover {
+    color: #569429;
+  }
+
+  /*----- Main Grid Container (DJ Page) -----*/
+  .grid-container-details {
+    display: grid;
+    grid-template-columns: auto;
+    grid-gap: 7px;
+    padding: 3px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  /*----- Main Grid Container (DJ Handles) -----*/
+  .grid-container-handle {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 7px 3px;
+    align-items: center;
+    justify-content: center;
+    padding: 7px;
+  }
+  .handles {
+    width: 20px;
+    height: 20px;
+    margin: 3px;
+  }
+  .grid-item-handle {
+    width: 90px;
+  }
+
+  /*----- DJ Photo -----*/
+  .grid-item-photo {
+    overflow: hidden;
+    width: 65px;
+    height: 65px;
+    border-radius: 10px;
+  }
+
+  /*----- Stinger -----*/
+  audio {
+    border: 2px solid #569429;
+    border-radius: 8px;
+    width: 165px;
+    height: 25px;
+    font-size: x-large;
+    font-weight: bolder;
+    letter-spacing: 2px;
+  }
+  .stinger {
+    width: 165px;
+    outline: none;
+  }
+
+  /*----- DJ Video -----*/
+  #djVideo {
+    width: 150px;
+    height: 80px;
+  }
+
+  /*----- DJ Playlist -----*/
+  #djPlaylist {
+    width: 80px;
+    height: 80px;
+  }
+  #djPlaylist-title {
+    font-size: 12px;
+  }
+
+  /*----- DJ Tagline -----*/
+  #details-tagline-mobile {
+    font-size: 12px;
+    font-weight: bolder;
+    color: #000000;
+    text-align: left;
+    padding-left: 3px;
+  }
+  .info-tagline {
+    background-color: #ffffff;
+    border: 3px solid #ffffff;
+  }
+  #fullName-mobile {
+    font-size: 12px;
+  }
+
+  .live-desktop {
+    display: grid;
+  }
+
+  .chart {
+    display: none;
+  }
+}
+
+/*----- Vote Checkbox Style -----*/
+.round {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+}
+.round label {
+  background-color: #fff;
+  border: 2px solid rgb(25, 148, 0);
+  border-radius: 50%;
+  cursor: pointer;
+  height: 20px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 20px;
+}
+.round label:after {
+  border: 2px solid #fff;
+  border-top: none;
+  border-right: none;
+  content: "";
+  height: 6px;
+  left: 3px;
+  opacity: 0;
+  position: absolute;
+  top: 3px;
+  transform: rotate(-45deg);
+  width: 12px;
+}
+.round input[type="checkbox"] {
+  visibility: hidden;
+}
+.round input[type="checkbox"]:checked + label {
+  background-color: #66bb6a;
+  border-color: #66bb6a;
+}
+.round input[type="checkbox"]:checked + label:after {
+  opacity: 1;
+}
+
+/*----- Voting buttons -----*/
+#huntSubmit, #huntConfirm {
+  background-color: #569429;
+}
+#huntCancel, .huntBack {
+  background-color: #000000;
+}
+#huntConfirm, #huntCancel, .huntBack {
+  cursor: pointer;
+}
+#huntSubmit:hover, #huntConfirm:hover,
+#huntCancel:hover, .huntBack:hover {
+  box-shadow: 0 10px 14px 0 rgba(0, 0, 0, 0.24),
+    0 15px 48px 0 rgba(0, 0, 0, 0.19);
+}
+#huntSubmit:focus, #huntConfirm:focus,
+#huntCancel:focus, .huntBack:focus {
+  outline: none;
+}
+
+/*----- DJ Photo -----*/
+.dj-background, .votedImage {
+  width: 100%;
+  height: auto;
+}
+
+/*----- Vote Confirmed -----*/
+#voteConfirmed {
+  display: none;
+}
+
+/*----- Animation -----*/
+#vote, #djPage-mobile, #djPage-desk {
+  animation: fadeEffect 0.25s;
+}
