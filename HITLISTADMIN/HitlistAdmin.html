@@ -22,19 +22,35 @@
         <!-- Header -->
         <header id="upper" style="background-color: black;">
             <ul class="upper-link">
-                <li><img src="../assets/img/GGFM/GGFM_LOGO.png" alt='Green Giant FM' style="width:175px; margin-right:600px;"></li>
+                <li><img src="../assets/img/GGFM/GGFM_LOGO.png" alt='Green Giant FM' style="width:175px;"></li>
                 <li><a href="#" class="upperLink">Home</a></li>
                 <li><a href="#" class="upperLink">About Us</a></li>
                 <li><a href="#" class="upperLink">Radio Talents</a></li>
                 <li><a href="#" class="upperLink">Events</a></li>
                 <li><a href="#" class="upperLink">Blogs</a></li>
                 <li><a href="#" class="upperLink">Contact Us</a></li>
-                <li><a href="#" class="upperLink">Live Polls</a></li>
+                <li>
+                    <div id="drop-menu" class="upperLink" onmouseover="openDrop()" onmouseout="closeDrop()">
+                        <p id="drop-polls" style="margin: 0px;">Live Polls</p>
+                        <div id="drop-inner-div" class="dropdown-content">
+                            <ul id="drop-list">
+                                <li><a href="../HITLIST_POLL/main.html" class="pollsDrop"><i
+                                            class="fas fa-music"></i>&ensp;Hitlist</a></li>
+                                <li><a href="../DJHUNT/djhunt.html" class="pollsDrop"><i class="fas fa-binoculars"></i>&ensp;DJ
+                                        Hunt</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
                 <li><a href="#" class="upperLink">Stream</a></li>
                 <li>
                     <input type="text" placeholder="Search..." name="search" id="searchbar">
                     <a href="#" id="searchbtn"><i class="fa fa-search" aria-hidden="true" id="searchIcon"></i></a>
+                    
                 </li>
+                <button type="button" class="btn btn-default btn-sm">
+                    <span class="log-out"></span> Log out
+                  </button>
             </ul>
         </header>
 
@@ -98,11 +114,13 @@
             
         </div>
         
-        
+       
+          
         
         
         
     </form>
+    
     <form action="/action_page.php">
        
         <div class="icon">
@@ -163,8 +181,18 @@
         </div>
 
         <!-- Live Polls -->
+        
+        
         <div id="live" class="tabcontent">
-            
+            <div class="date-container">
+                <label for="birthday">Start Date:</label>
+                <input type="date" id="birthday" name="birthday">
+                <label for="birthday">End Date:</label>
+                <input type="date" id="birthday" name="birthday">
+                
+              </form>
+            </div>
+              <button id="doneDate" onclick="openConfirm()">Save Date</button>
             <form action="#">
                 <div class="grid-container">
                     <div class="grid-item-voting" id="song1">
