@@ -9,8 +9,8 @@ $(document).ready(() => {
         success: data => {
             hitlist = data.data[0];
             // set dates
-            // const closing = document.getElementById('vote_time')
-            // closing.innerText = `Voting Lines Close by: ${new Date(hitlist.end_date).toDateString()}`
+            document.getElementById('start-date').value = hitlist.start_date.substr(0, 10);
+            document.getElementById('end-date').value = hitlist.end_date.substr(0, 10);
             
             // // get total overall for the percentage
             // let totalVotes = 0
@@ -449,10 +449,53 @@ function addSong() {
         error: function () {
             Swal.fire({
                 title: 'Error!',
-                text: 'wrong credentials',
+                text: 'Something went wrong!',
                 icon: 'error',
                 confirmButtonText: 'Okay'
               })
         }
     })
+}
+
+function changeDate() {
+    const start_date = document.getElementById('start-date').value
+    const end_date = document.getElementById('end-date').value
+
+    if (start_date && end_date) {
+
+        hitlist.start_date = document.getElementById('start-date').value
+        hitlist.end_date = document.getElementById('end-date').value
+    
+        $.ajax({ // this one works
+            method: 'put',
+            url: `/admin/hitlist/${hitlist._id}`,
+            data: hitlist,
+            success: function (data) {
+                Swal.fire({
+                    title: 'Success!',
+                    icon: 'success',
+                    iconColor: "#569429",
+                    timer: 10000,
+                    timerProgressBar: true,
+                    position: "center",
+                    confirmButtonText: 'Awesome!',
+                })
+            },
+            error: function () {
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Invalid date',
+                    icon: 'error',
+                    confirmButtonText: 'Okay'
+                  })
+            }
+        })
+    } else {
+        Swal.fire({
+            title: 'Error!',
+            text: 'Invalid date',
+            icon: 'error',
+            confirmButtonText: 'Okay'
+          })
+    }
 }
