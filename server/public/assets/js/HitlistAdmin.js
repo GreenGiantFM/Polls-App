@@ -45,6 +45,7 @@ $(document).ready(() => {
                 checkSong.setAttribute('name', 'checkSong')
                 checkSong.setAttribute('id', s._id)
                 checkSong.setAttribute('onclick', 'changeBackground()')
+                checkSong.style.display = "none";
                 grid_item_song.setAttribute('class', 'grid-item-song')
                 label.setAttribute('class', 'label')
                 label.setAttribute('for', `song${index+1}`)
@@ -208,43 +209,50 @@ function cancelVote() {
 
 /*----- Vote Submitted -----*/
 function submitVote() {
-    document.getElementById("song1Check").checked = false;
-    document.getElementById("song1").style.backgroundColor = "#ffffff";
-    document.getElementById("songOne").style.color = "#8d8d8d";
-    document.getElementById("percentOne").style.color = "#8d8d8d";
 
-    document.getElementById("song2Check").checked = false;
-    document.getElementById("song2").style.backgroundColor = "#ffffff";
-    document.getElementById("songTwo").style.color = "#8d8d8d";
-    document.getElementById("percentTwo").style.color = "#8d8d8d";
+    for (let i=songs.length-1; i>=0; i--) {
+        const { songCheck, row, title, percentNumber } = songs[i]
+        
+        if (songCheck.checked) {
+            hitlist.songs.splice(i, 1)
+        }
 
-    document.getElementById("song3Check").checked = false;
-    document.getElementById("song3").style.backgroundColor = "#ffffff";
-    document.getElementById("songThree").style.color = "#8d8d8d";
-    document.getElementById("percentThree").style.color = "#8d8d8d";
+        songCheck.checked = false;
+        row.style.backgroundColor = "#ffffff";
+        title.style.color = "#8d8d8d";
+        percentNumber.style.color = "#8d8d8d";
+    }
+    
+    $.ajax({
+        method: 'put',
+        url: `/api/Hitlist/${hitlist._id}`,
+        data: hitlist,
+        success: data => {
+            console.log(data)
 
-    document.getElementById("song4Check").checked = false;
-    document.getElementById("song4").style.backgroundColor = "#ffffff";
-    document.getElementById("songFour").style.color = "#8d8d8d";
-    document.getElementById("percentFour").style.color = "#8d8d8d";
+            Swal.fire({
+                title: 'Success!',
+                icon: 'success',
+                iconColor: "#569429",
+                timer: 10000,
+                timerProgressBar: true,
+                position: "center",
+                confirmButtonText: 'Awesome!',
+            })
+            .then(() => {
+                window.location.reload()
+            })
+        },
+        error: () => {
+            Swal.fire({
+                title: 'Error!',
+                text: 'Something went wrong!',
+                icon: 'error',
+                confirmButtonText: 'Okay'
+              })
+        }
+    })
 
-    document.getElementById("song5Check").checked = false;
-    document.getElementById("song5").style.backgroundColor = "#ffffff";
-    document.getElementById("songFive").style.color = "#8d8d8d";
-    document.getElementById("percentFive").style.color = "#8d8d8d";
-
-    document.getElementById("song6Check").checked = false;
-    document.getElementById("song6").style.backgroundColor = "#ffffff";
-    document.getElementById("songSix").style.color = "#8d8d8d";
-    document.getElementById("percentSix").style.color = "#8d8d8d";
-
-    document.getElementById("song7Check").checked = false;
-    document.getElementById("song7").style.backgroundColor = "#ffffff";
-    document.getElementById("songSeven").style.color = "#8d8d8d";
-    document.getElementById("percentSeven").style.color = "#8d8d8d";
-
-    document.getElementById("confirmation").style.display = "none";
-    document.getElementById("voteConfirmed").style.display = "block";
 }
 
 /*----- Close Overlay -----*/
