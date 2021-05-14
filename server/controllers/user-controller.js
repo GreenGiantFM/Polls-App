@@ -41,6 +41,7 @@ const loginUser = async (req, res) => {
                 { expiresIn: 28800 }, // 8hours in seconds
                 (err, token) => {
                     req.session.token = token
+                    console.log(req.session)
 
                     return res.json({
                         success: true,

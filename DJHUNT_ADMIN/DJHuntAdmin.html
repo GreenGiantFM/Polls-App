@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>DJ Hunt</title>
+        <title>DJ Hunt Admin</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -11,9 +11,10 @@
         <link rel="stylesheet" href="../assets/fonts/line-awesome.min.css">
         <link rel="stylesheet" href="../assets/fonts/fontawesome5-overrides.min.css">
         <link rel="stylesheet" href="../assets/css/base.css">
-        <link rel="stylesheet" href="assets/css/dj_hunt_css.css">
-        <link rel="stylesheet" href="https://cdn.rawgit.com/theus/chart.css/v1.0.0/dist/chart.css" />
         <link rel="icon" href="../assets/img/GGFM/GGFM_ICON.png" type="image/png" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="DJHuntAdmin.js"></script>
+        <link rel="stylesheet" href="../DJHUNT/assets/css/dj_hunt_css.css">
     </head>
     <body>
         <!-- Header (Menu) -->
@@ -27,12 +28,14 @@
                 <li><a href="#" class="upperLink">Blogs</a></li>
                 <li><a href="#" class="upperLink">Contact Us</a></li>
                 <li>
-                    <div id="drop-menu" class="upperLink" onmouseover="openDrop()" onmouseout="closeDrop()" onclick="clickDrop()">
-                        <p id="drop-polls">Live Polls</p>
+                    <div id="drop-menu" class="upperLink" onmouseover="openDrop()" onmouseout="closeDrop()">
+                        <p id="drop-polls" style="margin: 0px;">Live Polls</p>
                         <div id="drop-inner-div" class="dropdown-content">
                             <ul id="drop-list">
-                                <li><a href="../HITLIST_POLL/main.html" class="pollsDrop"><i class="fas fa-music"></i>&ensp;Hitlist</a></li>
-                                <li><a href="../DJHUNT/djhunt.html" class="pollsDrop"><i class="fas fa-binoculars"></i>&ensp;DJ Hunt</a></li>
+                                <li><a href="../HITLIST_POLL/main.html" class="pollsDrop"><i
+                                            class="fas fa-music"></i>&ensp;Hitlist</a></li>
+                                <li><a href="../DJHUNT/djhunt.html" class="pollsDrop"><i class="fas fa-binoculars"></i>&ensp;DJ
+                                        Hunt</a></li>
                             </ul>
                         </div>
                     </div>
@@ -44,17 +47,17 @@
                 </li>
             </ul>
         </header>
-        
+
         <!-- Tab Contents -->
         <div class="w3-container tab">
             <h1 id="page_title" style="font-weight: bolder; color: #569429"><i class="fas fa-binoculars"></i>&ensp;DJ Hunt</h1>
             <p id="vote_details" style="color: #000000;">
-                Voting Lines Close by June 1, 2021 8:30PM | <em id="hunt_time"></em>
+                Voting Lines Close by June 1, 2021 8:30PM | <em id="hitlist_time"></em>
             </p>
-            <button id="voteTab" class="active" onclick="openTab(event, 'Vote')">Vote</button>
-            <button id="liveTab" class="inactive" onclick="openTab(event, 'Live')">Live Polls</button>
+            <button id="addTab" class="active" onclick="openTab(event, 'Add')">Add</button>
+            <button id="editTab" class="inactive" onclick="openTab(event, 'Edit')">Edit</button>
         </div>
-        
+
         <!-- Menu -->
         <div id="sideMenu" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&#9776;&emsp;<em>Menu</em></a>
@@ -69,12 +72,17 @@
             <a href="../HITLIST_POLL/main.html" class="pollLink"><i class="fas fa-music"></i>&ensp;Hitlist</a>
             <a href="../DJHUNT/djhunt.html" class="pollLink"><i class="fas fa-binoculars"></i>&ensp;DJ Hunt</a>
         </div>
-        
+
         <!-- Menu Button -->
         <span id="sideMenuBtn" onclick="openNav()">&#9776;</span>
 
         <!-- Voting Tab -->
         <div id="votingTab" class="tabcontent w3-center" style="display: block;">
+            
+        </div>
+
+        <!-- Live Polls -->
+        <div id="live" class="tabcontent">
             <div id="hunt_end" style="display: none;">
                 <div id="hunt-outer-div">
                     <div id="hunt-inner-div">
@@ -88,7 +96,7 @@
                     <div class="grid-item-dj">
                         <div class="grid-container-DJ-desk">
                             <div class="grid-item-DJ-desk-photo">
-                                <img class="dj-background" src="assets/img/DJs/d1.jpg" onclick="openDJPage(1)">
+                                <img class="dj-background" src="../DJHUNT/assets/img/DJs/d1.jpg" onclick="openDJPage(1)">
                                 <p class="dj-name">Cora</p>
                                 <div class="round">
                                     <input type="checkbox" id="dj1" onclick="huntButton()">
@@ -101,7 +109,7 @@
                     <div class="grid-item-dj">
                         <div class="grid-container-DJ-desk">
                             <div class="grid-item-DJ-desk-photo">
-                                <img class="dj-background" src="assets/img/DJs/d2.jpg" onclick="openDJPage(2)">
+                                <img class="dj-background" src="../DJHUNT/assets/img/DJs/d2.jpg" onclick="openDJPage(2)">
                                 <p class="dj-name">Javi</p>
                                 <div class="round">
                                     <input type="checkbox" id="dj2" onclick="huntButton()">
@@ -114,7 +122,7 @@
                     <div class="grid-item-dj">
                         <div class="grid-container-DJ-desk">
                             <div class="grid-item-DJ-desk-photo">
-                                <img class="dj-background" src="assets/img/DJs/d3.jpg" onclick="openDJPage(3)">
+                                <img class="dj-background" src="../DJHUNT/assets/img/DJs/d3.jpg" onclick="openDJPage(3)">
                                 <p class="dj-name">Joaquin</p>
                                 <div class="round">
                                     <input type="checkbox" id="dj3" onclick="huntButton()">
@@ -127,7 +135,7 @@
                     <div class="grid-item-dj">
                         <div class="grid-container-DJ-desk">
                             <div class="grid-item-DJ-desk-photo">
-                                <img class="dj-background" src="assets/img/DJs/d4.jpg" onclick="openDJPage(4)">
+                                <img class="dj-background" src="../DJHUNT/assets/img/DJs/d4.jpg" onclick="openDJPage(4)">
                                 <p class="dj-name">Macoy</p>
                                 <div class="round">
                                     <input type="checkbox" id="dj4" onclick="huntButton()">
@@ -140,7 +148,7 @@
                     <div class="grid-item-dj">
                         <div class="grid-container-DJ-desk">
                             <div class="grid-item-DJ-desk-photo">
-                                <img class="dj-background" src="assets/img/DJs/d5.jpg" onclick="openDJPage(5)">
+                                <img class="dj-background" src="../DJHUNT/assets/img/DJs/d5.jpg" onclick="openDJPage(5)">
                                 <p class="dj-name">Michael</p>
                                 <div class="round">
                                     <input type="checkbox" id="dj5" onclick="huntButton()">
@@ -153,7 +161,7 @@
                     <div class="grid-item-dj">
                         <div class="grid-container-DJ-desk">
                             <div class="grid-item-DJ-desk-photo">
-                                <img class="dj-background" src="assets/img/DJs/d6.jpg" onclick="openDJPage(6)">
+                                <img class="dj-background" src="../DJHUNT/assets/img/DJs/d6.jpg" onclick="openDJPage(6)">
                                 <p class="dj-name">Fonz</p>
                                 <div class="round">
                                     <input type="checkbox" id="dj6" onclick="huntButton()">
@@ -166,7 +174,7 @@
                     <div class="grid-item-dj">
                         <div class="grid-container-DJ-desk">
                             <div class="grid-item-DJ-desk-photo">
-                                <img class="dj-background" src="assets/img/DJs/d7.jpg" onclick="openDJPage(7)">
+                                <img class="dj-background" src="../DJHUNT/assets/img/DJs/d7.jpg" onclick="openDJPage(7)">
                                 <p class="dj-name">Robby</p>
                                 <div class="round">
                                     <input type="checkbox" id="dj7" onclick="huntButton()">
@@ -179,7 +187,7 @@
                     <div class="grid-item-dj">
                         <div class="grid-container-DJ-desk">
                             <div class="grid-item-DJ-desk-photo">
-                                <img class="dj-background" src="assets/img/DJs/d8.jpg" onclick="openDJPage(8)">
+                                <img class="dj-background" src="../DJHUNT/assets/img/DJs/d8.jpg" onclick="openDJPage(8)">
                                 <p class="dj-name">Tony</p>
                                 <div class="round">
                                     <input type="checkbox" id="dj8" onclick="huntButton()">
@@ -198,17 +206,17 @@
                     <div class="grid-container-confirm">
                         <div class="grid-item-dj" id="votedDJ1_desk">
                             <div class="grid-container-DJ-desk">
-                                <div class="grid-item-DJ-desk-photo">
-                                    <img class="dj-background" src="assets/img/DJs/d1.jpg">
+                                <a class="grid-item-DJ-desk-photo" href="djpage.html">
+                                    <img class="dj-background" src="../DJHUNT/assets/img/DJs/d1.jpg">
                                     <p class="dj-name">Cora</p>
-                                </div>
+                                </a>
                                 <p class="grid-item-DJ-desk-name">Cora</p>
                             </div>
                         </div>
                         <div class="grid-item-djVoted" id="votedDJ1">
                             <div class="grid-container-confirmDJs">
                                 <div class="votedBackground">
-                                    <img class="votedImage" src="assets/img/DJs/d1.jpg">
+                                    <img class="votedImage" src="../DJHUNT/assets/img/DJs/d1.jpg">
                                 </div>
                                 <p class="votedTagline"><em class="votedName">Cora</em><br>Tagline</p>
                             </div>
@@ -216,7 +224,7 @@
                         <div class="grid-item-dj" id="votedDJ2_desk">
                             <div class="grid-container-DJ-desk">
                                 <a class="grid-item-DJ-desk-photo" href="djpage.html">
-                                    <img class="dj-background" src="assets/img/DJs/d2.jpg">
+                                    <img class="dj-background" src="../DJHUNT/assets/img/DJs/d2.jpg">
                                     <p class="dj-name">Javi</p>
                                 </a>
                                 <p class="grid-item-DJ-desk-name">Javi</p>
@@ -225,7 +233,7 @@
                         <div class="grid-item-djVoted" id="votedDJ2">
                             <div class="grid-container-confirmDJs">
                                 <div class="votedBackground">
-                                    <img class="votedImage" src="assets/img/DJs/d2.jpg">
+                                    <img class="votedImage" src="../DJHUNT/assets/img/DJs/d2.jpg">
                                 </div>
                                 <p class="votedTagline"><em class="votedName">Javi</em><br>Tagline</p>
                             </div>
@@ -233,7 +241,7 @@
                         <div class="grid-item-dj" id="votedDJ3_desk">
                             <div class="grid-container-DJ-desk">
                                 <a class="grid-item-DJ-desk-photo" href="djpage.html">
-                                    <img class="dj-background" src="assets/img/DJs/d3.jpg">
+                                    <img class="dj-background" src="../DJHUNT/assets/img/DJs/d3.jpg">
                                     <p class="dj-name">Joaquin</p>
                                 </a>
                                 <p class="grid-item-DJ-desk-name">Joquin</p>
@@ -242,7 +250,7 @@
                         <div class="grid-item-djVoted" id="votedDJ3">
                             <div class="grid-container-confirmDJs">
                                 <div class="votedBackground">
-                                    <img class="votedImage" src="assets/img/DJs/d3.jpg">
+                                    <img class="votedImage" src="../DJHUNT/assets/img/DJs/d3.jpg">
                                 </div>
                                 <p class="votedTagline"><em class="votedName">Joaquin</em><br>Tagline</p>
                             </div>
@@ -250,7 +258,7 @@
                         <div class="grid-item-dj" id="votedDJ4_desk">
                             <div class="grid-container-DJ-desk">
                                 <a class="grid-item-DJ-desk-photo" href="djpage.html">
-                                    <img class="dj-background" src="assets/img/DJs/d4.jpg">
+                                    <img class="dj-background" src="../DJHUNT/assets/img/DJs/d4.jpg">
                                     <p class="dj-name">Macoy</p>
                                 </a>
                                 <p class="grid-item-DJ-desk-name">Macoy</p>
@@ -259,7 +267,7 @@
                         <div class="grid-item-djVoted" id="votedDJ4">
                             <div class="grid-container-confirmDJs">
                                 <div class="votedBackground">
-                                    <img class="votedImage" src="assets/img/DJs/d4.jpg">
+                                    <img class="votedImage" src="../DJHUNT/assets/img/DJs/d4.jpg">
                                 </div>
                                 <p class="votedTagline"><em class="votedName">Macoy</em><br>Tagline</p>
                             </div>
@@ -267,7 +275,7 @@
                         <div class="grid-item-dj" id="votedDJ5_desk">
                             <div class="grid-container-DJ-desk">
                                 <a class="grid-item-DJ-desk-photo" href="djpage.html">
-                                    <img class="dj-background" src="assets/img/DJs/d5.jpg">
+                                    <img class="dj-background" src="../DJHUNT/assets/img/DJs/d5.jpg">
                                     <p class="dj-name">Michael</p>
                                 </a>
                                 <p class="grid-item-DJ-desk-name">Michael</p>
@@ -276,7 +284,7 @@
                         <div class="grid-item-djVoted" id="votedDJ5">
                             <div class="grid-container-confirmDJs">
                                 <div class="votedBackground">
-                                    <img class="votedImage" src="assets/img/DJs/d5.jpg">
+                                    <img class="votedImage" src="../DJHUNT/assets/img/DJs/d5.jpg">
                                 </div>
                                 <p class="votedTagline"><em class="votedName">Michael</em><br>Tagline</p>
                             </div>
@@ -284,7 +292,7 @@
                         <div class="grid-item-dj" id="votedDJ6_desk">
                             <div class="grid-container-DJ-desk">
                                 <a class="grid-item-DJ-desk-photo" href="djpage.html">
-                                    <img class="dj-background" src="assets/img/DJs/d6.jpg">
+                                    <img class="dj-background" src="../DJHUNT/assets/img/DJs/d6.jpg">
                                     <p class="dj-name">Fonz</p>
                                 </a>
                                 <p class="grid-item-DJ-desk-name">Fonz</p>
@@ -293,7 +301,7 @@
                         <div class="grid-item-djVoted" id="votedDJ6">
                             <div class="grid-container-confirmDJs">
                                 <div class="votedBackground">
-                                    <img class="votedImage" src="assets/img/DJs/d6.jpg">
+                                    <img class="votedImage" src="../DJHUNT/assets/img/DJs/d6.jpg">
                                 </div>
                                 <p class="votedTagline"><em class="votedName">Fonz</em><br>Tagline</p>
                             </div>
@@ -301,7 +309,7 @@
                         <div class="grid-item-dj" id="votedDJ7_desk">
                             <div class="grid-container-DJ-desk">
                                 <a class="grid-item-DJ-desk-photo" href="djpage.html">
-                                    <img class="dj-background" src="assets/img/DJs/d7.jpg">
+                                    <img class="dj-background" src="../DJHUNT/assets/img/DJs/d7.jpg">
                                     <p class="dj-name">Cora</p>
                                 </a>
                                 <p class="grid-item-DJ-desk-name">Robby</p>
@@ -310,7 +318,7 @@
                         <div class="grid-item-djVoted" id="votedDJ7">
                             <div class="grid-container-confirmDJs">
                                 <div class="votedBackground">
-                                    <img class="votedImage" src="assets/img/DJs/d7.jpg">
+                                    <img class="votedImage" src="../DJHUNT/assets/img/DJs/d7.jpg">
                                 </div>
                                 <p class="votedTagline"><em class="votedName">Robby</em><br>Tagline</p>
                             </div>
@@ -318,7 +326,7 @@
                         <div class="grid-item-dj" id="votedDJ8_desk">
                             <div class="grid-container-DJ-desk">
                                 <a class="grid-item-DJ-desk-photo" href="djpage.html">
-                                    <img class="dj-background" src="assets/img/DJs/d8.jpg">
+                                    <img class="dj-background" src="../DJHUNT/assets/img/DJs/d8.jpg">
                                     <p class="dj-name">Tony</p>
                                 </a>
                                 <p class="grid-item-DJ-desk-name">Tony</p>
@@ -327,7 +335,7 @@
                         <div class="grid-item-djVoted" id="votedDJ8">
                             <div class="grid-container-confirmDJs">
                                 <div class="votedBackground">
-                                    <img class="votedImage" src="assets/img/DJs/d8.jpg">
+                                    <img class="votedImage" src="../DJHUNT/assets/img/DJs/d8.jpg">
                                 </div>
                                 <p class="votedTagline"><em class="votedName">Tony</em><br>Tagline</p>
                             </div>
@@ -349,81 +357,11 @@
                     </div>
                 </div>
             </form>
-        </div>
-
-        <!-- Live Polls -->
-        <div id="live" class="tabcontent">
-            <div class="chart">
-                <div class="bar-1-top">
-                </div>
-                <div class="bar-1-bottom">
-                    <div class="top">20%</div>
-                </div>
-                <div class="bar-1-num">
-                    <div class="num">#1</div>
-                </div>
-                <div class="bar-2-top">
-                </div>
-                <div class="bar-2-bottom">
-                    <div class="top">18%</div>
-                </div>
-                <div class="bar-2-num">
-                    <div class="num">#2</div>
-                </div>
-                <div class="bar-3-top">
-                </div>
-                <div class="bar-3-bottom">
-                    <div class="top">15%</div>
-                </div>
-                <div class="bar-3-num">
-                    <div class="num">#3</div>
-                </div>
-                <div class="bar-4-top">
-                </div>
-                <div class="bar-4-bottom">
-                    <div class="top">12%</div>
-                </div>
-                <div class="bar-4-num">
-                    <div class="num">#4</div>
-                </div>
-                <div class="bar-5-top">
-                </div>
-                <div class="bar-5-bottom">
-                    <div class="top">11%</div>
-                </div>
-                <div class="bar-5-num">
-                    <div class="num">#5</div>
-                </div>
-                <div class="bar-6-top">
-                </div>
-                <div class="bar-6-bottom">
-                    <div class="top">10%</div>
-                </div>
-                <div class="bar-6-num">
-                    <div class="num">#6</div>
-                </div>
-                <div class="bar-7-top">
-                </div>
-                <div class="bar-7-bottom">
-                    <div class="top">8%</div>
-                </div>
-                <div class="bar-7-num">
-                    <div class="num">#7</div>
-                </div>
-                <div class="bar-8-top">
-                </div>
-                <div class="bar-8-bottom">
-                    <div class="top">6%</div>
-                </div>
-                <div class="bar-8-num">
-                    <div class="num">#8</div>
-                </div>
-            </div>
             <div class="grid-container-djs live-desktop">
                 <div class="grid-item-dj">
                     <div class="grid-container-DJ-desk">
                         <div class="grid-item-DJ-desk-photo" onclick="openDJPage(1)">
-                            <img class="dj-background" src="assets/img/DJs/d1.jpg">
+                            <img class="dj-background" src="../DJHUNT/assets/img/DJs/d1.jpg">
                             <p class="dj-name">Cora</p>
                         </div>
                         <p class="grid-item-DJ-desk-name">Cora</p>
@@ -432,7 +370,7 @@
                 <div class="grid-item-dj">
                     <div class="grid-container-DJ-desk">
                         <div class="grid-item-DJ-desk-photo" onclick="openDJPage(2)">
-                            <img class="dj-background" src="assets/img/DJs/d2.jpg">
+                            <img class="dj-background" src="../DJHUNT/assets/img/DJs/d2.jpg">
                             <p class="dj-name">Javi</p>
                         </div>
                         <p class="grid-item-DJ-desk-name">Javi</p>
@@ -441,7 +379,7 @@
                 <div class="grid-item-dj">
                     <div class="grid-container-DJ-desk">
                         <div class="grid-item-DJ-desk-photo" onclick="openDJPage(3)">
-                            <img class="dj-background" src="assets/img/DJs/d3.jpg">
+                            <img class="dj-background" src="../DJHUNT/assets/img/DJs/d3.jpg">
                             <p class="dj-name">Joaquin</p>
                         </div>
                         <p class="grid-item-DJ-desk-name">Joaquin</p>
@@ -450,7 +388,7 @@
                 <div class="grid-item-dj">
                     <div class="grid-container-DJ-desk">
                         <div class="grid-item-DJ-desk-photo" onclick="openDJPage(4)">
-                            <img class="dj-background" src="assets/img/DJs/d4.jpg">
+                            <img class="dj-background" src="../DJHUNT/assets/img/DJs/d4.jpg">
                             <p class="dj-name">Macoy</p>
                         </div>
                         <p class="grid-item-DJ-desk-name">Macoy</p>
@@ -459,7 +397,7 @@
                 <div class="grid-item-dj">
                     <div class="grid-container-DJ-desk">
                         <div class="grid-item-DJ-desk-photo" onclick="openDJPage(5)">
-                            <img class="dj-background" src="assets/img/DJs/d5.jpg">
+                            <img class="dj-background" src="../DJHUNT/assets/img/DJs/d5.jpg">
                             <p class="dj-name">Michael</p>
                         </div>
                         <p class="grid-item-DJ-desk-name">Michael</p>
@@ -468,7 +406,7 @@
                 <div class="grid-item-dj">
                     <div class="grid-container-DJ-desk">
                         <div class="grid-item-DJ-desk-photo" onclick="openDJPage(6)">
-                            <img class="dj-background" src="assets/img/DJs/d6.jpg">
+                            <img class="dj-background" src="../DJHUNT/assets/img/DJs/d6.jpg">
                             <p class="dj-name">Fonz</p>
                         </div>
                         <p class="grid-item-DJ-desk-name">Fonz</p>
@@ -477,7 +415,7 @@
                 <div class="grid-item-dj">
                     <div class="grid-container-DJ-desk">
                         <div class="grid-item-DJ-desk-photo" onclick="openDJPage(7)">
-                            <img class="dj-background" src="assets/img/DJs/d7.jpg">
+                            <img class="dj-background" src="../DJHUNT/assets/img/DJs/d7.jpg">
                             <p class="dj-name">Robby</p>
                         </div>
                         <p class="grid-item-DJ-desk-name">Robby</p>
@@ -486,7 +424,7 @@
                 <div class="grid-item-dj">
                     <div class="grid-container-DJ-desk">
                         <div class="grid-item-DJ-desk-photo" onclick="openDJPage(8)">
-                            <img class="dj-background" src="assets/img/DJs/d8.jpg">
+                            <img class="dj-background" src="../DJHUNT/assets/img/DJs/d8.jpg">
                             <p class="dj-name">Tony</p>
                         </div>
                         <p class="grid-item-DJ-desk-name">Tony</p>
@@ -593,9 +531,3 @@
             </div>
             <button id="exitDJPage-desk" onclick="closeDJPage()"><i class="fa fa-times" aria-hidden="true"></i></button>
         </div>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="../assets/js/polls_js.js"></script>
-    <script src="assets/js/djhuntScript.js"></script>
-    </body>
-</html>

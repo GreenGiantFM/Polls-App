@@ -10,6 +10,7 @@ const db = require('./db').connection
 const userRouter = require('./routes/user-router')
 const hitlistRouter = require('./routes/hitlist-router')
 const djHuntRouter = require('./routes/djhunt-router')
+const adminRouter = require('./routes/admin-router')
 
 // Init middleware
 app.use(express.json({ extended: false }))
@@ -17,7 +18,6 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use(cookieParser());
 app.use(cors())
-app.use(express.static('uploads'))
 app.use(express.static('public'))
 app.use(express.static('../'))
 app.use(express.static('../DJHUNT'))
@@ -33,10 +33,12 @@ app.use(session({
 
 // Define routers
 app.get('/', (req, res) => res.redirect('/hitlist'))
-app.get('/dj-hunt', (req, res) => res.sendFile('C:/Users/Jerick/Desktop/Polls-App/server/public/djhunt.html'))
-app.get('/hitlist', (req, res) => res.sendFile('C:/Users/Jerick/Desktop/Polls-App/server/public/main.html'))
+app.get('/dj-hunt', (req, res) => res.sendFile( __dirname + '/views/djhunt.html'))
+app.get('/hitlist', (req, res) => res.sendFile( __dirname + '/views/hitlist.html'))
+app.get('/admin', (req, res) => res.sendFile( __dirname + '/views/admin/admin_login.html'))
+app.use('/admin', adminRouter)
+app.use('/admin', userRouter)
 app.use('/api', hitlistRouter)
 app.use('/api', djHuntRouter)
-app.use('/user', userRouter)
 
 app.listen(PORT, () => console.log(`Live at port ${PORT}`))

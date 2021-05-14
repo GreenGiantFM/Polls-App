@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<script src="//cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>
+    <meta name="google-signin-client_id" content="157128304765-kjebs9c88o68fqc12tte1gli39jt4hvh.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <title>Document</title>
-</head>
+</head><meta name="google-signin-client_id" content="157128304765-kjebs9c88o68fqc12tte1gli39jt4hvh.apps.googleusercontent.com">
 <body>
     <h1>File Upload Test</h1>
 
@@ -24,12 +26,14 @@
     <iframe src="https://open.spotify.com/embed/track/07e7Tt9dcJca7JdxwEd304" width="80" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
 
     <iframe src="https://open.spotify.com/embed/playlist/2ov85DmRexbvr1KXR8IsSf" width="80" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
 </body>
 
 <script>
     $(document).ready(async () => {
         try {
-            const data = await (await fetch(`//graph.facebook.com/v10.0/100000265851733/`)).json()
+            const data = await (await fetch(`//api.github.com/users/jrdndj`)).json()
             console.log(data)
             Swal.fire({
                 title: `${data.name}'s avatar`,
@@ -165,5 +169,13 @@
         
     //     $.post("/api/Hitlist", formdata, (data, status) => { alert(`Data: ${data} \n Status: ${status}`) })
     // })
+
+    function onSignIn(googleUser) {
+        var profile = googleUser.getBasicProfile();
+        console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+        console.log('Name: ' + profile.getName());
+        console.log('Image URL: ' + profile.getImageUrl());
+        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+    }
 </script>
 </html>

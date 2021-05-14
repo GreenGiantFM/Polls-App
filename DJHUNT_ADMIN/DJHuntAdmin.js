@@ -1,26 +1,26 @@
 /*----- Open selected Tab -----*/
 function openTab(evt, tabName) {
     document.body.style.background = '#ffffff';
-    if (tabName == 'Live') {
+    if (tabName == 'Edit') {
         inactive_content = document.getElementById("votingTab");
         inactive_content.style.display = "none";
-        inactive_tab = document.getElementById("voteTab");
+        inactive_tab = document.getElementById("addTab");
         inactive_tab.className = "inactive";
 
         active_content = document.getElementById("live");
         active_content.style.display = "flex";
-        active_tab = document.getElementById("liveTab");
+        active_tab = document.getElementById("editTab");
         active_tab.className = "active";
         evt.currentTarget.className += " active";
-    } else if (tabName == 'Vote') {
+    } else if (tabName == 'Add') {
         inactive_content = document.getElementById("live");
         inactive_content.style.display = "none";
-        inactive_tab = document.getElementById("liveTab");
+        inactive_tab = document.getElementById("editTab");
         inactive_tab.className = "inactive";
 
         active_content = document.getElementById("votingTab");
         active_content.style.display = "block";
-        active_tab = document.getElementById("voteTab");
+        active_tab = document.getElementById("addTab");
         active_tab.className = "active";
         evt.currentTarget.className += " active";
     }
@@ -174,224 +174,6 @@ function closeDJPage() {
     }
 }
 
-/*----- Check number of DJs voted -----*/
-function checkBefore(num) {
-    var voteDJ1 = document.getElementById("dj1");
-    var voteDJ2 = document.getElementById("dj2");
-    var voteDJ3 = document.getElementById("dj3");
-    var voteDJ4 = document.getElementById("dj4");
-    var voteDJ5 = document.getElementById("dj5");
-    var voteDJ6 = document.getElementById("dj6");
-    var voteDJ7 = document.getElementById("dj7");
-    var voteDJ8 = document.getElementById("dj8");
-
-    var count = 0;
-    if(num == 1){
-        return 0;
-    } else if (num == 2) {
-        if (voteDJ1.checked == true) {
-            count = count + 1;
-        }
-    } else if (num == 3) {
-        if (voteDJ1.checked == true) {
-            count = count + 1;
-        }
-        if (voteDJ2.checked == true) {
-            count = count + 1;
-        }
-    } else if (num == 4) {
-        if (voteDJ1.checked == true) {
-            count = count + 1;
-        }
-        if (voteDJ2.checked == true) {
-            count = count + 1;
-        }
-        if (voteDJ3.checked == true) {
-            count = count + 1;
-        }
-    } else if (num == 5) {
-        if (voteDJ1.checked == true) {
-            count = count + 1;
-        }
-        if (voteDJ2.checked == true) {
-            count = count + 1;
-        }
-        if (voteDJ3.checked == true) {
-            count = count + 1;
-        }
-        if (voteDJ4.checked == true) {
-            count = count + 1;
-        }
-    } else if (num == 6) {
-        if (voteDJ1.checked == true) {
-            count = count + 1;
-        }
-        if (voteDJ2.checked == true) {
-            count = count + 1;
-        }
-        if (voteDJ3.checked == true) {
-            count = count + 1;
-        }
-        if (voteDJ4.checked == true) {
-            count = count + 1;
-        }
-        if (voteDJ5.checked == true) {
-            count = count + 1;
-        }
-    } else if (num == 7) {
-        if (voteDJ1.checked == true) {
-            count = count + 1;
-        }
-        if (voteDJ2.checked == true) {
-            count = count + 1;
-        }
-        if (voteDJ3.checked == true) {
-            count = count + 1;
-        }
-        if (voteDJ4.checked == true) {
-            count = count + 1;
-        }
-        if (voteDJ5.checked == true) {
-            count = count + 1;
-        }
-        if (voteDJ6.checked == true) {
-            count = count + 1;
-        }
-    } else if (num == 8) {
-        if (voteDJ1.checked == true) {
-            count = count + 1;
-        }
-        if (voteDJ2.checked == true) {
-            count = count + 1;
-        }
-        if (voteDJ3.checked == true) {
-            count = count + 1;
-        }
-        if (voteDJ4.checked == true) {
-            count = count + 1;
-        }
-        if (voteDJ5.checked == true) {
-            count = count + 1;
-        }
-        if (voteDJ6.checked == true) {
-            count = count + 1;
-        }
-        if (voteDJ7.checked == true) {
-            count = count + 1;
-        }
-    }
-    return count;
-}
-
-/*----- Check number of DJs voted -----*/
-function checkAfter(num) {
-    var voteDJ1 = document.getElementById("dj1");
-    var voteDJ2 = document.getElementById("dj2");
-    var voteDJ3 = document.getElementById("dj3");
-    var voteDJ4 = document.getElementById("dj4");
-    var voteDJ5 = document.getElementById("dj5");
-    var voteDJ6 = document.getElementById("dj6");
-    var voteDJ7 = document.getElementById("dj7");
-    var voteDJ8 = document.getElementById("dj8");
-
-    var count = 0;
-    if (num == 1) {
-        if (voteDJ2.checked == true) {
-            count = count + 1;
-        }
-        if (voteDJ3.checked == true) {
-            count = count + 1;
-        }
-        if (voteDJ4.checked == true) {
-            count = count + 1;
-        }
-        if (voteDJ5.checked == true) {
-            count = count + 1;
-        }
-        if (voteDJ6.checked == true) {
-            count = count + 1;
-        }
-        if (voteDJ7.checked == true) {
-            count = count + 1;
-        }
-        if (voteDJ8.checked == true) {
-            count = count + 1;
-        }
-    } else if (num == 2) {
-        if (voteDJ3.checked == true) {
-            count = count + 1;
-        }
-        if (voteDJ4.checked == true) {
-            count = count + 1;
-        }
-        if (voteDJ5.checked == true) {
-            count = count + 1;
-        }
-        if (voteDJ6.checked == true) {
-            count = count + 1;
-        }
-        if (voteDJ7.checked == true) {
-            count = count + 1;
-        }
-        if (voteDJ8.checked == true) {
-            count = count + 1;
-        }
-    } else if (num == 3) {
-        if (voteDJ4.checked == true) {
-            count = count + 1;
-        }
-        if (voteDJ5.checked == true) {
-            count = count + 1;
-        }
-        if (voteDJ6.checked == true) {
-            count = count + 1;
-        }
-        if (voteDJ7.checked == true) {
-            count = count + 1;
-        }
-        if (voteDJ8.checked == true) {
-            count = count + 1;
-        }
-    } else if (num == 4) {
-        if (voteDJ5.checked == true) {
-            count = count + 1;
-        }
-        if (voteDJ6.checked == true) {
-            count = count + 1;
-        }
-        if (voteDJ7.checked == true) {
-            count = count + 1;
-        }
-        if (voteDJ8.checked == true) {
-            count = count + 1;
-        }
-    } else if (num == 5) {
-        if (voteDJ6.checked == true) {
-            count = count + 1;
-        }
-        if (voteDJ7.checked == true) {
-            count = count + 1;
-        }
-        if (voteDJ8.checked == true) {
-            count = count + 1;
-        }
-    } else if (num == 6) {
-        if (voteDJ7.checked == true) {
-            count = count + 1;
-        }
-        if (voteDJ8.checked == true) {
-            count = count + 1;
-        }
-    } else if (num == 7) {
-        if (voteDJ8.checked == true) {
-            count = count + 1;
-        }
-    } else if (num == 8) {
-        return 0;
-    }
-    return count;
-}
-
 /*----- Confirm Vote -----*/
 function openConfirm() {
     document.getElementById("vote").style.display = "none";
@@ -411,14 +193,6 @@ function openConfirm() {
     if (voteDJ1.checked == true) {
         document.getElementById("votedDJ1_desk").style.display = "";
         document.getElementById("votedDJ1").style.display = "";
-
-        if (checkAfter(1) == 0){
-            document.getElementById("votedDJ1_desk").style.gridColumn = "1 / span 4";
-        } else if (checkAfter(1) == 1){
-            document.getElementById("votedDJ1_desk").style.gridColumn = "1 / span 2";
-        } else {
-            document.getElementById("votedDJ1_desk").style.gridColumn = "";
-        }
 
         var desk = document.getElementById("votedDJ1_desk");
         desk.classList.add("chosen_desk");
@@ -442,18 +216,6 @@ function openConfirm() {
         document.getElementById("votedDJ2_desk").style.display = "";
         document.getElementById("votedDJ2").style.display = "";
 
-        if (checkBefore(2) == 0 && checkAfter(2) == 0) {
-            document.getElementById("votedDJ2_desk").style.gridColumn = "1 / span 4";
-        } else if (checkBefore(2) == 0 && checkAfter(2) == 1) {
-            document.getElementById("votedDJ2_desk").style.gridColumn = "1 / span 2";
-        } else if (checkBefore(2) == 1 && checkAfter(2) == 0) {
-            document.getElementById("votedDJ2_desk").style.gridColumn = "3 / span 2";
-        } else if (checkBefore(2) == 1 && checkAfter(2) == 1) {
-            document.getElementById("votedDJ2_desk").style.gridColumn = "2 / span 2";
-        } else {
-            document.getElementById("votedDJ2_desk").style.gridColumn = "";
-        }
-
         var desk = document.getElementById("votedDJ2_desk");
         desk.classList.add("chosen_desk");
         var mobile = document.getElementById("votedDJ2");
@@ -475,18 +237,6 @@ function openConfirm() {
     if (voteDJ3.checked == true) {
         document.getElementById("votedDJ3_desk").style.display = "";
         document.getElementById("votedDJ3").style.display = "";
-
-        if (checkBefore(3) == 0 && checkAfter(3) == 0) {
-            document.getElementById("votedDJ3_desk").style.gridColumn = "1 / span 4";
-        } else if (checkBefore(3) == 0 && checkAfter(3) == 1) {
-            document.getElementById("votedDJ3_desk").style.gridColumn = "1 / span 2";
-        } else if (checkBefore(3) == 1 && checkAfter(3) == 0) {
-            document.getElementById("votedDJ3_desk").style.gridColumn = "3 / span 2";
-        } else if (checkBefore(3) == 1 && checkAfter(3) == 1) {
-            document.getElementById("votedDJ3_desk").style.gridColumn = "2 / span 2";
-        } else {
-            document.getElementById("votedDJ3_desk").style.gridColumn = "";
-        }
 
         var desk = document.getElementById("votedDJ3_desk");
         desk.classList.add("chosen_desk");
@@ -510,18 +260,6 @@ function openConfirm() {
         document.getElementById("votedDJ4_desk").style.display = "";
         document.getElementById("votedDJ4").style.display = "";
 
-        if (checkBefore(4) == 0 && checkAfter(4) == 0) {
-            document.getElementById("votedDJ4_desk").style.gridColumn = "1 / span 4";
-        } else if (checkBefore(4) == 0 && checkAfter(4) == 1) {
-            document.getElementById("votedDJ4_desk").style.gridColumn = "1 / span 2";
-        } else if (checkBefore(4) == 1 && checkAfter(4) == 0) {
-            document.getElementById("votedDJ4_desk").style.gridColumn = "3 / span 2";
-        } else if (checkBefore(4) == 1 && checkAfter(4) == 1) {
-            document.getElementById("votedDJ4_desk").style.gridColumn = "2 / span 2";
-        } else {
-            document.getElementById("votedDJ4_desk").style.gridColumn = "";
-        }
-
         var desk = document.getElementById("votedDJ4_desk");
         desk.classList.add("chosen_desk");
         var mobile = document.getElementById("votedDJ4");
@@ -543,18 +281,6 @@ function openConfirm() {
     if (voteDJ5.checked == true) {
         document.getElementById("votedDJ5_desk").style.display = "";
         document.getElementById("votedDJ5").style.display = "";
-
-        if ((checkBefore(5) == 0 || checkBefore(5) == 4) && checkAfter(5) == 0) {
-            document.getElementById("votedDJ5_desk").style.gridColumn = "1 / span 4";
-        } else if ((checkBefore(5) == 0 || checkBefore(5) == 4) && checkAfter(5) == 1) {
-            document.getElementById("votedDJ5_desk").style.gridColumn = "1 / span 2";
-        } else if (checkBefore(5) == 1 && checkAfter(5) == 0) {
-            document.getElementById("votedDJ5_desk").style.gridColumn = "3 / span 2";
-        } else if (checkBefore(5) == 1 && checkAfter(5) == 1) {
-            document.getElementById("votedDJ5_desk").style.gridColumn = "2 / span 2";
-        } else {
-            document.getElementById("votedDJ5_desk").style.gridColumn = "";
-        }
 
         var desk = document.getElementById("votedDJ5_desk");
         desk.classList.add("chosen_desk");
@@ -578,18 +304,6 @@ function openConfirm() {
         document.getElementById("votedDJ6_desk").style.display = "";
         document.getElementById("votedDJ6").style.display = "";
 
-        if ((checkBefore(6) == 0 || checkBefore(6) == 4) && checkAfter(6) == 0) {
-            document.getElementById("votedDJ6_desk").style.gridColumn = "2 / span 2";
-        } else if ((checkBefore(6) == 0 || checkBefore(6) == 4) && checkAfter(6) == 1) {
-            document.getElementById("votedDJ6_desk").style.gridColumn = "1 / span 2";
-        } else if ((checkBefore(6) == 1 || checkBefore(6) == 5) && checkAfter(6) == 0) {
-            document.getElementById("votedDJ6_desk").style.gridColumn = "3 / span 2";
-        } else if ((checkBefore(6) == 1 || checkBefore(6) == 5) && checkAfter(6) == 1) {
-            document.getElementById("votedDJ6_desk").style.gridColumn = "2 / span 2";
-        } else {
-            document.getElementById("votedDJ6_desk").style.gridColumn = "";
-        }
-
         var desk = document.getElementById("votedDJ6_desk");
         desk.classList.add("chosen_desk");
         var mobile = document.getElementById("votedDJ6");
@@ -612,18 +326,6 @@ function openConfirm() {
         document.getElementById("votedDJ7_desk").style.display = "";
         document.getElementById("votedDJ7").style.display = "";
 
-        if ((checkBefore(7) == 0 || checkBefore(7) == 4) && checkAfter(7) == 0) {
-            document.getElementById("votedDJ7_desk").style.gridColumn = "2 / span 2";
-        } else if ((checkBefore(7) == 0 || checkBefore(7) == 4) && checkAfter(7) == 1) {
-            document.getElementById("votedDJ7_desk").style.gridColumn = "1 / span 2";
-        } else if ((checkBefore(7) == 1 || checkBefore(7) == 5) && checkAfter(7) == 0) {
-            document.getElementById("votedDJ7_desk").style.gridColumn = "3 / span 2";
-        } else if ((checkBefore(7) == 1 || checkBefore(7) == 5) && checkAfter(7) == 1) {
-            document.getElementById("votedDJ7_desk").style.gridColumn = "2 / span 2";
-        } else {
-            document.getElementById("votedDJ7_desk").style.gridColumn = "";
-        }
-
         var desk = document.getElementById("votedDJ7_desk");
         desk.classList.add("chosen_desk");
         var mobile = document.getElementById("votedDJ7");
@@ -645,14 +347,6 @@ function openConfirm() {
     if (voteDJ8.checked == true) {
         document.getElementById("votedDJ8_desk").style.display = "";
         document.getElementById("votedDJ8").style.display = "";
-
-        if ((checkBefore(8) == 0 || checkBefore(8) == 4)) {
-            document.getElementById("votedDJ8_desk").style.gridColumn = "1 / span 4";
-        } else if ((checkBefore(8) == 1 || checkBefore(8) == 5)) {
-            document.getElementById("votedDJ8_desk").style.gridColumn = "3 / span 2";
-        } else {
-            document.getElementById("votedDJ8_desk").style.gridColumn = "";
-        }
 
         var desk = document.getElementById("votedDJ8_desk");
         desk.classList.add("chosen_desk");
