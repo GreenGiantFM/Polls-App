@@ -41,4 +41,20 @@ app.use('/admin', userRouter)
 app.use('/api', hitlistRouter)
 app.use('/api', djHuntRouter)
 
+if (process.platform === "win32") {
+    var rl = require("readline").createInterface({
+      input: process.stdin,
+      output: process.stdout
+    });
+  
+    rl.on("SIGINT", function () {
+      process.emit("SIGINT");
+    });
+  }
+  
+  process.on("SIGINT", function () {
+    //graceful shutdown
+    process.exit();
+  });
+
 app.listen(PORT, () => console.log(`Live at port ${PORT}`))
