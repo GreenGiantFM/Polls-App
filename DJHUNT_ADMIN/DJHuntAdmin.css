@@ -1,5 +1,14 @@
 * { box-sizing: border-box; }
 
+.addTab-container{
+
+  margin: auto;
+  height: 300px;
+  width: 300px;
+  border: 100;
+  border-color: black;
+}
+
 /*----- Graident Background -----*/
 html {
   min-height: 100%;
@@ -1057,3 +1066,5 @@ html {
 #vote, #djPage-mobile, #djPage-desk {
   animation: fadeEffect 0.25s;
 }
+
+

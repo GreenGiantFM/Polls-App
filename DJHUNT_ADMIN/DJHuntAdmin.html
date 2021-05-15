@@ -12,9 +12,13 @@
         <link rel="stylesheet" href="../assets/fonts/fontawesome5-overrides.min.css">
         <link rel="stylesheet" href="../assets/css/base.css">
         <link rel="icon" href="../assets/img/GGFM/GGFM_ICON.png" type="image/png" />
+        <link rel="stylesheet" href="../DJHUNT/assets/css/dj_hunt_css.css">
+        <link rel="stylesheet" href="../DJHUNT_ADMIN/DJHuntAdmin.css.css">
+        <link rel="stylesheet" href="../DJHUNT_ADMIN/DJHuntAdmin.css">
+        <link rel="stylesheet" href= "../DJHUNT_ADMIN/custom.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script src="DJHuntAdmin.js"></script>
-        <link rel="stylesheet" href="../DJHUNT/assets/css/dj_hunt_css.css">
+        
     </head>
     <body>
         <!-- Header (Menu) -->
@@ -78,8 +82,91 @@
 
         <!-- Voting Tab -->
         <div id="votingTab" class="tabcontent w3-center" style="display: block;">
+            <div class="w3-container tab" style="border: 4px solid black; width: 315px; height: 700px; margin-left:520px; margin-top: 50px;">
             
+                    <div class="uploadplace">
+                    <div class="form-input">
+                      <label for="file-ip-1">Upload Image 315 x 300</label>
+                      <input type="file" id="file-ip-1" accept="image/*" onchange="showPreview(event);">
+                      <div class="preview">
+                        <img id="file-ip-1-preview">
+                      </div>
+                    </div>
+                    </div>
+                    <input type="button" id="voteSubmit" onclick="openConfirm()" value="VOTE" disabled>
+                </div>
+        
+               
+                  
+            
+
+            
+
+        
+            <div class="w3-container tab" style="border: 0px solid black; width: 500px; margin-left: 850px; margin-top: -700px;">
+                
+                <br>
+                <form action="#">
+
+                <label for="username"><b>DJ Name&nbsp;</b></label>
+                <input type="text" id="username" name="username" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 10px;">
+            
+                    <br><br>
+    
+                <label for="username"><b>Actual Name&nbsp;</b></label>
+                <input type="text" id="username" name="username" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 35px;">
+                
+                <br><br>
+                        
+                <label for="username"><b>Tagline&nbsp;</b></label>
+                <input type="text" id="username" name="username" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 0px;">
+                    
+                <br><br>
+
+                <label for="username"><b>Stinger File&nbsp;</b></label>
+                <input type="text" id="username" name="username" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 25px;">
+                        
+                <br><br>
+
+                <label for="username"><b>FB Profile Link&nbsp;</b></label>
+                <input type="text" id="username" name="username" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 45px;">
+            
+                <br><br>
+
+                <label for="username"><b>IG Profile Link&nbsp;</b></label>
+                <input type="text" id="username" name="username" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 45px;">
+                
+                <br><br>
+
+                <label for="username"><b>Twitter Link&nbsp;</b></label>
+                <input type="text" id="username" name="username" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 25px;">
+                    
+                <br><br>
+
+                <label for="username"><b>Video Link&nbsp;</b></label>
+                <input type="text" id="username" name="username" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 25px;">
+            
+                <br><br>
+
+                <label for="username"><b>Spotify Link&nbsp;</b></label>
+                <input type="text" id="username" name="username" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 25px;">
+            
+                <br><br>
+                
+    
+                  
+            </div>
+
+
+        
         </div>
+            
+            
+                
+            
+            
+      
+    
 
         <!-- Live Polls -->
         <div id="live" class="tabcontent">
