@@ -980,12 +980,12 @@ html {
 }
 
 /*----- Vote Checkbox Style -----*/
-.round {
+.round-check {
   position: absolute;
   bottom: 5px;
   left: 5px;
 }
-.round label {
+.round-check label {
   background-color: #fff;
   border: 2px solid rgb(25, 148, 0);
   border-radius: 50%;
@@ -993,10 +993,10 @@ html {
   height: 20px;
   left: 0;
   position: absolute;
-  top: 0;
+  top: -20px;
   width: 20px;
 }
-.round label:after {
+.round-check label:after {
   border: 2px solid #fff;
   border-top: none;
   border-right: none;
@@ -1009,14 +1009,14 @@ html {
   transform: rotate(-45deg);
   width: 12px;
 }
-.round input[type="checkbox"] {
+.round-check input[type="checkbox"] {
   visibility: hidden;
 }
-.round input[type="checkbox"]:checked + label {
+.round-check input[type="checkbox"]:checked + label {
   background-color: #66bb6a;
   border-color: #66bb6a;
 }
-.round input[type="checkbox"]:checked + label:after {
+.round-check input[type="checkbox"]:checked + label:after {
   opacity: 1;
 }
 
@@ -1054,4 +1054,8 @@ html {
 /*----- Animation -----*/
 #vote, #djPage-mobile, #djPage-desk {
   animation: fadeEffect 0.25s;
+}
+
+#menu-footer > li > a{
+  color: #569429;
 }
