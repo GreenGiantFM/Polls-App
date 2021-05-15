@@ -30,11 +30,11 @@
                 <li>
                     <div id="drop-menu" class="upperLink" onmouseover="openDrop()" onmouseout="closeDrop()">
                         <p id="drop-polls" style="margin: 0px;">Live Polls</p>
-                        <div id="drop-inner-div" class="dropdown-content">
+                        <div id="drop-inner-div" class="dropdown-content-nav">
                             <ul id="drop-list">
-                                <li><a href="/HITLIST_POLL/main.html" class="pollsDrop"><i
+                                <li><a href="/" class="pollsDrop"><i
                                             class="fas fa-music"></i>&ensp;Hitlist</a></li>
-                                <li><a href="/DJHUNT/djhunt.html" class="pollsDrop"><i class="fas fa-binoculars"></i>&ensp;DJ
+                                <li><a href="/dj-hunt" class="pollsDrop"><i class="fas fa-binoculars"></i>&ensp;DJ
                                         Hunt</a></li>
                             </ul>
                         </div>
@@ -42,81 +42,84 @@
                 </li>
                 <li><a href="#" class="upperLink">Stream</a></li>
                 <li>
-                    <input type="text" placeholder="Search..." name="search" id="searchbar">
-                    <a href="#" id="searchbtn"><i class="fa fa-search" aria-hidden="true" id="searchIcon"></i></a>
+                    
                 </li>
             </ul>
         </header>
 
-        <!-- Tab Contents -->
-        <div class="w3-container tab">
-            <h1 id="page_title" style="font-weight: bolder; color: #569429"><i class="fas fa-music"></i>&ensp;The Hitlist</h1>
-            <p id="vote_details" style="color: #000000;">
-                Voting Lines Close by <em id="hitlist-date"></em> | <em id="hitlist_time"></em>
-            </p>
-            <button id="voteTab" class="active" onclick="openTab(event, 'Vote')">Vote</button>
-            <button id="liveTab" class="inactive" onclick="openTab(event, 'Live')">Live Polls</button>
-        </div>
+        <div id="wrapper" style="min-height;: 100vh">
 
-        <!-- Menu -->
-        <div id="sideMenu" class="sidenav">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&#9776;&emsp;<em>Menu</em></a>
-            <a href="#" class="sideLink">Home</a>
-            <a href="#" class="sideLink">About Us</a>
-            <a href="#" class="sideLink">Radio Talents</a>
-            <a href="#" class="sideLink">Events</a>
-            <a href="#" class="sideLink">Blogs</a>
-            <a href="#" class="sideLink">Contact Us</a>
-            <a href="#" class="sideLink">Stream</a>
-            <span class="sideLink">Live Polls</span>
-            <a href="/HITLIST_POLL/main.html" class="pollLink"><i class="fas fa-music"></i>&ensp;Hitlist</a>
-            <a href="/DJHUNT/djhunt.html" class="pollLink"><i class="fas fa-binoculars"></i>&ensp;DJ Hunt</a>
-        </div>
-
-        <!-- Menu Button -->
-        <span id="sideMenuBtn" onclick="openNav()">&#9776;</span>
-
-        <!-- Voting Tab -->
-        <div id="vote" class="tabcontent w3-center" style="display: block;">
-            <div id="hitlist_end" style="display: none;">
-                <div id="hitlist-outer-div">
-                    <div id="hitlist-inner-div">
-                        <h1 id="hitlist-end-message">VOTING PERIOD HAS ENDED</h1>
-                        <button id="goToPolls">Go to Polls</button>
+            <!-- Tab Contents -->
+            <div class="w3-container tab">
+                <h1 id="page_title" style="font-weight: bolder; color: #569429"><i class="fas fa-music"></i>&ensp;The Hitlist</h1>
+                <p id="vote_details" style="color: #000000;">
+                    Voting Lines Close by <em id="hitlist-date"></em> | <em id="hitlist_time"></em>
+                </p>
+                <button id="voteTab" class="active" onclick="openTab(event, 'Vote')">Vote</button>
+                <button id="liveTab" class="inactive" onclick="openTab(event, 'Live')">Live Polls</button>
+            </div>
+    
+            <!-- Menu -->
+            <div id="sideMenu" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&#9776;&emsp;<em>Menu</em></a>
+                <a href="#" class="sideLink">Home</a>
+                <a href="#" class="sideLink">About Us</a>
+                <a href="#" class="sideLink">Radio Talents</a>
+                <a href="#" class="sideLink">Events</a>
+                <a href="#" class="sideLink">Blogs</a>
+                <a href="#" class="sideLink">Contact Us</a>
+                <a href="#" class="sideLink">Stream</a>
+                <span class="sideLink">Live Polls</span>
+                <a href="/HITLIST_POLL/main.html" class="pollLink"><i class="fas fa-music"></i>&ensp;Hitlist</a>
+                <a href="/DJHUNT/djhunt.html" class="pollLink"><i class="fas fa-binoculars"></i>&ensp;DJ Hunt</a>
+            </div>
+    
+            <!-- Menu Button -->
+            <span id="sideMenuBtn" onclick="openNav()">&#9776;</span>
+    
+            <!-- Voting Tab -->
+            <div id="vote" class="tabcontent w3-center" style="display: block;">
+                <div id="hitlist_end" style="display: none;">
+                    <div id="hitlist-outer-div">
+                        <div id="hitlist-inner-div">
+                            <h1 id="hitlist-end-message">VOTING PERIOD HAS ENDED</h1>
+                            <button id="goToPolls">Go to Polls</button>
+                        </div>
                     </div>
                 </div>
+                <form action="#">
+                    <div class="grid-container" id="grid-container-voting-tab">
+                        
+                        <br>
+                        <br>
+                    </div>
+                    <input type="button" id="voteSubmit" onclick="openConfirm()" value="VOTE" disabled>
+                    <!-- Voting Tab Overlay -->
+                    <div id="overlay">
+                        <div id="confirmation" class="overlayItems">
+                            <h1 id="confirm_text">CONFIRM VOTE</h1>
+                            <input type="button" id="confirmVote" onclick="submitVote()" style="margin-right:5px;" value="Yes">
+                            <input type="button" id="cancelVote" onclick="closeConfirm()" style="margin-left:5px;"
+                                value="Cancel">
+                        </div>
+                        <div id="voteConfirmed" class="overlayItems">
+                            <h1 id="submit_text">VOTE CONFIRMED</h1>
+                            <input type="button" id="doneVote" onclick="closeConfirm()" value="DONE">
+                        </div>
+                    </div>
+                </form>
             </div>
-            <form action="#">
-                <div class="grid-container" id="grid-container-voting-tab">
+    
+            <!-- Live Polls -->
+            <div id="live" class="tabcontent">
+                <div class="grid-container" id="grid-container-live-tab">
                     
                     <br>
                     <br>
                 </div>
-                <input type="button" id="voteSubmit" onclick="openConfirm()" value="VOTE" disabled>
-                <!-- Voting Tab Overlay -->
-                <div id="overlay">
-                    <div id="confirmation" class="overlayItems">
-                        <h1 id="confirm_text">CONFIRM VOTE</h1>
-                        <input type="button" id="confirmVote" onclick="submitVote()" style="margin-right:5px;" value="Yes">
-                        <input type="button" id="cancelVote" onclick="closeConfirm()" style="margin-left:5px;"
-                            value="Cancel">
-                    </div>
-                    <div id="voteConfirmed" class="overlayItems">
-                        <h1 id="submit_text">VOTE CONFIRMED</h1>
-                        <input type="button" id="doneVote" onclick="closeConfirm()" value="DONE">
-                    </div>
-                </div>
-            </form>
-        </div>
-
-        <!-- Live Polls -->
-        <div id="live" class="tabcontent">
-            <div class="grid-container" id="grid-container-live-tab">
-                
-                <br>
-                <br>
             </div>
         </div>
+
 
         <div style="background-color: black;">
             <br>
@@ -180,13 +183,16 @@
                     </div>
       
                 </div>
-      
+    
                 <div class="row">
                     <div class="col s12 m6">
                         <hr style="color: white">
-                        <span class="white-text">Green Giant FM </span> <span class="white-text text-darken-2">- Br. Bloemen Hall, De La Salle University,
-                            2401 Taft Ave, Malate,
-                            Manila, 1004 Metro Manila</span>
+                        <p class="white-text text-darken-2">
+    
+                            <a style="color: #569429;">Green Giant FM </a> - Br. Bloemen Hall, De La Salle University,
+                                2401 Taft Ave, Malate,
+                                Manila, 1004 Metro Manila
+                        </p>
                     </div>
                 </div>
       

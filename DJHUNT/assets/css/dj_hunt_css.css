@@ -201,7 +201,7 @@ html {
     text-decoration: none;
     border: none;
   }
-  #exitDJPage-desk:hover {
+  #menu-footer > li > a, #exitDJPage-desk:hover {
     color: #569429;
   }
 
@@ -1056,6 +1056,3 @@ html {
   animation: fadeEffect 0.25s;
 }
 
-#menu-footer > li > a{
-  color: #569429;
-}
