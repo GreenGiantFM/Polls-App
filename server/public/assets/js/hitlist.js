@@ -16,8 +16,16 @@ $(document).ready(() => {
         success: data => {
             hitlist = data.data[0];
             // set dates
-            const closing = document.getElementById('vote_time')
-            closing.innerText = `Voting Lines Close by: ${new Date(hitlist.end_date).toDateString()}`
+            const closing = document.getElementById('hitlist-date')
+
+            const formattedDate = new Date(hitlist.end_date)
+            .toLocaleDateString({},
+            {timeZone:"UTC",month:"long", day:"2-digit", year:"numeric"}
+            )
+            const sp = formattedDate.split(' ')
+            closing.innerText = `${sp[0]} ${sp[1]} ${sp[2]}`
+
+            setCountdown()
             
             // get total overall for the percentage
             let totalVotes = 0
@@ -361,6 +369,7 @@ function closeConfirm() {
     document.getElementById("overlay").style.display = "none";
     document.getElementById("voteConfirmed").style.display = "none";
     document.getElementById("confirmation").style.display = "none";
+    window.location.reload(true)
 }
 
 /*----- Open selected Tab -----*/
@@ -389,3 +398,75 @@ function openTab(evt, tabName) {
         evt.currentTarget.className += " active";
     }
 }
+
+/*----- Countdown Timer -----*/
+/* June 1, 2021 20:30:00 */
+/* April 20, 2021 11:11:00 */
+function setCountdown() {
+    var votingPeriod = new Date(hitlist.end_date).getTime();
+    var timer = setInterval(function () {
+    
+        var now = new Date().getTime();
+        var distance = votingPeriod - now;
+    
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var final_days;
+        if (days < 10) {
+            final_days = "0" + days;
+        } else {
+            final_days = days;
+        }
+    
+        var hrs = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var final_hrs;
+        if (hrs < 10) {
+            final_hrs = "0" + hrs;
+        } else {
+            final_hrs = hrs;
+        }
+    
+        var mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var final_mins;
+        if (mins < 10) {
+            final_mins = "0" + mins;
+        } else {
+            final_mins = mins;
+        }
+    
+        var secs = Math.floor((distance % (1000 * 60)) / 1000);
+        var final_secs;
+        if (secs < 10) {
+            final_secs = "0" + secs;
+        } else {
+            final_secs = secs;
+        }
+    
+        document.getElementById("hitlist_time").innerHTML = final_days + ":" + final_hrs + ":" + final_mins + ":" + final_secs;
+    
+        if ((days == 0 && hrs == 0 && mins == 0 && secs == 0) || distance < 0) {
+            clearInterval(timer);
+            document.getElementById("hitlist_time").innerHTML = "00:00:00:00";
+            document.getElementById("hitlist_time").style.color = "#ff0000";
+            document.getElementById("hitlist_end").style.display = "flex";
+        } else {
+            document.getElementById("hitlist_end").style.display = "none";
+        }
+    }, 1000);
+}
+
+/*----- Vote Ended Message -----*/
+$(window).on('scroll', function () {
+    var scrollTop = $(window).scrollTop();
+    if (scrollTop > 25) {
+        $('#hitlist_end').stop().animate({ top: "0" }, 25);
+    }
+    else {
+        if (window.innerWidth >= 1024) {
+            $('#hitlist_end').stop().animate({ top: "350px" }, 100);
+        } else if (window.innerWidth >= 350 && window.innerWidth <= 1023) {
+            $('#hitlist_end').stop().animate({ top: "175px" }, 100);
+        } else if (window.innerWidth <= 349) {
+            $('#hitlist_end').stop().animate({ top: "140px" }, 100);
+        }
+    }
+});

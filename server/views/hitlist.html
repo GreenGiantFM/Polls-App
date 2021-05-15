@@ -8,43 +8,52 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" integrity="sha256-OweaP/Ic6rsV+lysfyS4h+LM6sRwuO3euTYfr6M124g=" crossorigin="anonymous">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-        <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
-        <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
-        <link rel="stylesheet" href="assets/fonts/line-awesome.min.css">
-        <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <link rel="stylesheet" href="assets/css/hitlist.css">
+        <link rel="stylesheet" href="/assets/fonts/fontawesome-all.min.css">
+        <link rel="stylesheet" href="/assets/fonts/font-awesome.min.css">
+        <link rel="stylesheet" href="/assets/fonts/line-awesome.min.css">
+        <link rel="stylesheet" href="/assets/fonts/fontawesome5-overrides.min.css">
+        <link rel="stylesheet" href="/assets/css/base.css">
+        <link rel="stylesheet" href="/assets/css/hitlist.css">
+        <link rel="icon" href="/assets/img/GGFM/GGFM_ICON.png" type="image/png" />
     </head>
-    <body style="font-family: Raleway;">
+    <body>
         <!-- Header (Menu) -->
-        <header id="upper" class="w3-container" style="background-color: black;">
-            <div class="upperGrid">
-                <div class="grid-item-upper-image">
-                    <img src="assets\img\GGFM_LOGO.png" alt='Green Giant FM' style="width:175px;">
-                </div>
-                <div class="grid-item-upper-link">
-                    <a href="#" class="upperLink">Home</a>
-                    <a href="#" class="upperLink">About Us</a>
-                    <a href="#" class="upperLink">Radio Talents</a>
-                    <a href="#" class="upperLink">Events</a>
-                    <a href="#" class="upperLink">Blogs</a>
-                    <a href="#" class="upperLink">Contact Us</a>
-                    <a href="#" class="upperLink">Live Polls</a>
-                    <a href="#" class="upperLink">Stream</a>
-                </div>
-                <div class="grid-item-upper-link">
-                    <form action="#">
-                        <input type="text" placeholder="Search..." name="search" id="searchbar">
-                        <button type="submit" id="searchbtn"><i class="fa fa-search" aria-hidden="true" id="searchIcon"></i></button>
-                    </form>
-                </div>
-            </div>
+        <header id="upper" style="background-color: black;">
+            <ul class="upper-link">
+                <li><img src="/assets/img/GGFM/GGFM_LOGO.png" alt='Green Giant FM' style="width:175px;"></li>
+                <li><a href="#" class="upperLink">Home</a></li>
+                <li><a href="#" class="upperLink">About Us</a></li>
+                <li><a href="#" class="upperLink">Radio Talents</a></li>
+                <li><a href="#" class="upperLink">Events</a></li>
+                <li><a href="#" class="upperLink">Blogs</a></li>
+                <li><a href="#" class="upperLink">Contact Us</a></li>
+                <li>
+                    <div id="drop-menu" class="upperLink" onmouseover="openDrop()" onmouseout="closeDrop()">
+                        <p id="drop-polls" style="margin: 0px;">Live Polls</p>
+                        <div id="drop-inner-div" class="dropdown-content">
+                            <ul id="drop-list">
+                                <li><a href="/HITLIST_POLL/main.html" class="pollsDrop"><i
+                                            class="fas fa-music"></i>&ensp;Hitlist</a></li>
+                                <li><a href="/DJHUNT/djhunt.html" class="pollsDrop"><i class="fas fa-binoculars"></i>&ensp;DJ
+                                        Hunt</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="#" class="upperLink">Stream</a></li>
+                <li>
+                    <input type="text" placeholder="Search..." name="search" id="searchbar">
+                    <a href="#" id="searchbtn"><i class="fa fa-search" aria-hidden="true" id="searchIcon"></i></a>
+                </li>
+            </ul>
         </header>
 
         <!-- Tab Contents -->
-        <div class="w3-container tab" style="text-align: center;">
+        <div class="w3-container tab">
             <h1 id="page_title" style="font-weight: bolder; color: #569429"><i class="fas fa-music"></i>&ensp;The Hitlist</h1>
-            <p id="vote_time" style="color: #000000">Voting Lines Close by June 1, 2021 8:30PM</p>
+            <p id="vote_details" style="color: #000000;">
+                Voting Lines Close by <em id="hitlist-date"></em> | <em id="hitlist_time"></em>
+            </p>
             <button id="voteTab" class="active" onclick="openTab(event, 'Vote')">Vote</button>
             <button id="liveTab" class="inactive" onclick="openTab(event, 'Live')">Live Polls</button>
         </div>
@@ -60,8 +69,8 @@
             <a href="#" class="sideLink">Contact Us</a>
             <a href="#" class="sideLink">Stream</a>
             <span class="sideLink">Live Polls</span>
-            <a href="#" class="pollLink"><i class="fas fa-music"></i>&ensp;Hitlist</a>
-            <a href="#" class="pollLink"><i class="fas fa-binoculars"></i>&ensp;DJ Hunt</a>
+            <a href="/HITLIST_POLL/main.html" class="pollLink"><i class="fas fa-music"></i>&ensp;Hitlist</a>
+            <a href="/DJHUNT/djhunt.html" class="pollLink"><i class="fas fa-binoculars"></i>&ensp;DJ Hunt</a>
         </div>
 
         <!-- Menu Button -->
@@ -69,7 +78,15 @@
 
         <!-- Voting Tab -->
         <div id="vote" class="tabcontent w3-center" style="display: block;">
-            <form action="/hitlist" id="hitlist-form">
+            <div id="hitlist_end" style="display: none;">
+                <div id="hitlist-outer-div">
+                    <div id="hitlist-inner-div">
+                        <h1 id="hitlist-end-message">VOTING PERIOD HAS ENDED</h1>
+                        <button id="goToPolls">Go to Polls</button>
+                    </div>
+                </div>
+            </div>
+            <form action="#">
                 <div class="grid-container" id="grid-container-voting-tab">
                     
                     <br>
@@ -81,11 +98,12 @@
                     <div id="confirmation" class="overlayItems">
                         <h1 id="confirm_text">CONFIRM VOTE</h1>
                         <input type="button" id="confirmVote" onclick="submitVote()" style="margin-right:5px;" value="Yes">
-                        <input type="button" id="cancelVote" onclick="closeConfirm()" style="margin-left:5px;" value="Cancel">
+                        <input type="button" id="cancelVote" onclick="closeConfirm()" style="margin-left:5px;"
+                            value="Cancel">
                     </div>
                     <div id="voteConfirmed" class="overlayItems">
                         <h1 id="submit_text">VOTE CONFIRMED</h1>
-                        <input type="submit" id="doneVote" onclick="closeConfirm()" value="DONE">
+                        <input type="button" id="doneVote" onclick="closeConfirm()" value="DONE">
                     </div>
                 </div>
             </form>
@@ -99,7 +117,6 @@
                 <br>
             </div>
         </div>
-
 
         <div style="background-color: black;">
             <br>
@@ -183,7 +200,8 @@
         
       
         <div class="sidenav-overlay"></div><div class="drag-target"></div>
-    <script src="assets/js/hitlist.js">
-    </script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="/assets/js/polls_js.js"></script>
+        <script src="/assets/js/hitlist.js"></script>
     </body>
 </html>

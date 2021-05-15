@@ -877,7 +877,9 @@
             #voteSubmit:hover,
             #doneVote:hover,
             #confirmVote:hover,
-            #cancelVote:hover {
+            #cancelVote:hover,
+            #doneDate,
+            #remove {
                 box-shadow: 0 10px 14px 0 rgba(0, 0, 0, 0.24), 0 15px 48px 0 rgba(0, 0, 0, 0.19);
             }
         
@@ -885,7 +887,9 @@
             #voteSubmit:focus,
             #doneVote:focus,
             #confirmVote:focus,
-            #cancelVote:focus {
+            #cancelVote:focus,
+            #doneDate,
+            #remove {
                 outline: none;
             }
         
@@ -945,4 +949,34 @@
             @keyframes fadeEffect {
                 from {opacity: 0;}
                 to {opacity: 1;}
+            }
+            #doneDate {
+                background-color: #569429;
+                color: #ffffff;
+                border: none;
+                border-radius: 8px;
+                width: 200px;
+                height: 40px;
+                font-size: x-large;
+                font-weight: bolder;
+                letter-spacing: 2px;
+                margin-top:20px;
+                margin-left:650px;
+            }
+            #doneDate{
+                box-shadow: 0 10px 14px 0 rgba(0, 0, 0, 0.24), 0 15px 48px 0 rgba(0, 0, 0, 0.19);
+            }
+            #remove {
+                background-color: #569429;
+                color: #ffffff;
+                border: none;
+                border-radius: 8px;
+                width: 350px;
+                height: 50px;
+                font-size: 30px;
+                font-weight: bolder;
+                letter-spacing: 2px;
+            }
+            .date-container{
+                margin-left:500px;
             }

@@ -45,8 +45,6 @@ html {
   .grid-item-dj {
     position: relative;
     overflow: hidden;
-    width: 190px;
-    height: 190px;
   }
 
   /*----- DJ Photo (Voting / Live) -----*/

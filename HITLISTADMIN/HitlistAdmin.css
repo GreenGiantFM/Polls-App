@@ -91,15 +91,7 @@
             }
 
             /*----- Upper Menu Links -----*/
-            .upperLink{
-                float: left;
-                text-align: center;
-                text-decoration:none;
-                font-weight: bolder;
-                font-size: 12px;
-                color: white;
-                width: 80px;
-            }
+            
 
             /*----- Upper Menu hover over links -----*/
             #upper a:hover, #searchIcon:hover {
@@ -211,6 +203,11 @@
                     align-items: left;
                     justify-content: left;
                     padding: 10px;
+                    
+                }
+                .date-container{
+                    margin-left:500px;
+                    margin-top:50px;
                 }
 
                 /*----- Items in Vote / Live Tab Grid Container -----*/
@@ -877,6 +874,7 @@
             #voteSubmit:hover,
             #doneVote:hover,
             #confirmVote:hover,
+            #doneDate:hover,
             #cancelVote:hover {
                 box-shadow: 0 10px 14px 0 rgba(0, 0, 0, 0.24), 0 15px 48px 0 rgba(0, 0, 0, 0.19);
             }
@@ -885,6 +883,7 @@
             #voteSubmit:focus,
             #doneVote:focus,
             #confirmVote:focus,
+            #doneDate:hover,
             #cancelVote:focus {
                 outline: none;
             }
@@ -945,4 +944,18 @@
             @keyframes fadeEffect {
                 from {opacity: 0;}
                 to {opacity: 1;}
+            }
+
+            #doneDate {
+                background-color: #569429;
+                color: #ffffff;
+                border: none;
+                border-radius: 8px;
+                width: 200px;
+                height: 40px;
+                font-size: x-large;
+                font-weight: bolder;
+                letter-spacing: 2px;
+                margin-top:20px;
+                margin-left:650px;
             }
