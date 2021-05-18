@@ -27,7 +27,7 @@ function openTab(evt, tabName) {
 }
 
 /*----- Open DJ Page -----*/
-function openDJPage(djNum){
+function openDJPage(djNum) {
     document.getElementById('djPage-mobile').style.display = "";
     document.getElementById('djPage-desk').style.display = "";
 
@@ -36,7 +36,7 @@ function openDJPage(djNum){
     var desk = document.getElementById("djPage-desk");
     desk.classList.add("chosen-DJPage-desk");
 
-    if (djNum == 1){
+    if (djNum == 1) {
         document.getElementById('dj-image-mobile').src = "assets/img/DJs/d1.jpg";
         document.getElementById('dj-image-desk').src = "assets/img/DJs/d1.jpg";
         document.getElementById('djName-mobile').innerHTML = "DJ Cora";
@@ -186,7 +186,7 @@ function checkBefore(num) {
     var voteDJ8 = document.getElementById("dj8");
 
     var count = 0;
-    if(num == 1){
+    if (num == 1) {
         return 0;
     } else if (num == 2) {
         if (voteDJ1.checked == true) {
@@ -392,12 +392,22 @@ function checkAfter(num) {
     return count;
 }
 
+/*----- Sign In To Google -----*/
+function signIn() {
+    document.getElementById("vote").style.display = "none";
+    document.getElementById("djvote").style.display = "none";
+    document.getElementById("confirmation").style.display = "none";
+    document.getElementById("huntSubmit").type = "hidden";
+    document.getElementById("djSignIn").style.display = "block";
+}
+
 /*----- Confirm Vote -----*/
 function openConfirm() {
     document.getElementById("vote").style.display = "none";
     document.getElementById("djvote").style.display = "block";
     document.getElementById("confirmation").style.display = "block";
     document.getElementById("huntSubmit").type = "hidden";
+    document.getElementById("djSignIn").style.display = "none";
 
     var voteDJ1 = document.getElementById("dj1");
     var voteDJ2 = document.getElementById("dj2");
@@ -412,9 +422,9 @@ function openConfirm() {
         document.getElementById("votedDJ1_desk").style.display = "";
         document.getElementById("votedDJ1").style.display = "";
 
-        if (checkAfter(1) == 0){
+        if (checkAfter(1) == 0) {
             document.getElementById("votedDJ1_desk").style.gridColumn = "1 / span 4";
-        } else if (checkAfter(1) == 1){
+        } else if (checkAfter(1) == 1) {
             document.getElementById("votedDJ1_desk").style.gridColumn = "1 / span 2";
         } else {
             document.getElementById("votedDJ1_desk").style.gridColumn = "";
@@ -429,7 +439,7 @@ function openConfirm() {
         document.getElementById("votedDJ1").style.display = "none";
 
         var desk = document.getElementById("votedDJ1_desk");
-        if (desk.classList.contains("chosen_desk")){
+        if (desk.classList.contains("chosen_desk")) {
             desk.classList.remove("chosen_desk");
         }
         var mobile = document.getElementById("votedDJ1");
@@ -671,6 +681,16 @@ function openConfirm() {
             mobile.classList.remove("chosen_mobile");
         }
     }
+
+    var elementsA = document.querySelectorAll(".grid-item-dj");
+    for (let i = 0; i < elementsA.length; i++) {
+        elementsA[i].style.cursor = "default";
+    }
+
+    var elementsB = document.querySelectorAll(".grid-item-DJ-desk-photo");
+    for (let i = 0; i < elementsB.length; i++) {
+        elementsB[i].style.cursor = "default";
+    }
 }
 
 /*----- Enable / Disable vote Button -----*/
@@ -696,7 +716,7 @@ function huntButton() {
 }
 
 /*----- Submit Vote -----*/
-function submitVote(){
+function submitVote() {
     document.getElementById("vote").style.display = "none";
     document.getElementById("djvote").style.display = "none";
     document.getElementById("confirmation").style.display = "none";
@@ -723,7 +743,18 @@ function cancelVote() {
     document.getElementById("confirmation").style.display = "none";
     document.getElementById("vote").style.display = "grid";
     document.getElementById("huntSubmit").type = "button";
+    document.getElementById("djSignIn").style.display = "none";
     document.body.style.background = '#ffffff';
+
+    var elementsA = document.querySelectorAll(".grid-item-dj");
+    for (let i = 0; i < elementsA.length; i++) {
+        elementsA[i].style.cursor = "pointer";
+    }
+
+    var elementsB = document.querySelectorAll(".grid-item-DJ-desk-photo");
+    for (let i = 0; i < elementsB.length; i++) {
+        elementsB[i].style.cursor = "pointer";
+    }
 }
 
 /*----- Close Overlay -----*/
@@ -738,11 +769,21 @@ function closeConfirm() {
     document.getElementById("huntSubmit").disabled = true;
     document.getElementById("huntSubmit").style.cursor = "not-allowed";
     document.body.style.background = '#ffffff';
+
+    var elementsA = document.querySelectorAll(".grid-item-dj");
+    for (let i = 0; i < elementsA.length; i++) {
+        elementsA[i].style.cursor = "pointer";
+    }
+
+    var elementsB = document.querySelectorAll(".grid-item-DJ-desk-photo");
+    for (let i = 0; i < elementsB.length; i++) {
+        elementsB[i].style.cursor = "pointer";
+    }
 }
 
 /*----- Countdown Timer -----*/
 /* June 1, 2021 20:30:00 */
-/* April 20, 2021 11:11:00 */
+/* May 18, 2021 11:00:00 */
 var votingPeriod = new Date("June 1, 2021 20:30:00").getTime();
 var timer = setInterval(function () {
 
@@ -800,12 +841,14 @@ $(window).on('scroll', function () {
         $('#hunt_end').stop().animate({ top: "0" }, 25);
     }
     else {
-        if (window.innerWidth >= 1024){
-            $('#hunt_end').stop().animate({ top: "350px" }, 100);
+        if (window.innerWidth >= 1024) {
+            $('#hunt_end').stop().animate({ top: "315px" }, 100);
         } else if (window.innerWidth >= 350 && window.innerWidth <= 1023) {
             $('#hunt_end').stop().animate({ top: "175px" }, 100);
-        } else if (window.innerWidth <= 349) {
+        } else if (window.innerWidth >= 250 && window.innerWidth <= 349) {
             $('#hunt_end').stop().animate({ top: "140px" }, 100);
+        } else if (window.innerWidth <= 249) {
+            $('#hunt_end').stop().animate({ top: "175px" }, 100);
         }
     }
 });

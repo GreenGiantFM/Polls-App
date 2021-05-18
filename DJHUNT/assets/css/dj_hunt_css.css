@@ -11,6 +11,7 @@ html {
   background-color: linear-gradient(to bottom, #f1faeb, #569429);
 }
 
+/*----- Live Tab -----*/
 #live {
   align-items: center;
   justify-content: center;
@@ -108,7 +109,9 @@ html {
   }
 
   /*----- Voting buttons -----*/
-  #huntSubmit, #huntConfirm, #huntCancel, .huntBack {
+  #huntSubmit, #huntConfirm,
+  #huntCancel, .huntBack,
+  #signInButton, #cancelSignIn {
     color: #ffffff;
     border: none;
     outline: none;
@@ -119,15 +122,25 @@ html {
     font-weight: bolder;
     letter-spacing: 2px;
   }
-  #huntConfirm {
+  #huntConfirm, #signInButton {
     margin-right: 20px;
   }
-  #huntCancel {
+  #huntCancel, #cancelSignIn {
     margin-left: 20px;
   }
   .huntBack {
     margin-top: 5px;
     margin-bottom: 20px;
+  }
+  #signInButton, #cancelSignIn {
+    margin-top: 50px;
+  }
+
+  /*----- Sign In Message -----*/
+  #signIn-msg {
+    color: #569429;
+    font-size: 50px;
+    font-weight: bolder;
   }
 
   /*----- Main Grid Container (Submitted) -----*/
@@ -275,152 +288,133 @@ html {
     color: #000000;
     text-align: left;
   }
-
-  .live-desktop {
+  
+  /*----- Main Grid Container for Live Polls -----*/
+  .chart-desk {
+    display: grid;
+    grid-template-columns: repeat(8, auto);
+    grid-template-rows: repeat(112, auto);
+    grid-column-gap: 25px;
+    height: 275px;
+    width: 800px;
+    padding: 5px 10px;
+  }
+  .chart-mobile {
     display: none;
   }
 
-  .chart {
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: repeat(101, 1fr);
-    grid-column-gap: 25px;
-    height: 45vh;
-    width: 70vw;
-    padding: 5px 10px;
-  }
-
+  /*----- Bar -----*/
   [class*="bar"] {
-    grid-row-end: 101;
+    grid-row-end: 111;
     background-color: #569429;
   }
+  .bar-1-num, .bar-2-num,
+  .bar-3-num, .bar-4-num,
+  .bar-5-num, .bar-6-num,
+  .bar-7-num, .bar-8-num {
+    grid-row: 111 / 112;
+    border-radius: 0px 0px 5px 5px;
+    box-shadow: 1px 1px 5px #838383;
+  }
 
+  /*----- Bar #1 -----*/
   .bar-1-top {
     grid-row: 1 / 80;
     border-radius: 5px 5px 0px 0px;
     background-color: #f0f0f0;
   }
   .bar-1-bottom {
-    grid-row: 80 / 101;
-    box-shadow: 1px 1px 5px #838383;
-  }
-  .bar-1-num {
-    grid-row: 101 / 102;
-    border-radius: 0px 0px 5px 5px;
+    grid-row: 80 / 111;
     box-shadow: 1px 1px 5px #838383;
   }
 
+  /*----- Bar #2 -----*/
   .bar-2-top {
     grid-row: 1 / 82;
     border-radius: 5px 5px 0px 0px;
     background-color: #f0f0f0;
   }
   .bar-2-bottom {
-    grid-row: 82 / 101;
-    box-shadow: 1px 1px 5px #838383;
-  }
-  .bar-2-num {
-    grid-row: 101 / 102;
-    border-radius: 0px 0px 5px 5px;
+    grid-row: 82 / 111;
     box-shadow: 1px 1px 5px #838383;
   }
 
+  /*----- Bar #3 -----*/
   .bar-3-top {
     grid-row: 1 / 85;
     border-radius: 5px 5px 0px 0px;
     background-color: #f0f0f0;
   }
   .bar-3-bottom {
-    grid-row: 85 / 101;
-    box-shadow: 1px 1px 5px #838383;
-  }
-  .bar-3-num {
-    grid-row: 101 / 102;
-    border-radius: 0px 0px 5px 5px;
+    grid-row: 85 / 111;
     box-shadow: 1px 1px 5px #838383;
   }
 
+  /*----- Bar #4 -----*/
   .bar-4-top {
     grid-row: 1 / 88;
     border-radius: 5px 5px 0px 0px;
     background-color: #f0f0f0;
   }
   .bar-4-bottom {
-    grid-row: 88 / 101;
-    box-shadow: 1px 1px 5px #838383;
-  }
-  .bar-4-num {
-    grid-row: 101 / 102;
-    border-radius: 0px 0px 5px 5px;
+    grid-row: 88 / 111;
     box-shadow: 1px 1px 5px #838383;
   }
 
+  /*----- Bar #5 -----*/
   .bar-5-top {
     grid-row: 1 / 89;
     border-radius: 5px 5px 0px 0px;
     background-color: #f0f0f0;
   }
   .bar-5-bottom {
-    grid-row: 89 / 101;
-    box-shadow: 1px 1px 5px #838383;
-  }
-  .bar-5-num {
-    grid-row: 101 / 102;
-    border-radius: 0px 0px 5px 5px;
+    grid-row: 89 / 111;
     box-shadow: 1px 1px 5px #838383;
   }
 
+  /*----- Bar #6 -----*/
   .bar-6-top {
     grid-row: 1 / 90;
     border-radius: 5px 5px 0px 0px;
     background-color: #f0f0f0;
   }
   .bar-6-bottom {
-    grid-row: 90 / 101;
-    box-shadow: 1px 1px 5px #838383;
-  }
-  .bar-6-num {
-    grid-row: 101 / 102;
-    border-radius: 0px 0px 5px 5px;
+    grid-row: 90 / 111;
     box-shadow: 1px 1px 5px #838383;
   }
 
+  /*----- Bar #7 -----*/
   .bar-7-top {
     grid-row: 1 / 92;
     border-radius: 5px 5px 0px 0px;
     background-color: #f0f0f0;
   }
   .bar-7-bottom {
-    grid-row: 92 / 101;
-    box-shadow: 1px 1px 5px #838383;
-  }
-  .bar-7-num {
-    grid-row: 101 / 102;
-    border-radius: 0px 0px 5px 5px;
+    grid-row: 92 / 111;
     box-shadow: 1px 1px 5px #838383;
   }
 
+  /*----- Bar #8 -----*/
   .bar-8-top {
     grid-row: 1 / 94;
     border-radius: 5px 5px 0px 0px;
     background-color: #f0f0f0;
   }
   .bar-8-bottom {
-    grid-row: 94 / 101;
-    box-shadow: 1px 1px 5px #838383;
-  }
-  .bar-8-num {
-    grid-row: 101 / 102;
-    border-radius: 0px 0px 5px 5px;
+    grid-row: 94 / 111;
     box-shadow: 1px 1px 5px #838383;
   }
 
+  /*----- Percentages -----*/
   .top {
     position: relative;
+    top: 10%;
     font-weight: bolder;
     font-size: 15px;
     color: #ffffff;
   }
+
+  /*----- Bar # -----*/
   .num {
     font-size: 25px;
     font-style: italic;
@@ -537,7 +531,9 @@ html {
   }
 
   /*----- Voting buttons -----*/
-  #huntSubmit, #huntConfirm, #huntCancel, .huntBack {
+  #huntSubmit, #huntConfirm,
+  #huntCancel, .huntBack,
+  #signInButton, #cancelSignIn {
     color: #ffffff;
     border: none;
     outline: none;
@@ -548,15 +544,25 @@ html {
     font-weight: bolder;
     letter-spacing: 2px;
   }
-  #huntConfirm {
+  #huntConfirm, #signInButton {
     margin-bottom: 20px;
   }
-  #huntCancel {
+  #huntCancel, #cancelSignIn {
     margin-bottom: 20px;
   }
   .huntBack {
     margin-top: 5px;
     margin-bottom: 20px;
+  }
+  #signInButton {
+    margin-top: 50px;
+  }
+
+  /*----- Sign In Message -----*/
+  #signIn-msg {
+    color: #569429;
+    font-size: 50px;
+    font-weight: bolder;
   }
 
   /*----- Submitted Image (GGFM Icon) -----*/
@@ -690,12 +696,153 @@ html {
     border: 3px solid #ffffff;
   }
 
-  .live-desktop {
+  /*----- Main Grid Container for Live Polls -----*/
+  .chart-desk {
+    display: none;
+  }
+  .chart-mobile {
     display: grid;
+    grid-template-columns: repeat(140, auto);
+    grid-template-rows: repeat(8, auto);
+    grid-row-gap: 25px;
+    height: 600px;
+    width: 400px;
+    padding: 5px 10px;
   }
 
-  .chart {
-    display: none;
+  /*----- Bar -----*/
+  [class*="bar"] {
+    grid-column-end: 140;
+    background-color: #569429;
+  }
+  .bar-1-left, .bar-2-left,
+  .bar-3-left, .bar-4-left,
+  .bar-5-left, .bar-6-left,
+  .bar-7-left, .bar-8-left {
+    position: relative;
+    grid-column: 1 / 30;
+    border-radius: 5px 0px 0px 5px;
+    /*top-left top-right bottom-right bottom-left*/
+    box-shadow: 1px 1px 5px #838383;
+  }
+
+  /*----- Bar #1 -----*/
+  .bar-1-mid {
+    position: relative;
+    grid-column: 30 / 60;
+    box-shadow: 1px 1px 5px #838383;
+  }
+  .bar-1-right {
+    grid-column: 60 / 140;
+    border-radius: 0px 5px 5px 0px;
+    background-color: #f0f0f0;
+    /*background-color: #f0f0f0;*/
+  }
+
+  /*----- Bar #2 -----*/
+  .bar-2-mid {
+    position: relative;
+    grid-column: 30 / 58;
+    box-shadow: 1px 1px 5px #838383;
+  }
+  .bar-2-right {
+    grid-column: 58 / 140;
+    border-radius: 0px 5px 5px 0px;
+    background-color: #f0f0f0;
+  }
+
+  /*----- Bar #3 -----*/
+  .bar-3-mid {
+    position: relative;
+    grid-column: 30 / 55;
+    box-shadow: 1px 1px 5px #838383;
+  }
+  .bar-3-right {
+    grid-column: 55 / 140;
+    border-radius: 0px 5px 5px 0px;
+    background-color: #f0f0f0;
+  }
+
+  /*----- Bar #4 -----*/
+  .bar-4-mid {
+    position: relative;
+    grid-column: 30 / 52;
+    box-shadow: 1px 1px 5px #838383;
+  }
+  .bar-4-right {
+    grid-column: 52 / 140;
+    border-radius: 0px 5px 5px 0px;
+    background-color: #f0f0f0;
+  }
+
+  /*----- Bar #5 -----*/
+  .bar-5-mid {
+    position: relative;
+    grid-column: 30 / 51;
+    box-shadow: 1px 1px 5px #838383;
+  }
+  .bar-5-right {
+    grid-column: 51 / 140;
+    border-radius: 0px 5px 5px 0px;
+    background-color: #f0f0f0;
+  }
+
+  /*----- Bar #6 -----*/
+  .bar-6-mid {
+    position: relative;
+    grid-column: 30 / 50;
+    box-shadow: 1px 1px 5px #838383;
+  }
+  .bar-6-right {
+    grid-column: 50 / 140;
+    border-radius: 0px 5px 5px 0px;
+    background-color: #f0f0f0;
+  }
+
+  /*----- Bar #7 -----*/
+  .bar-7-mid {
+    position: relative;
+    grid-column: 30 / 48;
+    box-shadow: 1px 1px 5px #838383;
+  }
+  .bar-7-right {
+    grid-column: 48 / 140;
+    border-radius: 0px 5px 5px 0px;
+    background-color: #f0f0f0;
+  }
+
+  /*----- Bar #8 -----*/
+  .bar-8-mid {
+    position: relative;
+    grid-column: 30 / 46;
+    box-shadow: 1px 1px 5px #838383;
+  }
+  .bar-8-right {
+    grid-column: 46 / 140;
+    border-radius: 0px 5px 5px 0px;
+    background-color: #f0f0f0;
+  }
+
+  /*----- Percentages -----*/
+  .mid {
+    position: absolute;
+    top: 25%;
+    right: 10%;
+    font-weight: bolder;
+    font-size: 15px;
+    color: #aed890;
+  }
+
+  /*----- Bar # -----*/
+  .num {
+    position:absolute;
+    top: 5%;
+    right: 10%;
+    font-size: 30px;
+    font-style: italic;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 2px 2px 3px #474747;
   }
 }
 
@@ -807,7 +954,9 @@ html {
   }
 
   /*----- Voting buttons -----*/
-  #huntSubmit, #huntConfirm, #huntCancel, .huntBack {
+  #huntSubmit, #huntConfirm,
+  #huntCancel, .huntBack,
+  #signInButton, #cancelSignIn {
     color: #ffffff;
     border: none;
     outline: none;
@@ -818,15 +967,25 @@ html {
     font-weight: bolder;
     letter-spacing: 2px;
   }
-  #huntConfirm {
+  #huntConfirm, #signInButton {
     margin-bottom: 10px;
   }
-  #huntCancel {
+  #huntCancel, #cancelSignIn {
     margin-bottom: 10px;
   }
   .huntBack {
     margin-top: 5px;
     margin-bottom: 10px;
+  }
+  #signInButton {
+    margin-top: 25px;
+  }
+
+  /*----- Sign In Message -----*/
+  #signIn-msg {
+    color: #569429;
+    font-size: 25px;
+    font-weight: bolder;
   }
 
   /*----- Submitted Details -----*/
@@ -970,12 +1129,152 @@ html {
     font-size: 12px;
   }
 
-  .live-desktop {
+  /*----- Main Grid Container for Live Polls -----*/
+  .chart-desk {
+    display: none;
+  }
+  .chart-mobile {
     display: grid;
+    grid-template-columns: repeat(140, auto);
+    grid-template-rows: repeat(8, auto);
+    grid-row-gap: 25px;
+    height: 450px;
+    width: 250px;
+    padding: 5px 10px;
   }
 
-  .chart {
-    display: none;
+  /*----- Bar -----*/
+  [class*="bar"] {
+    grid-column-end: 140;
+    background-color: #569429;
+  }
+  .bar-1-left, .bar-2-left,
+  .bar-3-left, .bar-4-left,
+  .bar-5-left, .bar-6-left,
+  .bar-7-left, .bar-8-left {
+    position: relative;
+    grid-column: 1 / 30;
+    border-radius: 5px 0px 0px 5px;
+    box-shadow: 1px 1px 5px #838383;
+  }
+
+  /*----- Bar #1 -----*/
+  .bar-1-mid {
+    position: relative;
+    grid-column: 30 / 60;
+    box-shadow: 1px 1px 5px #838383;
+  }
+  .bar-1-right {
+    grid-column: 60 / 140;
+    border-radius: 0px 5px 5px 0px;
+    background-color: #f0f0f0;
+    /*background-color: #f0f0f0;*/
+  }
+
+  /*----- Bar #2 -----*/
+  .bar-2-mid {
+    position: relative;
+    grid-column: 30 / 58;
+    box-shadow: 1px 1px 5px #838383;
+  }
+  .bar-2-right {
+    grid-column: 58 / 140;
+    border-radius: 0px 5px 5px 0px;
+    background-color: #f0f0f0;
+  }
+
+  /*----- Bar #3 -----*/
+  .bar-3-mid {
+    position: relative;
+    grid-column: 30 / 55;
+    box-shadow: 1px 1px 5px #838383;
+  }
+  .bar-3-right {
+    grid-column: 55 / 140;
+    border-radius: 0px 5px 5px 0px;
+    background-color: #f0f0f0;
+  }
+
+  /*----- Bar #4 -----*/
+  .bar-4-mid {
+    position: relative;
+    grid-column: 30 / 52;
+    box-shadow: 1px 1px 5px #838383;
+  }
+  .bar-4-right {
+    grid-column: 52 / 140;
+    border-radius: 0px 5px 5px 0px;
+    background-color: #f0f0f0;
+  }
+
+  /*----- Bar #5 -----*/
+  .bar-5-mid {
+    position: relative;
+    grid-column: 30 / 51;
+    box-shadow: 1px 1px 5px #838383;
+  }
+  .bar-5-right {
+    grid-column: 51 / 140;
+    border-radius: 0px 5px 5px 0px;
+    background-color: #f0f0f0;
+  }
+
+  /*----- Bar #6 -----*/
+  .bar-6-mid {
+    position: relative;
+    grid-column: 30 / 50;
+    box-shadow: 1px 1px 5px #838383;
+  }
+  .bar-6-right {
+    grid-column: 50 / 140;
+    border-radius: 0px 5px 5px 0px;
+    background-color: #f0f0f0;
+  }
+
+  /*----- Bar #7 -----*/
+  .bar-7-mid {
+    position: relative;
+    grid-column: 30 / 48;
+    box-shadow: 1px 1px 5px #838383;
+  }
+  .bar-7-right {
+    grid-column: 48 / 140;
+    border-radius: 0px 5px 5px 0px;
+    background-color: #f0f0f0;
+  }
+
+  /*----- Bar #8 -----*/
+  .bar-8-mid {
+    position: relative;
+    grid-column: 30 / 46;
+    box-shadow: 1px 1px 5px #838383;
+  }
+  .bar-8-right {
+    grid-column: 46 / 140;
+    border-radius: 0px 5px 5px 0px;
+    background-color: #f0f0f0;
+  }
+
+  /*----- Percentages -----*/
+  .mid {
+    position: absolute;
+    top: 25%;
+    right: 10%;
+    font-weight: bolder;
+    font-size: 10px;
+    color: #aed890;
+  }
+
+  /*----- Bar # -----*/
+  .num {
+    position:absolute;
+    top: 25%;
+    right: 10%;
+    font-size: 15px;
+    font-style: italic;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 2px 2px 3px #474747;
   }
 }
 
@@ -1021,22 +1320,25 @@ html {
 }
 
 /*----- Voting buttons -----*/
-#huntSubmit, #huntConfirm {
+#huntSubmit, #huntConfirm, #signInButton {
   background-color: #569429;
 }
-#huntCancel, .huntBack {
+#huntCancel, .huntBack, #cancelSignIn {
   background-color: #000000;
 }
-#huntConfirm, #huntCancel, .huntBack {
+#huntConfirm, #huntCancel, .huntBack,
+#signInButton, #cancelSignIn {
   cursor: pointer;
 }
 #huntSubmit:hover, #huntConfirm:hover,
-#huntCancel:hover, .huntBack:hover {
+#huntCancel:hover, .huntBack:hover,
+#signInButton:hover, #cancelSignIn:hover {
   box-shadow: 0 10px 14px 0 rgba(0, 0, 0, 0.24),
     0 15px 48px 0 rgba(0, 0, 0, 0.19);
 }
 #huntSubmit:focus, #huntConfirm:focus,
-#huntCancel:focus, .huntBack:focus {
+#huntCancel:focus, .huntBack:focus,
+#signInButton:focus, #cancelSignIn:focus {
   outline: none;
 }
 
@@ -1055,4 +1357,3 @@ html {
 #vote, #djPage-mobile, #djPage-desk {
   animation: fadeEffect 0.25s;
 }
-

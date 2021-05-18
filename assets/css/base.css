@@ -193,7 +193,7 @@ input[disabled] {
     #hitlist_end, #hunt_end {
         display: flex;
         position: fixed;
-        top: 350px;
+        top: 315px;
         bottom: 0;
         left: 0;
         width: 100%;
@@ -404,7 +404,7 @@ input[disabled] {
 }
 
 /*----- Mobile View (at most 349px) -----*/
-@media screen and (max-width: 349px) {
+@media screen and (min-width: 250px) and (max-width: 349px) {
     /*----- Side Menu Button -----*/
     #sideMenuBtn {
         font-size: 16px;
@@ -560,6 +560,175 @@ input[disabled] {
         outline: none;
         border-radius: 8px;
         width: 200px;
+        height: 25px;
+        font-size: medium;
+        font-weight: bolder;
+        letter-spacing: 2px;
+        cursor: pointer;
+    }
+    #goToPolls:hover {
+        box-shadow: 0 10px 14px 0 rgba(0, 0, 0, 0.24), 0 15px 48px 0 rgba(0, 0, 0, 0.19);
+    }
+}
+
+/*----- Mobile View (at most 349px) -----*/
+@media screen and (max-width: 249px) {
+    /*----- Side Menu Button -----*/
+    #sideMenuBtn {
+        font-size: 16px;
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        padding-top: 5px;
+        padding-left: 5px;
+        color: #569429;
+        font-weight: bolder;
+    }
+
+    /*----- Side Menu -----*/
+    .sidenav {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 2;
+        top: 0;
+        left: 0;
+        background-color: #569429;
+        color: #ffffff;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 30px;
+        box-shadow: 1px 1px 3px 3px rgba(0, 0, 0, 0.295), 1px 1px 3px 3px rgba(0, 0, 0, 0.295);
+    }
+
+    /*----- Side Menu Content -----*/
+    .sidenav a,
+    span {
+        text-decoration: none;
+        width: 125px;
+        font-size: 12px;
+        color: #ffffff;
+        display: block;
+        transition: 0.3s;
+    }
+
+    /*----- Side Menu hover over links -----*/
+    .sidenav a:hover {
+        background-color: #71b342;
+    }
+
+    /*----- Side Menu Close Button -----*/
+    .sidenav .closebtn {
+        padding: 1px 3px 1px 5px;
+        position: absolute;
+        top: 0;
+        font-size: 16px;
+        font-weight: bolder;
+        line-height: 30px;
+    }
+
+    /*----- Side Menu Close Button -----*/
+    .sidenav .closebtn em {
+        font-size: 12px;
+        font-style: normal;
+    }
+
+    /*----- Side Menu Links -----*/
+    .sidenav .sideLink {
+        padding: 6px 6px 3px 10px;
+        line-height: 30px;
+        font-size: 12px;
+        font-weight: bolder;
+    }
+
+    /*----- Side Menu Poll Links -----*/
+    .sidenav .pollLink {
+        padding: 6px 6px 3px 20px;
+        line-height: 30px;
+        font-size: 12px;
+        font-weight: bolder;
+    }
+
+    /*----- Display Appropriate Buttons -----*/
+    #sideMenuBtn {
+        display: block;
+    }
+    #upper{
+        display: none;
+    }
+
+    /*----- Tab Contents (Title) -----*/
+    #page_title{
+        font-size: large;
+    }
+    #vote_time{
+        font-size: 10px;
+    }
+
+    /*----- Tab buttons -----*/
+    .tab button {
+        background-color: inherit;
+        float: center;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 2px 3px;
+        transition: 0.3s;
+        font-size: 13px;
+    }
+
+    /*----- Margins of Tab Buttons -----*/
+    #voteTab{
+        margin-right: 5px;
+    }
+    #liveTab{
+        margin-left: 5px;
+    }
+
+    /*----- Voting Ended Message -----*/
+    #hitlist_end, #hunt_end {
+        display: flex;
+        position: fixed;
+        top: 175px;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        z-index: 1;
+        background-color: #ffffffa1;
+        background: #ffffffa1;
+        backdrop-filter: blur(3px);
+    }
+
+    /*----- Voting Ended Outer Div -----*/
+    #hitlist-outer-div, #hunt-outer-div {
+        padding-top: 25px;
+    }
+
+    /*----- Voting Ended Inner Div -----*/
+    #hitlist-inner-div, #hunt-inner-div {
+        background-color: #ffffff;
+        height: 135px;
+        width: 200px;
+        box-shadow: 0 1px 3px 1px rgba(85, 85, 85, 0.24);
+    }
+
+    /*----- Voting Ended Message -----*/
+    #hitlist-end-message, #hunt-end-message {
+        font-size: 20px;
+        font-weight: bold;
+        padding: 10px;
+    }
+
+    /*----- Voting Ended Button -----*/
+    #goToPolls {
+        color: #ffffff;
+        background-color: #569429;
+        border: none;
+        outline: none;
+        border-radius: 8px;
+        width: 180px;
         height: 25px;
         font-size: medium;
         font-weight: bolder;
