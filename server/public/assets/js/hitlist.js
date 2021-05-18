@@ -26,217 +26,228 @@ $(document).ready(() => {
             closing.innerText = `${sp[0]} ${sp[1]} ${sp[2]}`
 
             setCountdown()
-            
-            // get total overall for the percentage
-            let totalVotes = 0
-            hitlist.songs.map(s => {
-                totalVotes += s.vote_count
-            })
-
-            // sort in ascending order according to number of votes bc prepend
-            const live_songs = [ ...hitlist.songs ]
-            live_songs.sort((a, b) => a.vote_count - b.vote_count)
-
-            console.log(live_songs)
-            console.log(hitlist.songs)
-
-            // set songs
-            hitlist.songs.map((s, index) => {
-                /*-----  Create Elements -----*/
-                const grid_item_voting = document.createElement('div')
-                const grid_container_voting = document.createElement('div')
-                const grid_item_song_input = document.createElement('div')
-                const checkSong = document.createElement('input')
-                const grid_item_song = document.createElement('div')
-                const label = document.createElement('label')
-                const img = document.createElement('img')
-                const grid_item_song_voteDesk = document.createElement('div')
-                const description_song = document.createElement('p')
-                const title = document.createElement('em')
-                const grid_item_song_desk = document.createElement('div')
-                const description_percent = document.createElement('p')                        
-                
-                /*----- Set Attributes -----*/
-                grid_item_voting.setAttribute('class', 'grid-item-voting')
-                grid_item_voting.setAttribute('id', `song${index+1}`)
-                grid_container_voting.setAttribute('class', 'grid-container-voting')
-                grid_item_song_input.setAttribute('class', 'grid-item-song-input')
-                checkSong.setAttribute('class', 'checkSong')
-                checkSong.setAttribute('type', 'checkBox')
-                checkSong.setAttribute('name', 'checkSong')
-                checkSong.setAttribute('id', s._id)
-                checkSong.setAttribute('onclick', 'changeBackground()')
-                grid_item_song.setAttribute('class', 'grid-item-song')
-                label.setAttribute('class', 'label')
-                label.setAttribute('for', `song${index+1}`)
-                img.setAttribute('class', 'album')
-                if (s.picture_path)
-                    img.setAttribute('src', s.picture_path)
-                else
-                    img.setAttribute('src', 'assets/img/GGFM_Favicon.png')
-                img.setAttribute('alt', s.title)
-                grid_item_song_voteDesk.setAttribute('class', 'grid-item-song-voteDesk')
-                description_song.setAttribute('class', 'description')
-                title.setAttribute('class', 'title')
-                grid_item_song_desk.setAttribute('class', 'grid-item-song-desk')
-                description_percent.setAttribute('class', 'description')
-
-                /*----- Assign variables inside elements -----*/
-                const br = document.createElement('br')
-                const artist = document.createTextNode(s.artist.length > 35 ? s.artist.substring(0, 32) + "..." : s.artist)
-                title.innerText = s.title.length > 56 ? s.title.substring(0, 53) + "..." : s.title
-                description_song.appendChild(title)
-                description_song.appendChild(br)
-                description_song.appendChild(artist)
-                description_percent.innerText = `${totalVotes ? ((s.vote_count/totalVotes)*100).toFixed(2) : 0}%`
-
-                /*----- push data to html -----*/
-                grid_item_song_desk.appendChild(description_percent)
-                grid_item_song_voteDesk.appendChild(description_song)
-                label.innerHTML = `<iframe src="${s.spotify_link}" width="80" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`
-                grid_item_song.appendChild(label)
-                grid_item_song_input.appendChild(checkSong)
-                grid_container_voting.appendChild(grid_item_song_input)
-                grid_container_voting.appendChild(grid_item_song)
-                grid_container_voting.appendChild(grid_item_song_voteDesk)
-                grid_container_voting.appendChild(grid_item_song_desk)
-                grid_item_voting.appendChild(grid_container_voting)
-                document.getElementById('grid-container-voting-tab').prepend(grid_item_voting)
-                
-                grid_container_voting.setAttribute('id', index)
-                grid_container_voting.style.cursor = "pointer"
-                grid_item_song_voteDesk.setAttribute('id', index)
-                grid_item_song.setAttribute('id', index)
-                title.setAttribute('id', index)
-                description_song.setAttribute('id', index)
-                description_percent.setAttribute('id', index)
-                grid_item_song_desk.setAttribute('id', index)
-                grid_container_voting.addEventListener('click', selectSong)
-
-                // <div class="grid-item-voting" id="song7">
-                //     <div class="grid-container-voting">
-                //         <div class="grid-item-song-input">
-                //             <input type="checkbox" class="checkSong" id="song7Check" onclick="changeBackground()">
-                //         </div>
-                //         <div class="grid-item-song">
-                //             <label for="song7">
-                //                 <img class="album" src="assets\img\7.jpg" alt='The Valley of The Pagans'>
-                //             </label>
-                //         </div>
-                //         <div class="grid-item-song-voteDesk">
-                //             <p id="songSeven" class="description"><em class="title">The Valley of The Pagans</em><br />Gorillaz</p>
-                //         </div>
-                //         <div class="grid-item-song-desk">
-                //             <p id="percentSeven" class="description">5%</p>
-                //         </div>
-                //     </div>
-                // </div>
-
-                grid_item_voting.addEventListener('mouseenter', e => {
-                    grid_item_song_voteDesk.style.backgroundColor = "#DCDCDC";
-                });
-                grid_item_voting.addEventListener('mouseleave', e => {
-                    grid_item_song_voteDesk.style.backgroundColor = "";
-                });
-
-                /*----- Global Voting Songs Object -----*/
-                songs.push({
-                    row: grid_item_voting,
-                    desk: grid_item_song_voteDesk,
-                    songCheck: checkSong,
-                    title: description_song,
-                    percentNumber: description_percent
-                })
-
-                /*----- Live Tab -----*/
-                // const grid_container_live_tab = document.getElementById('grid-container-live-tab')
-                // const copy = grid_item_voting.cloneNode(true)
-                // copy.setAttribute('class', 'grid-item-live')
-                // const grid_container_songs = copy.firstChild // grid-container-voting
-                // grid_container_songs.setAttribute('class', 'grid-container-songs')
-                // const grid_item_song_number = grid_container_songs.firstChild
-                // grid_item_song_number.setAttribute('class', 'grid-item-song-number')
-                // grid_item_song_number.innerHTML = hitlist.songs.length-index
-                // const grid_item_song_liveDesk = grid_container_songs.childNodes[2]
-                // const em_percent = document.createElement('em')
-                // em_percent.setAttribute('class', 'percent')
-                // em_percent.appendChild(document.createElement('br'))
-                // em_percent.appendChild(document.createTextNode(`${totalVotes ? (s.vote_count/totalVotes)*100 : 0}%`))
-                // grid_item_song_liveDesk.setAttribute('class', 'grid-item-song-liveDesk')
-                // grid_item_song_liveDesk.firstChild.appendChild(em_percent)
-
-                // console.log(copy)
-                // copy.addEventListener('mouseenter', e => {})
-                // copy.addEventListener('mouseleave', e => {})
-                // grid_container_live_tab.prepend(copy)
-            })
-
-            live_songs.map((s, index) => {
-                /*-----  Create Elements -----*/
-                const grid_item_live = document.createElement('div')
-                const grid_container_songs = document.createElement('div')
-                const grid_item_song_number = document.createElement('div')
-                const grid_item_song = document.createElement('div')
-                const img = document.createElement('img')
-                const grid_item_song_liveDesk = document.createElement('div')
-                const description_song = document.createElement('p')
-                const title = document.createElement('em')
-                const em_percent = document.createElement('em')
-                const grid_item_song_desk = document.createElement('div')
-                const description_percent = document.createElement('p')
-                const br = document.createElement('br')
-                const artist = document.createTextNode(s.artist)
-                
-                /*----- Set Attributes -----*/
-                grid_item_live.setAttribute('class', 'grid-item-live')
-                grid_container_songs.setAttribute('class', 'grid-container-songs')
-                grid_item_song_number.setAttribute('class', 'grid-item-song-number')
-                grid_item_song.setAttribute('class', 'grid-item-song')
-                img.setAttribute('class', 'album')
-                if (s.picture_path)
-                    img.setAttribute('src', s.picture_path)
-                else
-                    img.setAttribute('src', 'assets/img/GGFM_Favicon.png')
-                img.setAttribute('alt', s.title)
-                grid_item_song_liveDesk.setAttribute('class', 'grid-item-song-liveDesk')
-                description_song.setAttribute('class', 'description')
-                title.setAttribute('class', 'title')
-                em_percent.setAttribute('class', 'percent')
-                grid_item_song_desk.setAttribute('class', 'grid-item-song-desk')
-                description_percent.setAttribute('class', 'description')
-                grid_item_song_liveDesk.setAttribute('class', 'grid-item-song-liveDesk')
-                
-
-                /*----- Assign variables inside elements -----*/
-                
-                title.innerText = s.title
-                em_percent.appendChild(document.createElement('br'))
-                em_percent.appendChild(document.createTextNode(`${totalVotes ? ((s.vote_count/totalVotes)*100).toFixed(2) : 0}%`))
-                description_percent.innerText = `${totalVotes ? ((s.vote_count/totalVotes)*100).toFixed(2) : 0}%`
-
-                /*----- push data to html -----*/
-                grid_item_song_desk.appendChild(description_percent)
-                grid_item_song_liveDesk.appendChild(description_song)
-                grid_item_song.innerHTML = `<iframe src="${s.spotify_link}" width="80" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`
-                grid_item_song_number.innerText = live_songs.length-index
-                grid_container_songs.appendChild(grid_item_song_number)
-                grid_container_songs.appendChild(grid_item_song)
-                grid_container_songs.appendChild(grid_item_song_liveDesk)
-                grid_container_songs.appendChild(grid_item_song_desk)
-                description_song.appendChild(title)
-                description_song.appendChild(br)
-                description_song.appendChild(artist)
-                description_song.appendChild(em_percent)
-                grid_item_live.appendChild(grid_container_songs)
-                document.getElementById('grid-container-live-tab').prepend(grid_item_live)
-
-                grid_item_live.addEventListener('mouseenter', e => {})
-                grid_item_live.addEventListener('mouseleave', e => {})
-            })
-            
+            retrieveSongs()
         }
     })
 })
+
+function retrieveSongs() {
+    document.getElementById('grid-container-voting-tab').innerHTML = ""
+    document.getElementById('grid-container-live-tab').innerHTML = ""
+    songs.length = 0
+
+    // get total overall for the percentage
+    let totalVotes = 0
+    hitlist.songs.map(s => {
+        totalVotes += s.vote_count
+    })
+
+    // sort in ascending order according to number of votes bc prepend
+    const live_songs = [ ...hitlist.songs ]
+    live_songs.sort((a, b) => a.vote_count - b.vote_count)
+
+    console.log(live_songs)
+    console.log(hitlist.songs)
+
+    // set songs
+    hitlist.songs.map((s, index) => {
+        /*-----  Create Elements -----*/
+        const grid_item_voting = document.createElement('div')
+        const grid_container_voting = document.createElement('div')
+        const grid_item_song_input = document.createElement('div')
+        const checkSong = document.createElement('input')
+        const grid_item_song = document.createElement('div')
+        const label = document.createElement('label')
+        const img = document.createElement('img')
+        const grid_item_song_voteDesk = document.createElement('div')
+        const description_song = document.createElement('p')
+        const title = document.createElement('em')
+        const grid_item_song_desk = document.createElement('div')
+        const description_percent = document.createElement('p')                        
+        
+        /*----- Set Attributes -----*/
+        grid_item_voting.setAttribute('class', 'grid-item-voting')
+        grid_item_voting.setAttribute('id', `song${index+1}`)
+        grid_container_voting.setAttribute('class', 'grid-container-voting')
+        grid_item_song_input.setAttribute('class', 'grid-item-song-input')
+        checkSong.setAttribute('class', 'checkSong')
+        checkSong.setAttribute('type', 'checkBox')
+        checkSong.setAttribute('name', 'checkSong')
+        checkSong.setAttribute('id', s._id)
+        checkSong.setAttribute('onclick', 'changeBackground()')
+        grid_item_song.setAttribute('class', 'grid-item-song')
+        label.setAttribute('class', 'label')
+        label.setAttribute('for', `song${index+1}`)
+        img.setAttribute('class', 'album')
+        if (s.picture_path)
+            img.setAttribute('src', s.picture_path)
+        else
+            img.setAttribute('src', 'assets/img/GGFM_Favicon.png')
+        img.setAttribute('alt', s.title)
+        grid_item_song_voteDesk.setAttribute('class', 'grid-item-song-voteDesk')
+        description_song.setAttribute('class', 'description')
+        title.setAttribute('class', 'title')
+        grid_item_song_desk.setAttribute('class', 'grid-item-song-desk')
+        description_percent.setAttribute('class', 'description')
+
+        /*----- Assign variables inside elements -----*/
+        const br = document.createElement('br')
+        const artist = document.createTextNode(s.artist.length > 35 ? s.artist.substring(0, 32) + "..." : s.artist)
+        title.innerText = s.title.length > 56 ? s.title.substring(0, 53) + "..." : s.title
+        description_song.appendChild(title)
+        description_song.appendChild(br)
+        description_song.appendChild(artist)
+        description_percent.innerText = `${totalVotes ? ((s.vote_count/totalVotes)*100).toFixed(2) : 0}%`
+
+        /*----- push data to html -----*/
+        grid_item_song_desk.appendChild(description_percent)
+        grid_item_song_voteDesk.appendChild(description_song)
+        label.innerHTML = `<iframe src="${s.spotify_link}" width="80" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`
+        grid_item_song.appendChild(label)
+        grid_item_song_input.appendChild(checkSong)
+        grid_container_voting.appendChild(grid_item_song_input)
+        grid_container_voting.appendChild(grid_item_song)
+        grid_container_voting.appendChild(grid_item_song_voteDesk)
+        grid_container_voting.appendChild(grid_item_song_desk)
+        grid_item_voting.appendChild(grid_container_voting)
+        document.getElementById('grid-container-voting-tab').prepend(grid_item_voting)
+        
+        grid_container_voting.setAttribute('id', index)
+        grid_container_voting.style.cursor = "pointer"
+        grid_item_song_voteDesk.setAttribute('id', index)
+        grid_item_song.setAttribute('id', index)
+        title.setAttribute('id', index)
+        description_song.setAttribute('id', index)
+        description_percent.setAttribute('id', index)
+        grid_item_song_desk.setAttribute('id', index)
+        grid_container_voting.addEventListener('click', selectSong)
+
+        // <div class="grid-item-voting" id="song7">
+        //     <div class="grid-container-voting">
+        //         <div class="grid-item-song-input">
+        //             <input type="checkbox" class="checkSong" id="song7Check" onclick="changeBackground()">
+        //         </div>
+        //         <div class="grid-item-song">
+        //             <label for="song7">
+        //                 <img class="album" src="assets\img\7.jpg" alt='The Valley of The Pagans'>
+        //             </label>
+        //         </div>
+        //         <div class="grid-item-song-voteDesk">
+        //             <p id="songSeven" class="description"><em class="title">The Valley of The Pagans</em><br />Gorillaz</p>
+        //         </div>
+        //         <div class="grid-item-song-desk">
+        //             <p id="percentSeven" class="description">5%</p>
+        //         </div>
+        //     </div>
+        // </div>
+
+        grid_item_voting.addEventListener('mouseenter', e => {
+            grid_item_song_voteDesk.style.backgroundColor = "#DCDCDC";
+        });
+        grid_item_voting.addEventListener('mouseleave', e => {
+            grid_item_song_voteDesk.style.backgroundColor = "";
+        });
+
+        /*----- Global Voting Songs Object -----*/
+        songs.push({
+            row: grid_item_voting,
+            desk: grid_item_song_voteDesk,
+            songCheck: checkSong,
+            title: description_song,
+            percentNumber: description_percent
+        })
+
+        /*----- Live Tab -----*/
+        // const grid_container_live_tab = document.getElementById('grid-container-live-tab')
+        // const copy = grid_item_voting.cloneNode(true)
+        // copy.setAttribute('class', 'grid-item-live')
+        // const grid_container_songs = copy.firstChild // grid-container-voting
+        // grid_container_songs.setAttribute('class', 'grid-container-songs')
+        // const grid_item_song_number = grid_container_songs.firstChild
+        // grid_item_song_number.setAttribute('class', 'grid-item-song-number')
+        // grid_item_song_number.innerHTML = hitlist.songs.length-index
+        // const grid_item_song_liveDesk = grid_container_songs.childNodes[2]
+        // const em_percent = document.createElement('em')
+        // em_percent.setAttribute('class', 'percent')
+        // em_percent.appendChild(document.createElement('br'))
+        // em_percent.appendChild(document.createTextNode(`${totalVotes ? (s.vote_count/totalVotes)*100 : 0}%`))
+        // grid_item_song_liveDesk.setAttribute('class', 'grid-item-song-liveDesk')
+        // grid_item_song_liveDesk.firstChild.appendChild(em_percent)
+
+        // console.log(copy)
+        // copy.addEventListener('mouseenter', e => {})
+        // copy.addEventListener('mouseleave', e => {})
+        // grid_container_live_tab.prepend(copy)
+    })
+
+    live_songs.map((s, index) => {
+        /*-----  Create Elements -----*/
+        const grid_item_live = document.createElement('div')
+        const grid_container_songs = document.createElement('div')
+        const grid_item_song_number = document.createElement('div')
+        const grid_item_song = document.createElement('div')
+        const img = document.createElement('img')
+        const grid_item_song_liveDesk = document.createElement('div')
+        const description_song = document.createElement('p')
+        const title = document.createElement('em')
+        const em_percent = document.createElement('em')
+        const grid_item_song_desk = document.createElement('div')
+        const description_percent = document.createElement('p')
+        const br = document.createElement('br')
+        const artist = document.createTextNode(s.artist)
+        
+        /*----- Set Attributes -----*/
+        grid_item_live.setAttribute('class', 'grid-item-live')
+        grid_container_songs.setAttribute('class', 'grid-container-songs')
+        grid_item_song_number.setAttribute('class', 'grid-item-song-number')
+        grid_item_song.setAttribute('class', 'grid-item-song')
+        img.setAttribute('class', 'album')
+        if (s.picture_path)
+            img.setAttribute('src', s.picture_path)
+        else
+            img.setAttribute('src', 'assets/img/GGFM_Favicon.png')
+        img.setAttribute('alt', s.title)
+        grid_item_song_liveDesk.setAttribute('class', 'grid-item-song-liveDesk')
+        description_song.setAttribute('class', 'description')
+        title.setAttribute('class', 'title')
+        em_percent.setAttribute('class', 'percent')
+        grid_item_song_desk.setAttribute('class', 'grid-item-song-desk')
+        description_percent.setAttribute('class', 'description')
+        grid_item_song_liveDesk.setAttribute('class', 'grid-item-song-liveDesk')
+        
+
+        /*----- Assign variables inside elements -----*/
+        
+        title.innerText = s.title
+        em_percent.appendChild(document.createElement('br'))
+        em_percent.appendChild(document.createTextNode(`${totalVotes ? ((s.vote_count/totalVotes)*100).toFixed(2) : 0}%`))
+        description_percent.innerText = `${totalVotes ? ((s.vote_count/totalVotes)*100).toFixed(2) : 0}%`
+
+        /*----- push data to html -----*/
+        grid_item_song_desk.appendChild(description_percent)
+        grid_item_song_liveDesk.appendChild(description_song)
+        grid_item_song.innerHTML = `<iframe src="${s.spotify_link}" width="80" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`
+        grid_item_song_number.innerText = live_songs.length-index
+        grid_container_songs.appendChild(grid_item_song_number)
+        grid_container_songs.appendChild(grid_item_song)
+        grid_container_songs.appendChild(grid_item_song_liveDesk)
+        grid_container_songs.appendChild(grid_item_song_desk)
+        description_song.appendChild(title)
+        description_song.appendChild(br)
+        description_song.appendChild(artist)
+        description_song.appendChild(em_percent)
+        grid_item_live.appendChild(grid_container_songs)
+        document.getElementById('grid-container-live-tab').prepend(grid_item_live)
+
+        grid_item_live.addEventListener('mouseenter', e => {})
+        grid_item_live.addEventListener('mouseleave', e => {})
+    })
+
+    document.getElementById('grid-container-voting-tab').append(document.createElement('br'))
+    document.getElementById('grid-container-voting-tab').append(document.createElement('br'))
+    document.getElementById('grid-container-live-tab').append(document.createElement('br'))
+    document.getElementById('grid-container-live-tab').append(document.createElement('br'))
+}
 
 /*----- Open Menu -----*/
 function openNav() {
@@ -318,7 +329,7 @@ function openConfirm() {
 }
 
 /*----- Cancel Vote -----*/
-function cancelVote() {
+function cancel() {
     document.getElementById("overlay").style.display = "none";
     document.getElementById("voteConfirmed").style.display = "none";
     document.getElementById("confirmation").style.display = "none";
@@ -358,6 +369,7 @@ async function submitVote() {
                     console.log(data)
                     document.getElementById("confirmation").style.display = "none";
                     document.getElementById("voteConfirmed").style.display = "block";
+                    retrieveSongs()
                 },
                 error: () => {
                     alert('error')
@@ -373,7 +385,7 @@ function closeConfirm() {
     document.getElementById("overlay").style.display = "none";
     document.getElementById("voteConfirmed").style.display = "none";
     document.getElementById("confirmation").style.display = "none";
-    window.location.reload(true)
+    document.getElementById("liveTab").click();
 }
 
 /*----- Open selected Tab -----*/
