@@ -21,6 +21,7 @@ $(document).ready(() => {
 function retrieveSongs() {
 
     document.getElementById('grid-container').innerHTML = "";
+    songs.length = 0;
     // get total overall for the percentage
     let totalVotes = 0
     hitlist.songs.map(s => {
@@ -207,7 +208,8 @@ function submitVote() {
                 confirmButtonText: 'Awesome!',
             })
             .then(() => {
-                window.location.reload()
+                retrieveSongs()
+                closeConfirm()
             })
         },
         error: () => {
