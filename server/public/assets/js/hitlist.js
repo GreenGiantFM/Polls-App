@@ -474,13 +474,14 @@ $(window).on('scroll', function () {
 /*----- Open Dropdown Menu -----*/
 function openDrop() {
     document.getElementById('drop-inner-div').style.display = 'block';
-    document.getElementById('drop-polls').style.color = "#569429";
+    document.getElementById('drop-polls').style.display = "none";
 }
 
 /*----- Close Dropdown Menu -----*/
 function closeDrop() {
     document.getElementById('drop-inner-div').style.display = 'none';
     document.getElementById('drop-polls').style.color = "#ffffff";
+    document.getElementById('drop-polls').style.display = "block";
 }
 
 /*----- Dropdown Menu -----*/
