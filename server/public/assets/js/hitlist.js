@@ -104,6 +104,7 @@ $(document).ready(() => {
                 document.getElementById('grid-container-voting-tab').prepend(grid_item_voting)
                 
                 grid_container_voting.setAttribute('id', index)
+                grid_container_voting.style.cursor = "pointer"
                 grid_item_song_voteDesk.setAttribute('id', index)
                 grid_item_song.setAttribute('id', index)
                 title.setAttribute('id', index)
@@ -132,15 +133,16 @@ $(document).ready(() => {
                 // </div>
 
                 grid_item_voting.addEventListener('mouseenter', e => {
-                    grid_item_voting.style.backgroundColor = "#DCDCDC";
+                    grid_item_song_voteDesk.style.backgroundColor = "#DCDCDC";
                 });
                 grid_item_voting.addEventListener('mouseleave', e => {
-                    grid_item_voting.style.backgroundColor = "";
+                    grid_item_song_voteDesk.style.backgroundColor = "";
                 });
 
                 /*----- Global Voting Songs Object -----*/
                 songs.push({
                     row: grid_item_voting,
+                    desk: grid_item_song_voteDesk,
                     songCheck: checkSong,
                     title: description_song,
                     percentNumber: description_percent
@@ -277,33 +279,31 @@ function changeBackground() {
     /*-----  dynamic -----*/
     for (let song of songs) {
 
-        const { songCheck, row, title, percentNumber } = song
+        const { songCheck, row, title, desk, percentNumber } = song
         if (songCheck.checked == true) {
 
             row.addEventListener('mouseenter', e => {
-                row.style.backgroundColor = "#569429cb";
+                desk.style.backgroundColor = "#569429cb";
             });
             row.addEventListener('mouseleave', e => {
-                row.style.backgroundColor = "#569429cb";
+                desk.style.backgroundColor = "#569429cb";
             });
 
-            row.style.backgroundColor = "#569429cb";
+            desk.style.backgroundColor = "#569429cb";
             title.style.color = "#3a3a3a";
-            percentNumber.style.color = "#f2f2f2";
             voteSubmit.disabled = false;
 
         } else {
 
             row.addEventListener('mouseenter', e => {
-                row.style.backgroundColor = "#DCDCDC";
+                desk.style.backgroundColor = "#DCDCDC";
             });
             row.addEventListener('mouseleave', e => {
-                row.style.backgroundColor = "";
+                desk.style.backgroundColor = "";
             });
 
-            row.style.backgroundColor = "#ffffff";
+            desk.style.backgroundColor = "#ffffff";
             title.style.color = "#8d8d8d";
-            percentNumber.style.color = "#8d8d8d";
             voteButton()
         }
     }
