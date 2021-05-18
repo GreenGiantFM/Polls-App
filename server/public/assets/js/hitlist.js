@@ -331,36 +331,40 @@ async function submitVote() {
     // 3. songNumber = title
     // 4. percentNumber = percent
 
-    for (let [index, song] of songs.entries()) {
-        const { songCheck, row, title, percentNumber } = song
+    $.ajax({
+        method: 'get',
+        url: '/api/All-Hitlist',
+        success: data => {
+            hitlist = data.data[0]
+
+            for (let [index, song] of songs.entries()) {
+                const { songCheck, row, title, percentNumber } = song
+                
+                if (songCheck.checked) {
+                    hitlist.songs[index].vote_count++;
+                }
         
-        if (songCheck.checked) {
-            hitlist.songs[index].vote_count++;
-        }
-
-        songCheck.checked = false;
-        row.style.backgroundColor = "#ffffff";
-        title.style.color = "#8d8d8d";
-        percentNumber.style.color = "#8d8d8d";
-    }
-
-    try {
-        $.ajax({
-            method: 'put',
-            url: `/api/Hitlist/${hitlist._id}`,
-            data: hitlist,
-            success: data => {
-                console.log(data)
-                document.getElementById("confirmation").style.display = "none";
-                document.getElementById("voteConfirmed").style.display = "block";
-            },
-            error: () => {
-                alert('error')
+                songCheck.checked = false;
+                row.style.backgroundColor = "#ffffff";
+                title.style.color = "#8d8d8d";
+                percentNumber.style.color = "#8d8d8d";
             }
-        })
-    } catch (error) {
-        console.log(error)
-    }
+
+            $.ajax({
+                method: 'put',
+                url: `/api/Hitlist/${hitlist._id}`,
+                data: hitlist,
+                success: data => {
+                    console.log(data)
+                    document.getElementById("confirmation").style.display = "none";
+                    document.getElementById("voteConfirmed").style.display = "block";
+                },
+                error: () => {
+                    alert('error')
+                }
+            })
+        }
+    })
 
 }
 
