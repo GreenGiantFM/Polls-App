@@ -83,8 +83,8 @@ $(document).ready(() => {
 
                 /*----- Assign variables inside elements -----*/
                 const br = document.createElement('br')
-                const artist = document.createTextNode(s.artist)
-                title.innerText = s.title
+                const artist = document.createTextNode(s.artist.length > 35 ? s.artist.substring(0, 32) + "..." : s.artist)
+                title.innerText = s.title.length > 56 ? s.title.substring(0, 53) + "..." : s.title
                 description_song.appendChild(title)
                 description_song.appendChild(br)
                 description_song.appendChild(artist)
