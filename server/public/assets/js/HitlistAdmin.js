@@ -12,7 +12,6 @@ $(document).ready(() => {
             document.getElementById('start-date').value = hitlist.start_date.substr(0, 10);
             document.getElementById('end-date').value = hitlist.end_date.substr(0, 10);
 
-            console.log(hitlist.songs)
             retrieveSongs()
         }
     })
@@ -196,7 +195,6 @@ function submitVote() {
         url: `/api/Hitlist/${hitlist._id}`,
         data: hitlist,
         success: data => {
-            console.log(data)
 
             Swal.fire({
                 title: 'Success!',

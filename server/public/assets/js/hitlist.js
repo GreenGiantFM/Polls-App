@@ -46,9 +46,6 @@ function retrieveSongs() {
     const live_songs = [ ...hitlist.songs ]
     live_songs.sort((a, b) => a.vote_count - b.vote_count)
 
-    console.log(live_songs)
-    console.log(hitlist.songs)
-
     // set songs
     hitlist.songs.map((s, index) => {
         /*-----  Create Elements -----*/
@@ -349,16 +346,10 @@ async function submitVote() {
             hitlist = data.data[0]
 
             for (let [index, song] of songs.entries()) {
-                const { songCheck, row, title, percentNumber } = song
+                const { songCheck } = song
                 
-                if (songCheck.checked) {
+                if (songCheck.checked)
                     hitlist.songs[index].vote_count++;
-                }
-        
-                songCheck.checked = false;
-                row.style.backgroundColor = "#ffffff";
-                title.style.color = "#8d8d8d";
-                percentNumber.style.color = "#8d8d8d";
             }
 
             $.ajax({
@@ -366,10 +357,10 @@ async function submitVote() {
                 url: `/api/Hitlist/${hitlist._id}`,
                 data: hitlist,
                 success: data => {
-                    console.log(data)
                     document.getElementById("confirmation").style.display = "none";
                     document.getElementById("voteConfirmed").style.display = "block";
                     retrieveSongs()
+                    voteButton()
                 },
                 error: () => {
                     alert('error')
@@ -503,7 +494,6 @@ function closeDrop() {
 /*----- Dropdown Menu -----*/
 function clickDrop() {
     var menu = document.getElementById('drop-inner-div');
-    console.log(menu.style.display);
     if (menu.style.display == 'block') {
         document.getElementById('drop-inner-div').style.display = 'none';
         document.getElementById('drop-polls').style.color = "#ffffff";
