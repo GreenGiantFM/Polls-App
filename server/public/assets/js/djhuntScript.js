@@ -790,6 +790,7 @@ function openDrop() {
 function closeDrop() {
     document.getElementById('drop-inner-div').style.display = 'none';
     document.getElementById('drop-polls').style.color = "#ffffff";
+    document.getElementById('drop-polls').style.display = "block";
 }
 
 /*----- Dropdown Menu -----*/
