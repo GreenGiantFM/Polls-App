@@ -804,3 +804,6 @@ function clickDrop() {
         document.getElementById('drop-polls').style.color = "#569429";
     }
 }
+
+function gotoPolls() {
+    document.getElementById("liveTab").click();
