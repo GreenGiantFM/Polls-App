@@ -160,7 +160,6 @@ $(document).ready(() => {
                 grid_container_confirm.appendChild(voteddjdesk)
                 grid_container_confirm.appendChild(djvoted)
 
-                // console.log(checkbox)
                 djs.push(checkbox)
             })
             const confirmation = document.getElementById('confirmation')
@@ -171,7 +170,33 @@ $(document).ready(() => {
 
             document.getElementById("vote").appendChild(document.createElement('br'))
             document.getElementById("vote").appendChild(document.createElement('br'))
-            // console.log(djs)
+
+            const live_rank = [...djhunt.radio_talents]
+            live_rank.sort((a, b) => b.vote_count - a.vote_count)
+
+            // get total overall for the percentage
+            let totalVotes = 0
+            live_rank.map(s => {
+                totalVotes += s.vote_count
+            })
+
+            live_rank.map((rt, index) => {
+                const percent = Math.round((rt.vote_count/totalVotes)*100)
+                console.log(percent)
+                console.log(100-percent)
+                /*** grey ***/
+                document.getElementById(`bar-${index+1}-top`).style.gridRow = `1 / ${100-percent}`
+                /***  ***/
+                document.getElementById(`bar-${index+1}-bottom`).style.gridRow = `${100-percent} / 101`
+                /***  ***/
+                document.getElementById(`top-${index+1}-num`).innerText = `${percent}%`
+                /***  ***/
+                document.getElementById(`bar-${index+1}-mid`).style.gridColumn = `30 / ${30+10+percent}`
+                /*** grey ***/
+                document.getElementById(`bar-${index+1}-right`).style.gridColumn = `${30+10+percent} / 140`
+                /***  ***/
+                document.getElementById(`mid-${index+1}-num`).innerText = `${percent}%`
+            })
         }
     })
 })
