@@ -782,7 +782,7 @@ function closeNav() {
 
 /*----- Open Dropdown Menu -----*/
 function openDrop() {
-    document.getElementById('drop-inner-div').style.display = 'block';
+    document.getElementById('drop-inner-div').style.display = 'flex';
     document.getElementById('drop-polls').style.display = 'none';
 }
 
