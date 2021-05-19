@@ -367,3 +367,13 @@ function selectSong(index) {
     songs[index].songCheck.click()
     changeBackground()
 }
+
+function logout() {
+    $.ajax({
+        method: 'get',
+        url: '/admin/logout',
+        success: data => {
+            window.location = "/admin"
+        }
+    })
+}
