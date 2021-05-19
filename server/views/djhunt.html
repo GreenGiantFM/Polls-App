@@ -4,6 +4,8 @@
         <title>DJ Hunt</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" integrity="sha256-OweaP/Ic6rsV+lysfyS4h+LM6sRwuO3euTYfr6M124g=" crossorigin="anonymous">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
         <link rel="stylesheet" href="../assets/fonts/fontawesome-all.min.css">
@@ -11,7 +13,8 @@
         <link rel="stylesheet" href="../assets/fonts/line-awesome.min.css">
         <link rel="stylesheet" href="../assets/fonts/fontawesome5-overrides.min.css">
         <link rel="stylesheet" href="../assets/css/base.css">
-        <link rel="stylesheet" href="assets/css/dj_hunt_css.css">
+        <link rel="stylesheet" href="/assets/css/dj_hunt_css.css">
+        <link rel="stylesheet" href="https://cdn.rawgit.com/theus/chart.css/v1.0.0/dist/chart.css" />
         <link rel="icon" href="../assets/img/GGFM/GGFM_ICON.png" type="image/png" />
     </head>
     <body>
@@ -19,26 +22,26 @@
         <header id="upper" style="background-color: black;">
             <ul class="upper-link">
                 <li><img src="../assets/img/GGFM/GGFM_LOGO.png" alt='Green Giant FM' style="width:175px;"></li>
-                <li><a href="#" class="upperLink">Home</a></li>
-                <li><a href="#" class="upperLink">About Us</a></li>
-                <li><a href="#" class="upperLink">Radio Talents</a></li>
-                <li><a href="#" class="upperLink">Events</a></li>
-                <li><a href="#" class="upperLink">Blogs</a></li>
-                <li><a href="#" class="upperLink">Contact Us</a></li>
+                <li><a href="https://www.greengiantfm.com/" class="upperLink">Home</a></li>
+                <li><a href="https://www.greengiantfm.com/about" class="upperLink">About Us</a></li>
+                <li><a href="https://www.greengiantfm.com/radio-talents" class="upperLink">Radio Talents</a></li>
+                <li><a href="https://www.greengiantfm.com/events" class="upperLink">Events</a></li>
+                <li><a href="https://www.greengiantfm.com/blog" class="upperLink">Blogs</a></li>
+                <li><a href="https://www.greengiantfm.com/contact-us" class="upperLink">Contact Us</a></li>
                 <li>
                     <div id="drop-menu" class="upperLink" onmouseover="openDrop()" onmouseout="closeDrop()" onclick="clickDrop()">
                         <p id="drop-polls">Live Polls</p>
-                        <div id="drop-inner-div" class="dropdown-content">
+                        <div id="drop-inner-div" class="dropdown-content-nav">
                             <ul id="drop-list">
-                                <li><a href="/hitlist" class="pollsDrop"><i class="fas fa-music"></i>&ensp;Hitlist</a></li>
+                                <li><a href="/" class="pollsDrop"><i class="fas fa-music"></i>&ensp;Hitlist</a></li>
                                 <li><a href="/dj-hunt" class="pollsDrop"><i class="fas fa-binoculars"></i>&ensp;DJ Hunt</a></li>
                             </ul>
                         </div>
                     </div>
                 </li>
-                <li><a href="#" class="upperLink">Stream</a></li>
+                <li><a href="https://app.greengiantfm.com" class="upperLink">Stream</a></li>
                 <li>
-                    <input type="text" placeholder="Search..." name="search" id="searchbar">
+                    <input type="" placeholder="Search..." name="search" id="searchbar">
                     <a href="#" id="searchbtn"><i class="fa fa-search" aria-hidden="true" id="searchIcon"></i></a>
                 </li>
             </ul>
@@ -48,7 +51,7 @@
         <div class="w3-container tab">
             <h1 id="page_title" style="font-weight: bolder; color: #569429"><i class="fas fa-binoculars"></i>&ensp;DJ Hunt</h1>
             <p id="vote_details" style="color: #000000;">
-                <em id="hunt_time"></em>
+                Voting Lines Close by <em id="hunt-date"></em> | <em id="hunt_time"></em>
             </p>
             <button id="voteTab" class="active" onclick="openTab(event, 'Vote')">Vote</button>
             <button id="liveTab" class="inactive" onclick="openTab(event, 'Live')">Live Polls</button>
@@ -57,235 +60,389 @@
         <!-- Menu -->
         <div id="sideMenu" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&#9776;&emsp;<em>Menu</em></a>
-            <a href="#" class="sideLink">Home</a>
-            <a href="#" class="sideLink">About Us</a>
-            <a href="#" class="sideLink">Radio Talents</a>
-            <a href="#" class="sideLink">Events</a>
-            <a href="#" class="sideLink">Blogs</a>
-            <a href="#" class="sideLink">Contact Us</a>
-            <a href="#" class="sideLink">Stream</a>
+            <a href="https://www.greengiantfm.com/" class="sideLink">Home</a>
+            <a href="https://www.greengiantfm.com/about" class="sideLink">About Us</a>
+            <a href="https://www.greengiantfm.com/radio-talents class="sideLink">Radio Talents</a>
+            <a href="https://www.greengiantfm.com/events" class="sideLink">Events</a>
+            <a href="https://www.greengiantfm.com/blog" class="sideLink">Blogs</a>
+            <a href="https://www.greengiantfm.com/contact-us" class="sideLink">Contact Us</a>
+            <a href="https://app.greengiantfm.com" class="sideLink">Stream</a>
             <span class="sideLink">Live Polls</span>
-            <a href="../HITLIST_POLL/main.html" class="pollLink"><i class="fas fa-music"></i>&ensp;Hitlist</a>
-            <a href="../DJHUNT/djhunt.html" class="pollLink"><i class="fas fa-binoculars"></i>&ensp;DJ Hunt</a>
+            <a href="/" class="pollLink"><i class="fas fa-music"></i>&ensp;Hitlist</a>
+            <a href="/dj-hunt" class="pollLink"><i class="fas fa-binoculars"></i>&ensp;DJ Hunt</a>
         </div>
         
         <!-- Menu Button -->
         <span id="sideMenuBtn" onclick="openNav()">&#9776;</span>
 
-        <!-- Voting Tab -->
-        <div id="votingTab" class="tabcontent w3-center" style="display: block;">
-            <div id="hunt_end" style="display: none;">
-                <div id="hunt-outer-div">
-                    <div id="hunt-inner-div">
-                        <h1 id="hunt-end-message">VOTING PERIOD HAS ENDED</h1>
-                        <button id="goToPolls">Go to Polls</button>
+        <div id="wrapper" style="min-height: 100vh;">
+            <!-- Voting Tab -->
+            <div id="votingTab" class="tabcontent w3-center" style="display: block;">
+                <div id="hunt_end" style="display: none;">
+                    <div id="hunt-outer-div">
+                        <div id="hunt-inner-div">
+                            <h1 id="hunt-end-message">VOTING PERIOD HAS ENDED</h1>
+                            <button id="goToPolls">Go to Polls</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <form action="#">
-                <div id="vote" class="grid-container-djs">
-                    
-                </div>
-                <input type="button" id="huntSubmit" onclick="openConfirm()" value="VOTE" disabled>
-                <div id="djvote" class="tabcontent">
-                    <h1 id="confirm_desk">Confirm Vote?</h1>
-                    <div class="grid-container-confirm" id="grid-container-confirm">
+                <form action="#">
+                    <div id="vote" class="grid-container-djs">
                         
-                        <div id="confirmation">
-                            <p id="confirm_mobile">Confirm Vote?</p>
-                            <input type="button" id="huntConfirm" onclick="submitVote()" value="Confirm">
-                            <input type="button" id="huntCancel" onclick="cancelVote()" value="Back">
-                        </div>
                     </div>
-                </div>
-                <div id="voteSubmitted" class="grid-container-submitted" style="display:none;">
-                    <div class="grid-item-submitted-photo">
-                        <img id="submittedImage" src="../assets/img/GGFM/GGFM_ICON.png">
+                    <input type="button" id="huntSubmit" onclick="signIn()" value="VOTE" disabled>
+                    <div id="djSignIn" class="tabcontent" style="display: none;">
+                        <h1 id="signIn-msg">
+                            Sign in to your Google<br>Account to Vote
+                        </h1>
+                        <input type=button id="signInButton" onclick="openConfirm()" value="Proceed">
+                        <input type=button id="cancelSignIn" onclick="cancelVote()" value="Back">
                     </div>
-                    <div class="grid-item-submitted-message">
-                        <p id="submittedMessage">Thank you for voting.</p>
-                        <input type="submit" class="huntBack" onclick="closeConfirm()" value="Back">
-                    </div>
-                </div>
-            </form>
-        </div>
-
-        <!-- Live Polls -->
-        <div id="live" class="tabcontent">
-            <div class="grid-container-djs">
-                <div class="grid-item-dj">
-                    <div class="grid-container-DJ-desk">
-                        <div class="grid-item-DJ-desk-photo" onclick="openDJPage(1)">
-                            <img class="dj-background" src="assets/img/DJs/d1.jpg">
-                            <p class="dj-name">Cora</p>
-                        </div>
-                        <p class="grid-item-DJ-desk-name">Cora</p>
-                    </div>
-                </div>
-                <div class="grid-item-dj">
-                    <div class="grid-container-DJ-desk">
-                        <div class="grid-item-DJ-desk-photo" onclick="openDJPage(2)">
-                            <img class="dj-background" src="assets/img/DJs/d2.jpg">
-                            <p class="dj-name">Javi</p>
-                        </div>
-                        <p class="grid-item-DJ-desk-name">Javi</p>
-                    </div>
-                </div>
-                <div class="grid-item-dj">
-                    <div class="grid-container-DJ-desk">
-                        <div class="grid-item-DJ-desk-photo" onclick="openDJPage(3)">
-                            <img class="dj-background" src="assets/img/DJs/d3.jpg">
-                            <p class="dj-name">Joaquin</p>
-                        </div>
-                        <p class="grid-item-DJ-desk-name">Joaquin</p>
-                    </div>
-                </div>
-                <div class="grid-item-dj">
-                    <div class="grid-container-DJ-desk">
-                        <div class="grid-item-DJ-desk-photo" onclick="openDJPage(4)">
-                            <img class="dj-background" src="assets/img/DJs/d4.jpg">
-                            <p class="dj-name">Macoy</p>
-                        </div>
-                        <p class="grid-item-DJ-desk-name">Macoy</p>
-                    </div>
-                </div>
-                <div class="grid-item-dj">
-                    <div class="grid-container-DJ-desk">
-                        <div class="grid-item-DJ-desk-photo" onclick="openDJPage(5)">
-                            <img class="dj-background" src="assets/img/DJs/d5.jpg">
-                            <p class="dj-name">Michael</p>
-                        </div>
-                        <p class="grid-item-DJ-desk-name">Michael</p>
-                    </div>
-                </div>
-                <div class="grid-item-dj">
-                    <div class="grid-container-DJ-desk">
-                        <div class="grid-item-DJ-desk-photo" onclick="openDJPage(6)">
-                            <img class="dj-background" src="assets/img/DJs/d6.jpg">
-                            <p class="dj-name">Fonz</p>
-                        </div>
-                        <p class="grid-item-DJ-desk-name">Fonz</p>
-                    </div>
-                </div>
-                <div class="grid-item-dj">
-                    <div class="grid-container-DJ-desk">
-                        <div class="grid-item-DJ-desk-photo" onclick="openDJPage(7)">
-                            <img class="dj-background" src="assets/img/DJs/d7.jpg">
-                            <p class="dj-name">Robby</p>
-                        </div>
-                        <p class="grid-item-DJ-desk-name">Robby</p>
-                    </div>
-                </div>
-                <div class="grid-item-dj">
-                    <div class="grid-container-DJ-desk">
-                        <div class="grid-item-DJ-desk-photo" onclick="openDJPage(8)">
-                            <img class="dj-background" src="assets/img/DJs/d8.jpg">
-                            <p class="dj-name">Tony</p>
-                        </div>
-                        <p class="grid-item-DJ-desk-name">Tony</p>
-                    </div>
-                </div>
-                <br>
-                <br>
-            </div>
-        </div>
-
-        <!-- DJ Page -->
-        <div id="djPage-mobile" style="text-align: center; justify-content: center; display: none;">
-            <div id="djInfo-mobile">
-                <h1 id="djName-mobile" style="font-weight: bolder; color: #569429; text-align:center;"></h1>
-                <div class="grid-container-details">
-                    <div class="grid-item-misc">
-                        <div class="grid-container-handle">
-                            <div class="grid-item-photo">
-                                <img id="dj-image-mobile" class="dj-background">
-                            </div>
-                            <div class="grid-item-handle">
-                                <h6 id="fullName-mobile" style="font-weight: bolder; color: #000000;"></h6>
-                                <a href="https://www.fb.com/" id="mobile-facebook"><img id="fb" class="handles"
-                                        src="../assets/img/SOC_MED/FB.png"
-                                        onmouseover="this.src='../assets/img/SOC_MED/FB_G.png';"
-                                        onmouseout="this.src='../assets/img/SOC_MED/FB.png';"></a>
-                                <a href="https://www.twitter.com/" id="mobile-twitter"><img id="tw" class="handles"
-                                        src="../assets/img/SOC_MED/TW.png"
-                                        onmouseover="this.src='../assets/img/SOC_MED/TW_G.png';"
-                                        onmouseout="this.src='../assets/img/SOC_MED/TW.png';"></a>
-                                <a href="https://www.instagram.com/" id="mobile-instagram"><img id="ig" class="handles"
-                                        src="../assets/img/SOC_MED/IG.png"
-                                        onmouseover="this.src='../assets/img/SOC_MED/IG_G.png';"
-                                        onmouseout="this.src='../assets/img/SOC_MED/IG.png';"></a>
+                    <div id="djvote" class="tabcontent">
+                        <h1 id="confirm_desk">Confirm Vote?</h1>
+                        <div class="grid-container-confirm" id="grid-container-confirm">
+                            
+                            
+                            <div id="confirmation">
+                                <p id="confirm_mobile">Confirm Vote?</p>
+                                <input type="button" id="huntConfirm" onclick="submitVote()" value="Confirm">
+                                <input type="button" id="huntCancel" onclick="cancelVote()" value="Back">
                             </div>
                         </div>
                     </div>
-                    <div class="grid-item-misc">
-                        <iframe id="djVideo-mobile" title="YouTube video player"
-                            frameborder="0" allowfullscreen></iframe>
+                    <div id="voteSubmitted" class="grid-container-submitted" style="display:none;">
+                        <div class="grid-item-submitted-photo">
+                            <img id="submittedImage" src="../assets/img/GGFM/GGFM_ICON.png">
+                        </div>
+                        <div class="grid-item-submitted-message">
+                            <p id="submittedMessage">Thank you for voting.</p>
+                            <input type="submit" class="huntBack" onclick="closeConfirm()" value="Back">
+                        </div>
                     </div>
-                    <div class="grid-item-misc">
-                        <audio id="djAudio-mobile" class="stinger" controls>
-                            <source id="djStinger-mobile" type="audio/mp3">
-                        </audio>
+                </form>
+            </div>
+
+            <!-- Live Polls -->
+            <div id="live" class="tabcontent">
+                <div class="chart-desk">
+                    <div class="bar-1-top">
                     </div>
-                    <div class="grid-item-misc">
-                        <h3 id="djPlaylist-title"
-                            style="font-weight: bolder; color: #000000; text-align: left; margin-left: 7px;">DJ's Playlist</h3>
-                        <iframe id="djPlaylist-mobile" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                    <div class="bar-1-bottom">
+                        <div class="top">20%</div>
                     </div>
-                    <div class="grid-item-misc info-tagline">
-                        <h5 id="details-tagline-mobile">Hi! Lorem Ipsum...</h5>
+                    <div class="bar-1-num">
+                        <div class="num">#1</div>
+                    </div>
+                    <div class="bar-2-top">
+                    </div>
+                    <div class="bar-2-bottom">
+                        <div class="top">18%</div>
+                    </div>
+                    <div class="bar-2-num">
+                        <div class="num">#2</div>
+                    </div>
+                    <div class="bar-3-top">
+                    </div>
+                    <div class="bar-3-bottom">
+                        <div class="top">15%</div>
+                    </div>
+                    <div class="bar-3-num">
+                        <div class="num">#3</div>
+                    </div>
+                    <div class="bar-4-top">
+                    </div>
+                    <div class="bar-4-bottom">
+                        <div class="top">12%</div>
+                    </div>
+                    <div class="bar-4-num">
+                        <div class="num">#4</div>
+                    </div>
+                    <div class="bar-5-top">
+                    </div>
+                    <div class="bar-5-bottom">
+                        <div class="top">11%</div>
+                    </div>
+                    <div class="bar-5-num">
+                        <div class="num">#5</div>
+                    </div>
+                    <div class="bar-6-top">
+                    </div>
+                    <div class="bar-6-bottom">
+                        <div class="top">10%</div>
+                    </div>
+                    <div class="bar-6-num">
+                        <div class="num">#6</div>
+                    </div>
+                    <div class="bar-7-top">
+                    </div>
+                    <div class="bar-7-bottom">
+                        <div class="top">8%</div>
+                    </div>
+                    <div class="bar-7-num">
+                        <div class="num">#7</div>
+                    </div>
+                    <div class="bar-8-top">
+                    </div>
+                    <div class="bar-8-bottom">
+                        <div class="top">6%</div>
+                    </div>
+                    <div class="bar-8-num">
+                        <div class="num">#8</div>
+                    </div>
+                </div>
+                <div class="chart-mobile">
+                    <div class="bar-1-left">
+                        <div class="num">#1</div>
+                    </div>
+                    <div class="bar-1-mid">
+                        <div class="mid">20%</div>
+                    </div>
+                    <div class="bar-1-right">
+                    </div>
+                    <div class="bar-2-left">
+                        <div class="num">#2</div>
+                    </div>
+                    <div class="bar-2-mid">
+                        <div class="mid">18%</div>
+                    </div>
+                    <div class="bar-2-right">
+                    </div>
+                    <div class="bar-3-left">
+                        <div class="num">#3</div>
+                    </div>
+                    <div class="bar-3-mid">
+                        <div class="mid">15%</div>
+                    </div>
+                    <div class="bar-3-right">
+                    </div>
+                    <div class="bar-4-left">
+                        <div class="num">#4</div>
+                    </div>
+                    <div class="bar-4-mid">
+                        <div class="mid">12%</div>
+                    </div>
+                    <div class="bar-4-right">
+                    </div>
+                    <div class="bar-5-left">
+                        <div class="num">#5</div>
+                    </div>
+                    <div class="bar-5-mid">
+                        <div class="mid">11%</div>
+                    </div>
+                    <div class="bar-5-right">
+                    </div>
+                    <div class="bar-6-left">
+                        <div class="num">#6</div>
+                    </div>
+                    <div class="bar-6-mid">
+                        <div class="mid">10%</div>
+                    </div>
+                    <div class="bar-6-right">
+                    </div>
+                    <div class="bar-7-left">
+                        <div class="num">#7</div>
+                    </div>
+                    <div class="bar-7-mid">
+                        <div class="mid">8%</div>
+                    </div>
+                    <div class="bar-7-right">
+                    </div>
+                    <div class="bar-8-left">
+                        <div class="num">#8</div>
+                    </div>
+                    <div class="bar-8-mid">
+                        <div class="mid">6%</div>
+                    </div>
+                    <div class="bar-8-right">
                     </div>
                 </div>
             </div>
-            <button id="exitDJPage-mobile" onclick="closeDJPage()"><i class="fa fa-times" aria-hidden="true"></i></button>
-        </div>
-        <div id="djPage-desk" style="text-align: center; justify-content: center; display: none;">
-            <div id="djInfo-desk">
-                <div class="grid-container-details" style="margin-top: 20px;">
-                    <div class="grid-item-misc" style="text-align: right; justify-content: right;">
-                        <div class="grid-item-photo">
-                            <img id="dj-image-desk" class="dj-background">
+
+            <!-- DJ Page -->
+            <div id="djPage-mobile" style="text-align: center; justify-content: center; display: none;">
+                <div id="djInfo-mobile">
+                    <h1 id="djName-mobile" style="font-weight: bolder; color: #569429; text-align:center;"></h1>
+                    <div class="grid-container-details">
+                        <div class="grid-item-misc">
+                            <div class="grid-container-handle">
+                                <div class="grid-item-photo">
+                                    <img id="dj-image-mobile" class="dj-background">
+                                </div>
+                                <div class="grid-item-handle">
+                                    <h6 id="fullName-mobile" style="font-weight: bolder; color: #000000;"></h6>
+                                    <a href="https://www.fb.com/" id="mobile-facebook"><img id="fb" class="handles"
+                                            src="../assets/img/SOC_MED/FB.png"
+                                            onmouseover="this.src='../assets/img/SOC_MED/FB_G.png';"
+                                            onmouseout="this.src='../assets/img/SOC_MED/FB.png';"></a>
+                                    <a href="https://www.twitter.com/" id="mobile-twitter"><img id="tw" class="handles"
+                                            src="../assets/img/SOC_MED/TW.png"
+                                            onmouseover="this.src='../assets/img/SOC_MED/TW_G.png';"
+                                            onmouseout="this.src='../assets/img/SOC_MED/TW.png';"></a>
+                                    <a href="https://www.instagram.com/" id="mobile-instagram"><img id="ig" class="handles"
+                                            src="../assets/img/SOC_MED/IG.png"
+                                            onmouseover="this.src='../assets/img/SOC_MED/IG_G.png';"
+                                            onmouseout="this.src='../assets/img/SOC_MED/IG.png';"></a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="grid-item-misc">
-                        <div class="grid-item-handle" style="text-align: left;">
-                            <h1 id="djName-desk"></h1>
-                            <h6 id="fullName" style="font-weight: bolder; color: #000000;"></h6>
-                            <h5 id="details-tagline-desk">Lorem Ipsum is simply dummy text of the printing and typesetting
-                                industry. Lorem Ipsum
-                                has been the industry's standard dummy text ever since...</h5>
-                            <audio id="djAudio-desk" class="stinger" controls>
-                                <source id="djStinger-desk" type="audio/mp3">
+                        <div class="grid-item-misc">
+                            <iframe id="djVideo-mobile" title="YouTube video player"
+                                frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <div class="grid-item-misc">
+                            <audio id="djAudio-mobile" class="stinger" controls>
+                                <source id="djStinger-mobile" type="audio/mp3">
                             </audio>
                         </div>
+                        <div class="grid-item-misc">
+                            <h3 id="djPlaylist-title"
+                                style="font-weight: bolder; color: #000000; text-align: left; margin-left: 7px;">DJ's Playlist</h3>
+                            <iframe id="djPlaylist-mobile" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                        </div>
+                        <div class="grid-item-misc info-tagline">
+                            <h5 id="details-tagline-mobile">Hi! Lorem Ipsum...</h5>
+                        </div>
                     </div>
-                    <div class="grid-item-misc" style="width: 45px;">
-                        <a href="https://www.fb.com/" id="desk-facebook"><img id="fb" class="handles"
-                                src="../assets/img/SOC_MED/FB.png" onmouseover="this.src='../assets/img/SOC_MED/FB_G.png';"
-                                onmouseout="this.src='../assets/img/SOC_MED/FB.png';"></a>
-                        <a href="https://www.twitter.com/" id="desk-twitter"><img id="tw" class="handles" src="../assets/img/SOC_MED/TW.png"
-                                onmouseover="this.src='../assets/img/SOC_MED/TW_G.png';"
-                                onmouseout="this.src='../assets/img/SOC_MED/TW.png';"></a>
-                        <a href="https://www.instagram.com/" id="desk-instagram"><img id="ig" class="handles" src="../assets/img/SOC_MED/IG.png"
-                                onmouseover="this.src='../assets/img/SOC_MED/IG_G.png';"
-                                onmouseout="this.src='../assets/img/SOC_MED/IG.png';"></a>
-                    </div>
-                    <div class="grid-item-misc" style="grid-column: 1 / span 3;">
-                        <div class="grid-container-handle">
-                            <div class="grid-item-misc">
-                                <iframe id="djVideo-desk" width="350" height="225" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <button id="exitDJPage-mobile" onclick="closeDJPage()"><i class="fa fa-times" aria-hidden="true"></i></button>
+            </div>
+
+
+            <div id="djPage-desk" style="text-align: center; justify-content: center; display: none;">
+                <div id="djInfo-desk">
+                    <div class="grid-container-details" style="margin-top: 20px;">
+                        <div class="grid-item-misc" style="text-align: right; justify-content: right;">
+                            <div class="grid-item-photo">
+                                <img id="dj-image-desk" class="dj-background">
                             </div>
-                            <div class="grid-item-misc">
-                                <h5 style="font-weight: bolder; color: #000000; text-align: left; margin-left: 7px; margin-top: 0px; padding-top: 0px;">
-                                    DJ's Playlist</h5>
-                                <iframe id="djPlaylist-desk" width="300"
-                                    height="190" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                        </div>
+                        <div class="grid-item-misc">
+                            <div class="grid-item-handle" style="text-align: left;">
+                                <h1 id="djName-desk"></h1>
+                                <h6 id="fullName" style="font-weight: bolder; color: #000000;"></h6>
+                                <h5 id="details-tagline-desk">Lorem Ipsum is simply dummy text of the printing and typesetting
+                                    industry. Lorem Ipsum
+                                    has been the industry's standard dummy text ever since...</h5>
+                                <audio id="djAudio-desk" class="stinger" controls>
+                                    <source id="djStinger-desk" type="audio/mp3">
+                                </audio>
+                            </div>
+                        </div>
+                        <div class="grid-item-misc" style="width: 45px;">
+                            <a href="https://www.fb.com/" id="desk-facebook"><img id="fb" class="handles"
+                                    src="../assets/img/SOC_MED/FB.png" onmouseover="this.src='../assets/img/SOC_MED/FB_G.png';"
+                                    onmouseout="this.src='../assets/img/SOC_MED/FB.png';"></a>
+                            <a href="https://www.twitter.com/" id="desk-twitter"><img id="tw" class="handles" src="../assets/img/SOC_MED/TW.png"
+                                    onmouseover="this.src='../assets/img/SOC_MED/TW_G.png';"
+                                    onmouseout="this.src='../assets/img/SOC_MED/TW.png';"></a>
+                            <a href="https://www.instagram.com/" id="desk-instagram"><img id="ig" class="handles" src="../assets/img/SOC_MED/IG.png"
+                                    onmouseover="this.src='../assets/img/SOC_MED/IG_G.png';"
+                                    onmouseout="this.src='../assets/img/SOC_MED/IG.png';"></a>
+                        </div>
+                        <div class="grid-item-misc" style="grid-column: 1 / span 3;">
+                            <div class="grid-container-handle">
+                                <div class="grid-item-misc">
+                                    <iframe id="djVideo-desk" width="350" height="225" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+                                </div>
+                                <div class="grid-item-misc">
+                                    <h5 style="font-weight: bolder; color: #000000; text-align: left; margin-left: 7px; margin-top: 0px; padding-top: 0px;">
+                                        DJ's Playlist</h5>
+                                    <iframe id="djPlaylist-desk" width="300"
+                                        height="190" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <button id="exitDJPage-desk" onclick="closeDJPage()"><i class="fa fa-times" aria-hidden="true"></i></button>
             </div>
-            <button id="exitDJPage-desk" onclick="closeDJPage()"><i class="fa fa-times" aria-hidden="true"></i></button>
         </div>
+    
+        <div style="background-color: black;">
+            <br>
+            <br>
+            <div class="container">
+                <div class="row">
+                    <div class="col s12 m4">
+                        <div class="row">
+                            <a href="/" style="width: 100%; height: auto">
+                                <img src="/assets/img/GGFM/GGFM_LOGO.png" class="responsive-img" style="height: 80px; width: auto;">
+                            </a>
+                        </div>
+                        <div>
+                            <h6 class="white-text">
+                                Accredited by the Student Media Office
+                            </h6>
+                            <img src="/assets/img/GGFM/White-SMO-Logo.png" class="responsive-img" style="height: 80px; width: auto;">
+      
+                        </div>
+                    </div>
+                    <div class="">
+      
+                    </div>
+                    <div class="col s12 m4">
+                        <h6 class="white-text">
+                            <b>EXPLORE</b>
+                        </h6>
+                        <ul class="white-text">
+                          <ul id="menu-footer" class="menu">
+                            <li id="menu-item-1047" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1047"><a href="https://www.greengiantfm.com/">Home</a></li>
+                            <li id="menu-item-1048" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1048"><a href="https://www.greengiantfm.com/about">About</a></li>
+                            <li id="menu-item-1049" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1049"><a href="https://www.greengiantfm.com/radio-talents">Radio Talents</a></li>
+                            <li id="menu-item-1050" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1050"><a href="https://www.greengiantfm.com/events">Events</a></li>
+                            <li id="menu-item-1051" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1051"><a href="https://www.greengiantfm.com/blog">Blog</a></li>
+                            <li id="menu-item-1052" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1052"><a href="https://www.greengiantfm.com/contact-us">Contact Us</a></li>
+                            <li id="menu-item-1053" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1053"><a href="https://www.greengiantfm.com/privacy-policy">Privacy Policy</a></li>
+                            <li id="menu-item-1054" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1054"><a href="http://app.greengiantfm.com">Stream</a></li>
+                          </ul>
+                        </ul>
+                        <br>
+                        <h6 class="white-text">
+                            <b>SOCIAL</b>
+                        </h6>
+                        <div style="padding-top:10px;">
+                            <div style="display: inline-block; padding-right: 10px;">
+                                <a href="https://www.facebook.com/GreenGiantFM/">
+                                    <img src="/assets/img/SOC_MED/fbnew.png" alt="facebook" class="responsive-img" style="height:40px; width: auto;">
+                                </a>
+                            </div>
+                            <div style="display: inline-block;">
+                                <a href="https://www.instagram.com/greengiant.fm/">
+                                    <img src="/assets/img/SOC_MED/ignew.png" alt="instagram" class="responsive-img" style="height:40px; width: auto;">
+                                </a>
+                            </div>
+                            <div style="display: inline-block; padding-left: 10px;">
+                                <a href="https://www.twitter.com/GreenGiantFM/">
+                                    <img src="/assets/img/SOC_MED/twitternew.png" alt="twitter" class="responsive-img" style="height:40px; width: auto;">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+      
+                </div>
+    
+                <div class="row">
+                    <div class="col s12 m6">
+                        <hr style="color: white">
+                        <p class="white-text text-darken-2">
+    
+                            <a style="color: #569429;">Green Giant FM </a> - Br. Bloemen Hall, De La Salle University,
+                                2401 Taft Ave, Malate,
+                                Manila, 1004 Metro Manila
+                        </p>
+                    </div>
+                </div>
+      
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+      
+        </div>
+        
+      
+        <div class="sidenav-overlay"></div><div class="drag-target"></div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="../assets/js/polls_js.js"></script>
