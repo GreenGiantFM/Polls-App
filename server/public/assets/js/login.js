@@ -156,7 +156,8 @@ function openTab(evt, tabName) {
     }
 }
 
-function login() {
+document.getElementById('login-form').addEventListener('submit', (e) => {
+    e.preventDefault();
     const username = document.getElementById('username').value
     const password = document.getElementById('pass').value
 
@@ -185,4 +186,4 @@ function login() {
                   })
             }
         })
-}
+})
