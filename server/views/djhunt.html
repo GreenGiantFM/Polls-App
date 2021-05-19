@@ -31,7 +31,7 @@
                 <li>
                     <div id="drop-menu" class="upperLink" onmouseover="openDrop()" onmouseout="closeDrop()" onclick="clickDrop()">
                         <p id="drop-polls">Live Polls</p>
-                        <div id="drop-inner-div" class="dropdown-content-nav">
+                        <div id="drop-inner-div" class="dropdown-content-nav" style="display: none;">
                             <ul id="drop-list">
                                 <li><a href="/" class="pollsDrop"><i class="fas fa-music"></i>&ensp;Hitlist</a></li>
                                 <li><a href="/dj-hunt" class="pollsDrop"><i class="fas fa-binoculars"></i>&ensp;DJ Hunt</a></li>
@@ -41,8 +41,6 @@
                 </li>
                 <li><a href="https://app.greengiantfm.com" class="upperLink">Stream</a></li>
                 <li>
-                    <input type="" placeholder="Search..." name="search" id="searchbar">
-                    <a href="#" id="searchbtn"><i class="fa fa-search" aria-hidden="true" id="searchIcon"></i></a>
                 </li>
             </ul>
         </header>
@@ -445,7 +443,6 @@
         <div class="sidenav-overlay"></div><div class="drag-target"></div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="../assets/js/polls_js.js"></script>
     <script src="assets/js/djhuntScript.js"></script>
     </body>
 </html>

@@ -10,7 +10,6 @@ $(document).ready(() => {
         success: data => {
             djhunt = data.data[0];
 
-            console.log(djhunt)
             const closing = document.getElementById('hunt-date')
             const formattedDate = new Date(djhunt.end_date)
             .toLocaleDateString({},
@@ -182,19 +181,17 @@ $(document).ready(() => {
 
             live_rank.map((rt, index) => {
                 const percent = Math.round((rt.vote_count/totalVotes)*100)
-                console.log(percent)
-                console.log(100-percent)
                 /*** grey ***/
                 document.getElementById(`bar-${index+1}-top`).style.gridRow = `1 / ${100-percent}`
-                /***  ***/
+                /*** green ***/
                 document.getElementById(`bar-${index+1}-bottom`).style.gridRow = `${100-percent} / 101`
-                /***  ***/
+                /*** num ***/
                 document.getElementById(`top-${index+1}-num`).innerText = `${percent}%`
-                /***  ***/
+                /*** green ***/
                 document.getElementById(`bar-${index+1}-mid`).style.gridColumn = `30 / ${30+10+percent}`
                 /*** grey ***/
                 document.getElementById(`bar-${index+1}-right`).style.gridColumn = `${30+10+percent} / 140`
-                /***  ***/
+                /*** num ***/
                 document.getElementById(`mid-${index+1}-num`).innerText = `${percent}%`
             })
         }
@@ -640,35 +637,39 @@ function huntButton() {
 
 /*----- Submit Vote -----*/
 function submitVote(){
-    for (let [index, dj] of djs.entries()) {
-        if (dj.checked)
-            djhunt.radio_talents[index].vote_count++
-    }
 
-    try {
-        $.ajax({
-            method: 'put',
-            url: `/api/DjHunt/${djhunt._id}`,
-            data: djhunt,
-            success: data => {
-                console.log(data)
+    $.ajax({
+        method: 'get',
+        url: `/api/All-DJHunt`,
+        success: data => {
+            djhunt = data.data[0];
 
-                document.getElementById("vote").style.display = "none";
-                document.getElementById("djvote").style.display = "none";
-                document.getElementById("confirmation").style.display = "none";
-                document.getElementById("voteSubmitted").style.display = "grid";
-                document.getElementById("voteTab").style.display = "none";
-                document.getElementById("liveTab").style.display = "none";
-                document.body.style.background = '#aad68a';
-                document.body.style.background = "linear-gradient(to bottom, #f1faeb, #569429)";
-            
-                for (let dj of djs)
-                    dj.checked = false
+            for (let [index, dj] of djs.entries()) {
+                if (dj.checked)
+                    djhunt.radio_talents[index].vote_count++
             }
-        })
-    } catch (error) {
-        console.log(error)
-    }
+        
+            $.ajax({
+                method: 'put',
+                url: `/api/DjHunt/${djhunt._id}`,
+                data: djhunt,
+                success: data => {
+        
+                    document.getElementById("vote").style.display = "none";
+                    document.getElementById("djvote").style.display = "none";
+                    document.getElementById("confirmation").style.display = "none";
+                    document.getElementById("voteSubmitted").style.display = "grid";
+                    document.getElementById("voteTab").style.display = "none";
+                    document.getElementById("liveTab").style.display = "none";
+                    document.body.style.background = '#aad68a';
+                    document.body.style.background = "linear-gradient(to bottom, #f1faeb, #569429)";
+                
+                    for (let dj of djs)
+                        dj.checked = false
+                }
+            })
+        }
+    })
 }
 
 /*----- Cancel Vote -----*/
@@ -768,3 +769,37 @@ $(window).on('scroll', function () {
         }
     }
 });
+
+/*----- Open Menu -----*/
+function openNav() {
+    document.getElementById("sideMenu").style.width = "250px";
+}
+
+/*----- Close Menu -----*/
+function closeNav() {
+    document.getElementById("sideMenu").style.width = "0";
+}
+
+/*----- Open Dropdown Menu -----*/
+function openDrop() {
+    document.getElementById('drop-inner-div').style.display = 'block';
+    document.getElementById('drop-polls').style.display = 'none';
+}
+
+/*----- Close Dropdown Menu -----*/
+function closeDrop() {
+    document.getElementById('drop-inner-div').style.display = 'none';
+    document.getElementById('drop-polls').style.color = "#ffffff";
+}
+
+/*----- Dropdown Menu -----*/
+function clickDrop() {
+    var menu = document.getElementById('drop-inner-div');
+    if (menu.style.display == 'block') {
+        document.getElementById('drop-inner-div').style.display = 'none';
+        document.getElementById('drop-polls').style.color = "#ffffff";
+    } else {
+        document.getElementById('drop-inner-div').style.display = 'block';
+        document.getElementById('drop-polls').style.color = "#569429";
+    }
+}
