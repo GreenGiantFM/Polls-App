@@ -469,7 +469,7 @@ $(window).on('scroll', function () {
     }
     else {
         if (window.innerWidth >= 1024) {
-            $('#hitlist_end').stop().animate({ top: "350px" }, 100);
+            $('#hitlist_end').stop().animate({ top: "300px" }, 100);
         } else if (window.innerWidth >= 350 && window.innerWidth <= 1023) {
             $('#hitlist_end').stop().animate({ top: "175px" }, 100);
         } else if (window.innerWidth <= 349) {
