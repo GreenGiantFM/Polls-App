@@ -196,7 +196,8 @@ html {
   #djInfo-desk {
     display: block;
     width: 750px;
-    margin: 10px 12px;
+    height: 560px;
+    margin: auto;
     overflow-y: auto;
     background-color: #F9F4EF;
     box-shadow: 0 5px 7px 0 rgba(0, 0, 0, 0.525), 0 8px 24px 0 rgb(0, 0, 0.525);
@@ -214,7 +215,7 @@ html {
     text-decoration: none;
     border: none;
     position: absolute;
-    margin: 0 0 0 800px;
+    margin: 82px 0 0 800px;
   }
   #menu-footer > li > a, #exitDJPage-desk:hover {
     color: #569429;
@@ -285,9 +286,7 @@ html {
   }
   #details-tagline-desk, #fullName {
     width: 300px;
-    font-weight: bolder;
     font-size: 12px;
-    color: #000000;
     text-align: left;
   }
   
