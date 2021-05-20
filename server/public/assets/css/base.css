@@ -193,7 +193,7 @@ input[disabled] {
     #hitlist_end, #hunt_end {
         display: flex;
         position: fixed;
-        top: 350px;
+        top: 300px;
         bottom: 0;
         left: 0;
         width: 100%;
