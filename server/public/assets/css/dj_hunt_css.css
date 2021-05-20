@@ -1382,3 +1382,7 @@ html {
 #vote, #djPage-mobile, #djPage-desk {
   animation: fadeEffect 0.25s;
 }
+
+#menu-footer > li > a {
+  color: #569429;
+}

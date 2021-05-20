@@ -245,7 +245,7 @@ function openDJPage(djNum){
     document.getElementById('djAudio-desk').load();
     document.getElementById('djPlaylist-mobile').src = dj.spotify_playlist;
     document.getElementById('djPlaylist-desk').src = dj.spotify_playlist;
-    document.getElementById("details-tagline-desk").innerText = "Not your ordinary bakeshop";
+    document.getElementById("details-tagline-desk").innerText = dj.tagline;
     document.getElementById("details-tagline-mobile").innerText = dj.tagline;
     console.log(dj.facebook, dj.twitter, dj.instagram)
     console.log(dj)
