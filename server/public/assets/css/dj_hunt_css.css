@@ -213,6 +213,8 @@ html {
     outline: none;
     text-decoration: none;
     border: none;
+    position: absolute;
+    margin: 0 0 0 800px;
   }
   #menu-footer > li > a, #exitDJPage-desk:hover {
     color: #569429;
@@ -437,7 +439,7 @@ html {
   .grid-container-djs {
     display: grid;
     grid-template-columns: auto auto;
-    grid-gap: 30px 70px;
+    grid-gap: 30px 30px;
     align-items: center;
     justify-content: center;
     padding: 10px;
@@ -621,11 +623,13 @@ html {
     height: 50px;
     font-size: 30px;
     background-color: #ffffff00;
-    color: #ffffff;
+    color: black;
     cursor: pointer;
     outline: none;
     text-decoration: none;
     border: none;
+    position: absolute;
+    margin: 0 0 0 290px;
   }
   #exitDJPage-mobile:hover {
     color: #569429;
@@ -1054,6 +1058,8 @@ html {
     outline: none;
     text-decoration: none;
     border: none;
+    position: absolute;
+    margin: 0 0 0 200px;
   }
   #exitDJPage-mobile:hover {
     color: #569429;
