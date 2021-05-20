@@ -807,3 +807,4 @@ function clickDrop() {
 
 function gotoPolls() {
     document.getElementById("liveTab").click();
+}
