@@ -378,7 +378,7 @@ async function submitVote() {
         voteButton()
     } else {
 
-        // setCookie('voted', 'true');
+        setCookie('voted', 'true');
 
         $.ajax({
             method: 'get',
