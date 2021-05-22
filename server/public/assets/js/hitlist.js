@@ -332,6 +332,30 @@ function cancel() {
     document.getElementById("confirmation").style.display = "none";
 }
 
+function setCookie(cname, cvalue) {
+    var tomorrow = new Date(new Date().setHours(0,0,0,0));
+    tomorrow.setDate(new Date().getDate()+1);
+    var expires = "expires="+ tomorrow.toUTCString();
+    var cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    document.cookie = cookie
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+}
+
 /*----- Vote Submitted -----*/
 async function submitVote() {
     // 1. song# = row
@@ -339,35 +363,46 @@ async function submitVote() {
     // 3. songNumber = title
     // 4. percentNumber = percent
 
-    $.ajax({
-        method: 'get',
-        url: '/api/All-Hitlist',
-        success: data => {
-            hitlist = data.data[0]
+    if (getCookie('voted')) {
+        document.getElementById("confirmation").style.display = "none";
+        document.getElementById("submit_text").innerText = "VOTE ONCE PER DAY";
+        document.getElementById("voteConfirmed").style.display = "block";
+        retrieveSongs()
+    } else {
 
-            for (let [index, song] of songs.entries()) {
-                const { songCheck } = song
-                
-                if (songCheck.checked)
-                    hitlist.songs[index].vote_count++;
-            }
+        // setCookie('voted', 'true');
 
-            $.ajax({
-                method: 'put',
-                url: `/api/Hitlist/${hitlist._id}`,
-                data: hitlist,
-                success: data => {
-                    document.getElementById("confirmation").style.display = "none";
-                    document.getElementById("voteConfirmed").style.display = "block";
-                    retrieveSongs()
-                    voteButton()
-                },
-                error: () => {
-                    alert('error')
+        $.ajax({
+            method: 'get',
+            url: '/api/All-Hitlist',
+            success: data => {
+                hitlist = data.data[0]
+    
+                for (let [index, song] of songs.entries()) {
+                    const { songCheck } = song
+                    
+                    if (songCheck.checked)
+                        hitlist.songs[index].vote_count++;
                 }
-            })
-        }
-    })
+    
+                $.ajax({
+                    method: 'put',
+                    url: `/api/Hitlist/${hitlist._id}`,
+                    data: hitlist,
+                    success: data => {
+                        document.getElementById("confirmation").style.display = "none";
+                        document.getElementById("voteConfirmed").style.display = "block";
+                        retrieveSongs()
+                        voteButton()
+                    },
+                    error: () => {
+                        alert('error')
+                    }
+                })
+            }
+        })
+    }
+
 
 }
 
