@@ -222,13 +222,14 @@
                 <input type="button" id="voteSubmit" onclick="openConfirm()" value="VOTE" disabled>
                 <!-- Voting Tab Overlay -->
                 <div id="overlay">
-                    <div id="confirmation" class="overlayItems">
+                    <div id="confirmation" class="overlayItems" style="top: 40%">
                         <h1 id="confirm_text">CONFIRM VOTE</h1>
                         <input type="button" id="confirmVote" onclick="submitVote()" style="margin-right:5px;" value="Yes">
                         <input type="button" id="cancelVote" onclick="closeConfirm()" style="margin-left:5px;"
                             value="Cancel">
                     </div>
-                    <div id="voteConfirmed" class="overlayItems">
+                    <div id="voteConfirmed" class="overlayItems" style="top: 20%">
+                        <img id="hitlist-code" src="assets/img/Hitlist Cover.jpg" alt="Hitlist">
                         <h1 id="submit_text">VOTE CONFIRMED</h1>
                         <input type="submit" id="doneVote" onclick="closeConfirm()" value="DONE">
                     </div>

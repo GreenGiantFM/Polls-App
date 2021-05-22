@@ -102,9 +102,10 @@
                             <input type="button" id="cancelVote" onclick="cancel()" style="margin-left:5px;"
                                 value="Cancel">
                         </div>
-                        <div id="voteConfirmed" class="overlayItems">
+                        <div id="voteConfirmed" class="overlayItems" style="top: 20%">
+                            <img id="hitlist-code" src="/server/public/assets/img/Hitlist Cover.jpg" alt="Hitlist">
                             <h1 id="submit_text">VOTE CONFIRMED</h1>
-                            <input type="button" id="doneVote" onclick="closeConfirm()" value="DONE">
+                            <input type="submit" id="doneVote" onclick="closeConfirm()" value="DONE">
                         </div>
                     </div>
                 </form>

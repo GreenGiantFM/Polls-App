@@ -162,6 +162,12 @@
     .percent {
         display: none;
     }
+
+    /*----- Hitlist QR Code -----*/
+    #hitlist-code {
+        width: 250px;
+        height: 250px;
+    }
 }
 
 /*----- Mobile View (at least 350 px and at most 1023px) -----*/
@@ -314,6 +320,12 @@
         color: #74aa4e;
         font-size: 20px;
         font-weight: light;
+    }
+
+    /*----- Hitlist QR Code -----*/
+    #hitlist-code {
+        width: 200px;
+        height: 200px;
     }
 }
 
@@ -469,6 +481,12 @@
         font-size: 13px;
         font-weight: light;
     }
+
+    /*----- Hitlist QR Code -----*/
+    #hitlist-code {
+        width: 100px;
+        height: 100px;
+    }
 }
 
 /*----- Hover over voting buttons -----*/
@@ -503,7 +521,6 @@
 /*----- Overlay contents -----*/
 .overlayItems {
     position:relative;
-    top:40%;
     color: #161616;
 }
 
