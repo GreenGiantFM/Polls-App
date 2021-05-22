@@ -754,21 +754,21 @@ function setTimer() {
 }
 
 /*----- Vote Ended Message -----*/
-$(window).on('scroll', function () {
-    var scrollTop = $(window).scrollTop();
-    if (scrollTop > 25) {
-        $('#hunt_end').stop().animate({ top: "0" }, 25);
-    }
-    else {
-        if (window.innerWidth >= 1024){
-            $('#hunt_end').stop().animate({ top: "300px" }, 100);
-        } else if (window.innerWidth >= 350 && window.innerWidth <= 1023) {
-            $('#hunt_end').stop().animate({ top: "175px" }, 100);
-        } else if (window.innerWidth <= 349) {
-            $('#hunt_end').stop().animate({ top: "140px" }, 100);
-        }
-    }
-});
+// $(window).on('scroll', function () {
+//     var scrollTop = $(window).scrollTop();
+//     if (scrollTop > 25) {
+//         $('#hunt_end').stop().animate({ top: "0" }, 25);
+//     }
+//     else {
+//         if (window.innerWidth >= 1024){
+//             $('#hunt_end').stop().animate({ top: "300px" }, 100);
+//         } else if (window.innerWidth >= 350 && window.innerWidth <= 1023) {
+//             $('#hunt_end').stop().animate({ top: "175px" }, 100);
+//         } else if (window.innerWidth <= 349) {
+//             $('#hunt_end').stop().animate({ top: "140px" }, 100);
+//         }
+//     }
+// });
 
 /*----- Open Menu -----*/
 function openNav() {

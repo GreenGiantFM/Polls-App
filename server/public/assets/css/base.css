@@ -193,7 +193,7 @@ input[disabled] {
     #hitlist_end, #hunt_end {
         display: flex;
         position: fixed;
-        top: 300px;
+        top: 0;
         bottom: 0;
         left: 0;
         width: 100%;
@@ -208,12 +208,14 @@ input[disabled] {
     /*----- Voting Ended Outer Div -----*/
     #hitlist-outer-div, #hunt-outer-div {
         padding-top: 25px;
+        margin: auto;
     }
 
     /*----- Voting Ended Inner Div -----*/
     #hitlist-inner-div, #hunt-inner-div {
         background-color: #ffffff;
-        height: 125px;
+        padding: 20px;
+        padding-top: 1px;
         width: 550px;
         box-shadow: 0 1px 3px 1px rgba(85, 85, 85, 0.24);
     }
@@ -354,7 +356,7 @@ input[disabled] {
     #hitlist_end, #hunt_end {
         display: flex;
         position: fixed;
-        top: 175px;
+        top: 0;
         bottom: 0;
         left: 0;
         width: 100%;
@@ -369,12 +371,15 @@ input[disabled] {
     /*----- Voting Ended Outer Div -----*/
     #hitlist-outer-div, #hunt-outer-div {
         padding-top: 25px;
+        margin: auto;
     }
 
     /*----- Voting Ended Inner Div -----*/
     #hitlist-inner-div, #hunt-inner-div {
         background-color: #ffffff;
-        height: 170px;
+        padding: 20px;
+        padding-top: 1px;
+        height: 155px;
         width: 330px;
         box-shadow: 0 1px 3px 1px rgba(85, 85, 85, 0.24);
     }
@@ -521,7 +526,7 @@ input[disabled] {
     #hitlist_end, #hunt_end {
         display: flex;
         position: fixed;
-        top: 140px;
+        top: 0;
         bottom: 0;
         left: 0;
         width: 100%;
@@ -536,12 +541,13 @@ input[disabled] {
     /*----- Voting Ended Outer Div -----*/
     #hitlist-outer-div, #hunt-outer-div {
         padding-top: 25px;
+        margin: auto;
     }
 
     /*----- Voting Ended Inner Div -----*/
     #hitlist-inner-div, #hunt-inner-div {
         background-color: #ffffff;
-        height: 185px;
+        height: 145px;
         width: 215px;
         box-shadow: 0 1px 3px 1px rgba(85, 85, 85, 0.24);
     }
