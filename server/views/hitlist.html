@@ -60,8 +60,8 @@
             </div>
     
             <!-- Menu -->
-            <div id="sideMenu" class="sidenav">
-                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&#9776;&emsp;<em>Menu</em></a>
+            <div id="slide-out" class="sidenav side-nav" style="overflow: hidden;">
+                <span class="closebtn" style="cursor: pointer;">&#9776;&emsp;<em>Menu</em></span>
                 <a href="https://www.greengiantfm.com/" class="sideLink">Home</a>
                 <a href="https://www.greengiantfm.com/about" class="sideLink">About Us</a>
                 <a href="https://www.greengiantfm.com/radio-talents" class="sideLink">Radio Talents</a>
@@ -73,9 +73,9 @@
                 <a href="/" class="pollLink"><i class="fas fa-music"></i>&ensp;Hitlist</a>
                 <a href="/dj-hunt" class="pollLink"><i class="fas fa-binoculars"></i>&ensp;DJ Hunt</a>
             </div>
-    
+            
             <!-- Menu Button -->
-            <span id="sideMenuBtn" onclick="openNav()">&#9776;</span>
+            <span id="sideMenuBtn" data-activates="slide-out">&#9776;</span>
     
             <!-- Voting Tab -->
             <div id="vote" class="tabcontent w3-center" style="display: block;">
@@ -209,7 +209,21 @@
       
         <div class="sidenav-overlay"></div><div class="drag-target"></div>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
         <script src="/assets/js/polls_js.js"></script>
         <script src="/assets/js/hitlist.js"></script>
+        <script type="text/javascript">
+            var screen = window.screen.width;
+            var width = 250;
+            if (screen >= 350) {
+                width = 250;
+            } else {
+                width = 125;
+            }
+            $("#sideMenuBtn").sideNav({ menuWidth: width});
+            $('.closebtn').click(() => {
+                $(".sidenav").sideNav('hide');
+            });
+        </script>
     </body>
 </html>

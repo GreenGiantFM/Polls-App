@@ -262,7 +262,6 @@ input[disabled] {
     /*----- Side Menu -----*/
     .sidenav {
         height: 100%;
-        width: 0;
         position: fixed;
         z-index: 2;
         top: 0;
@@ -425,7 +424,6 @@ input[disabled] {
     /*----- Side Menu -----*/
     .sidenav {
         height: 100%;
-        width: 0;
         position: fixed;
         z-index: 2;
         top: 0;

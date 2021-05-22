@@ -246,21 +246,6 @@ function retrieveSongs() {
     document.getElementById('grid-container-live-tab').append(document.createElement('br'))
 }
 
-/*----- Open Menu -----*/
-function openNav() {
-    var screen = window.screen.width;
-    if(screen >= 350){
-        document.getElementById("sideMenu").style.width = "250px";
-    }else{
-        document.getElementById("sideMenu").style.width = "125px";
-    }
-}
-
-/*----- Close Menu -----*/
-function closeNav() {
-    document.getElementById("sideMenu").style.width = "0";
-}
-
 /*----- Enable / Disable vote Button -----*/
 function voteButton() {
 
