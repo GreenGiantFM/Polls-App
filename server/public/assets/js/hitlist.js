@@ -6,7 +6,7 @@
 
 const voteSubmit = document.getElementById("voteSubmit")
 const songs = []
-let hitlist
+let hitlist, hasEnded = false;
 
 $(document).ready(() => {
 
@@ -363,11 +363,19 @@ async function submitVote() {
     // 3. songNumber = title
     // 4. percentNumber = percent
 
-    if (getCookie('voted')) {
+    if (hasEnded) {
+        document.getElementById("confirmation").style.display = "none";
+        document.getElementById("submit_text").innerText = "VOTING LINE IS CLOSED";
+        document.getElementById("voteConfirmed").style.display = "block";
+        setTimeout(() => {
+            window.location.reload()
+        }, 1500)
+    } else if (getCookie('voted')) {
         document.getElementById("confirmation").style.display = "none";
         document.getElementById("submit_text").innerText = "VOTE ONCE PER DAY";
         document.getElementById("voteConfirmed").style.display = "block";
         retrieveSongs()
+        voteButton()
     } else {
 
         // setCookie('voted', 'true');
@@ -487,6 +495,7 @@ function setCountdown() {
     
         if ((days == 0 && hrs == 0 && mins == 0 && secs == 0) || distance < 0) {
             clearInterval(timer);
+            hasEnded = true
             document.getElementById("hitlist_time").innerHTML = "00:00:00:00";
             document.getElementById("hitlist_time").style.color = "#ff0000";
             document.getElementById("hitlist_end").style.display = "flex";
