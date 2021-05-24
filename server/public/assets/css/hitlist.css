@@ -93,6 +93,14 @@
         letter-spacing: 2px;
     }
 
+    #voteSubmit {
+        position: fixed;
+        bottom: 5%;
+        left: 0;
+        right: 0;
+        margin: 0% auto;
+    }
+
     /*----- Texts for vote submission -----*/
     #confirm_text, #submit_text{
         text-align: center;
@@ -246,6 +254,14 @@
         font-size: x-large;
         font-weight: bolder;
         letter-spacing: 2px;
+    }
+
+    #voteSubmit {
+        position: fixed;
+        bottom: 5%;
+        left: 0;
+        right: 0;
+        margin: 0% auto;
     }
 
     /*----- Texts in vote submission -----*/
@@ -405,6 +421,14 @@
         font-size: large;
         font-weight: bolder;
         letter-spacing: 2px;
+    }
+
+    #voteSubmit {
+        position: fixed;
+        bottom: 5%;
+        left: 0;
+        right: 0;
+        margin: 0% auto;
     }
 
     /*----- Texts in vote submission -----*/
