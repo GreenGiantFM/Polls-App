@@ -91,6 +91,7 @@
         font-size: x-large;
         font-weight: bolder;
         letter-spacing: 2px;
+        cursor: pointer;
     }
 
     #voteSubmit {
@@ -254,6 +255,7 @@
         font-size: x-large;
         font-weight: bolder;
         letter-spacing: 2px;
+        cursor: pointer;
     }
 
     #voteSubmit {
@@ -421,6 +423,7 @@
         font-size: large;
         font-weight: bolder;
         letter-spacing: 2px;
+        cursor: pointer;
     }
 
     #voteSubmit {
