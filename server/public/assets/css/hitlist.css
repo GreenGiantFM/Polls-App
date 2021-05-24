@@ -165,8 +165,8 @@
 
     /*----- Hitlist QR Code -----*/
     #hitlist-code {
-        width: 250px;
         height: 250px;
+        object-fit: cover;
     }
 }
 
@@ -324,8 +324,8 @@
 
     /*----- Hitlist QR Code -----*/
     #hitlist-code {
-        width: 200px;
-        height: 200px;
+        height: 250px;
+        object-fit: cover;
     }
 }
 
@@ -484,8 +484,8 @@
 
     /*----- Hitlist QR Code -----*/
     #hitlist-code {
-        width: 100px;
-        height: 100px;
+        height: 150px;
+        object-fit: cover;
     }
 }
 
@@ -514,7 +514,7 @@
     width: 100%;
     height: 100%;
     text-align: center;
-    background-color: #cacaca46;
+    background-color: #ffffffa1;
     z-index: 1;
 }
 
@@ -522,6 +522,7 @@
 .overlayItems {
     position:relative;
     color: #161616;
+    top: 30%;
 }
 
 #menu-footer > li > a{
