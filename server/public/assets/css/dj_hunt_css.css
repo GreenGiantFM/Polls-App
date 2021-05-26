@@ -195,6 +195,7 @@ html {
   /*----- DJ Page Container -----*/
   #djInfo-desk {
     display: block;
+    position: relative;
     width: 750px;
     height: 560px;
     margin: auto;
@@ -209,13 +210,14 @@ html {
     height: 50px;
     font-size: 30px;
     background-color: #ffffff00;
-    color: #ffffff;
+    color: #000000;
     cursor: pointer;
     outline: none;
     text-decoration: none;
     border: none;
     position: absolute;
-    margin: 82px 0 0 800px;
+    top: 0px;
+    right: 0px;
   }
   #menu-footer > li > a, #exitDJPage-desk:hover {
     color: #569429;
@@ -610,6 +612,7 @@ html {
   /*----- DJ Page Container -----*/
   #djInfo-mobile {
     display: block;
+    position: relative;
     width: 350px;
     margin: 6px 12px;
     overflow-y: scroll;
@@ -628,7 +631,8 @@ html {
     text-decoration: none;
     border: none;
     position: absolute;
-    margin: 0 0 0 290px;
+    top: 0px;
+    right: 0px;
   }
   #exitDJPage-mobile:hover {
     color: #569429;
@@ -1040,6 +1044,7 @@ html {
   /*----- DJ Page Container -----*/
   #djInfo-mobile {
     display: block;
+    position: relative;
     width: 180px;
     margin: 3px 6px;
     overflow-y: scroll;
@@ -1052,13 +1057,14 @@ html {
     height: 20px;
     font-size: 20px;
     background-color: #ffffff00;
-    color: #ffffff;
+    color: black;
     cursor: pointer;
     outline: none;
     text-decoration: none;
     border: none;
     position: absolute;
-    margin: 0 0 0 200px;
+    top: 0px;
+    right: 0px;
   }
   #exitDJPage-mobile:hover {
     color: #569429;

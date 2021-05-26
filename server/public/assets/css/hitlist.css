@@ -91,15 +91,15 @@
         font-size: x-large;
         font-weight: bolder;
         letter-spacing: 2px;
-        cursor: pointer;
     }
 
-    #voteSubmit {
+    #voteSubmit:enabled {
         position: fixed;
         bottom: 5%;
         left: 0;
         right: 0;
         margin: 0% auto;
+        cursor: pointer;
     }
 
     /*----- Texts for vote submission -----*/
@@ -255,15 +255,15 @@
         font-size: x-large;
         font-weight: bolder;
         letter-spacing: 2px;
-        cursor: pointer;
     }
 
-    #voteSubmit {
+    #voteSubmit:enabled {
         position: fixed;
         bottom: 5%;
         left: 0;
         right: 0;
         margin: 0% auto;
+        cursor: pointer;
     }
 
     /*----- Texts in vote submission -----*/
@@ -423,15 +423,15 @@
         font-size: large;
         font-weight: bolder;
         letter-spacing: 2px;
-        cursor: pointer;
     }
 
-    #voteSubmit {
+    #voteSubmit:enabled {
         position: fixed;
         bottom: 5%;
         left: 0;
         right: 0;
         margin: 0% auto;
+        cursor: pointer;
     }
 
     /*----- Texts in vote submission -----*/
