@@ -491,21 +491,19 @@ function setCountdown() {
 }
 
 /*----- Vote Ended Message -----*/
-// $(window).on('scroll', function () {
-//     var scrollTop = $(window).scrollTop();
-//     if (scrollTop > 25) {
-//         $('#hitlist_end').stop().animate({ top: "0" }, 25);
-//     }
-//     else {
-//         if (window.innerWidth >= 1024) {
-//             $('#hitlist_end').stop().animate({ top: "300px" }, 100);
-//         } else if (window.innerWidth >= 350 && window.innerWidth <= 1023) {
-//             $('#hitlist_end').stop().animate({ top: "175px" }, 100);
-//         } else if (window.innerWidth <= 349) {
-//             $('#hitlist_end').stop().animate({ top: "140px" }, 100);
-//         }
-//     }
-// });
+$(window).on('scroll', function () {
+    var scrollBottom = $(window).scrollTop() + $(window).height();
+    // var current = $()
+    var limit = $('#upper').height() + $("#wrapper").height();
+
+    console.log(scrollBottom, limit)
+    if (scrollBottom >= limit) {
+        $('#voteSubmit').css("position", "initial")
+    }
+    else {
+        $('#voteSubmit').css("position", "fixed")
+    }
+});
 
 /*----- Open Dropdown Menu -----*/
 function openDrop() {
