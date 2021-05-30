@@ -6,7 +6,7 @@
 
 const voteSubmit = document.getElementById("voteSubmit")
 const songs = []
-let hitlist, hasEnded = false;
+let hitlist, limit, hasEnded = false;
 
 $(document).ready(() => {
 
@@ -244,6 +244,7 @@ function retrieveSongs() {
     document.getElementById('grid-container-voting-tab').append(document.createElement('br'))
     document.getElementById('grid-container-live-tab').append(document.createElement('br'))
     document.getElementById('grid-container-live-tab').append(document.createElement('br'))
+    limit = $('#upper').height() + $("#wrapper").height();
 }
 
 /*----- Enable / Disable vote Button -----*/
@@ -492,11 +493,8 @@ function setCountdown() {
 
 /*----- Vote Ended Message -----*/
 $(window).on('scroll', function () {
-    var scrollBottom = $(window).scrollTop() + $(window).height();
-    // var current = $()
-    var limit = $('#upper').height() + $("#wrapper").height();
+    var scrollBottom = $(window).scrollTop() + $(window).height();    
 
-    console.log(scrollBottom, limit)
     if (scrollBottom >= limit) {
         $('#voteSubmit').css("position", "initial")
     }
