@@ -244,7 +244,11 @@ function retrieveSongs() {
     document.getElementById('grid-container-voting-tab').append(document.createElement('br'))
     document.getElementById('grid-container-live-tab').append(document.createElement('br'))
     document.getElementById('grid-container-live-tab').append(document.createElement('br'))
-    limit = $('#upper').height() + $("#wrapper").height();
+
+    if (window.innerWidth >= 1024)
+        limit = $('#upper').height() + $("#wrapper").height();
+    else
+        limit = $("#wrapper").height();
 }
 
 /*----- Enable / Disable vote Button -----*/
