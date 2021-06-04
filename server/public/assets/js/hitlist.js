@@ -223,7 +223,7 @@ function retrieveSongs() {
         /*----- push data to html -----*/
         grid_item_song_desk.appendChild(description_percent)
         grid_item_song_liveDesk.appendChild(description_song)
-        grid_item_song.innerHTML = `<iframe src="${s.spotify_link}" width="80" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`
+        grid_item_song.innerHTML = `<iframe src="${s.spotify_link}" class="spotify" width="80" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`
         grid_item_song_number.innerText = live_songs.length-index
         grid_container_songs.appendChild(grid_item_song_number)
         grid_container_songs.appendChild(grid_item_song)
