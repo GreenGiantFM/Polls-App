@@ -278,6 +278,13 @@ function closeDJPage() {
     if (desk.classList.contains("chosen-DJPage-desk")) {
         desk.classList.remove("chosen-DJPage-desk");
     }
+
+    /*----- Reset youtube video -----*/
+    document.getElementById('djVideo-mobile').src = document.getElementById('djVideo-mobile').src;
+    document.getElementById("djVideo-desk").src = document.getElementById("djVideo-desk").src ;
+    /*----- Reset audio player -----*/
+    document.getElementById('djAudio-mobile').pause()
+    document.getElementById('djAudio-desk').pause()
 }
 
 /*----- Check number of DJs voted -----*/
