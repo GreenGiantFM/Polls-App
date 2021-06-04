@@ -99,7 +99,7 @@ function retrieveSongs() {
         /*----- push data to html -----*/
         grid_item_song_desk.appendChild(description_percent)
         grid_item_song_voteDesk.appendChild(description_song)
-        label.innerHTML = `<iframe src="${s.spotify_link}" width="80" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`
+        label.innerHTML = `<iframe src="${s.spotify_link}" class="spotify" width="80" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`
         grid_item_song.appendChild(label)
         grid_item_song_input.appendChild(checkSong)
         grid_container_voting.appendChild(grid_item_song_input)
