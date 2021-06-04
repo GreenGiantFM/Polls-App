@@ -267,6 +267,18 @@ function openDJPage(djNum){
 
 /*----- Close DJ Page -----*/
 function closeDJPage() {
+    /*----- Reset youtube video -----*/
+    document.getElementById('djVideo-mobile').src = document.getElementById('djVideo-mobile').src;
+    document.getElementById("djVideo-desk").src = document.getElementById("djVideo-desk").src ;
+    
+    /*----- Reset audio player -----*/
+    document.getElementById('djAudio-mobile').pause()
+    document.getElementById('djAudio-desk').pause()
+    
+    /*----- Reset spotify player -----*/
+    document.getElementById('djPlaylist-mobile').src = document.getElementById('djPlaylist-mobile').src
+    document.getElementById('djPlaylist-desk').src = document.getElementById('djPlaylist-desk').src
+    
     document.getElementById('djPage-mobile').style.display = "none";
     document.getElementById("djPage-desk").style.display = "none";
 
@@ -279,12 +291,7 @@ function closeDJPage() {
         desk.classList.remove("chosen-DJPage-desk");
     }
 
-    /*----- Reset youtube video -----*/
-    document.getElementById('djVideo-mobile').src = document.getElementById('djVideo-mobile').src;
-    document.getElementById("djVideo-desk").src = document.getElementById("djVideo-desk").src ;
-    /*----- Reset audio player -----*/
-    document.getElementById('djAudio-mobile').pause()
-    document.getElementById('djAudio-desk').pause()
+
 }
 
 /*----- Check number of DJs voted -----*/
