@@ -18,7 +18,7 @@ const rtSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    youtube_promotional: String,
+    youtube_video: String,
     picture_path: String,
     vote_count: {
         type: Number,
@@ -33,7 +33,8 @@ const rtSchema = new mongoose.Schema({
 const DjHuntSchema = new mongoose.Schema({
     radio_talents: [rtSchema],
     start_date: Date,
-    end_date: Date
+    end_date: Date,
+    voters_email: [String]
 })
 
 const DjHunt = mongoose.model('djhunt', DjHuntSchema)

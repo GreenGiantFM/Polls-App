@@ -36,6 +36,46 @@ const createDjHunt = (req, res) => {
         })
 }
 
+const addDJ = async (req, res) => {
+    console.log("BODY: " + req.body)
+    console.log("FILE: " + req.file)
+    // await DjHunt.find({}, (err, djHunts) => {
+    //     if (err) {
+    //         console.log(err)
+    //         return res.status(400).json({ success: false, error: err })
+    //     }
+    //     if (!djHunts.length) {
+    //         console.log('not found')
+    //         return res
+    //             .status(404)
+    //             .json({ success: false, error: `DjHunt not found` })
+    //     }
+
+    //     const payload = req.body
+    //     payload.picture_path = req.file.path
+    //     djHunts[0].radio_talents.push(payload)
+
+    //     djHunts[0]
+    //         .save()
+    //         .then(() => {
+    //             return res.status(200).json({
+    //                 success: true,
+    //                 id: djHunt._id,
+    //                 data: djHunt,
+    //                 message: 'DjHunt updated!',
+    //             })
+    //         })
+    //         .catch(error => {
+    //             console.log(error)
+    //             return res.status(404).json({
+    //                 error,
+    //                 message: 'DjHunt not updated!',
+    //             })
+    //         })
+
+    // }).catch(err => console.log(err))
+}
+
 const updateDjHunt = async (req, res) => {
     const body = req.body
 
@@ -141,4 +181,5 @@ module.exports = {
     deleteDjHunt,
     getAllDjHunt,
     getDjHuntById,
+    addDJ
 }
