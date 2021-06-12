@@ -211,7 +211,7 @@
     /*----- Song description (title) -----*/
     .title {
         font-style: normal;
-        font-size: 17px;
+        font-size: 15px;
         color: #000000;
     }
 
@@ -226,6 +226,9 @@
         align-items: center;
         padding: 0px 0px 0px 10px;
         width: 175px;
+        height: 80px;
+        margin: auto;
+        box-shadow: 0 1px 3px 1px rgb(85 85 85 / 24%);
     }
 
     /*----- Voting buttons -----*/
@@ -331,7 +334,7 @@
     .grid-container-voting {
         display: grid;
         grid-template-columns: auto auto auto auto;
-        grid-gap: 5px 15px;
+        grid-gap: 5px 0px;
         width: 200px;
         height: 90px;
         align-items: left;
@@ -378,7 +381,9 @@
         display: flex;
         align-items: center;
         padding: 0px 0px 0px 10px;
-        width: 70px;
+        width: 120px;
+        height: 70px;
+        box-shadow: 0 1px 3px 1px rgb(85 85 85 / 24%);
     }
 
     /*----- Voting buttons -----*/
@@ -469,6 +474,15 @@
         font-size: 13px;
         font-weight: light;
     }
+
+    .label {
+        height: 70px;
+    }
+
+    .spotify {
+        width: 70px;
+        height: 70px;
+    }
 }
 
 /*----- Hover over voting buttons -----*/
@@ -510,3 +524,7 @@
 #menu-footer > li > a{
     color: #569429;
   }
+
+.label {
+    height: 80px;
+}

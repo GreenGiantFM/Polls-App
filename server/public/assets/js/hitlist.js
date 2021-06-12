@@ -99,7 +99,7 @@ function retrieveSongs() {
         /*----- push data to html -----*/
         grid_item_song_desk.appendChild(description_percent)
         grid_item_song_voteDesk.appendChild(description_song)
-        label.innerHTML = `<iframe src="${s.spotify_link}" width="80" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`
+        label.innerHTML = `<iframe src="${s.spotify_link}" class="spotify" width="80" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`
         grid_item_song.appendChild(label)
         grid_item_song_input.appendChild(checkSong)
         grid_container_voting.appendChild(grid_item_song_input)
@@ -119,25 +119,6 @@ function retrieveSongs() {
         grid_item_song_desk.setAttribute('id', index)
         grid_container_voting.addEventListener('click', selectSong)
 
-        // <div class="grid-item-voting" id="song7">
-        //     <div class="grid-container-voting">
-        //         <div class="grid-item-song-input">
-        //             <input type="checkbox" class="checkSong" id="song7Check" onclick="changeBackground()">
-        //         </div>
-        //         <div class="grid-item-song">
-        //             <label for="song7">
-        //                 <img class="album" src="assets\img\7.jpg" alt='The Valley of The Pagans'>
-        //             </label>
-        //         </div>
-        //         <div class="grid-item-song-voteDesk">
-        //             <p id="songSeven" class="description"><em class="title">The Valley of The Pagans</em><br />Gorillaz</p>
-        //         </div>
-        //         <div class="grid-item-song-desk">
-        //             <p id="percentSeven" class="description">5%</p>
-        //         </div>
-        //     </div>
-        // </div>
-
         grid_item_voting.addEventListener('mouseenter', e => {
             grid_item_song_voteDesk.style.backgroundColor = "#DCDCDC";
         });
@@ -154,27 +135,6 @@ function retrieveSongs() {
             percentNumber: description_percent
         })
 
-        /*----- Live Tab -----*/
-        // const grid_container_live_tab = document.getElementById('grid-container-live-tab')
-        // const copy = grid_item_voting.cloneNode(true)
-        // copy.setAttribute('class', 'grid-item-live')
-        // const grid_container_songs = copy.firstChild // grid-container-voting
-        // grid_container_songs.setAttribute('class', 'grid-container-songs')
-        // const grid_item_song_number = grid_container_songs.firstChild
-        // grid_item_song_number.setAttribute('class', 'grid-item-song-number')
-        // grid_item_song_number.innerHTML = hitlist.songs.length-index
-        // const grid_item_song_liveDesk = grid_container_songs.childNodes[2]
-        // const em_percent = document.createElement('em')
-        // em_percent.setAttribute('class', 'percent')
-        // em_percent.appendChild(document.createElement('br'))
-        // em_percent.appendChild(document.createTextNode(`${totalVotes ? (s.vote_count/totalVotes)*100 : 0}%`))
-        // grid_item_song_liveDesk.setAttribute('class', 'grid-item-song-liveDesk')
-        // grid_item_song_liveDesk.firstChild.appendChild(em_percent)
-
-        // console.log(copy)
-        // copy.addEventListener('mouseenter', e => {})
-        // copy.addEventListener('mouseleave', e => {})
-        // grid_container_live_tab.prepend(copy)
     })
 
     live_songs.map((s, index) => {
@@ -249,6 +209,7 @@ function retrieveSongs() {
 /*----- Open Menu -----*/
 function openNav() {
     var screen = window.screen.width;
+    alert(screen)
     if(screen >= 350){
         document.getElementById("sideMenu").style.width = "250px";
     }else{
