@@ -1,0 +1,1394 @@
+* { box-sizing: border-box; }
+
+/*----- Graident Background -----*/
+html {
+  min-height: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: linear-gradient(to bottom, #f1faeb, #569429);
+}
+
+/*----- Live Tab -----*/
+#live {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-left: auto;
+	margin-right: auto;
+}
+
+/*----- Desktop View (at least 1024px) -----*/
+@media screen and (min-width: 1024px) {
+  /*----- Main Grid Container (Voting / Live) -----*/
+  /*----- Main Grid Container (Confirmation) -----*/
+  .grid-container-djs, .grid-container-confirm {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 40px 30px;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  /*----- Main Grid Container (DJs) -----*/
+  .grid-container-DJ-desk {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /*----- DJ Photo (Voting / Live) -----*/
+  .grid-item-dj {
+    position: relative;
+    overflow: hidden;
+  }
+
+  /*----- DJ Photo (Voting / Live) -----*/
+  .grid-item-DJ-desk-photo {
+    position: relative;
+    overflow: hidden;
+    width: 170px;
+    height: 170px;
+    border-radius: 10px;
+    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.24), 0 3px 5px 0 rgba(0, 0, 0, 0.19);
+    cursor: pointer;
+  }
+
+  /*----- DJ Name -----*/
+  .dj-name {
+    display: none;
+  }
+  .grid-item-DJ-desk-name {
+    font-weight: bolder;
+    color: #000000;
+    height: 20px;
+    text-align: center;
+    margin: 0%;
+  }
+
+  /*----- Main Grid Container (Confirmation) -----*/
+  .grid-container-confirm {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 45px;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  /*----- Vote Confirmation Message -----*/
+  #confirmation {
+    display: none;
+    grid-column: 1 / span 4;
+  }
+  #confirm_desk {
+    display: block;
+    text-align: center;
+    font-weight: bolder;
+    letter-spacing: 2px;
+    color: #569429;
+  }
+  #confirm_mobile {
+    display: none;
+  }
+
+  /*----- Voted DJs -----*/
+  .chosen_desk {
+    display: block;
+  }
+  .chosen_mobile {
+    display: none;
+  }
+  .grid-item-djVoted {
+    display: none;
+  }
+
+  /*----- Voting buttons -----*/
+  #huntSubmit, #huntConfirm,
+  #huntCancel, .huntBack,
+  #signInButton, #cancelSignIn {
+    color: #ffffff;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    width: 330px;
+    height: 45px;
+    font-size: x-large;
+    font-weight: bolder;
+    letter-spacing: 2px;
+  }
+  #huntConfirm, #signInButton {
+    margin-right: 20px;
+  }
+  #huntCancel, #cancelSignIn {
+    margin-left: 20px;
+  }
+  .huntBack {
+    margin-top: 5px;
+    margin-bottom: 20px;
+  }
+  #signInButton, #cancelSignIn {
+    margin-top: 50px;
+  }
+
+  /*----- Sign In Message -----*/
+  #signIn-msg {
+    color: #569429;
+    font-size: 50px;
+    font-weight: bolder;
+  }
+
+  /*----- Main Grid Container (Submitted) -----*/
+  .grid-container-submitted {
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    justify-content: center;
+  }
+  .grid-iterm-submitted-message {
+    width: 400px;
+    height: 150px;
+  }
+
+
+  /*----- Submitted Page -----*/
+  #submittedImage {
+    width: 300px;
+  }
+  #submittedMessage {
+    text-align: left;
+    width: 400px;
+    font-size: 60px;
+    font-weight: bolder;
+    letter-spacing: 2px;
+    color: #ffffff;
+    margin-bottom: 0px;
+    margin-left: 60px;
+    padding-bottom: 0px;
+  }
+
+  /*----- DJ Pagee -----*/
+  #djPage-desk {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    z-index: 1;
+    background-color: #000000a1;
+    background: #000000a1;
+    backdrop-filter: blur(3px);
+  }
+  .chosen-DJPage-desk {
+    display: flex;
+  }
+  .chosen-DJPage-mobile {
+    display: none;
+  }
+
+  /*----- DJ Page Container -----*/
+  #djInfo-desk {
+    display: block;
+    position: relative;
+    width: 750px;
+    height: 560px;
+    margin: auto;
+    overflow-y: auto;
+    background-color: #F9F4EF;
+    box-shadow: 0 5px 7px 0 rgba(0, 0, 0, 0.525), 0 8px 24px 0 rgb(0, 0, 0.525);
+  }
+
+  /*----- DJ Page Exit Button -----*/
+  #exitDJPage-desk {
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    background-color: #ffffff00;
+    color: #000000;
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
+    border: none;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+  }
+  #menu-footer > li > a, #exitDJPage-desk:hover {
+    color: #569429;
+  }
+
+  /*----- Main Grid Container (DJ Page) -----*/
+  .grid-container-details {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 40px;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  /*----- Main Grid Container (DJ Handles) -----*/
+  .grid-container-handle {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 5px 30px;
+    justify-content: center;
+    padding: 10px;
+  }
+  .handles {
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+  }
+  #djName-desk {
+    width: 300px;
+    font-size: 50px;
+    font-weight: bolder;
+    color: #000000;
+    padding: 0px;
+    margin: 0px;
+  }
+
+  /*----- DJ Photo -----*/
+  .grid-item-photo {
+    overflow: hidden;
+    width: 225px;
+    height: 225px;
+    border-radius: 10px;
+    text-align: right;
+    justify-content: right;
+  }
+
+  /*----- Stinger -----*/
+  audio {
+    border: 2px solid #569429;
+    border-radius: 8px;
+    width: 330px;
+    height: 45px;
+    font-size: x-large;
+    font-weight: bolder;
+    letter-spacing: 2px;
+  }
+  .stinger {
+    width: 300px;
+    outline: none;
+  }
+
+  /*----- DJ Tagline -----*/
+  .info-tagline {
+    background-color: #ffffff;
+    border: 3px solid #ffffff;
+  }
+  #details-tagline-desk, #fullName {
+    width: 300px;
+    font-size: 12px;
+    text-align: left;
+  }
+  
+  /*----- Main Grid Container for Live Polls -----*/
+  .chart-desk {
+    display: grid;
+    grid-template-columns: repeat(8, auto);
+    grid-template-rows: repeat(101, auto);
+    grid-column-gap: 25px;
+    height: 275px;
+    width: 800px;
+    padding: 5px 10px;
+    margin: auto;
+  }
+  .chart-mobile {
+    display: none;
+  }
+
+  /*----- Bar -----*/
+  [class*="bar"] {
+    grid-row-end: 111;
+    background-color: #569429;
+  }
+  .bar-1-num, .bar-2-num,
+  .bar-3-num, .bar-4-num,
+  .bar-5-num, .bar-6-num,
+  .bar-7-num, .bar-8-num {
+    grid-row: 102 / 103;
+    border-radius: 0px 0px 5px 5px;
+    background-color: transparent;
+  }
+  .bar-1-bottom, .bar-2-bottom,
+  .bar-3-bottom, .bar-4-bottom,
+  .bar-5-bottom, .bar-6-bottom,
+  .bar-7-bottom, .bar-8-bottom {
+    border-radius: 0px 0px 5px 5px;
+  }
+
+  /*----- Bar #1 -----*/
+  .bar-1-top {
+    grid-row: 1 / 80;
+    border-radius: 5px 5px 0px 0px;
+    background-color: #f0f0f0;
+  }
+  .bar-1-bottom {
+    grid-row: 80 / 100;
+    box-shadow: 1px 1px 5px #838383;
+  }
+
+  /*----- Bar #2 -----*/
+  .bar-2-top {
+    grid-row: 1 / 82;
+    border-radius: 5px 5px 0px 0px;
+    background-color: #f0f0f0;
+  }
+  .bar-2-bottom {
+    grid-row: 82 / 100;
+    box-shadow: 1px 1px 5px #838383;
+  }
+
+  /*----- Bar #3 -----*/
+  .bar-3-top {
+    grid-row: 1 / 85;
+    border-radius: 5px 5px 0px 0px;
+    background-color: #f0f0f0;
+  }
+  .bar-3-bottom {
+    grid-row: 85 / 100;
+    box-shadow: 1px 1px 5px #838383;
+  }
+
+  /*----- Bar #4 -----*/
+  .bar-4-top {
+    grid-row: 1 / 88;
+    border-radius: 5px 5px 0px 0px;
+    background-color: #f0f0f0;
+  }
+  .bar-4-bottom {
+    grid-row: 88 / 100;
+    box-shadow: 1px 1px 5px #838383;
+  }
+
+  /*----- Bar #5 -----*/
+  .bar-5-top {
+    grid-row: 1 / 89;
+    border-radius: 5px 5px 0px 0px;
+    background-color: #f0f0f0;
+  }
+  .bar-5-bottom {
+    grid-row: 89 / 100;
+    box-shadow: 1px 1px 5px #838383;
+  }
+
+  /*----- Bar #6 -----*/
+  .bar-6-top {
+    grid-row: 1 / 90;
+    border-radius: 5px 5px 0px 0px;
+    background-color: #f0f0f0;
+  }
+  .bar-6-bottom {
+    grid-row: 90 / 100;
+    box-shadow: 1px 1px 5px #838383;
+  }
+
+  /*----- Bar #7 -----*/
+  .bar-7-top {
+    grid-row: 1 / 92;
+    border-radius: 5px 5px 0px 0px;
+    background-color: #f0f0f0;
+  }
+  .bar-7-bottom {
+    grid-row: 92 / 100;
+    box-shadow: 1px 1px 5px #838383;
+  }
+
+  /*----- Bar #8 -----*/
+  .bar-8-top {
+    grid-row: 1 / 94;
+    border-radius: 5px 5px 0px 0px;
+    background-color: #f0f0f0;
+  }
+  .bar-8-bottom {
+    grid-row: 94 / 100;
+    box-shadow: 1px 1px 5px #838383;
+  }
+
+  /*----- Percentages -----*/
+  .top {
+    position: relative;
+    top: 10%;
+    font-weight: bolder;
+    font-size: 15px;
+    color: #ffffff;
+  }
+
+  /*----- Bar # -----*/
+  .num {
+    font-size: 25px;
+    font-style: italic;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 3px #474747;
+  }
+}
+
+/*----- Mobile View (at least 350 px and at most 1023px) -----*/
+@media screen and (min-width: 350px) and (max-width: 1023px) {
+  /*----- Main Grid Container (Voting / Live) -----*/
+  .grid-container-djs {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 30px 30px;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  /*----- DJ Card -----*/
+  .grid-item-dj {
+    position: relative;
+    overflow: hidden;
+    width: 120px;
+    height: 120px;
+    border-radius: 10px;
+    box-shadow: 0 5px 7px 0 rgba(0, 0, 0, 0.24), 0 8px 24px 0 rgba(0, 0, 0, 0.19);
+    cursor: pointer;
+  }
+
+  /*----- DJ Name -----*/
+  .dj-name {
+    position: absolute;
+    font-style: inherit;
+    font-weight: bolder;
+    top: -12px;
+    right: 5px;
+    color: white;
+  }
+
+  /*----- Main Grid Container (Confirmation) -----*/
+  .grid-container-confirm {
+    display: grid;
+    grid-template-columns: auto;
+    grid-gap: 10px;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  /*----- Sub Grid Container (Confirmation) -----*/
+  .grid-container-confirmDJs {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 35px;
+    align-items: center;
+    justify-content: left;
+    padding: 10px;
+  }
+
+  /*----- Vote Confirmation Message -----*/
+  #confirmation {
+    display: none;
+  }
+  #confirm_desk {
+    display: none;
+  }
+  #confirm_mobile {
+    display: block;
+    text-align: center;
+    font-size: 35px;
+    font-weight: bolder;
+    letter-spacing: 2px;
+  }
+
+  /*----- Voted DJs -----*/
+  .chosen_desk {
+    display: none;
+  }
+  .chosen_mobile {
+    display: display;
+  }
+  .grid-item-djVoted {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: none;
+    height: 100px;
+    box-shadow: 0 5px 7px 0 rgba(0, 0, 0, 0.24), 0 8px 24px 0 rgba(0, 0, 0, 0.19);
+  }
+
+  /*----- Voted DJ Details -----*/
+  .votedBackground {
+    top: 10px;
+    left: 15px;
+    overflow: hidden;
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+  }
+  .votedName {
+    text-align: left;
+    font-weight: bolder;
+    font-style: normal;
+    font-size: x-large;
+    color: black;
+  }
+  .votedTagline {
+    text-align: left;
+    font-weight: bolder;
+    font-size: small;
+    color: rgb(75, 75, 75);
+  }
+
+  /*----- Voting buttons -----*/
+  #huntSubmit, #huntConfirm,
+  #huntCancel, .huntBack,
+  #signInButton, #cancelSignIn {
+    color: #ffffff;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    width: 330px;
+    height: 45px;
+    font-size: x-large;
+    font-weight: bolder;
+    letter-spacing: 2px;
+  }
+  #huntConfirm, #signInButton {
+    margin-bottom: 20px;
+  }
+  #huntCancel, #cancelSignIn {
+    margin-bottom: 20px;
+  }
+  .huntBack {
+    margin-top: 5px;
+    margin-bottom: 20px;
+  }
+  #signInButton {
+    margin-top: 50px;
+  }
+
+  /*----- Sign In Message -----*/
+  #signIn-msg {
+    color: #569429;
+    font-size: 50px;
+    font-weight: bolder;
+  }
+
+  /*----- Submitted Image (GGFM Icon) -----*/
+  #submittedImage {
+    width: 180px;
+    margin: 60px 35px 35px 35px;
+  }
+  #submittedMessage {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bolder;
+    letter-spacing: 2px;
+    color: #ffffff;
+  }
+
+  /*----- DJ Page -----*/
+  #djPage-mobile {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    z-index: 1;
+    background-color: #000000a1;
+    background: #000000a1;
+    backdrop-filter: blur(3px);
+  }
+  .chosen-DJPage-desk{
+    display: none;
+  }
+  .chosen-DJPage-mobile{
+    display: flex;
+  }
+
+  /*----- DJ Page Container -----*/
+  #djInfo-mobile {
+    display: block;
+    position: relative;
+    width: 350px;
+    margin: 6px 12px;
+    overflow-y: scroll;
+    background-color: #F9F4EF;
+  }
+
+  /*----- DJ Page Exit Button -----*/
+  #exitDJPage-mobile {
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    background-color: #ffffff00;
+    color: black;
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
+    border: none;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+  }
+  #exitDJPage-mobile:hover {
+    color: #569429;
+  }
+
+  /*----- Main Grid Container (DJ Page) -----*/
+  .grid-container-details {
+    display: grid;
+    grid-template-columns: auto;
+    grid-gap: 20px;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  /*----- Main Grid Container (DJ Handles) -----*/
+  .grid-container-handle {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 30px 10px;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+  .handles {
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+  }
+
+  /*----- DJ Photo -----*/
+  .grid-item-photo {
+    overflow: hidden;
+    width: 115px;
+    height: 115px;
+    border-radius: 10px;
+  }
+
+  /*----- Stinger -----*/
+  audio {
+    border: 2px solid #569429;
+    border-radius: 8px;
+    width: 330px;
+    height: 45px;
+    font-size: x-large;
+    font-weight: bolder;
+    letter-spacing: 2px;
+  }
+  .stinger {
+    width: 300px;
+    outline: none;
+  }
+
+  /*----- DJ Video -----*/
+  #djVideo {
+    width: 300px;
+    height: 175px;
+  }
+
+  /*----- DJ Playlist -----*/
+  #djPlaylist {
+    width: 300px;
+    height: 175px;
+  }
+
+  /*----- DJ Tagline -----*/
+  #details-tagline-mobile {
+    font-weight: bolder;
+    color: #000000;
+    text-align: left;
+    padding-left: 7px;
+  }
+  .info-tagline {
+    background-color: #ffffff;
+    border: 3px solid #ffffff;
+  }
+
+  /*----- Main Grid Container for Live Polls -----*/
+  .chart-desk {
+    display: none;
+  }
+  .chart-mobile {
+    display: grid;
+    grid-template-columns: repeat(140, auto);
+    grid-template-rows: repeat(8, auto);
+    grid-row-gap: 25px;
+    height: 600px;
+    width: 400px;
+    padding: 5px 10px;
+    margin: auto;
+  }
+
+  /*----- Bar -----*/
+  [class*="bar"] {
+    grid-column-end: 140;
+    background-color: #569429;
+  }
+  .bar-1-left, .bar-2-left,
+  .bar-3-left, .bar-4-left,
+  .bar-5-left, .bar-6-left,
+  .bar-7-left, .bar-8-left {
+    position: relative;
+    grid-column: 1 / 30;
+    background-color: transparent;
+  }
+  .bar-1-mid, .bar-2-mid,
+  .bar-3-mid, .bar-4-mid,
+  .bar-5-mid, .bar-6-mid,
+  .bar-7-mid, .bar-8-mid {
+    border-radius: 5px 0px 0px 5px;
+  }
+
+  /*----- Bar #1 -----*/
+  .bar-1-mid {
+    position: relative;
+    grid-column: 30 / 60;
+    box-shadow: 1px 1px 5px #838383;
+  }
+  .bar-1-right {
+    grid-column: 60 / 140;
+    border-radius: 0px 5px 5px 0px;
+    background-color: #f0f0f0;
+    /*background-color: #f0f0f0;*/
+  }
+
+  /*----- Bar #2 -----*/
+  .bar-2-mid {
+    position: relative;
+    grid-column: 30 / 58;
+    box-shadow: 1px 1px 5px #838383;
+  }
+  .bar-2-right {
+    grid-column: 58 / 140;
+    border-radius: 0px 5px 5px 0px;
+    background-color: #f0f0f0;
+  }
+
+  /*----- Bar #3 -----*/
+  .bar-3-mid {
+    position: relative;
+    grid-column: 30 / 55;
+    box-shadow: 1px 1px 5px #838383;
+  }
+  .bar-3-right {
+    grid-column: 55 / 140;
+    border-radius: 0px 5px 5px 0px;
+    background-color: #f0f0f0;
+  }
+
+  /*----- Bar #4 -----*/
+  .bar-4-mid {
+    position: relative;
+    grid-column: 30 / 52;
+    box-shadow: 1px 1px 5px #838383;
+  }
+  .bar-4-right {
+    grid-column: 52 / 140;
+    border-radius: 0px 5px 5px 0px;
+    background-color: #f0f0f0;
+  }
+
+  /*----- Bar #5 -----*/
+  .bar-5-mid {
+    position: relative;
+    grid-column: 30 / 51;
+    box-shadow: 1px 1px 5px #838383;
+  }
+  .bar-5-right {
+    grid-column: 51 / 140;
+    border-radius: 0px 5px 5px 0px;
+    background-color: #f0f0f0;
+  }
+
+  /*----- Bar #6 -----*/
+  .bar-6-mid {
+    position: relative;
+    grid-column: 30 / 50;
+    box-shadow: 1px 1px 5px #838383;
+  }
+  .bar-6-right {
+    grid-column: 50 / 140;
+    border-radius: 0px 5px 5px 0px;
+    background-color: #f0f0f0;
+  }
+
+  /*----- Bar #7 -----*/
+  .bar-7-mid {
+    position: relative;
+    grid-column: 30 / 48;
+    box-shadow: 1px 1px 5px #838383;
+  }
+  .bar-7-right {
+    grid-column: 48 / 140;
+    border-radius: 0px 5px 5px 0px;
+    background-color: #f0f0f0;
+  }
+
+  /*----- Bar #8 -----*/
+  .bar-8-mid {
+    position: relative;
+    grid-column: 30 / 46;
+    box-shadow: 1px 1px 5px #838383;
+  }
+  .bar-8-right {
+    grid-column: 46 / 140;
+    border-radius: 0px 5px 5px 0px;
+    background-color: #f0f0f0;
+  }
+
+  /*----- Percentages -----*/
+  .mid {
+    position: absolute;
+    top: 25%;
+    right: 10%;
+    font-weight: bolder;
+    font-size: 15px;
+    color: #aed890;
+  }
+
+  /*----- Bar # -----*/
+  .num {
+    position:absolute;
+    top: 5%;
+    right: 30%;
+    font-size: 30px;
+    font-style: italic;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 2px 2px 3px #474747;
+  }
+}
+
+/*----- Mobile View (at most 349px) -----*/
+@media screen and (max-width: 349px) {
+  /*----- Main Grid Container (Voting / Live) -----*/
+  .grid-container-djs {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 20px;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  /*----- DJ Card -----*/
+  .grid-item-dj {
+    position: relative;
+    overflow: hidden;
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    box-shadow: 0 5px 7px 0 rgba(0, 0, 0, 0.24), 0 8px 24px 0 rgba(0, 0, 0, 0.19);
+    cursor: pointer;
+  }
+
+  /*----- DJ Name -----*/
+  .dj-name {
+    position: absolute;
+    font-style: inherit;
+    font-weight: bolder;
+    top: -12px;
+    right: 5px;
+    color: white;
+  }
+
+  /*----- Main Grid Container (Confirmation) -----*/
+  .grid-container-confirm {
+    display: grid;
+    grid-template-columns: auto;
+    grid-gap: 10px;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  /*----- Sub Grid Container (Confirmation) -----*/
+  .grid-container-confirmDJs {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 15px;
+    align-items: center;
+    justify-content: left;
+    padding: 10px;
+  }
+
+  /*----- Vote Confirmation Message -----*/
+  #confirmation {
+    display: none;
+  }
+  #confirm_desk {
+    display: none;
+  }
+  #confirm_mobile {
+    display: block;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bolder;
+    letter-spacing: 2px;
+  }
+
+  /*----- Voted DJs -----*/
+  .chosen_desk {
+    display: none;
+  }
+  .chosen_mobile {
+    display: block;
+  }
+  .grid-item-djVoted {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: none;
+    height: 100px;
+    box-shadow: 0 5px 7px 0 rgba(0, 0, 0, 0.24), 0 8px 24px 0 rgba(0, 0, 0, 0.19);
+  }
+
+  /*----- Voted DJ Details -----*/
+  .votedBackground {
+    top: 10px;
+    left: 15px;
+    overflow: hidden;
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+  }
+  .votedName {
+    text-align: left;
+    font-weight: bolder;
+    font-style: normal;
+    font-size: large;
+    color: black;
+  }
+  .votedTagline {
+    text-align: left;
+    font-weight: bolder;
+    font-size: small;
+    color: rgb(75, 75, 75);
+  }
+
+  /*----- Voting buttons -----*/
+  #huntSubmit, #huntConfirm,
+  #huntCancel, .huntBack,
+  #signInButton, #cancelSignIn {
+    color: #ffffff;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    width: 175px;
+    height: 25px;
+    font-size: large;
+    font-weight: bolder;
+    letter-spacing: 2px;
+  }
+  #huntConfirm, #signInButton {
+    margin-bottom: 10px;
+  }
+  #huntCancel, #cancelSignIn {
+    margin-bottom: 10px;
+  }
+  .huntBack {
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
+  #signInButton {
+    margin-top: 25px;
+  }
+
+  /*----- Sign In Message -----*/
+  #signIn-msg {
+    color: #569429;
+    font-size: 25px;
+    font-weight: bolder;
+  }
+
+  /*----- Submitted Details -----*/
+  #submittedImage {
+    width: 110px;
+    margin: 35px 35px 15px 35px;
+  }
+  #submittedMessage {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bolder;
+    letter-spacing: 2px;
+    color: #ffffff;
+  }
+
+  /*----- DJ Page -----*/
+  #djPage-mobile {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    z-index: 1;
+    background-color: #000000a1;
+    background: #000000a1;
+    backdrop-filter: blur(3px);
+  }
+  .chosen-DJPage-desk{
+    display: none;
+  }
+  .chosen-DJPage-mobile{
+    display: flex;
+  }
+
+  /*----- DJ Page Container -----*/
+  #djInfo-mobile {
+    display: block;
+    position: relative;
+    width: 180px;
+    margin: 3px 6px;
+    overflow-y: scroll;
+    background-color: #F9F4EF;
+  }
+
+  /*----- DJ Page Exit Button -----*/
+  #exitDJPage-mobile {
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+    background-color: #ffffff00;
+    color: black;
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
+    border: none;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+  }
+  #exitDJPage-mobile:hover {
+    color: #569429;
+  }
+
+  /*----- Main Grid Container (DJ Page) -----*/
+  .grid-container-details {
+    display: grid;
+    grid-template-columns: auto;
+    grid-gap: 7px;
+    padding: 3px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  /*----- Main Grid Container (DJ Handles) -----*/
+  .grid-container-handle {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 7px 3px;
+    align-items: center;
+    justify-content: center;
+    padding: 7px;
+  }
+  .handles {
+    width: 20px;
+    height: 20px;
+    margin: 3px;
+  }
+  .grid-item-handle {
+    width: 90px;
+  }
+
+  /*----- DJ Photo -----*/
+  .grid-item-photo {
+    overflow: hidden;
+    width: 65px;
+    height: 65px;
+    border-radius: 10px;
+  }
+
+  /*----- Stinger -----*/
+  audio {
+    border: 2px solid #569429;
+    border-radius: 8px;
+    width: 165px;
+    height: 25px;
+    font-size: x-large;
+    font-weight: bolder;
+    letter-spacing: 2px;
+  }
+  .stinger {
+    width: 165px;
+    outline: none;
+  }
+
+  /*----- DJ Video -----*/
+  #djVideo {
+    width: 150px;
+    height: 80px;
+  }
+
+  /*----- DJ Playlist -----*/
+  #djPlaylist {
+    width: 80px;
+    height: 80px;
+  }
+  #djPlaylist-title {
+    font-size: 12px;
+  }
+
+  /*----- DJ Tagline -----*/
+  #details-tagline-mobile {
+    font-size: 12px;
+    font-weight: bolder;
+    color: #000000;
+    text-align: left;
+    padding-left: 3px;
+  }
+  .info-tagline {
+    background-color: #ffffff;
+    border: 3px solid #ffffff;
+  }
+  #fullName-mobile {
+    font-size: 12px;
+  }
+
+  /*----- Main Grid Container for Live Polls -----*/
+  .chart-desk {
+    display: none;
+  }
+  .chart-mobile {
+    display: grid;
+    grid-template-columns: repeat(140, auto);
+    grid-template-rows: repeat(8, auto);
+    grid-row-gap: 25px;
+    height: 450px;
+    width: 250px;
+    padding: 5px 10px;
+  }
+
+  /*----- Bar -----*/
+  [class*="bar"] {
+    grid-column-end: 140;
+    background-color: #569429;
+  }
+  .bar-1-left, .bar-2-left,
+  .bar-3-left, .bar-4-left,
+  .bar-5-left, .bar-6-left,
+  .bar-7-left, .bar-8-left {
+    position: relative;
+    grid-column: 1 / 30;
+    border-radius: 5px 0px 0px 5px;
+    background-color: transparent;
+  }
+
+  .bar-1-mid, .bar-2-mid,
+  .bar-3-mid, .bar-4-mid,
+  .bar-5-mid, .bar-6-mid,
+  .bar-7-mid, .bar-8-mid {
+    border-radius: 5px 0px 0px 5px;
+  }
+
+  /*----- Bar #1 -----*/
+  .bar-1-mid {
+    position: relative;
+    grid-column: 30 / 60;
+    box-shadow: 1px 1px 5px #838383;
+  }
+  .bar-1-right {
+    grid-column: 60 / 140;
+    border-radius: 0px 5px 5px 0px;
+    background-color: #f0f0f0;
+    /*background-color: #f0f0f0;*/
+  }
+
+  /*----- Bar #2 -----*/
+  .bar-2-mid {
+    position: relative;
+    grid-column: 30 / 58;
+    box-shadow: 1px 1px 5px #838383;
+  }
+  .bar-2-right {
+    grid-column: 58 / 140;
+    border-radius: 0px 5px 5px 0px;
+    background-color: #f0f0f0;
+  }
+
+  /*----- Bar #3 -----*/
+  .bar-3-mid {
+    position: relative;
+    grid-column: 30 / 55;
+    box-shadow: 1px 1px 5px #838383;
+  }
+  .bar-3-right {
+    grid-column: 55 / 140;
+    border-radius: 0px 5px 5px 0px;
+    background-color: #f0f0f0;
+  }
+
+  /*----- Bar #4 -----*/
+  .bar-4-mid {
+    position: relative;
+    grid-column: 30 / 52;
+    box-shadow: 1px 1px 5px #838383;
+  }
+  .bar-4-right {
+    grid-column: 52 / 140;
+    border-radius: 0px 5px 5px 0px;
+    background-color: #f0f0f0;
+  }
+
+  /*----- Bar #5 -----*/
+  .bar-5-mid {
+    position: relative;
+    grid-column: 30 / 51;
+    box-shadow: 1px 1px 5px #838383;
+  }
+  .bar-5-right {
+    grid-column: 51 / 140;
+    border-radius: 0px 5px 5px 0px;
+    background-color: #f0f0f0;
+  }
+
+  /*----- Bar #6 -----*/
+  .bar-6-mid {
+    position: relative;
+    grid-column: 30 / 50;
+    box-shadow: 1px 1px 5px #838383;
+  }
+  .bar-6-right {
+    grid-column: 50 / 140;
+    border-radius: 0px 5px 5px 0px;
+    background-color: #f0f0f0;
+  }
+
+  /*----- Bar #7 -----*/
+  .bar-7-mid {
+    position: relative;
+    grid-column: 30 / 48;
+    box-shadow: 1px 1px 5px #838383;
+  }
+  .bar-7-right {
+    grid-column: 48 / 140;
+    border-radius: 0px 5px 5px 0px;
+    background-color: #f0f0f0;
+  }
+
+  /*----- Bar #8 -----*/
+  .bar-8-mid {
+    position: relative;
+    grid-column: 30 / 46;
+    box-shadow: 1px 1px 5px #838383;
+  }
+  .bar-8-right {
+    grid-column: 46 / 140;
+    border-radius: 0px 5px 5px 0px;
+    background-color: #f0f0f0;
+  }
+
+  /*----- Percentages -----*/
+  .mid {
+    position: absolute;
+    top: 25%;
+    right: 10%;
+    font-weight: bolder;
+    font-size: 10px;
+    color: #aed890;
+  }
+
+  /*----- Bar # -----*/
+  .num {
+    position:absolute;
+    top: 25%;
+    right: 10%;
+    font-size: 15px;
+    font-style: italic;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 2px 2px 3px #474747;
+  }
+}
+
+/*----- Vote Checkbox Style -----*/
+.round-check {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+}
+.round-check label {
+  background-color: #fff;
+  border: 2px solid rgb(25, 148, 0);
+  border-radius: 50%;
+  cursor: pointer;
+  height: 20px;
+  left: 0;
+  position: absolute;
+  top: -20px;
+  width: 20px;
+}
+.round-check label:after {
+  border: 2px solid #fff;
+  border-top: none;
+  border-right: none;
+  content: "";
+  height: 6px;
+  left: 3px;
+  opacity: 0;
+  position: absolute;
+  top: 3px;
+  transform: rotate(-45deg);
+  width: 12px;
+}
+.round-check input[type="checkbox"] {
+  visibility: hidden;
+}
+.round-check input[type="checkbox"]:checked + label {
+  background-color: #66bb6a;
+  border-color: #66bb6a;
+}
+.round-check input[type="checkbox"]:checked + label:after {
+  opacity: 1;
+}
+
+/*----- Voting buttons -----*/
+#huntSubmit, #huntConfirm, #signInButton {
+  background-color: #569429;
+}
+#huntCancel, .huntBack, #cancelSignIn {
+  background-color: #000000;
+}
+#huntConfirm, #huntCancel, .huntBack,
+#signInButton, #cancelSignIn {
+  cursor: pointer;
+}
+#huntSubmit:hover, #huntConfirm:hover,
+#huntCancel:hover, .huntBack:hover,
+#signInButton:hover, #cancelSignIn:hover {
+  box-shadow: 0 10px 14px 0 rgba(0, 0, 0, 0.24),
+    0 15px 48px 0 rgba(0, 0, 0, 0.19);
+}
+#huntSubmit:focus, #huntConfirm:focus,
+#huntCancel:focus, .huntBack:focus,
+#signInButton:focus, #cancelSignIn:focus {
+  outline: none;
+}
+
+/*----- DJ Photo -----*/
+.dj-background, .votedImage {
+  width: 100%;
+  height: auto;
+}
+
+/*----- Vote Confirmed -----*/
+#voteConfirmed {
+  display: none;
+}
+
+/*----- Animation -----*/
+#vote, #djPage-mobile, #djPage-desk {
+  animation: fadeEffect 0.25s;
+}
+
+#menu-footer > li > a {
+  color: #569429;
+}

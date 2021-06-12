@@ -6,7 +6,7 @@
 
 const voteSubmit = document.getElementById("voteSubmit")
 const songs = []
-let hitlist
+let hitlist, limit, hasEnded = false;
 
 $(document).ready(() => {
 
@@ -183,7 +183,7 @@ function retrieveSongs() {
         /*----- push data to html -----*/
         grid_item_song_desk.appendChild(description_percent)
         grid_item_song_liveDesk.appendChild(description_song)
-        grid_item_song.innerHTML = `<iframe src="${s.spotify_link}" width="80" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`
+        grid_item_song.innerHTML = `<iframe src="${s.spotify_link}" class="spotify" width="80" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`
         grid_item_song_number.innerText = live_songs.length-index
         grid_container_songs.appendChild(grid_item_song_number)
         grid_container_songs.appendChild(grid_item_song)
@@ -204,22 +204,11 @@ function retrieveSongs() {
     document.getElementById('grid-container-voting-tab').append(document.createElement('br'))
     document.getElementById('grid-container-live-tab').append(document.createElement('br'))
     document.getElementById('grid-container-live-tab').append(document.createElement('br'))
-}
 
-/*----- Open Menu -----*/
-function openNav() {
-    var screen = window.screen.width;
-    alert(screen)
-    if(screen >= 350){
-        document.getElementById("sideMenu").style.width = "250px";
-    }else{
-        document.getElementById("sideMenu").style.width = "125px";
-    }
-}
-
-/*----- Close Menu -----*/
-function closeNav() {
-    document.getElementById("sideMenu").style.width = "0";
+    if (window.innerWidth >= 1024)
+        limit = $('#upper').height() + $("#wrapper").height();
+    else
+        limit = $("#wrapper").height();
 }
 
 /*----- Enable / Disable vote Button -----*/
@@ -293,6 +282,30 @@ function cancel() {
     document.getElementById("confirmation").style.display = "none";
 }
 
+function setCookie(cname, cvalue) {
+    var tomorrow = new Date(new Date().setHours(0,0,0,0));
+    tomorrow.setDate(new Date().getDate()+1);
+    var expires = "expires="+ tomorrow.toUTCString();
+    var cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    document.cookie = cookie
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+}
+
 /*----- Vote Submitted -----*/
 async function submitVote() {
     // 1. song# = row
@@ -300,35 +313,54 @@ async function submitVote() {
     // 3. songNumber = title
     // 4. percentNumber = percent
 
-    $.ajax({
-        method: 'get',
-        url: '/api/All-Hitlist',
-        success: data => {
-            hitlist = data.data[0]
+    if (hasEnded) {
+        document.getElementById("confirmation").style.display = "none";
+        document.getElementById("submit_text").innerText = "VOTING LINE IS CLOSED";
+        document.getElementById("voteConfirmed").style.display = "block";
+        setTimeout(() => {
+            window.location.reload()
+        }, 1500)
+    } else if (getCookie('voted')) {
+        document.getElementById("confirmation").style.display = "none";
+        document.getElementById("submit_text").innerText = "VOTE ONCE PER DAY";
+        document.getElementById("voteConfirmed").style.display = "block";
+        retrieveSongs()
+        voteButton()
+    } else {
 
-            for (let [index, song] of songs.entries()) {
-                const { songCheck } = song
-                
-                if (songCheck.checked)
-                    hitlist.songs[index].vote_count++;
-            }
+        setCookie('voted', 'true');
 
-            $.ajax({
-                method: 'put',
-                url: `/api/Hitlist/${hitlist._id}`,
-                data: hitlist,
-                success: data => {
-                    document.getElementById("confirmation").style.display = "none";
-                    document.getElementById("voteConfirmed").style.display = "block";
-                    retrieveSongs()
-                    voteButton()
-                },
-                error: () => {
-                    alert('error')
+        $.ajax({
+            method: 'get',
+            url: '/api/All-Hitlist',
+            success: data => {
+                hitlist = data.data[0]
+    
+                for (let [index, song] of songs.entries()) {
+                    const { songCheck } = song
+                    
+                    if (songCheck.checked)
+                        hitlist.songs[index].vote_count++;
                 }
-            })
-        }
-    })
+    
+                $.ajax({
+                    method: 'put',
+                    url: `/api/Hitlist/${hitlist._id}`,
+                    data: hitlist,
+                    success: data => {
+                        document.getElementById("confirmation").style.display = "none";
+                        document.getElementById("voteConfirmed").style.display = "block";
+                        retrieveSongs()
+                        voteButton()
+                    },
+                    error: () => {
+                        alert('error')
+                    }
+                })
+            }
+        })
+    }
+
 
 }
 
@@ -413,6 +445,7 @@ function setCountdown() {
     
         if ((days == 0 && hrs == 0 && mins == 0 && secs == 0) || distance < 0) {
             clearInterval(timer);
+            hasEnded = true
             document.getElementById("hitlist_time").innerHTML = "00:00:00:00";
             document.getElementById("hitlist_time").style.color = "#ff0000";
             document.getElementById("hitlist_end").style.display = "flex";
@@ -424,24 +457,19 @@ function setCountdown() {
 
 /*----- Vote Ended Message -----*/
 $(window).on('scroll', function () {
-    var scrollTop = $(window).scrollTop();
-    if (scrollTop > 25) {
-        $('#hitlist_end').stop().animate({ top: "0" }, 25);
+    var scrollBottom = $(window).scrollTop() + $(window).height();    
+
+    if (scrollBottom >= limit) {
+        $('#voteSubmit').css("position", "initial")
     }
     else {
-        if (window.innerWidth >= 1024) {
-            $('#hitlist_end').stop().animate({ top: "350px" }, 100);
-        } else if (window.innerWidth >= 350 && window.innerWidth <= 1023) {
-            $('#hitlist_end').stop().animate({ top: "175px" }, 100);
-        } else if (window.innerWidth <= 349) {
-            $('#hitlist_end').stop().animate({ top: "140px" }, 100);
-        }
+        $('#voteSubmit').css("position", "fixed")
     }
 });
 
 /*----- Open Dropdown Menu -----*/
 function openDrop() {
-    document.getElementById('drop-inner-div').style.display = 'block';
+    document.getElementById('drop-inner-div').style.display = 'flex';
     document.getElementById('drop-polls').style.display = "none";
 }
 
@@ -462,4 +490,8 @@ function clickDrop() {
         document.getElementById('drop-inner-div').style.display = 'block';
         document.getElementById('drop-polls').style.color = "#569429";
     }
+}
+
+function gotoPolls() {
+    document.getElementById("liveTab").click();
 }

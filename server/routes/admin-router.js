@@ -49,5 +49,8 @@ router.get('/DjHunt/:id', DjHuntCntrl.getDjHuntById)
 router.get('/Hitlist/:id', HitlistCntrl.getHitlistById)
 router.get('/All-DjHunt', DjHuntCntrl.getAllDjHunt)
 router.get('/All-Hitlist', HitlistCntrl.getAllHitlist)
-
+router.get('/logout', (req, res) => {
+    req.session.destroy();
+    res.redirect('/admin')
+})
 module.exports = router

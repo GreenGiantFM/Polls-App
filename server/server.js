@@ -40,6 +40,7 @@ app.use('/admin', adminRouter)
 app.use('/admin', userRouter)
 app.use('/api', hitlistRouter)
 app.use('/api', djHuntRouter)
+app.use((req, res) => res.redirect('https://www.greengiantfm.com/404'))
 
 if (process.platform === "win32") {
     var rl = require("readline").createInterface({
