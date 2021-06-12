@@ -52,7 +52,7 @@ $(document).ready(() => {
                 const djbackground = document.createElement('img')
                 djbackground.setAttribute('class', "dj-background")
                 if (rt.picture_path) 
-                    djbackground.setAttribute('src', rt.picture_path)
+                    djbackground.setAttribute('src', `../../${rt.picture_path}`)
                 else
                     djbackground.setAttribute('src', '../img/GGFM_Favicon.png')
 
@@ -140,7 +140,7 @@ $(document).ready(() => {
                 const votedImage = document.createElement('img')
                 votedImage.setAttribute('class', "votedImage")
                 if (rt.picture_path)
-                    votedImage.setAttribute('src', rt.picture_path)
+                    votedImage.setAttribute('src', `../../${rt.picture_path}`)
                 else
                     votedImage.setAttribute('src', '../img/GGFM_Favicon.png')
                 votedBackground.appendChild(votedImage)
@@ -225,16 +225,16 @@ function openDJPage(djNum){
 
     const dj = djhunt.radio_talents[djNum-1]
 
-    document.getElementById('dj-image-mobile').src = dj.picture_path;
-    document.getElementById('dj-image-desk').src = dj.picture_path;
+    document.getElementById('dj-image-mobile').src = `../../${dj.picture_path}`;
+    document.getElementById('dj-image-desk').src = `../../${dj.picture_path}`;
     document.getElementById('djName-mobile').innerHTML = `DJ ${dj.dj_name}`;
     document.getElementById('djName-desk').innerHTML = `DJ ${dj.dj_name}`;
     document.getElementById('fullName-mobile').innerHTML = dj.actual_name;
     document.getElementById('fullName').innerHTML = dj.actual_name;
     document.getElementById('djVideo-mobile').src = dj.youtube_promotional;
     document.getElementById('djVideo-desk').src = dj.youtube_promotional;
-    document.getElementById('djStinger-mobile').src = dj.stinger_path;
-    document.getElementById('djStinger-desk').src = dj.stinger_path;
+    document.getElementById('djStinger-mobile').src = `../../${dj.stinger_path}`;
+    document.getElementById('djStinger-desk').src = `../../${dj.stinger_path}`;
     document.getElementById('djAudio-mobile').load();
     document.getElementById('djAudio-desk').load();
     document.getElementById('djPlaylist-mobile').src = dj.spotify_playlist;
@@ -261,6 +261,18 @@ function openDJPage(djNum){
 
 /*----- Close DJ Page -----*/
 function closeDJPage() {
+    /*----- Reset youtube video -----*/
+    document.getElementById('djVideo-mobile').src = document.getElementById('djVideo-mobile').src;
+    document.getElementById("djVideo-desk").src = document.getElementById("djVideo-desk").src ;
+    
+    /*----- Reset audio player -----*/
+    document.getElementById('djAudio-mobile').pause()
+    document.getElementById('djAudio-desk').pause()
+    
+    /*----- Reset spotify player -----*/
+    document.getElementById('djPlaylist-mobile').src = document.getElementById('djPlaylist-mobile').src
+    document.getElementById('djPlaylist-desk').src = document.getElementById('djPlaylist-desk').src
+    
     document.getElementById('djPage-mobile').style.display = "none";
     document.getElementById("djPage-desk").style.display = "none";
 
@@ -740,9 +752,9 @@ function setTimer() {
             clearInterval(timer);
             document.getElementById("hunt_time").innerHTML = "00:00:00:00";
             document.getElementById("hunt_time").style.color = "#ff0000";
-            // document.getElementById("hunt_end").style.display = "flex";
+            document.getElementById("hunt_end").style.display = "flex";
         } else {
-            // document.getElementById("hunt_end").style.display = "none";
+            document.getElementById("hunt_end").style.display = "none";
         }
     }, 1000);
 }
@@ -797,6 +809,10 @@ function clickDrop() {
         document.getElementById('drop-inner-div').style.display = 'block';
         document.getElementById('drop-polls').style.color = "#569429";
     }
+}
+
+function gotoPolls() {
+    document.getElementById("liveTab").click();
 }
 
 /*show Image Preview*/

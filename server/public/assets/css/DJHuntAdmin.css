@@ -1,14 +1,5 @@
 * { box-sizing: border-box; }
 
-.addTab-container{
-
-  margin: auto;
-  height: 300px;
-  width: 300px;
-  border: 100;
-  border-color: black;
-}
-
 /*----- Graident Background -----*/
 html {
   min-height: 100%;
@@ -20,6 +11,7 @@ html {
   background-color: linear-gradient(to bottom, #f1faeb, #569429);
 }
 
+/*----- Live Tab -----*/
 #live {
   align-items: center;
   justify-content: center;
@@ -54,8 +46,6 @@ html {
   .grid-item-dj {
     position: relative;
     overflow: hidden;
-    width: 190px;
-    height: 190px;
   }
 
   /*----- DJ Photo (Voting / Live) -----*/
@@ -119,7 +109,8 @@ html {
   }
 
   /*----- Voting buttons -----*/
-  #huntSubmit, #huntConfirm, #huntCancel, .huntBack {
+  #huntSubmit, #huntConfirm,
+  #huntCancel, .huntBack {
     color: #ffffff;
     border: none;
     outline: none;
@@ -193,8 +184,10 @@ html {
   /*----- DJ Page Container -----*/
   #djInfo-desk {
     display: block;
+    position: relative;
     width: 750px;
-    margin: 10px 12px;
+    height: 560px;
+    margin: auto;
     overflow-y: auto;
     background-color: #F9F4EF;
     box-shadow: 0 5px 7px 0 rgba(0, 0, 0, 0.525), 0 8px 24px 0 rgb(0, 0, 0.525);
@@ -206,13 +199,16 @@ html {
     height: 50px;
     font-size: 30px;
     background-color: #ffffff00;
-    color: #ffffff;
+    color: #000000;
     cursor: pointer;
     outline: none;
     text-decoration: none;
     border: none;
+    position: absolute;
+    top: 0px;
+    right: 0px;
   }
-  #exitDJPage-desk:hover {
+  #menu-footer > li > a, #exitDJPage-desk:hover {
     color: #569429;
   }
 
@@ -281,162 +277,8 @@ html {
   }
   #details-tagline-desk, #fullName {
     width: 300px;
-    font-weight: bolder;
     font-size: 12px;
-    color: #000000;
     text-align: left;
-  }
-
-  .live-desktop {
-    display: none;
-  }
-
-  .chart {
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: repeat(101, 1fr);
-    grid-column-gap: 25px;
-    height: 45vh;
-    width: 70vw;
-    padding: 5px 10px;
-  }
-
-  [class*="bar"] {
-    grid-row-end: 101;
-    background-color: #569429;
-  }
-
-  .bar-1-top {
-    grid-row: 1 / 80;
-    border-radius: 5px 5px 0px 0px;
-    background-color: #f0f0f0;
-  }
-  .bar-1-bottom {
-    grid-row: 80 / 101;
-    box-shadow: 1px 1px 5px #838383;
-  }
-  .bar-1-num {
-    grid-row: 101 / 102;
-    border-radius: 0px 0px 5px 5px;
-    box-shadow: 1px 1px 5px #838383;
-  }
-
-  .bar-2-top {
-    grid-row: 1 / 82;
-    border-radius: 5px 5px 0px 0px;
-    background-color: #f0f0f0;
-  }
-  .bar-2-bottom {
-    grid-row: 82 / 101;
-    box-shadow: 1px 1px 5px #838383;
-  }
-  .bar-2-num {
-    grid-row: 101 / 102;
-    border-radius: 0px 0px 5px 5px;
-    box-shadow: 1px 1px 5px #838383;
-  }
-
-  .bar-3-top {
-    grid-row: 1 / 85;
-    border-radius: 5px 5px 0px 0px;
-    background-color: #f0f0f0;
-  }
-  .bar-3-bottom {
-    grid-row: 85 / 101;
-    box-shadow: 1px 1px 5px #838383;
-  }
-  .bar-3-num {
-    grid-row: 101 / 102;
-    border-radius: 0px 0px 5px 5px;
-    box-shadow: 1px 1px 5px #838383;
-  }
-
-  .bar-4-top {
-    grid-row: 1 / 88;
-    border-radius: 5px 5px 0px 0px;
-    background-color: #f0f0f0;
-  }
-  .bar-4-bottom {
-    grid-row: 88 / 101;
-    box-shadow: 1px 1px 5px #838383;
-  }
-  .bar-4-num {
-    grid-row: 101 / 102;
-    border-radius: 0px 0px 5px 5px;
-    box-shadow: 1px 1px 5px #838383;
-  }
-
-  .bar-5-top {
-    grid-row: 1 / 89;
-    border-radius: 5px 5px 0px 0px;
-    background-color: #f0f0f0;
-  }
-  .bar-5-bottom {
-    grid-row: 89 / 101;
-    box-shadow: 1px 1px 5px #838383;
-  }
-  .bar-5-num {
-    grid-row: 101 / 102;
-    border-radius: 0px 0px 5px 5px;
-    box-shadow: 1px 1px 5px #838383;
-  }
-
-  .bar-6-top {
-    grid-row: 1 / 90;
-    border-radius: 5px 5px 0px 0px;
-    background-color: #f0f0f0;
-  }
-  .bar-6-bottom {
-    grid-row: 90 / 101;
-    box-shadow: 1px 1px 5px #838383;
-  }
-  .bar-6-num {
-    grid-row: 101 / 102;
-    border-radius: 0px 0px 5px 5px;
-    box-shadow: 1px 1px 5px #838383;
-  }
-
-  .bar-7-top {
-    grid-row: 1 / 92;
-    border-radius: 5px 5px 0px 0px;
-    background-color: #f0f0f0;
-  }
-  .bar-7-bottom {
-    grid-row: 92 / 101;
-    box-shadow: 1px 1px 5px #838383;
-  }
-  .bar-7-num {
-    grid-row: 101 / 102;
-    border-radius: 0px 0px 5px 5px;
-    box-shadow: 1px 1px 5px #838383;
-  }
-
-  .bar-8-top {
-    grid-row: 1 / 94;
-    border-radius: 5px 5px 0px 0px;
-    background-color: #f0f0f0;
-  }
-  .bar-8-bottom {
-    grid-row: 94 / 101;
-    box-shadow: 1px 1px 5px #838383;
-  }
-  .bar-8-num {
-    grid-row: 101 / 102;
-    border-radius: 0px 0px 5px 5px;
-    box-shadow: 1px 1px 5px #838383;
-  }
-
-  .top {
-    position: relative;
-    font-weight: bolder;
-    font-size: 15px;
-    color: #ffffff;
-  }
-  .num {
-    font-size: 25px;
-    font-style: italic;
-    font-weight: bold;
-    color: #aed890;
   }
 }
 
@@ -446,7 +288,7 @@ html {
   .grid-container-djs {
     display: grid;
     grid-template-columns: auto auto;
-    grid-gap: 30px 70px;
+    grid-gap: 30px 30px;
     align-items: center;
     justify-content: center;
     padding: 10px;
@@ -548,7 +390,8 @@ html {
   }
 
   /*----- Voting buttons -----*/
-  #huntSubmit, #huntConfirm, #huntCancel, .huntBack {
+  #huntSubmit, #huntConfirm,
+  #huntCancel, .huntBack {
     color: #ffffff;
     border: none;
     outline: none;
@@ -569,7 +412,6 @@ html {
     margin-top: 5px;
     margin-bottom: 20px;
   }
-
   /*----- Submitted Image (GGFM Icon) -----*/
   #submittedImage {
     width: 180px;
@@ -606,6 +448,7 @@ html {
   /*----- DJ Page Container -----*/
   #djInfo-mobile {
     display: block;
+    position: relative;
     width: 350px;
     margin: 6px 12px;
     overflow-y: scroll;
@@ -618,11 +461,14 @@ html {
     height: 50px;
     font-size: 30px;
     background-color: #ffffff00;
-    color: #ffffff;
+    color: black;
     cursor: pointer;
     outline: none;
     text-decoration: none;
     border: none;
+    position: absolute;
+    top: 0px;
+    right: 0px;
   }
   #exitDJPage-mobile:hover {
     color: #569429;
@@ -699,14 +545,6 @@ html {
   .info-tagline {
     background-color: #ffffff;
     border: 3px solid #ffffff;
-  }
-
-  .live-desktop {
-    display: grid;
-  }
-
-  .chart {
-    display: none;
   }
 }
 
@@ -818,7 +656,8 @@ html {
   }
 
   /*----- Voting buttons -----*/
-  #huntSubmit, #huntConfirm, #huntCancel, .huntBack {
+  #huntSubmit, #huntConfirm,
+  #huntCancel, .huntBack {
     color: #ffffff;
     border: none;
     outline: none;
@@ -876,6 +715,7 @@ html {
   /*----- DJ Page Container -----*/
   #djInfo-mobile {
     display: block;
+    position: relative;
     width: 180px;
     margin: 3px 6px;
     overflow-y: scroll;
@@ -888,11 +728,14 @@ html {
     height: 20px;
     font-size: 20px;
     background-color: #ffffff00;
-    color: #ffffff;
+    color: black;
     cursor: pointer;
     outline: none;
     text-decoration: none;
     border: none;
+    position: absolute;
+    top: 0px;
+    right: 0px;
   }
   #exitDJPage-mobile:hover {
     color: #569429;
@@ -980,23 +823,15 @@ html {
   #fullName-mobile {
     font-size: 12px;
   }
-
-  .live-desktop {
-    display: grid;
-  }
-
-  .chart {
-    display: none;
-  }
 }
 
 /*----- Vote Checkbox Style -----*/
-.round {
+.round-check {
   position: absolute;
   bottom: 5px;
   left: 5px;
 }
-.round label {
+.round-check label {
   background-color: #fff;
   border: 2px solid rgb(25, 148, 0);
   border-radius: 50%;
@@ -1004,10 +839,10 @@ html {
   height: 20px;
   left: 0;
   position: absolute;
-  top: 0;
+  top: -20px;
   width: 20px;
 }
-.round label:after {
+.round-check label:after {
   border: 2px solid #fff;
   border-top: none;
   border-right: none;
@@ -1020,34 +855,37 @@ html {
   transform: rotate(-45deg);
   width: 12px;
 }
-.round input[type="checkbox"] {
+.round-check input[type="checkbox"] {
   visibility: hidden;
 }
-.round input[type="checkbox"]:checked + label {
+.round-check input[type="checkbox"]:checked + label {
   background-color: #66bb6a;
   border-color: #66bb6a;
 }
-.round input[type="checkbox"]:checked + label:after {
+.round-check input[type="checkbox"]:checked + label:after {
   opacity: 1;
 }
 
 /*----- Voting buttons -----*/
-#huntSubmit, #huntConfirm {
+#huntSubmit, #huntConfirm, #signInButton {
   background-color: #569429;
 }
-#huntCancel, .huntBack {
+#huntCancel, .huntBack, #cancelSignIn {
   background-color: #000000;
 }
-#huntConfirm, #huntCancel, .huntBack {
+#huntConfirm, #huntCancel, .huntBack,
+#signInButton, #cancelSignIn {
   cursor: pointer;
 }
 #huntSubmit:hover, #huntConfirm:hover,
-#huntCancel:hover, .huntBack:hover {
+#huntCancel:hover, .huntBack:hover,
+#signInButton:hover, #cancelSignIn:hover {
   box-shadow: 0 10px 14px 0 rgba(0, 0, 0, 0.24),
     0 15px 48px 0 rgba(0, 0, 0, 0.19);
 }
 #huntSubmit:focus, #huntConfirm:focus,
-#huntCancel:focus, .huntBack:focus {
+#huntCancel:focus, .huntBack:focus,
+#signInButton:focus, #cancelSignIn:focus {
   outline: none;
 }
 
