@@ -43,12 +43,40 @@ $(document).ready(() => {
                 //         <p class="grid-item-DJ-desk-name">Cora</p>
                 //     </div>
                 // </div>
+
+                /*
+                <div class="grid-item-dj">
+                    <div class="grid-container-DJ-desk">
+                        <div class="grid-item-DJ-desk-photo" onclick="openDJPage(1)">
+                            <img class="dj-background" src="assets/img/DJs/d1.jpg">
+                            <div class="overlay-dj-photo">
+                                <div class="view-more">View More</div>
+                            </div>
+                        </div>
+                        <div class="bottom-vote">
+                            <div class="round-check">
+                                <input type="checkbox" id="dj1" onclick="huntButton()">
+                                <label for="dj1"></label>
+                            </div>
+                            <p class="grid-item-DJ-desk-name">Cora</p>
+                        </div>
+                    </div>
+                </div>
+                */
+                // <div class="grid-item-dj">
                 const itemdj = document.createElement('div')
                 itemdj.setAttribute('class', 'grid-item-dj')
+
+                //      <div class="grid-container-DJ-desk">
                 const djdesk = document.createElement('div')
                 djdesk.setAttribute('class', 'grid-container-DJ-desk')
+
+                //          <div class="grid-item-DJ-desk-photo" onclick="openDJPage(1)">
                 const deskphoto = document.createElement('div')
                 deskphoto.setAttribute('class', "grid-item-DJ-desk-photo")
+                deskphoto.setAttribute('onclick', `openDJPage(${index + 1})`)
+
+                //              <img class="dj-background" src="assets/img/DJs/d1.jpg">
                 const djbackground = document.createElement('img')
                 djbackground.setAttribute('class', "dj-background")
                 if (rt.picture_path) 
@@ -57,28 +85,51 @@ $(document).ready(() => {
                     djbackground.setAttribute('src', '../img/GGFM_Favicon.png')
 
                 djbackground.setAttribute('alt', rt.dj_name)
-                djbackground.setAttribute('onclick', `openDJPage(${index+1})`)
-                const djname = document.createElement('p')
-                djname.setAttribute('class', 'dj-name')
-                djname.innerText = rt.dj_name
+
+                //              <div class="overlay-dj-photo">
+                const overlaydjphoto = document.createElement('div')
+                overlaydjphoto.setAttribute('class', 'overlay-dj-photo')
+
+                //                  <div class="view-more">View More</div>
+                const viewmore = document.createElement('div')
+                viewmore.setAttribute('class', 'view-more')
+                viewmore.innerText = 'View More'
+
+                // closing the divs (grid-item-DJ-desk-photo and div/s inside)
+                overlaydjphoto.appendChild(viewmore)
+                deskphoto.appendChild(djbackground)
+                deskphoto.appendChild(overlaydjphoto)
+
+                //          <div class="bottom-vote">
+                const bottomvote = document.createElement('div')
+                bottomvote.setAttribute('class', 'bottom-vote')
+
+                //              <div class="round-check">
                 const round = document.createElement('div')
                 round.setAttribute('class', 'round-check')
+
+                //                  <input type="checkbox" id="dj1" onclick="huntButton()">
                 const checkbox = document.createElement('input')
                 checkbox.setAttribute('type', 'checkbox')
                 checkbox.setAttribute('id', `checkbox${index+1}`)
                 checkbox.setAttribute('onclick', `huntButton()`)
+
+                //                  <label for="dj1"></label>
                 const label = document.createElement('label')
                 label.setAttribute('for', `checkbox${index+1}`)
+
+                //              <p class="grid-item-DJ-desk-name">Cora</p>
+                const djname = document.createElement('p')
+                djname.setAttribute('class', 'dj-name')
+                djname.innerText = rt.dj_name
+
+                // closing the divs (bottom-vote and div/s inside)
                 round.appendChild(checkbox)
                 round.appendChild(label)
-                deskphoto.appendChild(djbackground)
-                deskphoto.appendChild(djname)
-                deskphoto.appendChild(round)
-                const deskname = document.createElement('p')
-                deskname.setAttribute('class', 'grid-item-DJ-desk-name')
-                deskname.innerText = rt.dj_name
+                bottomvote.appendChild(round)
+                bottomvote.appendChild(djname)
                 djdesk.appendChild(deskphoto)
-                djdesk.appendChild(deskname)
+                djdesk.appendChild(bottomvote)
                 itemdj.appendChild(djdesk)
                 grid_container_djs.appendChild(itemdj)
                 // <a class="grid-item-dj grid-item-dj-vote"  href="djpage.html">
