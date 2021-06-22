@@ -782,9 +782,9 @@ function closeConfirm() {
 }
 
 /*----- Countdown Timer -----*/
-/* June 1, 2021 20:30:00 */
+/* October 1, 2021 20:30:00 */
 /* May 18, 2021 11:00:00 */
-var votingPeriod = new Date("June 1, 2021 20:30:00").getTime();
+var votingPeriod = new Date("October 1, 2021 20:30:00").getTime();
 var timer = setInterval(function () {
 
     var now = new Date().getTime();
@@ -842,7 +842,7 @@ $(window).on('scroll', function () {
     }
     else {
         if (window.innerWidth >= 1024) {
-            $('#hunt_end').stop().animate({ top: "315px" }, 100);
+            $('#hunt_end').stop().animate({ top: "300px" }, 100);
         } else if (window.innerWidth >= 350 && window.innerWidth <= 1023) {
             $('#hunt_end').stop().animate({ top: "175px" }, 100);
         } else if (window.innerWidth >= 250 && window.innerWidth <= 349) {
