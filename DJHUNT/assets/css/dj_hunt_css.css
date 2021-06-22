@@ -1339,6 +1339,12 @@ html {
   }
 }
 
+/*----- Vote Checkbox and Name -----*/
+.bottom-vote {
+  padding-top: 5px;
+  height: 35px;
+}
+
 /*----- Vote Checkbox Style -----*/
 .round-check {
   position: absolute;
