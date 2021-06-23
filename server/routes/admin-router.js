@@ -38,7 +38,9 @@ const djhuntUpload = multer({ djhuntStorage })
 
 router.get('/home', hasSession, (req, res) => res.redirect('/admin/home/hitlist'))
 router.get('/home/hitlist', hasSession, (req, res) => res.sendFile( path.resolve(__dirname + '/../views/admin/admin_hitlist.html') ))
-router.get('/home/dj-hunt', hasSession, (req, res) => res.sendFile( path.resolve(__dirname + '/../views/admin/admin_djhunt.html') ))
+router.get('/home/dj-hunt', hasSession, (req, res) => {
+         res.sendFile( path.resolve(__dirname + '/../views/admin/admin_djhunt.html') )
+})
 router.post('/DjHunt', hasSession, DjHuntCntrl.createDjHunt)
 router.post('/Hitlist', hasSession, HitlistCntrl.createHitlist)
 router.put('/DjHunt', djhuntUpload.fields([{ name: 'picture_path' }, { name: 'stinger_path' }]), DjHuntCntrl.addDJ)
