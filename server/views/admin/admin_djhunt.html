@@ -82,7 +82,7 @@
         <!-- Voting Tab -->
         <div id="votingTab" class="tabcontent w3-center" style="display: block;">
             
-            <form id="dj-hunt-form" enctype="multipart/form-data">
+            <form action="/admin/home/dj-hunt"  id="dj-hunt-form"  method="POST"  enctype="multipart/form-data">
                 <div class="w3-container tab" style="border: 4px solid black; width: 315px; height: 700px; margin-left:520px; margin-top: 50px;">
                 
                     <div class="uploadplace">
@@ -116,10 +116,10 @@
                     <input type="text" id="tagline" name="tagline" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 0px;">
                         
                     <br><br>
-    
+                    
                     <label for="stinger_path"><b>Stinger File&nbsp;</b></label>
                     <input type="file" id="stinger_path" name="stinger_path" accept="audio/*" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 25px;">
-                            
+                    
                     <br><br>
     
                     <label for="facebook"><b>FB Profile Link&nbsp;</b></label>
@@ -148,6 +148,7 @@
                     <br><br>
                     
                     <input type="submit" value="ADD">
+                    
                       
                 </div>
             </form>
@@ -428,4 +429,5 @@
                 <button id="exitDJPage-desk" onclick="closeDJPage()"><i class="fa fa-times" aria-hidden="true"></i></button>
             </div>
         </div>
-        <script src="/assets/js/DJHuntAdmin.js"></script>
+        <!-- this thing stops the post request -->
+        <!--<script src="/assets/js/DJHuntAdmin.js"></script> -->

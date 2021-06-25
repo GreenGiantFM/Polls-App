@@ -3,6 +3,8 @@ const DjHunt = require('../models/DjHunt')
 const createDjHunt = (req, res) => {
     const body = req.body
 
+    console.log('test req',body);
+
     if (!body) {
         console.log('no body')
         return res.status(400).json({
