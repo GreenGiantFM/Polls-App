@@ -140,15 +140,15 @@
             <div class="inputbox-flex-container">
                 
                 <label for="username"></label>
-                <input type="text" id="username" name="username">
+                <input type="text" id="title" name="username">
                 <br>
                 
                 <label for="pass"></label>
-                <input type="text" id="pass" name="password">
+                <input type="text" id="artist" name="password">
                 <br>
                 
                 <label for="username"></label>
-                <input type="text" id="username" name="username">
+                <input type="text" id="link" name="username">
                 <br>
                 
                 
@@ -186,9 +186,9 @@
         <div id="live" class="tabcontent">
             <div class="date-container">
                 <label for="birthday">Start Date:</label>
-                <input type="date" id="birthday" name="birthday">
+                <input type="date" id="Date" name="birthday">
                 <label for="birthday">End Date:</label>
-                <input type="date" id="birthday" name="birthday">
+                <input type="date" id="Date" name="birthday">
                 
               </form>
             </div>
@@ -324,7 +324,8 @@
                     <br>
                     <br>
                 </div>
-                <input type="button" id="voteSubmit" onclick="openConfirm()"style="margin-left:575px;" value="Remove">
+                <input type="button" id="voteSubmit" onclick="openConfirm()"style="margin-left:750px;" value="Remove">
+                <input type="button" id="removeAll" onclick="clearAll()"style="margin-left:750px;margin-top:25px;" value="Remove All">
                 <!-- Voting Tab Overlay -->
                 <div id="overlay">
                     <div id="confirmation" class="overlayItems">
@@ -499,6 +500,12 @@
 
             document.getElementById("confirmation").style.display = "none";
             document.getElementById("voteConfirmed").style.display = "block";
+        }
+
+        function clearAll(){
+            document.getElementbyId("title").value='';
+            document.getElementbyId("artist").value='';
+            document.getElementbyId("link").value='';
         }
 
         /*----- Close Overlay -----*/

@@ -206,7 +206,7 @@
                     
                 }
                 .date-container{
-                    margin-left:500px;
+                    margin-left:700px;
                     margin-top:50px;
                 }
 
@@ -957,5 +957,17 @@
                 font-weight: bolder;
                 letter-spacing: 2px;
                 margin-top:20px;
-                margin-left:650px;
+                margin-left:850px;
+            }
+
+            #removeAll{
+                background-color: #FF0000;
+                    color: #ffffff;
+                    border: none;
+                    border-radius: 8px;
+                    width: 330px;
+                    height: 45px;
+                    font-size: x-large;
+                    font-weight: bolder;
+                    letter-spacing: 2px;
             }

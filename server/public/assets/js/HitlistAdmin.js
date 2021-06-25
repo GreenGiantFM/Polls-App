@@ -160,6 +160,12 @@ function changeBackground() {
     }
 }
 
+function clearAll(){
+    document.getElementbyId("title").value='';
+    document.getElementbyId("artist").value='';
+    document.getElementbyId("link").value='';
+}
+
 /*----- Confirm Vote -----*/
 function openConfirm() {
     document.getElementById("overlay").style.display = "block";
