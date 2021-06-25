@@ -19,11 +19,12 @@ const hasSession = (req, res, next) => {
 
 // multer, storage.array('name-of-input', maxNumberOfUploads)
 
+const imageMimeTypes = ['image/jpeg', 'image/png', 'images/jpg']
 
 const djhuntStorage = multer.diskStorage({
     destination: (req, file, cb) => {
         const ext = path.extname(file.originalname)
-        if (ext === 'jpeg' || ext === 'jpg' || ext === 'png')
+        if (imageMimeTypes.includes(file.mimetype))
             cb(null, "./public/uploads/djhunt/images")
         else
             cb(null, "./public/uploads/djhunt/audio")
@@ -41,19 +42,16 @@ const djhuntUpload = multer({storage: djhuntStorage })
 
 router.get('/home', hasSession, (req, res) => res.redirect('/admin/home/hitlist'))
 router.get('/home/hitlist', hasSession, (req, res) => res.sendFile( path.resolve(__dirname + '/../views/admin/admin_hitlist.html') ))
-router.get('/home/dj-hunt', hasSession, (req, res) => {
-
-    console.log('testing get');
-    res.sendFile( path.resolve(__dirname + '/../views/admin/admin_djhunt.html') )
-})
+router.get('/home/dj-hunt', hasSession, (req, res) => {res.sendFile( path.resolve(__dirname + '/../views/admin/admin_djhunt.html'))})
 
 router.post('/home/dj-hunt', hasSession,  djhuntUpload.fields([{ name: 'picture_path', maxCount: 1 }, { name: 'stinger_path', maxCount: 1 }]), (req, res) => {
     /*
     const fileName = req.file != null ? req.file.picture_path : null;
     console.log(fileName);
     */
-   
+   const {picture_path, stinger_path} = req.files
     console.log('testing post');
+    console.log(req.files['picture_path'][0].filename, req.files['stinger_path'][0].filename);
     console.log(req.files);
     console.log(req.body);
     
