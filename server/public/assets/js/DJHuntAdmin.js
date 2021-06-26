@@ -824,7 +824,7 @@ function showPreview(event){
       preview.style.display = "block";
     }
   }
-
+/*
 const form = document.getElementById("dj-hunt-form")
 form.addEventListener('submit', function(event) {
     event.preventDefault()
@@ -871,3 +871,5 @@ form.addEventListener('submit', function(event) {
     })
     
 })
+
+*/

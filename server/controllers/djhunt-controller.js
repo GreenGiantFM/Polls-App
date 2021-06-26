@@ -1,6 +1,8 @@
 const DjHunt = require('../models/DjHunt')
 
 const createDjHunt = (req, res) => {
+    
+    
     const body = req.body
 
     if (!body) {
@@ -34,11 +36,23 @@ const createDjHunt = (req, res) => {
                 message: 'DjHunt not created!',
             })
         })
+
+    
 }
 
 const addDJ = async (req, res) => {
-    console.log("BODY: " + req.body)
-    console.log("FILE: " + req.file)
+
+    const {dj_name, actual_name, tagline, facebook, instagram, twitter, youtube_video, spotify_playlist} = req.body
+    console.log(req.files['picture_path'][0].filename, req.files['stinger_path'][0].filename);
+    console.log(dj_name, actual_name, tagline, facebook, instagram, twitter, youtube_video, spotify_playlist);
+
+    let djHunt = new DjHunt({dj_name: dj_name, actual_name: actual_name, tagline: tagline, stinger_path: req.files['stinger_path'][0].filename, spotify_playlist: spotify_playlist, youtube_video: youtube_video, picture_path: req.files['picture_path'][0].filename, facebook: facebook, twitter: twitter, instagram: instagram})
+
+    console.log('djhunt object', djHunt);
+
+
+    // console.log("BODY: " + req.body)
+    // console.log("FILE: " + req.file)
     // await DjHunt.find({}, (err, djHunts) => {
     //     if (err) {
     //         console.log(err)

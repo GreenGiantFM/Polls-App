@@ -4,6 +4,7 @@ const path = require('path')
 const HitlistCntrl = require('../controllers/hitlist-controller')
 const DjHuntCntrl = require('../controllers/djhunt-controller')
 
+
 const router = express.Router()
 
 // hasSession
@@ -33,7 +34,7 @@ const djhuntStorage = multer.diskStorage({
     filename: (req, file, cb) => {
         const { originalname } = file
         const ext = path.extname(originalname)
-        cb(null, `${originalname}-${Date.now()}${ext}`)
+        cb(null, `${Date.now()}-${originalname}`)
     }
 })
 
@@ -43,23 +44,23 @@ const djhuntUpload = multer({storage: djhuntStorage })
 router.get('/home', hasSession, (req, res) => res.redirect('/admin/home/hitlist'))
 router.get('/home/hitlist', hasSession, (req, res) => res.sendFile( path.resolve(__dirname + '/../views/admin/admin_hitlist.html') ))
 router.get('/home/dj-hunt', hasSession, (req, res) => {res.sendFile( path.resolve(__dirname + '/../views/admin/admin_djhunt.html'))})
-
+/*
 router.post('/home/dj-hunt', hasSession,  djhuntUpload.fields([{ name: 'picture_path', maxCount: 1 }, { name: 'stinger_path', maxCount: 1 }]), (req, res) => {
-    /*
-    const fileName = req.file != null ? req.file.picture_path : null;
-    console.log(fileName);
-    */
-   const {picture_path, stinger_path} = req.files
+   
+   const {dj_name, actual_name, tagline, facebook, instagram, twitter, youtube_video, spotify_playlist} = req.body
     console.log('testing post');
     console.log(req.files['picture_path'][0].filename, req.files['stinger_path'][0].filename);
-    console.log(req.files);
+    console.log(dj_name, actual_name, tagline, facebook, instagram, twitter, youtube_video, spotify_playlist);
     console.log(req.body);
     
+    
 })
+*/
+
+router.post('/home/dj-hunt', hasSession,  djhuntUpload.fields([{ name: 'picture_path', maxCount: 1 }, { name: 'stinger_path', maxCount: 1 }]), DjHuntCntrl.addDJ)
 
 router.post('/DjHunt', hasSession, DjHuntCntrl.createDjHunt)
 router.post('/Hitlist', hasSession, HitlistCntrl.createHitlist)
-router.put('/DjHunt', djhuntUpload.fields([{ name: 'picture_path' }, { name: 'stinger_path' }]), DjHuntCntrl.addDJ)
 router.put('/Hitlist/:id', HitlistCntrl.updateHitlist)
 router.delete('/Hitlist/:id', hasSession, HitlistCntrl.deleteHitlist)
 router.delete('/DjHunt/:id', hasSession, DjHuntCntrl.deleteDjHunt)
