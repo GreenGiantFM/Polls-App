@@ -824,52 +824,34 @@ function showPreview(event){
       preview.style.display = "block";
     }
   }
-/*
+
 const form = document.getElementById("dj-hunt-form")
 form.addEventListener('submit', function(event) {
     event.preventDefault()
-    // const formData = new FormData(this)
+    const formData = new FormData(this)
 
     $.ajax({
-        method: 'get',
-        url: '/admin/All-DjHunt',
+        method: 'post',
+        url: '/admin/home/dj-hunt',
+        data: formData,
+        processData: false,
+        contentType: false,
         success: data => {
-            djhunt = data.data[0]
-            const djhuntform = document.forms['dj-hunt-form']
-
-            djhunt.radio_talents.push({
-                dj_name: djhuntform.elements['dj_name'].value,
-                actual_name: djhuntform.elements['actual_name'].value,
-                tagline: djhuntform.elements['tagline'].value,
-                stinger_path: djhuntform.elements['stinger_path'].value,
-                facebook: djhuntform.elements['facebook'].value,
-                instagram: djhuntform.elements['instagram'].value,
-                twitter: djhuntform.elements['twitter'].value,
-                youtube_video: djhuntform.elements['youtube_video'].value,
-                spotify_playlist: djhuntform.elements['spotify_playlist'].value,
-                picture_path: djhuntform.elements['picture_path'].value,
+            Swal.fire({
+                title: 'Success!',
+                icon: 'success',
+                iconColor: "#569429",
+                timer: 10000,
+                timerProgressBar: true,
+                position: "center",
+                confirmButtonText: 'Awesome!',
             })
-
-            alert(djhunt.radio_talents)
-            console.log(djhunt.radio_talents)
             
-            // $.ajax({
-            //     method: 'put',
-            //     url: '/admin/DjHunt',
-            //     data: formData,
-            //     success: data => {
-            //         console.log(data)
-            //         alert('success')
-            //     },
-            //     error: error => {
-            //         console.log(error)
-            //         console.log(error.statusText)
-            //         alert('error')
-            //     }
-            // })
+        },
+        error: e => {
+            alert('error')
         }
     })
     
 })
 
-*/
