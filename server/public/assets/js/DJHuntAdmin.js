@@ -52,7 +52,7 @@ $(document).ready(() => {
                 const djbackground = document.createElement('img')
                 djbackground.setAttribute('class', "dj-background")
                 if (rt.picture_path) 
-                    djbackground.setAttribute('src', `../../${rt.picture_path}`)
+                    djbackground.setAttribute('src', `../../uploads/djhunt/images/${rt.picture_path}`)
                 else
                     djbackground.setAttribute('src', '../img/GGFM_Favicon.png')
 
@@ -846,7 +846,7 @@ form.addEventListener('submit', function(event) {
                 position: "center",
                 confirmButtonText: 'Awesome!',
             })
-            
+
         },
         error: e => {
             alert('error')
