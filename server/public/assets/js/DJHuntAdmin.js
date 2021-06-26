@@ -225,16 +225,16 @@ function openDJPage(djNum){
 
     const dj = djhunt.radio_talents[djNum-1]
 
-    document.getElementById('dj-image-mobile').src = `../../${dj.picture_path}`;
-    document.getElementById('dj-image-desk').src = `../../${dj.picture_path}`;
+    document.getElementById('dj-image-mobile').src = `../../uploads/djhunt/images/${dj.picture_path}`;
+    document.getElementById('dj-image-desk').src = `../../uploads/djhunt/images/${dj.picture_path}`;
     document.getElementById('djName-mobile').innerHTML = `DJ ${dj.dj_name}`;
     document.getElementById('djName-desk').innerHTML = `DJ ${dj.dj_name}`;
     document.getElementById('fullName-mobile').innerHTML = dj.actual_name;
     document.getElementById('fullName').innerHTML = dj.actual_name;
     document.getElementById('djVideo-mobile').src = dj.youtube_promotional;
     document.getElementById('djVideo-desk').src = dj.youtube_promotional;
-    document.getElementById('djStinger-mobile').src = `../../${dj.stinger_path}`;
-    document.getElementById('djStinger-desk').src = `../../${dj.stinger_path}`;
+    document.getElementById('djStinger-mobile').src = `../../uploads/djhunt/audio/${dj.stinger_path}`;
+    document.getElementById('djStinger-desk').src = `../../uploads/djhunt/audio/${dj.stinger_path}`;
     document.getElementById('djAudio-mobile').load();
     document.getElementById('djAudio-desk').load();
     document.getElementById('djPlaylist-mobile').src = dj.spotify_playlist;

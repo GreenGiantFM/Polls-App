@@ -46,9 +46,43 @@ const addDJ = async (req, res) => {
     console.log(req.files['picture_path'][0].filename, req.files['stinger_path'][0].filename);
     console.log(dj_name, actual_name, tagline, facebook, instagram, twitter, youtube_video, spotify_playlist);
 
-    let djHunt = new DjHunt({dj_name: dj_name, actual_name: actual_name, tagline: tagline, stinger_path: req.files['stinger_path'][0].filename, spotify_playlist: spotify_playlist, youtube_video: youtube_video, picture_path: req.files['picture_path'][0].filename, facebook: facebook, twitter: twitter, instagram: instagram})
+    
 
-    console.log('djhunt object', djHunt);
+    let newDj = {dj_name: dj_name, actual_name: actual_name, tagline: tagline, stinger_path: req.files['stinger_path'][0].filename, spotify_playlist: spotify_playlist, youtube_video: youtube_video, picture_path: req.files['picture_path'][0].filename, facebook: facebook, twitter: twitter, instagram: instagram}
+
+    try {
+        const djHunt = await DjHunt.find({});
+        djHunt[0].radio_talents.push(newDj);
+        djHunt[0]
+            .save()
+            .then(() => {
+                return res.status(200).json({
+                    success: true,
+                    id: djHunt._id,
+                    data: djHunt,
+                    message: 'DjHunt updated!',
+                })
+            })
+            .catch(error => {
+                console.log(error)
+                return res.status(404).json({
+                    error,
+                    message: 'DjHunt not updated!',
+                })
+            })
+
+    } catch (error) {
+
+        console.log(error)
+
+    }
+    
+
+    
+
+    console.log(djHunt[0], newDj);
+
+
 
 
     // console.log("BODY: " + req.body)
