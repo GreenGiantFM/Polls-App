@@ -323,10 +323,13 @@ function signIn() {
 
 /*----- Confirm Vote -----*/
 function openConfirm() {
+    
     document.getElementById("vote").style.display = "none";
     document.getElementById("djvote").style.display = "block";
     document.getElementById("confirmation").style.display = "block";
     document.getElementById("huntSubmit").type = "hidden";
+    document.getElementById("huntDeleteAll").type = "hidden";
+    document.getElementById("huntDeleteSelected").type = "hidden";
     document.getElementById("djSignIn").style.display = "none";
 
     var voteDJ1 = djs[0]
@@ -624,10 +627,17 @@ function huntButton() {
             value = false;
 
     document.getElementById("huntSubmit").disabled = value
-    if (value)
+    document.getElementById("huntDeleteSelected").disabled = value
+    if (value) {
         document.getElementById("huntSubmit").style.cursor = "not-allowed";
-    else
+        document.getElementById("huntDeleteSelected").style.cursor = "not-allowed";
+
+    } else {
         document.getElementById("huntSubmit").style.cursor = "pointer";
+        document.getElementById("huntDeleteSelected").style.cursor = "not-allowed";
+
+    }
+        
 
     // if (dj1.checked == true || dj2.checked == true || dj3.checked == true || dj4.checked == true) {
     //     document.getElementById("huntSubmit").disabled = false;
@@ -686,6 +696,8 @@ function cancelVote() {
     document.getElementById("djSignIn").style.display = "none";
     document.getElementById("vote").style.display = "grid";
     document.getElementById("huntSubmit").type = "button";
+    document.getElementById("huntDeleteAll").type = "button";
+    document.getElementById("huntDeleteSelected").type = "button";
     document.body.style.background = '#ffffff';
 }
 
