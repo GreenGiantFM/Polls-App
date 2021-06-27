@@ -867,3 +867,17 @@ form.addEventListener('submit', function(event) {
     
 })
 
+function deleteConfirmModal(){
+    document.getElementById("deleteModal").style.display = "block";
+
+}
+
+function deleteCancelModal(){
+    document.getElementById("deleteModal").style.display = "none";
+
+}
+
+function deleteAllDjs(){
+    console.log("all djs deleted")
+
+}

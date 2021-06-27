@@ -173,9 +173,16 @@
                 <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
                     <input type="button" id="huntSubmit" onclick="openConfirm()" value="VOTE"  disabled>
                     <input type="button" id="huntDeleteSelected"  value="Delete Selected" style="margin-top: 15px;" disabled>
-                    <input type="button" id="huntDeleteAll"  value="Delete All" style="margin-top: 15px;" >
+                    <input type="button" id="huntDeleteAll"  onclick="deleteConfirmModal()" value="Delete All" style="margin-top: 15px;" >
                     
 
+                </div>
+
+                <div id="deleteModal">
+                    <h2>Delete All Djs</h2>
+                    <p>Are you sure you want to delete all djs?</p>
+                    <button id="huntDeleteAllDj" onclick="deleteAllDjs()" >Delete All</button>
+                    <button id="huntCancelDelete" onclick="deleteCancelModal()" style="margin-bottom: 15px; margin-top: 15px; background-color: rgb(20, 20, 20);">Cancel</button>
                 </div>
                 
                 <div id="djvote" class="tabcontent">
