@@ -52,7 +52,7 @@ $(document).ready(() => {
                 const djbackground = document.createElement('img')
                 djbackground.setAttribute('class', "dj-background")
                 if (rt.picture_path) 
-                    djbackground.setAttribute('src', `../../${rt.picture_path}`)
+                    djbackground.setAttribute('src', `../../uploads/djhunt/images/${rt.picture_path}`)
                 else
                     djbackground.setAttribute('src', '../img/GGFM_Favicon.png')
 
@@ -225,16 +225,16 @@ function openDJPage(djNum){
 
     const dj = djhunt.radio_talents[djNum-1]
 
-    document.getElementById('dj-image-mobile').src = `../../${dj.picture_path}`;
-    document.getElementById('dj-image-desk').src = `../../${dj.picture_path}`;
+    document.getElementById('dj-image-mobile').src = `../../uploads/djhunt/images/${dj.picture_path}`;
+    document.getElementById('dj-image-desk').src = `../../uploads/djhunt/images/${dj.picture_path}`;
     document.getElementById('djName-mobile').innerHTML = `DJ ${dj.dj_name}`;
     document.getElementById('djName-desk').innerHTML = `DJ ${dj.dj_name}`;
     document.getElementById('fullName-mobile').innerHTML = dj.actual_name;
     document.getElementById('fullName').innerHTML = dj.actual_name;
     document.getElementById('djVideo-mobile').src = dj.youtube_promotional;
     document.getElementById('djVideo-desk').src = dj.youtube_promotional;
-    document.getElementById('djStinger-mobile').src = `../../${dj.stinger_path}`;
-    document.getElementById('djStinger-desk').src = `../../${dj.stinger_path}`;
+    document.getElementById('djStinger-mobile').src = `../../uploads/djhunt/audio/${dj.stinger_path}`;
+    document.getElementById('djStinger-desk').src = `../../uploads/djhunt/audio/${dj.stinger_path}`;
     document.getElementById('djAudio-mobile').load();
     document.getElementById('djAudio-desk').load();
     document.getElementById('djPlaylist-mobile').src = dj.spotify_playlist;
@@ -828,46 +828,30 @@ function showPreview(event){
 const form = document.getElementById("dj-hunt-form")
 form.addEventListener('submit', function(event) {
     event.preventDefault()
-    // const formData = new FormData(this)
+    const formData = new FormData(this)
 
     $.ajax({
-        method: 'get',
-        url: '/admin/All-DjHunt',
+        method: 'post',
+        url: '/admin/home/dj-hunt',
+        data: formData,
+        processData: false,
+        contentType: false,
         success: data => {
-            djhunt = data.data[0]
-            const djhuntform = document.forms['dj-hunt-form']
-
-            djhunt.radio_talents.push({
-                dj_name: djhuntform.elements['dj_name'].value,
-                actual_name: djhuntform.elements['actual_name'].value,
-                tagline: djhuntform.elements['tagline'].value,
-                stinger_path: djhuntform.elements['stinger_path'].value,
-                facebook: djhuntform.elements['facebook'].value,
-                instagram: djhuntform.elements['instagram'].value,
-                twitter: djhuntform.elements['twitter'].value,
-                youtube_video: djhuntform.elements['youtube_video'].value,
-                spotify_playlist: djhuntform.elements['spotify_playlist'].value,
-                picture_path: djhuntform.elements['picture_path'].value,
+            Swal.fire({
+                title: 'Success!',
+                icon: 'success',
+                iconColor: "#569429",
+                timer: 10000,
+                timerProgressBar: true,
+                position: "center",
+                confirmButtonText: 'Awesome!',
             })
 
-            alert(djhunt.radio_talents)
-            console.log(djhunt.radio_talents)
-            
-            // $.ajax({
-            //     method: 'put',
-            //     url: '/admin/DjHunt',
-            //     data: formData,
-            //     success: data => {
-            //         console.log(data)
-            //         alert('success')
-            //     },
-            //     error: error => {
-            //         console.log(error)
-            //         console.log(error.statusText)
-            //         alert('error')
-            //     }
-            // })
+        },
+        error: e => {
+            alert('error')
         }
     })
     
 })
+
