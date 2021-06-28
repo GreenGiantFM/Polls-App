@@ -880,4 +880,26 @@ function deleteCancelModal(){
 function deleteAllDjs(){
     console.log("all djs deleted")
 
+    document.getElementById("deleteModal").style.display = "none";
+
+    $.ajax({
+        method: 'post',
+        url: '/admin/dj-hunt/delete/all',
+        success: () => {
+            Swal.fire({
+                title: 'Successfly deleted all djs!',
+                icon: 'success',
+                iconColor: "#569429",
+                timer: 10000,
+                timerProgressBar: true,
+                position: "center",
+                confirmButtonText: 'Awesome!',
+            })
+
+        },
+        error: e => {
+            alert('error')
+        }
+    })
+
 }
