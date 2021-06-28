@@ -46,6 +46,7 @@ router.get('/home/hitlist', hasSession, (req, res) => res.sendFile( path.resolve
 router.get('/home/dj-hunt', hasSession, (req, res) => {res.sendFile( path.resolve(__dirname + '/../views/admin/admin_djhunt.html'))})
 router.post('/home/dj-hunt', hasSession,  djhuntUpload.fields([{ name: 'picture_path', maxCount: 1 }, { name: 'stinger_path', maxCount: 1 }]), DjHuntCntrl.addDJ)
 router.post('/dj-hunt/delete/all', hasSession, DjHuntCntrl.deleteDjAll)
+router.post('/dj-hunt/delete/selected', hasSession, DjHuntCntrl.deleteDjSelected)
 router.post('/DjHunt', hasSession, DjHuntCntrl.createDjHunt)
 router.post('/Hitlist', hasSession, HitlistCntrl.createHitlist)
 router.put('/Hitlist/:id', HitlistCntrl.updateHitlist)

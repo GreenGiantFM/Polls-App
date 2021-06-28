@@ -119,6 +119,8 @@ html {
   #huntDeleteAllDj,
   #huntCancelDelete,
   #huntDeleteSelected,
+  #huntDeleteSelectedDj,
+  #huntCancelDeleteSelected,
   .huntBack {
     color: #ffffff;
     border: none;
@@ -409,6 +411,8 @@ html {
   #huntDeleteAllDj,
   #huntCancelDelete,
   #huntDeleteSelected,
+  #huntDeleteSelectedDj,
+  #huntCancelDeleteSelected,
   .huntBack {
     color: #ffffff;
     border: none;
@@ -423,11 +427,13 @@ html {
 
   #huntDeleteAll,
   #huntDeleteAllDj,
+  #huntDeleteSelectedDj,
   #huntDeleteSelected {
     background-color: red;
   }
 
-  #huntCancelDelete {
+  #huntCancelDelete,
+  #huntCancelDeleteSelected {
     background-color: rgb(32, 32, 32);
   }
   #huntConfirm {
@@ -693,6 +699,8 @@ html {
   #huntDeleteSelected,
   #huntDeleteAllDj,
   #huntCancelDelete,
+  #huntDeleteSelectedDj,
+  #huntCancelDeleteSelected,
   .huntBack {
     color: #ffffff;
     border: none;
@@ -910,10 +918,12 @@ html {
 }
 #huntDeleteAll,
 #huntDeleteAllDj,
+#huntDeleteSelectedDj,
 #huntDeleteSelected {
   background-color: #f10f0f;
 }
 #huntCancel,
+#huntCancelDeleteSelected,
 .huntBack,
 #cancelSignIn {
   background-color: #000000;
@@ -924,6 +934,8 @@ html {
 #huntDeleteSelected,
 #huntDeleteAllDj,
 #huntCancelDelete,
+#huntDeleteSelectedDj,
+#huntCancelDeleteSelected,
 .huntBack,
 #signInButton,
 #cancelSignIn {
@@ -936,6 +948,8 @@ html {
 #huntDeleteSelected:hover,
 #huntDeleteAllDj:hover,
 #huntCancelDelete:hover,
+#huntDeleteSelectedDj:hover,
+#huntCancelDeleteSelected:hover,
 .huntBack:hover,
 #signInButton:hover,
 #cancelSignIn:hover {
@@ -970,7 +984,8 @@ html {
   animation: fadeEffect 0.25s;
 }
 
-#deleteModal {
+#deleteModal,
+#deleteSelectedModal {
   position: fixed;
   top: 50%;
   left: 50%;

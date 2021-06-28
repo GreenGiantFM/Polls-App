@@ -171,8 +171,8 @@
                     
                 </div>
                 <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
-                    <input type="button" id="huntSubmit" onclick="openConfirm()" value="VOTE"  disabled>
-                    <input type="button" id="huntDeleteSelected"  value="Delete Selected" style="margin-top: 15px;" disabled>
+                    <!--<input type="button" id="huntSubmit" onclick="openConfirm()" value="VOTE"  disabled> -->
+                    <input type="button" id="huntDeleteSelected" onclick="openDeleteConfirm()" value="Delete Selected" style="margin-top: 15px;" disabled>
                     <input type="button" id="huntDeleteAll"  onclick="deleteConfirmModal()" value="Delete All" style="margin-top: 15px;" >
                     
 
@@ -184,10 +184,18 @@
                     <button id="huntDeleteAllDj" onclick="deleteAllDjs()" >Delete All</button>
                     <button id="huntCancelDelete" onclick="deleteCancelModal()" style="margin-bottom: 15px; margin-top: 15px; background-color: rgb(20, 20, 20);">Cancel</button>
                 </div>
+
+                <div id="deleteSelectedModal">
+                    <h2>Delete Selected Djs</h2>
+                    <p>Are you sure you want to delete the selected djs?</p>
+                    <button id="huntDeleteSelectedDj" onclick="deleteSelectedDjs()" >Delete Selected</button>
+                    <button id="huntCancelDeleteSelected" onclick="deleteSelectedCancelModal()" style="margin-bottom: 15px; margin-top: 15px; background-color: rgb(20, 20, 20);">Cancel</button>
+                </div>
                 
                 <div id="djvote" class="tabcontent">
-                    <h1 id="confirm_desk">Confirm Vote?</h1>
+                    <h1 id="confirm_desk">Delete Selected?</h1>
                     <div class="grid-container-confirm">
+                        <!--
                         <div class="grid-item-dj" id="votedDJ1_desk">
                             <div class="grid-container-DJ-desk">
                                 <a class="grid-item-DJ-desk-photo" href="djpage.html">
@@ -324,8 +332,9 @@
                                 <p class="votedTagline"><em class="votedName">Tony</em><br>Tagline</p>
                             </div>
                         </div>
+                    -->
                         <div id="confirmation">
-                            <p id="confirm_mobile">Confirm Vote?</p>
+                            <p id="confirm_mobile">Delete Selected?</p>
                             <input type="button" id="huntConfirm" onclick="submitVote()" value="Confirm">
                             <input type="button" id="huntCancel" onclick="cancelVote()" value="Back">
                         </div>

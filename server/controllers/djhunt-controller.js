@@ -157,6 +157,60 @@ const deleteDjAll = async (req, res) => {
     }
 
 }
+
+const deleteDjSelected = async (req, res) => {
+    let dataSelected = req.body;
+
+    
+    //console.log('testing put request for delete selected', dataSelected.selectedData, dataSelected.selectedData[0]);
+    
+
+    try {
+        const djHunt = await DjHunt.find({});
+
+        let fullDj = djHunt[0].radio_talents;
+        let excludedDjs = fullDj;
+        let deletedIds = dataSelected.selectedData;
+
+
+        excludedDjs = excludedDjs.filter((rt)=>{
+            let id = rt._id.toString();
+            return !deletedIds.includes(id)
+        })
+        
+        //console.log("radio talents ex:",excludedDjs)
+        
+        djHunt[0].radio_talents = excludedDjs;
+ 
+        djHunt[0]
+            .save()
+            .then(() => {
+                console.log('update sucess:',djHunt);
+                return res.status(200).json({
+                    success: true,
+                    id: djHunt._id,
+                    data: djHunt,
+                    message: 'DjHunt updated!',
+                })
+            })
+            .catch(error => {
+                console.log(error)
+                return res.status(404).json({
+                    error,
+                    message: 'DjHunt not updated!',
+                })
+            })
+
+            
+            
+
+    } catch (error) {
+
+        console.log(error)
+
+    }
+
+}
 const updateDjHunt = async (req, res) => {
     const body = req.body
 
@@ -263,5 +317,6 @@ module.exports = {
     getAllDjHunt,
     getDjHuntById,
     addDJ,
-    deleteDjAll
+    deleteDjAll,
+    deleteDjSelected
 }
