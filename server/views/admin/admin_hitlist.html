@@ -189,7 +189,14 @@
                     <br>
                 </div>
                 <input type="button" id="remove" disabled onclick="openConfirm()"style="margin-left:780px;" value="Remove">
-                <input type="button" id="removeAll" onclick="clearAll()"style="margin-left:780px;margin-top:25px;" value="Remove All">
+                <input type="button" id="removeAll" onclick="deleteConfirmModal()"style="margin-left:780px;margin-top:25px;" value="Remove All">
+
+                <div id="deleteModal">
+                    <h2>Delete All Songs</h2>
+                    <p>Are you sure you want to delete all songs?</p>
+                    <button id="songDeleteAll" onclick="deleteAllSongs()" >Delete All</button>
+                    <button id="songCancelDelete" onclick="deleteCancelModal()" style="margin-bottom: 15px; margin-top: 15px; background-color: rgb(20, 20, 20);">Cancel</button>
+                </div>
                 <!-- Voting Tab Overlay -->
                 <!-- Voting Tab Overlay -->
                 <div id="overlay">
