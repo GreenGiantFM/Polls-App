@@ -166,6 +166,7 @@ function clearAll(){
     document.getElementbyId("link").value='';
 }
 
+
 /*----- Confirm Vote -----*/
 function openConfirm() {
     document.getElementById("overlay").style.display = "block";
@@ -382,4 +383,41 @@ function logout() {
             window.location = "/admin"
         }
     })
+}
+
+function deleteConfirmModal(){
+    document.getElementById("deleteModal").style.display = "flex";
+
+}
+
+function deleteCancelModal(){
+    document.getElementById("deleteModal").style.display = "none";
+
+}
+
+function deleteAllSongs(){
+    
+
+    document.getElementById("deleteModal").style.display = "none";
+
+    $.ajax({
+        method: 'post',
+        url: '/admin/hitlist/delete/all',
+        success: () => {
+            Swal.fire({
+                title: 'Successfly deleted all songs!',
+                icon: 'success',
+                iconColor: "#569429",
+                timer: 10000,
+                timerProgressBar: true,
+                position: "center",
+                confirmButtonText: 'Awesome!',
+            })
+
+        },
+        error: e => {
+            alert('error')
+        }
+    })
+
 }

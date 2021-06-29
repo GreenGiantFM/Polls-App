@@ -128,10 +128,51 @@ const updateHitlist = async (req, res) => {
     });    
 }
 
+const deleteSongsAll = async (req, res) => {
+
+    console.log('testing put request for delete all')
+
+    try {
+        const hitList = await Hitlist.find({});
+
+        hitList[0].songs = [];
+
+        //console.log("radio talents:",djHunt[0].radio_talents)
+        //console.log("radio talents:",djHunt[0])
+
+        hitList[0]
+            .save()
+            .then(() => {
+                console.log('update sucess:',hitList);
+                return res.status(200).json({
+                    success: true,
+                    id: hitList._id,
+                    data: hitList,
+                    message: 'Hitlist updated!',
+                })
+            })
+            .catch(error => {
+                console.log(error)
+                return res.status(404).json({
+                    error,
+                    message: 'Hitlist updated!',
+                })
+            })
+            
+
+    } catch (error) {
+
+        console.log(error)
+
+    }
+
+}
+
 module.exports = {
     createHitlist,
     deleteHitlist,    
     getAllHitlist,
     getHitlistById,
     updateHitlist,
+    deleteSongsAll
 }
