@@ -1,5 +1,6 @@
 /*----- Global Variables -----*/
 const djs = []
+let selectedDjs = []
 let djhunt
 
 /*----- Retrieve Data from Database -----*/
@@ -9,6 +10,8 @@ $(document).ready(() => {
         url: '/api/All-DJHunt',
         success: data => {
             djhunt = data.data[0];
+
+            console.log(djhunt.radio_talents);
 
             const closing = document.getElementById('hunt-date')
             const formattedDate = new Date(djhunt.end_date)
@@ -65,8 +68,9 @@ $(document).ready(() => {
                 round.setAttribute('class', 'round-check')
                 const checkbox = document.createElement('input')
                 checkbox.setAttribute('type', 'checkbox')
+                checkbox.setAttribute('name', 'unchecked')
                 checkbox.setAttribute('id', `checkbox${index+1}`)
-                checkbox.setAttribute('onclick', `huntButton()`)
+                checkbox.setAttribute('onclick', `huntButton(${index+1})`)
                 const label = document.createElement('label')
                 label.setAttribute('for', `checkbox${index+1}`)
                 round.appendChild(checkbox)
@@ -140,7 +144,7 @@ $(document).ready(() => {
                 const votedImage = document.createElement('img')
                 votedImage.setAttribute('class', "votedImage")
                 if (rt.picture_path)
-                    votedImage.setAttribute('src', `../../${rt.picture_path}`)
+                    votedImage.setAttribute('src', `../../uploads/djhunt/images${rt.picture_path}`)
                 else
                     votedImage.setAttribute('src', '../img/GGFM_Favicon.png')
                 votedBackground.appendChild(votedImage)
@@ -286,6 +290,62 @@ function closeDJPage() {
     }
 }
 
+/*----- Enable / Disable vote Button -----*/
+function huntButton(djNum) {
+
+    const dj = djhunt.radio_talents[djNum-1]
+    
+    let value = true;
+
+    
+
+    for (let dj of djs)
+        if (dj.checked)
+            value = false;
+
+    //document.getElementById("huntSubmit").disabled = value
+    document.getElementById("huntDeleteSelected").disabled = value
+    if (value) {
+        //document.getElementById("huntSubmit").style.cursor = "not-allowed";
+        document.getElementById("huntDeleteSelected").style.cursor = "not-allowed";
+
+    } else {
+        //document.getElementById("huntSubmit").style.cursor = "pointer";
+        document.getElementById("huntDeleteSelected").style.cursor = "not-allowed";
+
+    }
+
+    //console.log(document.getElementById(`checkbox${djNum}`).getAttribute('name'));
+    let status = document.getElementById(`checkbox${djNum}`).checked;
+
+    if (status) {
+        let id = dj._id;
+        selectedDjs.push(id);
+    } else {
+        selectedDjs = selectedDjs.filter((rt)=>{
+            return rt !== dj._id;
+        })
+    }
+
+   
+
+    
+
+    console.log("selected djs",selectedDjs);
+        
+
+    // if (dj1.checked == true || dj2.checked == true || dj3.checked == true || dj4.checked == true) {
+    //     document.getElementById("huntSubmit").disabled = false;
+    //     document.getElementById("huntSubmit").style.cursor = "pointer";
+    // } else if (dj5.checked == true || dj6.checked == true || dj7.checked == true || dj8.checked == true) {
+    //     document.getElementById("huntSubmit").disabled = false;
+    //     document.getElementById("huntSubmit").style.cursor = "pointer";
+    // } else {
+    //     document.getElementById("huntSubmit").disabled = true;
+    //     document.getElementById("huntSubmit").style.cursor = "not-allowed";
+    // }
+}
+
 /*----- Check number of DJs voted -----*/
 function checkBefore(num) {
     let count = 0;
@@ -322,11 +382,16 @@ function signIn() {
 }
 
 /*----- Confirm Vote -----*/
+
+/*
 function openConfirm() {
+    
     document.getElementById("vote").style.display = "none";
     document.getElementById("djvote").style.display = "block";
     document.getElementById("confirmation").style.display = "block";
     document.getElementById("huntSubmit").type = "hidden";
+    document.getElementById("huntDeleteAll").type = "hidden";
+    document.getElementById("huntDeleteSelected").type = "hidden";
     document.getElementById("djSignIn").style.display = "none";
 
     var voteDJ1 = djs[0]
@@ -613,33 +678,9 @@ function openConfirm() {
     }
 
 }
+*/
 
-/*----- Enable / Disable vote Button -----*/
-function huntButton() {
-    
-    let value = true;
 
-    for (let dj of djs)
-        if (dj.checked)
-            value = false;
-
-    document.getElementById("huntSubmit").disabled = value
-    if (value)
-        document.getElementById("huntSubmit").style.cursor = "not-allowed";
-    else
-        document.getElementById("huntSubmit").style.cursor = "pointer";
-
-    // if (dj1.checked == true || dj2.checked == true || dj3.checked == true || dj4.checked == true) {
-    //     document.getElementById("huntSubmit").disabled = false;
-    //     document.getElementById("huntSubmit").style.cursor = "pointer";
-    // } else if (dj5.checked == true || dj6.checked == true || dj7.checked == true || dj8.checked == true) {
-    //     document.getElementById("huntSubmit").disabled = false;
-    //     document.getElementById("huntSubmit").style.cursor = "pointer";
-    // } else {
-    //     document.getElementById("huntSubmit").disabled = true;
-    //     document.getElementById("huntSubmit").style.cursor = "not-allowed";
-    // }
-}
 
 /*----- Submit Vote -----*/
 function submitVote(){
@@ -686,6 +727,8 @@ function cancelVote() {
     document.getElementById("djSignIn").style.display = "none";
     document.getElementById("vote").style.display = "grid";
     document.getElementById("huntSubmit").type = "button";
+    document.getElementById("huntDeleteAll").type = "button";
+    document.getElementById("huntDeleteSelected").type = "button";
     document.body.style.background = '#ffffff';
 }
 
@@ -855,3 +898,85 @@ form.addEventListener('submit', function(event) {
     
 })
 
+function deleteConfirmModal(){
+    document.getElementById("deleteModal").style.display = "block";
+
+}
+
+function deleteCancelModal(){
+    document.getElementById("deleteModal").style.display = "none";
+
+}
+
+function deleteAllDjs(){
+    
+
+    document.getElementById("deleteModal").style.display = "none";
+
+    $.ajax({
+        method: 'post',
+        url: '/admin/dj-hunt/delete/all',
+        success: () => {
+            Swal.fire({
+                title: 'Successfly deleted all djs!',
+                icon: 'success',
+                iconColor: "#569429",
+                timer: 10000,
+                timerProgressBar: true,
+                position: "center",
+                confirmButtonText: 'Awesome!',
+            })
+
+        },
+        error: e => {
+            alert('error')
+        }
+    })
+
+}
+
+
+function openDeleteConfirm(){
+
+    document.getElementById("deleteSelectedModal").style.display = "block";
+
+}
+
+function deleteSelectedCancelModal(){
+    document.getElementById("deleteSelectedModal").style.display = "block";
+
+}
+
+function deleteSelectedDjs(){
+
+    document.getElementById("deleteSelectedModal").style.display = "none";
+
+    const selectedData = selectedDjs;
+    
+
+    //console.log("THE DATA:",selectedData);
+
+    //alert(selectedData)
+    
+    $.ajax({
+        method: 'post',
+        url: '/admin/dj-hunt/delete/selected',
+        data: {selectedData:selectedData},
+        success: (data) => {
+            Swal.fire({
+                title: 'Successfly deleted selected djs!',
+                icon: 'success',
+                iconColor: "#569429",
+                timer: 10000,
+                timerProgressBar: true,
+                position: "center",
+                confirmButtonText: 'Awesome!',
+            })
+
+        },
+        error: e => {
+            alert('error')
+        }
+    })
+    
+}

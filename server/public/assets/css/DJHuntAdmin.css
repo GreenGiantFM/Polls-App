@@ -1,4 +1,6 @@
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 /*----- Graident Background -----*/
 html {
@@ -17,14 +19,15 @@ html {
   justify-content: center;
   text-align: center;
   margin-left: auto;
-	margin-right: auto;
+  margin-right: auto;
 }
 
 /*----- Desktop View (at least 1024px) -----*/
 @media screen and (min-width: 1024px) {
   /*----- Main Grid Container (Voting / Live) -----*/
   /*----- Main Grid Container (Confirmation) -----*/
-  .grid-container-djs, .grid-container-confirm {
+  .grid-container-djs,
+  .grid-container-confirm {
     display: grid;
     grid-template-columns: auto auto auto auto;
     grid-gap: 40px 30px;
@@ -109,8 +112,16 @@ html {
   }
 
   /*----- Voting buttons -----*/
-  #huntSubmit, #huntConfirm,
-  #huntCancel, .huntBack {
+  #huntSubmit,
+  #huntConfirm,
+  #huntCancel,
+  #huntDeleteAll,
+  #huntDeleteAllDj,
+  #huntCancelDelete,
+  #huntDeleteSelected,
+  #huntDeleteSelectedDj,
+  #huntCancelDeleteSelected,
+  .huntBack {
     color: #ffffff;
     border: none;
     outline: none;
@@ -143,7 +154,6 @@ html {
     width: 400px;
     height: 150px;
   }
-
 
   /*----- Submitted Page -----*/
   #submittedImage {
@@ -189,7 +199,7 @@ html {
     height: 560px;
     margin: auto;
     overflow-y: auto;
-    background-color: #F9F4EF;
+    background-color: #f9f4ef;
     box-shadow: 0 5px 7px 0 rgba(0, 0, 0, 0.525), 0 8px 24px 0 rgb(0, 0, 0.525);
   }
 
@@ -208,7 +218,8 @@ html {
     top: 0px;
     right: 0px;
   }
-  #menu-footer > li > a, #exitDJPage-desk:hover {
+  #menu-footer > li > a,
+  #exitDJPage-desk:hover {
     color: #569429;
   }
 
@@ -275,7 +286,8 @@ html {
     background-color: #ffffff;
     border: 3px solid #ffffff;
   }
-  #details-tagline-desk, #fullName {
+  #details-tagline-desk,
+  #fullName {
     width: 300px;
     font-size: 12px;
     text-align: left;
@@ -301,7 +313,8 @@ html {
     width: 120px;
     height: 120px;
     border-radius: 10px;
-    box-shadow: 0 5px 7px 0 rgba(0, 0, 0, 0.24), 0 8px 24px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 5px 7px 0 rgba(0, 0, 0, 0.24),
+      0 8px 24px 0 rgba(0, 0, 0, 0.19);
     cursor: pointer;
   }
 
@@ -363,7 +376,8 @@ html {
     align-items: center;
     padding: none;
     height: 100px;
-    box-shadow: 0 5px 7px 0 rgba(0, 0, 0, 0.24), 0 8px 24px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 5px 7px 0 rgba(0, 0, 0, 0.24),
+      0 8px 24px 0 rgba(0, 0, 0, 0.19);
   }
 
   /*----- Voted DJ Details -----*/
@@ -390,8 +404,16 @@ html {
   }
 
   /*----- Voting buttons -----*/
-  #huntSubmit, #huntConfirm,
-  #huntCancel, .huntBack {
+  #huntSubmit,
+  #huntConfirm,
+  #huntCancel,
+  #huntDeleteAll,
+  #huntDeleteAllDj,
+  #huntCancelDelete,
+  #huntDeleteSelected,
+  #huntDeleteSelectedDj,
+  #huntCancelDeleteSelected,
+  .huntBack {
     color: #ffffff;
     border: none;
     outline: none;
@@ -401,6 +423,18 @@ html {
     font-size: x-large;
     font-weight: bolder;
     letter-spacing: 2px;
+  }
+
+  #huntDeleteAll,
+  #huntDeleteAllDj,
+  #huntDeleteSelectedDj,
+  #huntDeleteSelected {
+    background-color: red;
+  }
+
+  #huntCancelDelete,
+  #huntCancelDeleteSelected {
+    background-color: rgb(32, 32, 32);
   }
   #huntConfirm {
     margin-bottom: 20px;
@@ -438,10 +472,10 @@ html {
     background: #000000a1;
     backdrop-filter: blur(3px);
   }
-  .chosen-DJPage-desk{
+  .chosen-DJPage-desk {
     display: none;
   }
-  .chosen-DJPage-mobile{
+  .chosen-DJPage-mobile {
     display: flex;
   }
 
@@ -452,7 +486,7 @@ html {
     width: 350px;
     margin: 6px 12px;
     overflow-y: scroll;
-    background-color: #F9F4EF;
+    background-color: #f9f4ef;
   }
 
   /*----- DJ Page Exit Button -----*/
@@ -567,7 +601,8 @@ html {
     width: 80px;
     height: 80px;
     border-radius: 10px;
-    box-shadow: 0 5px 7px 0 rgba(0, 0, 0, 0.24), 0 8px 24px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 5px 7px 0 rgba(0, 0, 0, 0.24),
+      0 8px 24px 0 rgba(0, 0, 0, 0.19);
     cursor: pointer;
   }
 
@@ -629,7 +664,8 @@ html {
     align-items: center;
     padding: none;
     height: 100px;
-    box-shadow: 0 5px 7px 0 rgba(0, 0, 0, 0.24), 0 8px 24px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 5px 7px 0 rgba(0, 0, 0, 0.24),
+      0 8px 24px 0 rgba(0, 0, 0, 0.19);
   }
 
   /*----- Voted DJ Details -----*/
@@ -656,8 +692,16 @@ html {
   }
 
   /*----- Voting buttons -----*/
-  #huntSubmit, #huntConfirm,
-  #huntCancel, .huntBack {
+  #huntSubmit,
+  #huntConfirm,
+  #huntCancel,
+  #huntDeleteAll,
+  #huntDeleteSelected,
+  #huntDeleteAllDj,
+  #huntCancelDelete,
+  #huntDeleteSelectedDj,
+  #huntCancelDeleteSelected,
+  .huntBack {
     color: #ffffff;
     border: none;
     outline: none;
@@ -705,10 +749,10 @@ html {
     background: #000000a1;
     backdrop-filter: blur(3px);
   }
-  .chosen-DJPage-desk{
+  .chosen-DJPage-desk {
     display: none;
   }
-  .chosen-DJPage-mobile{
+  .chosen-DJPage-mobile {
     display: flex;
   }
 
@@ -719,7 +763,7 @@ html {
     width: 180px;
     margin: 3px 6px;
     overflow-y: scroll;
-    background-color: #F9F4EF;
+    background-color: #f9f4ef;
   }
 
   /*----- DJ Page Exit Button -----*/
@@ -867,30 +911,63 @@ html {
 }
 
 /*----- Voting buttons -----*/
-#huntSubmit, #huntConfirm, #signInButton {
+#huntSubmit,
+#huntConfirm,
+#signInButton {
   background-color: #569429;
 }
-#huntCancel, .huntBack, #cancelSignIn {
+#huntDeleteAll,
+#huntDeleteAllDj,
+#huntDeleteSelectedDj,
+#huntDeleteSelected {
+  background-color: #f10f0f;
+}
+#huntCancel,
+#huntCancelDeleteSelected,
+.huntBack,
+#cancelSignIn {
   background-color: #000000;
 }
-#huntConfirm, #huntCancel, .huntBack,
-#signInButton, #cancelSignIn {
+#huntConfirm,
+#huntCancel,
+#huntDeleteAll,
+#huntDeleteSelected,
+#huntDeleteAllDj,
+#huntCancelDelete,
+#huntDeleteSelectedDj,
+#huntCancelDeleteSelected,
+.huntBack,
+#signInButton,
+#cancelSignIn {
   cursor: pointer;
 }
-#huntSubmit:hover, #huntConfirm:hover,
-#huntCancel:hover, .huntBack:hover,
-#signInButton:hover, #cancelSignIn:hover {
+#huntSubmit:hover,
+#huntConfirm:hover,
+#huntCancel:hover,
+#huntDeleteAll:hover,
+#huntDeleteSelected:hover,
+#huntDeleteAllDj:hover,
+#huntCancelDelete:hover,
+#huntDeleteSelectedDj:hover,
+#huntCancelDeleteSelected:hover,
+.huntBack:hover,
+#signInButton:hover,
+#cancelSignIn:hover {
   box-shadow: 0 10px 14px 0 rgba(0, 0, 0, 0.24),
     0 15px 48px 0 rgba(0, 0, 0, 0.19);
 }
-#huntSubmit:focus, #huntConfirm:focus,
-#huntCancel:focus, .huntBack:focus,
-#signInButton:focus, #cancelSignIn:focus {
+#huntSubmit:focus,
+#huntConfirm:focus,
+#huntCancel:focus,
+.huntBack:focus,
+#signInButton:focus,
+#cancelSignIn:focus {
   outline: none;
 }
 
 /*----- DJ Photo -----*/
-.dj-background, .votedImage {
+.dj-background,
+.votedImage {
   width: 100%;
   height: auto;
 }
@@ -901,6 +978,26 @@ html {
 }
 
 /*----- Animation -----*/
-#vote, #djPage-mobile, #djPage-desk {
+#vote,
+#djPage-mobile,
+#djPage-desk {
   animation: fadeEffect 0.25s;
+}
+
+#deleteModal,
+#deleteSelectedModal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: auto;
+  background-color: #f9f4ef;
+  box-shadow: 0 10px 14px 0 rgba(0, 0, 0, 0.24),
+    0 15px 48px 0 rgba(0, 0, 0, 0.19);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  display: none;
 }
