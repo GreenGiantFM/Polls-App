@@ -175,7 +175,7 @@ $(document).ready(() => {
                 // </div>
 
                 const voteddjdesk = document.createElement('div')
-                voteddjdesk.className = "grid-item-dj"
+                voteddjdesk.className = "grid-item-dj-confirm"
                 voteddjdesk.id = `votedDJ${index+1}_desk`
                 const clone = djdesk.cloneNode(true)
                 clone.firstChild.removeChild(clone.firstChild.childNodes[1])
@@ -247,6 +247,14 @@ $(document).ready(() => {
             })
         }
     })
+
+    if (window.innerWidth >= 350) {
+        $('#deskSignIn').css("display", "block");
+        $('#mobileSignIn').css("display", "none");
+    } else if (window.innerWidth <= 349) {
+        $('#deskSignIn').css("display", "none");
+        $('#mobileSignIn').css("display", "block");
+    }
 })
 
 /*----- Open selected Tab -----*/
@@ -726,6 +734,7 @@ function submitVote(){
                     document.getElementById("voteSubmitted").style.display = "grid";
                     document.getElementById("voteTab").style.display = "none";
                     document.getElementById("liveTab").style.display = "none";
+                    document.getElementById("djSignIn").style.display = "none";
                     document.body.style.background = '#aad68a';
                     document.body.style.background = "linear-gradient(to bottom, #f1faeb, #569429)";
                 
