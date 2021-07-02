@@ -237,8 +237,8 @@ function openDJPage(djNum){
     document.getElementById('djName-desk').innerHTML = `DJ ${dj.dj_name}`;
     document.getElementById('fullName-mobile').innerHTML = dj.actual_name;
     document.getElementById('fullName').innerHTML = dj.actual_name;
-    document.getElementById('djVideo-mobile').src = dj.youtube_promotional;
-    document.getElementById('djVideo-desk').src = dj.youtube_promotional;
+    document.getElementById('djVideo-mobile').src = dj.youtube_video;
+    document.getElementById('djVideo-desk').src = dj.youtube_video;
     document.getElementById('djStinger-mobile').src = `../../uploads/djhunt/audio/${dj.stinger_path}`;
     document.getElementById('djStinger-desk').src = `../../uploads/djhunt/audio/${dj.stinger_path}`;
     document.getElementById('djAudio-mobile').load();
