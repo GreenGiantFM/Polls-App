@@ -80,7 +80,7 @@ $(document).ready(() => {
                 const djbackground = document.createElement('img')
                 djbackground.setAttribute('class', "dj-background")
                 if (rt.picture_path) 
-                    djbackground.setAttribute('src', rt.picture_path)
+                    djbackground.setAttribute('src', `uploads/djhunt/images/${rt.picture_path}`)
                 else
                     djbackground.setAttribute('src', '../img/GGFM_Favicon.png')
 
@@ -178,7 +178,7 @@ $(document).ready(() => {
                 voteddjdesk.className = "grid-item-dj"
                 voteddjdesk.id = `votedDJ${index+1}_desk`
                 const clone = djdesk.cloneNode(true)
-                clone.firstChild.removeChild(clone.firstChild.childNodes[2])
+                clone.firstChild.removeChild(clone.firstChild.childNodes[1])
                 voteddjdesk.appendChild(clone)
 
                 const grid_container_confirm = document.getElementById('grid-container-confirm')
@@ -192,7 +192,7 @@ $(document).ready(() => {
                 const votedImage = document.createElement('img')
                 votedImage.setAttribute('class', "votedImage")
                 if (rt.picture_path)
-                    votedImage.setAttribute('src', rt.picture_path)
+                    votedImage.setAttribute('src', `uploads/djhunt/images/${rt.picture_path}`)
                 else
                     votedImage.setAttribute('src', '../img/GGFM_Favicon.png')
                 votedBackground.appendChild(votedImage)
@@ -282,16 +282,16 @@ function openDJPage(djNum){
 
     const dj = djhunt.radio_talents[djNum-1]
 
-    document.getElementById('dj-image-mobile').src = dj.picture_path;
-    document.getElementById('dj-image-desk').src = dj.picture_path;
+    document.getElementById('dj-image-mobile').src = `uploads/djhunt/images/${dj.picture_path}`;
+    document.getElementById('dj-image-desk').src = `uploads/djhunt/images/${dj.picture_path}`;
     document.getElementById('djName-mobile').innerHTML = `DJ ${dj.dj_name}`;
     document.getElementById('djName-desk').innerHTML = `DJ ${dj.dj_name}`;
     document.getElementById('fullName-mobile').innerHTML = dj.actual_name;
     document.getElementById('fullName').innerHTML = dj.actual_name;
-    document.getElementById('djVideo-mobile').src = dj.youtube_promotional;
-    document.getElementById('djVideo-desk').src = dj.youtube_promotional;
-    document.getElementById('djStinger-mobile').src = dj.stinger_path;
-    document.getElementById('djStinger-desk').src = dj.stinger_path;
+    document.getElementById('djVideo-mobile').src = dj.youtube_video;
+    document.getElementById('djVideo-desk').src = dj.youtube_video;
+    document.getElementById('djStinger-mobile').src = `uploads/djhunt/audio/${dj.stinger_path}`;
+    document.getElementById('djStinger-desk').src = `uploads/djhunt/audio/${dj.stinger_path}`;
     document.getElementById('djAudio-mobile').load();
     document.getElementById('djAudio-desk').load();
     document.getElementById('djPlaylist-mobile').src = dj.spotify_playlist;
