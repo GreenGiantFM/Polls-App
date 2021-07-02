@@ -4,6 +4,8 @@
         <title>DJ Hunt</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="google-signin-client_id" content="157128304765-kjebs9c88o68fqc12tte1gli39jt4hvh.apps.googleusercontent.com">
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" integrity="sha256-OweaP/Ic6rsV+lysfyS4h+LM6sRwuO3euTYfr6M124g=" crossorigin="anonymous">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -228,14 +230,7 @@
                         <br>
                         <br>
                     </div>
-                    <input type="button" id="huntSubmit" onclick="signIn()" value="VOTE" disabled>
-                    <div id="djSignIn" class="tabcontent" style="display: none;">
-                        <h1 id="signIn-msg">
-                            Sign in to your Google<br>Account to Vote
-                        </h1>
-                        <input type=button id="signInButton" onclick="openConfirm()" value="Proceed">
-                        <input type=button id="cancelSignIn" onclick="cancelVote()" value="Back">
-                    </div>
+                    <input type="button" id="huntSubmit" onclick="openConfirm()" value="VOTE" disabled>
                     <div id="djvote" class="tabcontent">
                         <h1 id="confirm_desk">Confirm Vote?</h1>
                         <div class="grid-container-confirm">
@@ -377,10 +372,18 @@
                             </div>
                             <div id="confirmation">
                                 <p id="confirm_mobile">Confirm Vote?</p>
-                                <input type="button" id="huntConfirm" onclick="submitVote()" value="Confirm">
+                                <input type="button" id="huntConfirm" onclick="signIn()" value="Confirm">
                                 <input type="button" id="huntCancel" onclick="cancelVote()" value="Back">
                             </div>
                         </div>
+                    </div>
+                    <div id="djSignIn" class="tabcontent" style="display: none;">
+                        <h1 id="signIn-msg">
+                            Sign in to your Google<br>Account to Vote
+                        </h1>
+                        <div class="g-signin2" data-onsuccess="onSignIn" data-longtitle="true" data-width="330px" id="deskSignIn"></div>
+                        <div class="g-signin2" data-onsuccess="onSignIn" data-longtitle="true" data-width="175px" id="mobileSignIn"></div>
+                        <input type=button id="cancelSignIn" onclick="cancelVote()" value="Back">
                     </div>
                     <div id="voteSubmitted" class="grid-container-submitted" style="display:none;">
                         <div class="grid-item-submitted-photo">
@@ -717,5 +720,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="../assets/js/polls_js.js"></script>
     <script src="assets/js/djhuntScript.js"></script>
+    <script>
+        function onSignIn(googleUser) {
+            var profile = googleUser.getBasicProfile();
+            console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+            console.log('Name: ' + profile.getName());
+            console.log('Image URL: ' + profile.getImageUrl());
+            console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+        }
+    </script>
     </body>
 </html>

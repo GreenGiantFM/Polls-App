@@ -138,7 +138,7 @@ input[disabled] {
 
     /*----- Side Menu Content -----*/
     .sidenav a,
-    span {
+    .sidenav span {
         width: 0;
         font-size: 0;
     }
@@ -275,7 +275,7 @@ input[disabled] {
 
     /*----- Side Menu Content -----*/
     .sidenav a,
-    span {
+    .sidenav span {
         text-decoration: none;
         width: 250px;
         font-size: 25px;
@@ -435,7 +435,7 @@ input[disabled] {
 
     /*----- Side Menu Content -----*/
     .sidenav a,
-    span {
+    .sidenav span {
         text-decoration: none;
         width: 125px;
         font-size: 12px;
@@ -603,7 +603,7 @@ input[disabled] {
 
     /*----- Side Menu Content -----*/
     .sidenav a,
-    span {
+    .sidenav span {
         text-decoration: none;
         width: 125px;
         font-size: 12px;
