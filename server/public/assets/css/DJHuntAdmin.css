@@ -110,7 +110,7 @@ html {
 
   /*----- Voting buttons -----*/
   #huntSubmit, #huntConfirm,
-  #huntCancel, .huntBack {
+  #huntCancel, .huntBack,#doneDate {
     color: #ffffff;
     border: none;
     outline: none;
@@ -391,7 +391,7 @@ html {
 
   /*----- Voting buttons -----*/
   #huntSubmit, #huntConfirm,
-  #huntCancel, .huntBack {
+  #huntCancel, .huntBack,#doneDate {
     color: #ffffff;
     border: none;
     outline: none;
@@ -657,7 +657,7 @@ html {
 
   /*----- Voting buttons -----*/
   #huntSubmit, #huntConfirm,
-  #huntCancel, .huntBack {
+  #huntCancel, .huntBack,#doneDate {
     color: #ffffff;
     border: none;
     outline: none;
@@ -867,25 +867,25 @@ html {
 }
 
 /*----- Voting buttons -----*/
-#huntSubmit, #huntConfirm, #signInButton {
+#huntSubmit, #huntConfirm, #signInButton,#doneDate {
   background-color: #569429;
 }
-#huntCancel, .huntBack, #cancelSignIn {
+#huntCancel, .huntBack, #cancelSignIn,#doneDate {
   background-color: #000000;
 }
 #huntConfirm, #huntCancel, .huntBack,
-#signInButton, #cancelSignIn {
+#signInButton, #cancelSignIn,#doneDate {
   cursor: pointer;
 }
 #huntSubmit:hover, #huntConfirm:hover,
 #huntCancel:hover, .huntBack:hover,
-#signInButton:hover, #cancelSignIn:hover {
+#signInButton:hover, #cancelSignIn:hover,#doneDate:hover {
   box-shadow: 0 10px 14px 0 rgba(0, 0, 0, 0.24),
     0 15px 48px 0 rgba(0, 0, 0, 0.19);
 }
 #huntSubmit:focus, #huntConfirm:focus,
 #huntCancel:focus, .huntBack:focus,
-#signInButton:focus, #cancelSignIn:focus {
+#signInButton:focus, #cancelSignIn:focus,#doneDate:focus {
   outline: none;
 }
 
@@ -904,3 +904,35 @@ html {
 #vote, #djPage-mobile, #djPage-desk {
   animation: fadeEffect 0.25s;
 }
+
+.llenos{
+  float:right;
+}
+
+.upperLink{
+  float: left;
+  text-align: center;
+  text-decoration:none;
+  font-weight: bolder;
+  font-size: 12px;
+  color: white;
+  width: 200px;
+ 
+  float:left;
+ 
+  
+}
+
+#doneDate {
+  background-color: #569429;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  width: 200px;
+  height: 40px;
+  font-size: x-large;
+  font-weight: bolder;
+  letter-spacing: 2px;
+  
+}
+
