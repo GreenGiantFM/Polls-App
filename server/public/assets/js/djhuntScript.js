@@ -175,7 +175,7 @@ $(document).ready(() => {
                 // </div>
 
                 const voteddjdesk = document.createElement('div')
-                voteddjdesk.className = "grid-item-dj"
+                voteddjdesk.className = "grid-item-dj-confirm"
                 voteddjdesk.id = `votedDJ${index+1}_desk`
                 const clone = djdesk.cloneNode(true)
                 clone.firstChild.removeChild(clone.firstChild.childNodes[2])

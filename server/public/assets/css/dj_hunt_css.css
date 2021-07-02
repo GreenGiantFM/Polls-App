@@ -49,8 +49,11 @@ html {
     border-radius: 10px;
     box-shadow: 2px 2px 5px #919191;
   }
-
-  /*----- DJ Photo (Voting / Live) -----*/
+  .grid-item-dj-confirm {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+  }
   .grid-item-DJ-desk-photo {
     position: relative;
     overflow: hidden;
