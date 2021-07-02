@@ -48,6 +48,7 @@ router.post('/home/dj-hunt', hasSession,  djhuntUpload.fields([{ name: 'picture_
 router.post('/dj-hunt/delete/all', hasSession, DjHuntCntrl.deleteDjAll)
 router.post('/dj-hunt/delete/selected', hasSession, DjHuntCntrl.deleteDjSelected)
 router.post('/DjHunt', hasSession, DjHuntCntrl.createDjHunt)
+router.post('/dj-hunt/edit/:id', hasSession, djhuntUpload.fields([{ name: 'picture_path', maxCount: 1 }, { name: 'stinger_path', maxCount: 1 }]), DjHuntCntrl.editDj)
 router.post('/Hitlist', hasSession, HitlistCntrl.createHitlist)
 router.post('/hitlist/delete/all', hasSession, HitlistCntrl.deleteSongsAll)
 router.put('/Hitlist/:id', HitlistCntrl.updateHitlist)
@@ -57,6 +58,8 @@ router.get('/DjHunt/:id', DjHuntCntrl.getDjHuntById)
 router.get('/Hitlist/:id', HitlistCntrl.getHitlistById)
 router.get('/All-DjHunt', DjHuntCntrl.getAllDjHunt)
 router.get('/All-Hitlist', HitlistCntrl.getAllHitlist)
+
+
 
 router.get('/logout', (req, res) => {
     req.session.destroy();

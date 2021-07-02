@@ -2,6 +2,7 @@
 const djs = []
 let selectedDjs = []
 let djhunt
+let selectedDjID
 
 /*----- Retrieve Data from Database -----*/
 $(document).ready(() => {
@@ -228,6 +229,7 @@ function openTab(evt, tabName) {
 function openDJPage(djNum){
 
     const dj = djhunt.radio_talents[djNum-1]
+    selectedDjID = dj._id
 
     document.getElementById('dj-image-mobile').src = `../../uploads/djhunt/images/${dj.picture_path}`;
     document.getElementById('dj-image-desk').src = `../../uploads/djhunt/images/${dj.picture_path}`;
@@ -247,12 +249,12 @@ function openDJPage(djNum){
     document.getElementById("details-tagline-mobile").innerText = dj.tagline;
     console.log(dj.facebook, dj.twitter, dj.instagram)
     console.log(dj)
-    document.getElementById("desk-facebook").href = dj.facebook;
-    document.getElementById("mobile-facebook").href = dj.facebook;
-    document.getElementById("desk-twitter").href = dj.twitter;
-    document.getElementById("mobile-twitter").href = dj.twitter;
-    document.getElementById("desk-instagram").href = dj.instagram;
-    document.getElementById("mobile-instagram").href = dj.instagram;
+    document.getElementById("desk-facebook").href = dj.facebook.toString();
+    document.getElementById("mobile-facebook").href = dj.facebook.toString();
+    document.getElementById("desk-twitter").href = dj.twitter.toString();
+    document.getElementById("mobile-twitter").href = dj.twitter.toString();
+    document.getElementById("desk-instagram").href = dj.instagram.toString();
+    document.getElementById("mobile-instagram").href = dj.instagram.toString();
 
     document.getElementById('djPage-mobile').style.display = "";
     document.getElementById('djPage-desk').style.display = "";
@@ -980,3 +982,38 @@ function deleteSelectedDjs(){
     })
     
 }
+
+
+const form2 = document.getElementById("dj-hunt-update")
+form2.addEventListener('submit', function(event) {
+    event.preventDefault()
+    const formData = new FormData(this)
+
+    console.log(formData)
+    console.log(selectedDjID)
+    
+    $.ajax({
+        method: 'post',
+        url: `/admin/dj-hunt/edit/${selectedDjID}`,
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: data => {
+            Swal.fire({
+                title: 'Success!',
+                icon: 'success',
+                iconColor: "#569429",
+                timer: 10000,
+                timerProgressBar: true,
+                position: "center",
+                confirmButtonText: 'Awesome!',
+            })
+
+        },
+        error: e => {
+            alert('error')
+        }
+    })
+    
+    
+})
