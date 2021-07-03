@@ -229,6 +229,8 @@ $(document).ready(() => {
             live_rank.map(s => {
                 totalVotes += s.vote_count
             })
+            if (totalVotes===0) 
+                totalVotes=1
 
             live_rank.map((rt, index) => {
                 const percent = Math.round((rt.vote_count/totalVotes)*100)
