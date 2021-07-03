@@ -40,6 +40,54 @@ const createDjHunt = (req, res) => {
     
 }
 
+const editDj = async(req, res) => {
+
+    console.log("text")
+    console.log(req.params.id)
+    const {dj_name, actual_name, tagline, facebook, instagram, twitter, youtube_video, spotify_playlist} = req.body
+    console.log(req.body)
+    console.log(req.files)
+
+    let djnewEdit = {dj_name: dj_name, actual_name: actual_name, tagline: tagline, stinger_path: req.files['stinger_path'][0].filename, spotify_playlist: spotify_playlist, youtube_video: youtube_video, picture_path: req.files['picture_path'][0].filename, facebook: facebook, twitter: twitter, instagram: instagram}
+
+    let djID = req.params.id
+
+    try {
+        
+        const djHunt = await DjHunt.find({});
+        let indexDJ = djHunt[0].radio_talents.findIndex(x => x._id.toString() === djID);
+        console.log(indexDJ)
+        djHunt[0].radio_talents[indexDJ] = djnewEdit;
+
+        djHunt[0]
+            .save()
+            .then(() => {
+                return res.status(200).json({
+                    success: true,
+                    id: djHunt._id,
+                    data: djHunt,
+                    message: 'DjHunt updated!',
+                })
+            })
+            .catch(error => {
+                console.log(error)
+                return res.status(404).json({
+                    error,
+                    message: 'DjHunt not updated!',
+                })
+            })
+
+    }
+
+    catch (error) {
+
+        console.log(error)
+
+
+    }
+
+}
+
 const addDJ = async (req, res) => {
 
     const {dj_name, actual_name, tagline, facebook, instagram, twitter, youtube_video, spotify_playlist} = req.body
@@ -310,6 +358,8 @@ const getAllDjHunt = async (req, res) => {
     }).catch(err => console.log(err))
 }
 
+
+
 module.exports = {
     createDjHunt,
     updateDjHunt,
@@ -318,5 +368,6 @@ module.exports = {
     getDjHuntById,
     addDJ,
     deleteDjAll,
-    deleteDjSelected
+    deleteDjSelected,
+    editDj
 }
