@@ -22,14 +22,14 @@
     <body>
     
         <!-- Header -->
-        <header id="upper" style="background-color: black;">
+        <header id="upper" style="background-color: black;height:120px;">
             <ul class="upper-link">
                 <li><a href="https://www.greengiantfm.com/" class="upperLink"><img src="/assets/img/GGFM/GGFM_LOGO.png" alt='Green Giant FM' style="width:175px;"></a></li>
                 
                 
                 <ul class="llenos">
-                <li><a href="/" class="pollsDrop">Hitlist</a></li>
-                <li><a href="/dj-hunt" class="pollsDrop">DJ Hunt</a></li>
+                    <li><a href="/admin/home/hitlist" class="pollsDrop">Hitlist</a></li>
+                    <li><a href="/admin/home/dj-hunt" class="pollsDrop">DJ Hunt</a></li>
                 <button type="button" class="btn btn-default btn-sm" onclick="logout()">
                     <span class="log-out"></span> Log out
                   </button>
@@ -43,7 +43,6 @@
                 
             </ul>
         </header>
-
             
         <!--**have yet to change the open tab parameter names**-->  
         <div class="w3-container tab" style="text-align: center;">
@@ -55,16 +54,10 @@
         <!-- Menu -->
         <div id="sideMenu" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&#9776;&emsp;<em>Menu</em></a>
-            <a href="#" class="sideLink">Home</a>
-            <a href="#" class="sideLink">About Us</a>
-            <a href="#" class="sideLink">Radio Talents</a>
-            <a href="#" class="sideLink">Events</a>
-            <a href="#" class="sideLink">Blogs</a>
-            <a href="#" class="sideLink">Contact Us</a>
-            <a href="#" class="sideLink">Stream</a>
+            
             <span class="sideLink">Live Polls</span>
-            <a href="#" class="pollLink"><i class="fas fa-music"></i>&ensp;Hitlist</a>
-            <a href="#" class="pollLink"><i class="fas fa-binoculars"></i>&ensp;DJ Hunt</a>
+            <a href="/admin/home/hitlist" class="pollLink"><i class="fas fa-music"></i>&ensp;Hitlist</a>
+            <a href="/admin/home/dj-hunt" class="pollLink"><i class="fas fa-binoculars"></i>&ensp;DJ Hunt</a>
         </div>
 
         <!-- Menu Button -->

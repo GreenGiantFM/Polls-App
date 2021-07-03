@@ -723,6 +723,7 @@ function submitVote() {
     document.getElementById("voteSubmitted").style.display = "grid";
     document.getElementById("voteTab").style.display = "none";
     document.getElementById("liveTab").style.display = "none";
+    document.getElementById("djSignIn").style.display = "none";
     document.body.style.background = '#aad68a';
     document.body.style.background = "linear-gradient(to bottom, #f1faeb, #569429)";
 
@@ -850,5 +851,16 @@ $(window).on('scroll', function () {
         } else if (window.innerWidth <= 249) {
             $('#hunt_end').stop().animate({ top: "175px" }, 100);
         }
+    }
+});
+
+/*----- Google Sign In Button -----*/
+$(document).ready(() => {
+    if (window.innerWidth >= 350) {
+        $('#deskSignIn').css("display", "block");
+        $('#mobileSignIn').css("display", "none");
+    } else if (window.innerWidth <= 349) {
+        $('#deskSignIn').css("display", "none");
+        $('#mobileSignIn').css("display", "block");
     }
 });

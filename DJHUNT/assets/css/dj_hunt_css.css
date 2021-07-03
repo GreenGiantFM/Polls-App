@@ -49,8 +49,11 @@ html {
     border-radius: 10px;
     box-shadow: 2px 2px 5px #919191;
   }
-
-  /*----- DJ Photo (Voting / Live) -----*/
+  .grid-item-dj-confirm {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+  }
   .grid-item-DJ-desk-photo {
     position: relative;
     overflow: hidden;
@@ -143,7 +146,7 @@ html {
   /*----- Voting buttons -----*/
   #huntSubmit, #huntConfirm,
   #huntCancel, .huntBack,
-  #signInButton, #cancelSignIn {
+  #cancelSignIn {
     color: #ffffff;
     border: none;
     outline: none;
@@ -154,17 +157,17 @@ html {
     font-weight: bolder;
     letter-spacing: 2px;
   }
-  #huntConfirm, #signInButton {
+  #huntConfirm {
     margin-right: 20px;
   }
-  #huntCancel, #cancelSignIn {
+  #huntCancel {
     margin-left: 20px;
   }
   .huntBack {
     margin-top: 5px;
     margin-bottom: 20px;
   }
-  #signInButton, #cancelSignIn {
+  #cancelSignIn {
     margin-top: 50px;
   }
 
@@ -186,7 +189,6 @@ html {
     width: 400px;
     height: 150px;
   }
-
 
   /*----- Submitted Page -----*/
   #submittedImage {
@@ -579,7 +581,7 @@ html {
   /*----- Voting buttons -----*/
   #huntSubmit, #huntConfirm,
   #huntCancel, .huntBack,
-  #signInButton, #cancelSignIn {
+  #cancelSignIn {
     color: #ffffff;
     border: none;
     outline: none;
@@ -590,18 +592,18 @@ html {
     font-weight: bolder;
     letter-spacing: 2px;
   }
-  #huntConfirm, #signInButton {
+  #huntConfirm {
     margin-bottom: 20px;
   }
-  #huntCancel, #cancelSignIn {
+  #huntCancel {
     margin-bottom: 20px;
   }
   .huntBack {
     margin-top: 5px;
     margin-bottom: 20px;
   }
-  #signInButton {
-    margin-top: 50px;
+  #cancelSignIn {
+    margin-top: 30px;
   }
 
   /*----- Sign In Message -----*/
@@ -1017,7 +1019,7 @@ html {
   /*----- Voting buttons -----*/
   #huntSubmit, #huntConfirm,
   #huntCancel, .huntBack,
-  #signInButton, #cancelSignIn {
+  #cancelSignIn {
     color: #ffffff;
     border: none;
     outline: none;
@@ -1028,17 +1030,17 @@ html {
     font-weight: bolder;
     letter-spacing: 2px;
   }
-  #huntConfirm, #signInButton {
+  #huntConfirm {
     margin-bottom: 10px;
   }
-  #huntCancel, #cancelSignIn {
+  #huntCancel {
     margin-bottom: 10px;
   }
   .huntBack {
     margin-top: 5px;
     margin-bottom: 10px;
   }
-  #signInButton {
+  #cancelSignIn {
     margin-top: 25px;
   }
 
@@ -1387,26 +1389,34 @@ html {
 }
 
 /*----- Voting buttons -----*/
-#huntSubmit, #huntConfirm, #signInButton {
+#huntSubmit, #huntConfirm {
   background-color: #569429;
 }
 #huntCancel, .huntBack, #cancelSignIn {
   background-color: #000000;
 }
-#huntConfirm, #huntCancel, .huntBack,
-#signInButton, #cancelSignIn {
+#huntConfirm, #huntCancel,
+.huntBack, #cancelSignIn {
   cursor: pointer;
 }
 #huntSubmit:hover, #huntConfirm:hover,
 #huntCancel:hover, .huntBack:hover,
-#signInButton:hover, #cancelSignIn:hover {
+#cancelSignIn:hover {
   box-shadow: 0 10px 14px 0 rgba(0, 0, 0, 0.24),
     0 15px 48px 0 rgba(0, 0, 0, 0.19);
 }
 #huntSubmit:focus, #huntConfirm:focus,
 #huntCancel:focus, .huntBack:focus,
-#signInButton:focus, #cancelSignIn:focus {
+#cancelSignIn:focus {
   outline: none;
+}
+.g-signin2{
+  margin-top: 50px;
+  width: 100%;
+}
+.g-signin2 > div{
+  font-family: "Roboto", sans-serif;
+  margin: 0 auto;
 }
 
 /*----- DJ Photo -----*/
