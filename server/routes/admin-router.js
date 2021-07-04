@@ -52,6 +52,7 @@ router.post('/dj-hunt/edit/:id', hasSession, djhuntUpload.fields([{ name: 'pictu
 router.post('/Hitlist', hasSession, HitlistCntrl.createHitlist)
 router.post('/hitlist/delete/all', hasSession, HitlistCntrl.deleteSongsAll)
 router.put('/Hitlist/:id', HitlistCntrl.updateHitlist)
+router.put('/DjHunt/:id', DjHuntCntrl.updateDjHunt)
 router.delete('/Hitlist/:id', hasSession, HitlistCntrl.deleteHitlist)
 router.delete('/DjHunt/:id', hasSession, DjHuntCntrl.deleteDjHunt)
 router.get('/DjHunt/:id', DjHuntCntrl.getDjHuntById)

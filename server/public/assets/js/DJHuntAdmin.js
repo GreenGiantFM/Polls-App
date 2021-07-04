@@ -937,6 +937,48 @@ function deleteAllDjs(){
 
 }
 
+function changeDate() {
+    const start_date = document.getElementById('start-date').value
+    const end_date = document.getElementById('end-date').value
+
+    if (start_date && end_date) {
+
+        djhunt.start_date = document.getElementById('start-date').value
+        djhunt.end_date = document.getElementById('end-date').value
+
+        $.ajax({
+            method: 'put',
+            url: `/admin/djhunt/${djhunt._id}`,
+            data: djhunt,
+            success: function (data) {
+                Swal.fire({
+                    title: 'Success!',
+                    icon: 'success',
+                    iconColor: "#569429",
+                    timer: 10000,
+                    timerProgressBar: true,
+                    position: "center",
+                    confirmButtonText: 'Awesome!',
+                })
+            },
+            error: function () {
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Invalid date',
+                    icon: 'error',
+                    confirmButtonText: 'Okay'
+                })
+            }
+        })
+    } else {
+        Swal.fire({
+            title: 'Error!',
+            text: 'Invalid date',
+            icon: 'error',
+            confirmButtonText: 'Okay'
+        })
+    }
+}
 
 function openDeleteConfirm(){
 
