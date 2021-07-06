@@ -69,50 +69,9 @@
 
 <!-- Voting Tab -->
 <div id="vote" class="tabcontent w3-center" style="display: block;">
-    <form action="#">
-        <div class="grid-container">
-            <div class="grid-item-voting" id="song1">
-                <div class="grid-container-voting">
-                    <div class="grid-item-song">
-                       
-                    </div>
-                    <div class="grid-item-song">
-                        <label for="song1">
-                            
-                            <img class="album" src="/assets/img/grey.png" alt='Brain Damage' style="margin-left:200px;margin-bottom:350px;width:150px; height:150px">
-                        </label>
-                    </div>
-                    <div class="grid-item-song">
-                        
-                        
-                        
-                    </div>
-                    
-                    
-                </div>
-                
-            </div>
-           
-
-            
-            <br>
-            
-            <br>
-            
-        </div>
-        
-       
-          
-        
-        
-        
-    </form>
     
     <form onsubmit="return false">
        
-        <div class="icon">
-          
-        </div>
         <div class="add-dj-container">
             
             <div class="add-photo-container"></div>
@@ -176,17 +135,20 @@
                 <input type="date" id="start-date" name="start-date">
                 <label for="end-date">End Date:</label>
                 <input type="date" id="end-date" name="end-date">
-                
             </div>
-              <button id="doneDate" onclick="changeDate()">Save Date</button>
+            <div class="date-container">
+                <button style="display: block" id="doneDate" onclick="changeDate()">Save Date</button>
+            </div>
             <form action="#">
                 <div class="grid-container" id='grid-container'>
                     
                     <br>
                     <br>
                 </div>
-                <input type="button" id="remove" disabled onclick="openConfirm()"style="margin-left:780px;" value="Remove">
-                <input type="button" id="removeAll" onclick="deleteConfirmModal()"style="margin-left:780px;margin-top:25px;" value="Remove All">
+                <div class="date-container">
+                    <input type="button" id="remove" disabled onclick="openConfirm()" value="Remove">
+                    <input type="button" id="removeAll" onclick="deleteConfirmModal()" value="Remove All">
+                </div>
 
                 <div id="deleteModal">
                     <h2>Delete All Songs</h2>
