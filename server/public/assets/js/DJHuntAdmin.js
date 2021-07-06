@@ -900,6 +900,16 @@ form.addEventListener('submit', function(event) {
     
 })
 
+function logout() {
+    $.ajax({
+        method: 'get',
+        url: '/admin/logout',
+        success: data => {
+            window.location = "/admin"
+        }
+    })
+}
+
 function deleteConfirmModal(){
     document.getElementById("deleteModal").style.display = "block";
 
