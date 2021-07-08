@@ -383,9 +383,6 @@ function checkAfter(num) {
 
 /*----- Sign In To Google -----*/
 function signIn() {
-    if (user) 
-        signOut()
-
     document.getElementById("vote").style.display = "none";
     document.getElementById("djvote").style.display = "none";
     document.getElementById("confirmation").style.display = "none";
@@ -728,11 +725,15 @@ function submitVote(){
                     djhunt.radio_talents[index].vote_count++
             }
 
+            console.log(user.getEmail())
+
             if (djhunt.voters_email.find(email => email === user.getEmail())) {
                 signOut()
                 document.getElementById("overlay").style.display = "block";
             } else {
                 djhunt.voters_email.push(user.getEmail())
+                console.log(djhunt)
+                console.log(djhunt.voters_email)
 
                 $.ajax({
                     method: 'put',
@@ -901,11 +902,7 @@ function gotoPolls() {
 
 function onSignIn(googleUser) {
     if (hasVoted) {
-        user = googleUser.getBasicProfile();
-        console.log('ID: ' + user.getId()); // Do not send to your backend! Use an ID token instead.
-        console.log('Name: ' + user.getName());
-        console.log('Image URL: ' + user.getImageUrl());
-        console.log('Email: ' + user.getEmail()); // This is null if the 'email' scope is not present.
+        user = googleUser.getBasicProfile()
         submitVote()
     }
 }
