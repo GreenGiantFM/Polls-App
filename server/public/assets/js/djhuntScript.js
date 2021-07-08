@@ -1,6 +1,6 @@
 /*----- Global Variables -----*/
 const djs = []
-let djhunt
+let djhunt, user
 
 /*----- Retrieve Data from Database -----*/
 $(document).ready(() => {
@@ -383,11 +383,13 @@ function checkAfter(num) {
 
 /*----- Sign In To Google -----*/
 function signIn() {
-    document.getElementById("vote").style.display = "none";
-    document.getElementById("djvote").style.display = "none";
-    document.getElementById("confirmation").style.display = "none";
-    document.getElementById("huntSubmit").type = "hidden";
-    document.getElementById("djSignIn").style.display = "block";
+    if (!user) {
+        document.getElementById("vote").style.display = "none";
+        document.getElementById("djvote").style.display = "none";
+        document.getElementById("confirmation").style.display = "none";
+        document.getElementById("huntSubmit").type = "hidden";
+        document.getElementById("djSignIn").style.display = "block";
+    }
 }
 
 /*----- Confirm Vote -----*/
@@ -723,27 +725,35 @@ function submitVote(){
                 if (dj.checked)
                     djhunt.radio_talents[index].vote_count++
             }
+
+            if (djhunt.voters_email.find(email === user.getEmail())) {
+                signOut()
+                document.getElementById("overlay").style.display = "block";
+            } else {
+                djhunt.voters_email.push(user.getEmail())
+
+                $.ajax({
+                    method: 'put',
+                    url: `/api/DjHunt/${djhunt._id}`,
+                    data: djhunt,
+                    success: data => {
+            
+                        document.getElementById("vote").style.display = "none";
+                        document.getElementById("djvote").style.display = "none";
+                        document.getElementById("confirmation").style.display = "none";
+                        document.getElementById("voteSubmitted").style.display = "grid";
+                        document.getElementById("voteTab").style.display = "none";
+                        document.getElementById("liveTab").style.display = "none";
+                        document.getElementById("djSignIn").style.display = "none";
+                        document.body.style.background = '#aad68a';
+                        document.body.style.background = "linear-gradient(to bottom, #f1faeb, #569429)";
+                    
+                        for (let dj of djs)
+                            dj.checked = false
+                    }
+                })
+            }
         
-            $.ajax({
-                method: 'put',
-                url: `/api/DjHunt/${djhunt._id}`,
-                data: djhunt,
-                success: data => {
-        
-                    document.getElementById("vote").style.display = "none";
-                    document.getElementById("djvote").style.display = "none";
-                    document.getElementById("confirmation").style.display = "none";
-                    document.getElementById("voteSubmitted").style.display = "grid";
-                    document.getElementById("voteTab").style.display = "none";
-                    document.getElementById("liveTab").style.display = "none";
-                    document.getElementById("djSignIn").style.display = "none";
-                    document.body.style.background = '#aad68a';
-                    document.body.style.background = "linear-gradient(to bottom, #f1faeb, #569429)";
-                
-                    for (let dj of djs)
-                        dj.checked = false
-                }
-            })
         }
     })
 }
@@ -761,16 +771,7 @@ function cancelVote() {
 
 /*----- Close Overlay -----*/
 function closeConfirm() {
-    document.getElementById("djvote").style.display = "none";
-    document.getElementById("voteSubmitted").style.display = "none";
-    document.getElementById("confirmation").style.display = "none";
-    document.getElementById("vote").style.display = "grid";
-    document.getElementById("voteTab").style.display = "";
-    document.getElementById("liveTab").style.display = "";
-    document.getElementById("huntSubmit").type = "button";
-    document.getElementById("huntSubmit").disabled = true;
-    document.getElementById("huntSubmit").style.cursor = "not-allowed";
-    document.body.style.background = '#ffffff';
+    document.getElementById("overlay").style.display = "none";
 }
 
 /*----- Countdown Timer -----*/
@@ -883,4 +884,22 @@ function clickDrop() {
 
 function gotoPolls() {
     document.getElementById("liveTab").click();
+}
+
+function onSignIn(googleUser) {
+    user = googleUser.getBasicProfile();
+    console.log('ID: ' + user.getId()); // Do not send to your backend! Use an ID token instead.
+    console.log('Name: ' + user.getName());
+    console.log('Image URL: ' + user.getImageUrl());
+    console.log('Email: ' + user.getEmail()); // This is null if the 'email' scope is not present.
+    submitVote()
+}
+
+function signOut() {
+    if (GoogleAuth.isSignedIn.get()) {
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+        console.log('User signed out.');
+        });
+    }
 }
