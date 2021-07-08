@@ -308,8 +308,6 @@ function openDJPage(djNum){
     document.getElementById('djPlaylist-desk').src = dj.spotify_playlist;
     document.getElementById("details-tagline-desk").innerText = dj.tagline;
     document.getElementById("details-tagline-mobile").innerText = dj.tagline;
-    console.log(dj.facebook, dj.twitter, dj.instagram)
-    console.log(dj)
     document.getElementById("desk-facebook").href = dj.facebook;
     document.getElementById("mobile-facebook").href = dj.facebook;
     document.getElementById("desk-twitter").href = dj.twitter;
@@ -725,15 +723,11 @@ function submitVote(){
                     djhunt.radio_talents[index].vote_count++
             }
 
-            console.log(user.getEmail())
-
             if (djhunt.voters_email.find(email => email === user.getEmail())) {
                 signOut()
                 document.getElementById("overlay").style.display = "block";
             } else {
                 djhunt.voters_email.push(user.getEmail())
-                console.log(djhunt)
-                console.log(djhunt.voters_email)
 
                 $.ajax({
                     method: 'put',

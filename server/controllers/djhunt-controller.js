@@ -278,7 +278,7 @@ const updateDjHunt = async (req, res) => {
             })
         }
 
-        const { start_date, end_date, radio_talents } = req.body;
+        const { start_date, end_date, radio_talents, voters_email } = req.body;
 
         if (start_date && end_date) {
             djHunt.start_date = start_date;
@@ -286,6 +286,7 @@ const updateDjHunt = async (req, res) => {
         }
         
         djHunt.radio_talents = radio_talents
+        djHunt.voters_email = voters_email
 
         djHunt
             .save()
