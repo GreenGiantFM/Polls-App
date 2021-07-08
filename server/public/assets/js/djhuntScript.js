@@ -1,6 +1,6 @@
 /*----- Global Variables -----*/
 const djs = []
-let djhunt, user
+let djhunt, user, hasVoted = false
 
 /*----- Retrieve Data from Database -----*/
 $(document).ready(() => {
@@ -391,6 +391,7 @@ function signIn() {
     document.getElementById("confirmation").style.display = "none";
     document.getElementById("huntSubmit").type = "hidden";
     document.getElementById("djSignIn").style.display = "block";
+    hasVoted = true
 }
 
 /*----- Confirm Vote -----*/
@@ -772,7 +773,18 @@ function cancelVote() {
 
 /*----- Close Overlay -----*/
 function closeConfirm() {
+    document.getElementById("djvote").style.display = "none";
+    document.getElementById("voteSubmitted").style.display = "none";
+    document.getElementById("confirmation").style.display = "none";
+    document.getElementById("vote").style.display = "grid";
+    document.getElementById("voteTab").style.display = "";
+    document.getElementById("liveTab").style.display = "";
+    document.getElementById("huntSubmit").type = "button";
+    document.getElementById("huntSubmit").disabled = true;
+    document.getElementById("huntSubmit").style.cursor = "not-allowed";
+    document.body.style.background = '#ffffff';
     document.getElementById("overlay").style.display = "none";
+    signOut()
 }
 
 /*----- Countdown Timer -----*/
@@ -888,12 +900,14 @@ function gotoPolls() {
 }
 
 function onSignIn(googleUser) {
-    user = googleUser.getBasicProfile();
-    console.log('ID: ' + user.getId()); // Do not send to your backend! Use an ID token instead.
-    console.log('Name: ' + user.getName());
-    console.log('Image URL: ' + user.getImageUrl());
-    console.log('Email: ' + user.getEmail()); // This is null if the 'email' scope is not present.
-    submitVote()
+    if (hasVoted) {
+        user = googleUser.getBasicProfile();
+        console.log('ID: ' + user.getId()); // Do not send to your backend! Use an ID token instead.
+        console.log('Name: ' + user.getName());
+        console.log('Image URL: ' + user.getImageUrl());
+        console.log('Email: ' + user.getEmail()); // This is null if the 'email' scope is not present.
+        submitVote()
+    }
 }
 
 function signOut() {
