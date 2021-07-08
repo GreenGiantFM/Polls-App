@@ -127,7 +127,7 @@
                     </div>
                     
                     <div id="overlay">
-                        <div id="voteConfirmed" class="overlayItems" style="display: block;">
+                        <div id="voteConfirmed" class="overlayItems" style="display: none;">
                             <h1 id="submit_text">YOU HAVE ALREADY VOTED</h1>
                             <input type="button" id="doneVote" onclick="closeConfirm()" value="OKAY">
                         </div>
@@ -467,14 +467,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="assets/js/djhuntScript.js"></script>
     <script>
-        function signOut() {
-            if (GoogleAuth.isSignedIn.get()) {
-                var auth2 = gapi.auth2.getAuthInstance();
-                auth2.signOut().then(function () {
-                console.log('User signed out.');
-                });
-            }
-        }
 
         function init() {
             gapi.load('auth2', signOut);

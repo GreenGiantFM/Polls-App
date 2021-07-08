@@ -383,13 +383,14 @@ function checkAfter(num) {
 
 /*----- Sign In To Google -----*/
 function signIn() {
-    if (!user) {
-        document.getElementById("vote").style.display = "none";
-        document.getElementById("djvote").style.display = "none";
-        document.getElementById("confirmation").style.display = "none";
-        document.getElementById("huntSubmit").type = "hidden";
-        document.getElementById("djSignIn").style.display = "block";
-    }
+    if (user) 
+        signOut()
+
+    document.getElementById("vote").style.display = "none";
+    document.getElementById("djvote").style.display = "none";
+    document.getElementById("confirmation").style.display = "none";
+    document.getElementById("huntSubmit").type = "hidden";
+    document.getElementById("djSignIn").style.display = "block";
 }
 
 /*----- Confirm Vote -----*/
