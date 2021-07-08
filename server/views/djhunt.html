@@ -126,8 +126,8 @@
                         </div>
                     </div>
                     
-                    <div id="overlay">
-                        <div id="voteConfirmed" class="overlayItems" style="display: none;">
+                    <div id="overlay" style="display: none;">
+                        <div id="voteConfirmed" class="overlayItems" style="display: block;">
                             <h1 id="submit_text">YOU HAVE ALREADY VOTED</h1>
                             <input type="button" id="doneVote" onclick="closeConfirm()" value="OKAY">
                         </div>
@@ -467,6 +467,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="assets/js/djhuntScript.js"></script>
     <script>
+
+        window.onload = () => init()
 
         function init() {
             gapi.load('auth2', signOut);

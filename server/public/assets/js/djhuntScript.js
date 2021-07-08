@@ -727,7 +727,7 @@ function submitVote(){
                     djhunt.radio_talents[index].vote_count++
             }
 
-            if (djhunt.voters_email.find(email === user.getEmail())) {
+            if (djhunt.voters_email.find(email => email === user.getEmail())) {
                 signOut()
                 document.getElementById("overlay").style.display = "block";
             } else {
@@ -897,7 +897,7 @@ function onSignIn(googleUser) {
 }
 
 function signOut() {
-    if (GoogleAuth.isSignedIn.get()) {
+    if (gapi.auth2.getAuthInstance().isSignedIn.get()) {
         var auth2 = gapi.auth2.getAuthInstance();
         auth2.signOut().then(function () {
         console.log('User signed out.');
