@@ -777,6 +777,7 @@ function closeConfirm() {
     document.getElementById("huntSubmit").type = "button";
     document.getElementById("huntSubmit").disabled = true;
     document.getElementById("huntSubmit").style.cursor = "not-allowed";
+    document.getElementById("djSignIn").style.display = "none";
     document.body.style.background = '#ffffff';
     document.getElementById("overlay").style.display = "none";
     signOut()
