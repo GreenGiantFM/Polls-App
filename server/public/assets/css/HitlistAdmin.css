@@ -93,7 +93,7 @@ body {
 }
 
 .llenos {
-  margin-left: 1500px;
+  float: right;
 }
 
 /*----- Upper Menu hover over links -----*/
@@ -204,7 +204,7 @@ body {
     grid-template-columns: auto auto auto auto;
     grid-gap: 5px 0px;
     width: 550px;
-    height: 150px;
+    height: 100px;
     align-items: left;
     justify-content: left;
     padding: 10px;
@@ -235,7 +235,7 @@ body {
   /*----- Song description (title) -----*/
   .title {
     font-style: normal;
-    font-size: 20px;
+    font-size: 15px;
     color: #000000;
   }
 
@@ -255,7 +255,7 @@ body {
     align-items: center;
     padding: 0px 0px 0px 10px;
     width: 300px;
-    height: 120px;
+    height: 80px;
     box-shadow: 0 1px 3px 1px rgba(85, 85, 85, 0.24);
     /* Right Bottom Fade Solid */
   }
@@ -974,12 +974,10 @@ input[disabled] {
   font-weight: bolder;
   letter-spacing: 2px;
   margin-top: 20px;
-  margin-left: 650px;
 }
 #doneDate {
   box-shadow: 0 10px 14px 0 rgba(0, 0, 0, 0.24),
     0 15px 48px 0 rgba(0, 0, 0, 0.19);
-  margin-left: 850px;
 }
 #remove {
   background-color: #569429;
@@ -993,7 +991,8 @@ input[disabled] {
   letter-spacing: 2px;
 }
 .date-container {
-  margin-left: 700px;
+  justify-content: center;
+  align-items: center;
 }
 
 #removeAll,
@@ -1025,4 +1024,11 @@ input[disabled] {
   align-items: center;
   justify-content: center;
   display: none;
+}
+
+.date-container {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
 }

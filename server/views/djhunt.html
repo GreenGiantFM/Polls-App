@@ -5,7 +5,6 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="google-signin-client_id" content="157128304765-kjebs9c88o68fqc12tte1gli39jt4hvh.apps.googleusercontent.com">
-        <script src="https://apis.google.com/js/platform.js" async defer></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" integrity="sha256-OweaP/Ic6rsV+lysfyS4h+LM6sRwuO3euTYfr6M124g=" crossorigin="anonymous">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -18,7 +17,7 @@
         <link rel="stylesheet" href="/assets/css/dj_hunt_css.css">
         <link rel="stylesheet" href="https://cdn.rawgit.com/theus/chart.css/v1.0.0/dist/chart.css" />
         <link rel="icon" href="../assets/img/GGFM/GGFM_ICON.png" type="image/png" />
-        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
         <meta name="google-signin-client_id" content="157128304765-kjebs9c88o68fqc12tte1gli39jt4hvh.apps.googleusercontent.com">
     </head>
     <body>
@@ -124,6 +123,13 @@
                         <div class="grid-item-submitted-message">
                             <p id="submittedMessage">Thank you for voting.</p>
                             <input type="submit" class="huntBack" onclick="closeConfirm()" value="Back">
+                        </div>
+                    </div>
+                    
+                    <div id="overlay" style="display: none;">
+                        <div id="voteConfirmed" class="overlayItems" style="display: block;">
+                            <h1 id="submit_text">YOU HAVE ALREADY VOTED</h1>
+                            <input type="button" id="doneVote" onclick="closeConfirm()" value="OKAY">
                         </div>
                     </div>
                 </form>
@@ -461,12 +467,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="assets/js/djhuntScript.js"></script>
     <script>
-        function onSignIn(googleUser) {
-            var profile = googleUser.getBasicProfile();
-            console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-            console.log('Name: ' + profile.getName());
-            console.log('Image URL: ' + profile.getImageUrl());
-            console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+
+        window.onload = () => init()
+
+        function init() {
+            gapi.load('auth2', signOut);
         }
     </script>
     </body>

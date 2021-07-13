@@ -27,6 +27,8 @@ function retrieveSongs() {
         totalVotes += s.vote_count
     })
 
+    document.getElementById('vote_count').innerText = `Total Vote Count: ${totalVotes}`;
+
     // set songs
     hitlist.songs.map((s, index) => {
         /*-----  Create Elements -----*/

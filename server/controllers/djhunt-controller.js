@@ -174,6 +174,7 @@ const deleteDjAll = async (req, res) => {
         const djHunt = await DjHunt.find({});
 
         djHunt[0].radio_talents = [];
+        djHunt[0].voters_email = [];
 
         console.log("radio talents:",djHunt[0].radio_talents)
         console.log("radio talents:",djHunt[0])
@@ -226,7 +227,8 @@ const deleteDjSelected = async (req, res) => {
             return !deletedIds.includes(id)
         })
         
-        //console.log("radio talents ex:",excludedDjs)
+        if (excludedDjs.length === 0)
+            djHunt[0].voters_email = [];
         
         djHunt[0].radio_talents = excludedDjs;
  
@@ -278,7 +280,7 @@ const updateDjHunt = async (req, res) => {
             })
         }
 
-        const { start_date, end_date, radio_talents } = req.body;
+        const { start_date, end_date, radio_talents, voters_email } = req.body;
 
         if (start_date && end_date) {
             djHunt.start_date = start_date;
@@ -286,6 +288,7 @@ const updateDjHunt = async (req, res) => {
         }
         
         djHunt.radio_talents = radio_talents
+        djHunt.voters_email = voters_email
 
         djHunt
             .save()
