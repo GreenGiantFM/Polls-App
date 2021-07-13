@@ -21,28 +21,6 @@ $(document).ready(() => {
 
             djhunt.radio_talents.map((rt, index) => {
                 const grid_container_djs = document.getElementById("vote")
-                // <a class="grid-item-dj grid-item-dj-vote"  href="djpage.html">
-                //     <img class="dj-background" src="assets/img/d1.jpg">
-                //     <p class="dj-name">Cora</p>
-                //     <div class="round">
-                //         <input type="checkbox" id="checkbox1">
-                //             <label for="checkbox1"></label>
-                //     </div>
-                // </a>
-
-                // <div class="grid-item-dj">
-                //     <div class="grid-container-DJ-desk">
-                //         <div class="grid-item-DJ-desk-photo">
-                //             <img class="dj-background" src="assets/img/DJs/d1.jpg" onclick="openDJPage(1)">
-                //             <p class="dj-name">Cora</p>
-                //             <div class="round">
-                //                 <input type="checkbox" id="dj1" onclick="huntButton()">
-                //                 <label for="dj1"></label>
-                //             </div>
-                //         </div>
-                //         <p class="grid-item-DJ-desk-name">Cora</p>
-                //     </div>
-                // </div>
 
                 /*
                 <div class="grid-item-dj">
@@ -63,6 +41,7 @@ $(document).ready(() => {
                     </div>
                 </div>
                 */
+
                 // <div class="grid-item-dj">
                 const itemdj = document.createElement('div')
                 itemdj.setAttribute('class', 'grid-item-dj')
@@ -71,9 +50,9 @@ $(document).ready(() => {
                 const djdesk = document.createElement('div')
                 djdesk.setAttribute('class', 'grid-container-DJ-desk')
 
-                //          <div class="grid-item-DJ-desk-photo" onclick="openDJPage(1)">
+                //          <div class="grid-item-DJ-desk-photo voting-dj-photo" onclick="openDJPage(1)">
                 const deskphoto = document.createElement('div')
-                deskphoto.setAttribute('class', "grid-item-DJ-desk-photo")
+                deskphoto.setAttribute('class', "grid-item-DJ-desk-photo voting-dj-photo")
                 deskphoto.setAttribute('onclick', `openDJPage(${index + 1})`)
 
                 //              <img class="dj-background" src="assets/img/DJs/d1.jpg">
@@ -111,16 +90,16 @@ $(document).ready(() => {
                 //                  <input type="checkbox" id="dj1" onclick="huntButton()">
                 const checkbox = document.createElement('input')
                 checkbox.setAttribute('type', 'checkbox')
-                checkbox.setAttribute('id', `checkbox${index+1}`)
+                checkbox.setAttribute('id', `checkbox${index + 1}`)
                 checkbox.setAttribute('onclick', `huntButton()`)
 
                 //                  <label for="dj1"></label>
                 const label = document.createElement('label')
-                label.setAttribute('for', `checkbox${index+1}`)
+                label.setAttribute('for', `checkbox${index + 1}`)
 
                 //              <p class="grid-item-DJ-desk-name">Cora</p>
                 const djname = document.createElement('p')
-                djname.setAttribute('class', 'dj-name')
+                djname.setAttribute('class', 'grid-item-DJ-desk-name')
                 djname.innerText = rt.dj_name
 
                 // closing the divs (bottom-vote and div/s inside)
@@ -132,59 +111,80 @@ $(document).ready(() => {
                 djdesk.appendChild(bottomvote)
                 itemdj.appendChild(djdesk)
                 grid_container_djs.appendChild(itemdj)
-                // <a class="grid-item-dj grid-item-dj-vote"  href="djpage.html">
-                //     <img class="dj-background" src="assets/img/d1.jpg">
-                //     <p class="dj-name">Cora</p>
-                //     <div class="round">
-                //         <input type="checkbox" id="checkbox1">
-                //             <label for="checkbox1"></label>
-                //     </div>
-                // </a>
 
-                // <div class="grid-item-dj">
-                //     <div class="grid-container-DJ-desk">
-                //         <div class="grid-item-DJ-desk-photo">
-                //             <img class="dj-background" src="assets/img/DJs/d1.jpg" onclick="openDJPage(1)">
-                //             <p class="dj-name">Cora</p>
-                //             <div class="round">
-                //                 <input type="checkbox" id="dj1" onclick="huntButton()">
-                //                 <label for="dj1"></label>
-                //             </div>
-                //         </div>
-                //         <p class="grid-item-DJ-desk-name">Cora</p>
-                //     </div>
-                // </div>
+                /*
+                <div class="grid-item-dj-confirm" id="votedDJ1_desk">
+                    <div class="grid-container-DJ-desk">
+                        <div class="grid-item-DJ-desk-photo">
+                            <img class="dj-background" src="assets/img/DJs/d1.jpg">
+                            <p class="dj-name">Cora</p>
+                        </div>
+                        <div class="bottom-vote">
+                            <p class="grid-item-DJ-desk-name">Cora</p>
+                        </div>
+                    </div>
+                </div>
+                */
 
-                // <div class="grid-item-djVoted" id="votedDJ8">
-                //     <div class="grid-container-confirmDJs">
-                //         <div class="votedBackground">
-                //             <img class="votedImage" src="assets/img/DJs/d8.jpg">
-                //         </div>
-                //         <p class="votedTagline"><em class="votedName">Tony</em><br>Tagline</p>
-                //     </div>
-                // </div>
-
-                // <div class="grid-item-dj" id="votedDJ1_desk">
-                //     <div class="grid-container-DJ-desk">
-                //         <a class="grid-item-DJ-desk-photo" href="djpage.html">
-                //             <img class="dj-background" src="assets/img/DJs/d1.jpg">
-                //             <p class="dj-name">Cora</p>
-                //         </a>
-                //         <p class="grid-item-DJ-desk-name">Cora</p>
-                //     </div>
-                // </div>
-
-                const voteddjdesk = document.createElement('div')
-                voteddjdesk.className = "grid-item-dj-confirm"
-                voteddjdesk.id = `votedDJ${index+1}_desk`
-                const clone = djdesk.cloneNode(true)
-                clone.firstChild.removeChild(clone.firstChild.childNodes[1])
-                voteddjdesk.appendChild(clone)
-
+                //<div class="grid-item-dj-confirm" id="votedDJ1_desk">
                 const grid_container_confirm = document.getElementById('grid-container-confirm')
+                const voteddjconfirm = document.createElement('div')
+                voteddjconfirm.className = "grid-item-dj-confirm"
+                voteddjconfirm.id = `votedDJ${index + 1}_desk`
+
+                //    <div class="grid-container-DJ-desk">
+                const voteddjdesk = document.createElement('div')
+
+                voteddjdesk.setAttribute('class', 'grid-container-DJ-desk')
+
+                //        <div class="grid-item-DJ-desk-photo">
+                const voteddeskphoto = document.createElement('div')
+                voteddeskphoto.setAttribute('class', "grid-item-DJ-desk-photo")
+
+                //          < img class="dj-background" src = "assets/img/DJs/d1.jpg" >
+                const voteddjbackground = document.createElement('img')
+                voteddjbackground.setAttribute('class', "dj-background")
+                if (rt.picture_path)
+                    voteddjbackground.setAttribute('src', rt.picture_path)
+                else
+                    voteddjbackground.setAttribute('src', '../img/GGFM_Favicon.png')
+
+                voteddjbackground.setAttribute('alt', rt.dj_name)
+
+                //closing the div
+                voteddeskphoto.appendChild(voteddjbackground)
+
+                //        <div class="bottom-vote">
+                const votedbottomvote = document.createElement('div')
+                votedbottomvote.setAttribute('class', 'bottom-vote')
+
+                //            <p class="grid-item-DJ-desk-name">Cora</p>
+                const voteddjdeskname = document.createElement('p')
+                voteddjdeskname.setAttribute('class', 'grid-item-DJ-desk-name')
+                voteddjdeskname.innerText = rt.dj_name
+
+                //closing the divs
+                votedbottomvote.appendChild(voteddjdeskname)
+                voteddjdesk.appendChild(voteddeskphoto)
+                voteddjdesk.appendChild(votedbottomvote)
+                voteddjconfirm.appendChild(voteddjdesk)
+
+                /*------------------------------------------------------------------------------------------------------------------*/
+
+                /*
+                <div class="grid-item-djVoted" id="votedDJ1">
+                    <div class="grid-container-confirmDJs">
+                        <div class="votedBackground">
+                            <img class="votedImage" src="assets/img/DJs/d1.jpg">
+                        </div>
+                        <p class="votedTagline"><em class="votedName">Cora</em><br>Tagline</p>
+                    </div>
+                </div>
+                */
+
                 const djvoted = document.createElement('div')
                 djvoted.setAttribute('class', 'grid-item-djVoted')
-                djvoted.setAttribute('id', `votedDJ${index+1}`)
+                djvoted.setAttribute('id', `votedDJ${index + 1}`)
                 const confirmdjs = document.createElement('div')
                 confirmdjs.setAttribute('class', "grid-container-confirmDJs")
                 const votedBackground = document.createElement('div')
@@ -207,7 +207,7 @@ $(document).ready(() => {
                 confirmdjs.appendChild(votedBackground)
                 confirmdjs.appendChild(votedTagline)
                 djvoted.appendChild(confirmdjs)
-                grid_container_confirm.appendChild(voteddjdesk)
+                grid_container_confirm.appendChild(voteddjconfirm)
                 grid_container_confirm.appendChild(djvoted)
 
                 djs.push(checkbox)
