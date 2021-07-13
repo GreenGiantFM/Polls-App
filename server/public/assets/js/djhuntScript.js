@@ -405,6 +405,11 @@ function openConfirm() {
         if (dj.checked) {
             document.getElementById(`votedDJ${index+1}_desk`).style.display = "";
             document.getElementById(`votedDJ${index+1}`).style.display = "";
+            var desk = document.getElementById(`votedDJ${index+1}_desk`);
+            desk.classList.add("chosen_desk");
+            var mobile = document.getElementById(`votedDJ${index+1}`);
+            mobile.classList.add("chosen_mobile");
+            
             if (index%8==0) {
                 if (checkAfter(index+1) == 0) {
                     document.getElementById(`votedDJ${index+1}_desk`).style.gridColumn = "1 / span 4";
@@ -466,11 +471,6 @@ function openConfirm() {
                     document.getElementById(`votedDJ${index+1}_desk`).style.gridColumn = "";
                 }
             }
-
-            var desk = document.getElementById(`votedDJ${index+1}_desk`);
-            desk.classList.add("chosen_desk");
-            var mobile = document.getElementById(`votedDJ${index+1}`);
-            mobile.classList.add("chosen_mobile");
         } else {
             document.getElementById(`votedDJ${index+1}_desk`).style.display = "none";
             document.getElementById(`votedDJ${index+1}`).style.display = "none";
