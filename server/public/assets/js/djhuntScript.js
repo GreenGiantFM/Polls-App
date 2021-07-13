@@ -145,7 +145,7 @@ $(document).ready(() => {
                 const voteddjbackground = document.createElement('img')
                 voteddjbackground.setAttribute('class', "dj-background")
                 if (rt.picture_path)
-                    voteddjbackground.setAttribute('src', rt.picture_path)
+                    voteddjbackground.setAttribute('src', `uploads/djhunt/images/${rt.picture_path}`)
                 else
                     voteddjbackground.setAttribute('src', '../img/GGFM_Favicon.png')
 
@@ -232,20 +232,22 @@ $(document).ready(() => {
             if (totalVotes===0) 
                 totalVotes=1
 
-            live_rank.map((rt, index) => {
-                const percent = Math.round((rt.vote_count/totalVotes)*100)
-                /*** grey ***/
-                document.getElementById(`bar-${index+1}-top`).style.gridRow = `1 / ${100-percent}`
-                /*** green ***/
-                document.getElementById(`bar-${index+1}-bottom`).style.gridRow = `${100-percent} / 101`
-                /*** num ***/
-                document.getElementById(`top-${index+1}-num`).innerText = `${percent}%`
-                /*** green ***/
-                document.getElementById(`bar-${index+1}-mid`).style.gridColumn = `30 / ${30+10+percent}`
-                /*** grey ***/
-                document.getElementById(`bar-${index+1}-right`).style.gridColumn = `${30+10+percent} / 140`
-                /*** num ***/
-                document.getElementById(`mid-${index+1}-num`).innerText = `${percent}%`
+            live_rank.forEach((rt, index) => {
+                if (index < 8) {
+                    const percent = Math.round((rt.vote_count/totalVotes)*100)
+                    /*** grey ***/
+                    document.getElementById(`bar-${index+1}-top`).style.gridRow = `1 / ${100-percent}`
+                    /*** green ***/
+                    document.getElementById(`bar-${index+1}-bottom`).style.gridRow = `${100-percent} / 101`
+                    /*** num ***/
+                    document.getElementById(`top-${index+1}-num`).innerText = `${percent}%`
+                    /*** green ***/
+                    document.getElementById(`bar-${index+1}-mid`).style.gridColumn = `30 / ${30+10+percent}`
+                    /*** grey ***/
+                    document.getElementById(`bar-${index+1}-right`).style.gridColumn = `${30+10+percent} / 140`
+                    /*** num ***/
+                    document.getElementById(`mid-${index+1}-num`).innerText = `${percent}%`
+                }
             })
         }
     })
@@ -397,278 +399,94 @@ function openConfirm() {
     document.getElementById("huntSubmit").type = "hidden";
     document.getElementById("djSignIn").style.display = "none";
 
-    var voteDJ1 = djs[0]
-    var voteDJ2 = djs[1]
-    var voteDJ3 = djs[2]
-    var voteDJ4 = djs[3]
-    var voteDJ5 = djs[4]
-    var voteDJ6 = djs[5]
-    var voteDJ7 = djs[6]
-    var voteDJ8 = djs[7]
+    for (let [index, dj] of djs.entries()) {
+        // console.log(index, index%8, dj.checked)
 
-    if (voteDJ1.checked == true) {
-        document.getElementById("votedDJ1_desk").style.display = "";
-        document.getElementById("votedDJ1").style.display = "";
+        if (dj.checked) {
+            document.getElementById(`votedDJ${index+1}_desk`).style.display = "";
+            document.getElementById(`votedDJ${index+1}`).style.display = "";
+            if (index%8==0) {
+                if (checkAfter(index+1) == 0) {
+                    document.getElementById(`votedDJ${index+1}_desk`).style.gridColumn = "1 / span 4";
+                } else if (checkAfter(index+1) == 1) {
+                    document.getElementById(`votedDJ${index+1}_desk`).style.gridColumn = "1 / span 2";
+                } else {
+                    document.getElementById(`votedDJ${index+1}_desk`).style.gridColumn = "";
+                }
+            } 
+        
+            else if (index%8==1 || index%8==2 || index%8==3) {
+                if (checkBefore(index+1) == 0 && checkAfter(index+1) == 0) {
+                    document.getElementById(`votedDJ${index+1}_desk`).style.gridColumn = "1 / span 4";
+                } else if (checkBefore(index+1) == 0 && checkAfter(index+1) == 1) {
+                    document.getElementById(`votedDJ${index+1}_desk`).style.gridColumn = "1 / span 2";
+                } else if (checkBefore(index+1) == 1 && checkAfter(index+1) == 0) {
+                    document.getElementById(`votedDJ${index+1}_desk`).style.gridColumn = "3 / span 2";
+                } else if (checkBefore(index+1) == 1 && checkAfter(index+1) == 1) {
+                    document.getElementById(`votedDJ${index+1}_desk`).style.gridColumn = "2 / span 2";
+                } else {
+                    document.getElementById(`votedDJ${index+1}_desk`).style.gridColumn = "";
+                }
+            }
+        
+            else if (index%8==4) {
+                if ((checkBefore(index+1) == 0 || checkBefore(index+1) == 4) && checkAfter(index+1) == 0) {
+                    document.getElementById(`votedDJ${index+1}_desk`).style.gridColumn = "1 / span 4";
+                } else if ((checkBefore(index+1) == 0 || checkBefore(index+1) == 4) && checkAfter(index+1) == 1) {
+                    document.getElementById(`votedDJ${index+1}_desk`).style.gridColumn = "1 / span 2";
+                } else if (checkBefore(index+1) == 1 && checkAfter(index+1) == 0) {
+                    document.getElementById(`votedDJ${index+1}_desk`).style.gridColumn = "3 / span 2";
+                } else if (checkBefore(index+1) == 1 && checkAfter(index+1) == 1) {
+                    document.getElementById(`votedDJ${index+1}_desk`).style.gridColumn = "2 / span 2";
+                } else {
+                    document.getElementById(`votedDJ${index+1}_desk`).style.gridColumn = "";
+                }
+            } 
+        
+            else if (index%8==5 || index%8==6) {
+                if ((checkBefore(index+1) == 0 || checkBefore(index+1) == 4) && checkAfter(index+1) == 0) {
+                    document.getElementById(`votedDJ${index+1}_desk`).style.gridColumn = "2 / span 2";
+                } else if ((checkBefore(index+1) == 0 || checkBefore(index+1) == 4) && checkAfter(index+1) == 1) {
+                    document.getElementById(`votedDJ${index+1}_desk`).style.gridColumn = "1 / span 2";
+                } else if ((checkBefore(index+1) == 1 || checkBefore(index+1) == 5) && checkAfter(index+1) == 0) {
+                    document.getElementById(`votedDJ${index+1}_desk`).style.gridColumn = "3 / span 2";
+                } else if ((checkBefore(index+1) == 1 || checkBefore(index+1) == 5) && checkAfter(index+1) == 1) {
+                    document.getElementById(`votedDJ${index+1}_desk`).style.gridColumn = "2 / span 2";
+                } else {
+                    document.getElementById(`votedDJ${index+1}_desk`).style.gridColumn = "";
+                }
+            } 
+        
+            else if (index%8==7) {
+                if ((checkBefore(index+1) == 0 || checkBefore(index+1) == 4)) {
+                    document.getElementById(`votedDJ${index+1}_desk`).style.gridColumn = "1 / span 4";
+                } else if ((checkBefore(index+1) == 1 || checkBefore(index+1) == 5)) {
+                    document.getElementById(`votedDJ${index+1}_desk`).style.gridColumn = "3 / span 2";
+                } else {
+                    document.getElementById(`votedDJ${index+1}_desk`).style.gridColumn = "";
+                }
+            }
 
-        if (checkAfter(1) == 0) {
-            document.getElementById("votedDJ1_desk").style.gridColumn = "1 / span 4";
-        } else if (checkAfter(1) == 1) {
-            document.getElementById("votedDJ1_desk").style.gridColumn = "1 / span 2";
+            var desk = document.getElementById(`votedDJ${index+1}_desk`);
+            desk.classList.add("chosen_desk");
+            var mobile = document.getElementById(`votedDJ${index+1}`);
+            mobile.classList.add("chosen_mobile");
         } else {
-            document.getElementById("votedDJ1_desk").style.gridColumn = "";
+            document.getElementById(`votedDJ${index+1}_desk`).style.display = "none";
+            document.getElementById(`votedDJ${index+1}`).style.display = "none";
+    
+            var desk = document.getElementById(`votedDJ${index+1}_desk`);
+            if (desk.classList.contains("chosen_desk")) {
+                desk.classList.remove("chosen_desk");
+            }
+            var mobile = document.getElementById(`votedDJ${index+1}`);
+            if (mobile.classList.contains("chosen_mobile")) {
+                mobile.classList.remove("chosen_mobile");
+            }
         }
-
-        var desk = document.getElementById("votedDJ1_desk");
-        desk.classList.add("chosen_desk");
-        var mobile = document.getElementById("votedDJ1");
-        mobile.classList.add("chosen_mobile");
-    } else {
-        document.getElementById("votedDJ1_desk").style.display = "none";
-        document.getElementById("votedDJ1").style.display = "none";
-
-        var desk = document.getElementById("votedDJ1_desk");
-        if (desk.classList.contains("chosen_desk")) {
-            desk.classList.remove("chosen_desk");
-        }
-        var mobile = document.getElementById("votedDJ1");
-        if (mobile.classList.contains("chosen_mobile")) {
-            mobile.classList.remove("chosen_mobile");
-        }
+        
     }
 
-    if (voteDJ2.checked == true) {
-        document.getElementById("votedDJ2_desk").style.display = "";
-        document.getElementById("votedDJ2").style.display = "";
-
-        if (checkBefore(2) == 0 && checkAfter(2) == 0) {
-            document.getElementById("votedDJ2_desk").style.gridColumn = "1 / span 4";
-        } else if (checkBefore(2) == 0 && checkAfter(2) == 1) {
-            document.getElementById("votedDJ2_desk").style.gridColumn = "1 / span 2";
-        } else if (checkBefore(2) == 1 && checkAfter(2) == 0) {
-            document.getElementById("votedDJ2_desk").style.gridColumn = "3 / span 2";
-        } else if (checkBefore(2) == 1 && checkAfter(2) == 1) {
-            document.getElementById("votedDJ2_desk").style.gridColumn = "2 / span 2";
-        } else {
-            document.getElementById("votedDJ2_desk").style.gridColumn = "";
-        }
-
-        var desk = document.getElementById("votedDJ2_desk");
-        desk.classList.add("chosen_desk");
-        var mobile = document.getElementById("votedDJ2");
-        mobile.classList.add("chosen_mobile");
-    } else {
-        document.getElementById("votedDJ2_desk").style.display = "none";
-        document.getElementById("votedDJ2").style.display = "none";
-
-        var desk = document.getElementById("votedDJ2_desk");
-        if (desk.classList.contains("chosen_desk")) {
-            desk.classList.remove("chosen_desk");
-        }
-        var mobile = document.getElementById("votedDJ2");
-        if (mobile.classList.contains("chosen_mobile")) {
-            mobile.classList.remove("chosen_mobile");
-        }
-    }
-
-    if (voteDJ3.checked == true) {
-        document.getElementById("votedDJ3_desk").style.display = "";
-        document.getElementById("votedDJ3").style.display = "";
-
-        if (checkBefore(3) == 0 && checkAfter(3) == 0) {
-            document.getElementById("votedDJ3_desk").style.gridColumn = "1 / span 4";
-        } else if (checkBefore(3) == 0 && checkAfter(3) == 1) {
-            document.getElementById("votedDJ3_desk").style.gridColumn = "1 / span 2";
-        } else if (checkBefore(3) == 1 && checkAfter(3) == 0) {
-            document.getElementById("votedDJ3_desk").style.gridColumn = "3 / span 2";
-        } else if (checkBefore(3) == 1 && checkAfter(3) == 1) {
-            document.getElementById("votedDJ3_desk").style.gridColumn = "2 / span 2";
-        } else {
-            document.getElementById("votedDJ3_desk").style.gridColumn = "";
-        }
-
-        var desk = document.getElementById("votedDJ3_desk");
-        desk.classList.add("chosen_desk");
-        var mobile = document.getElementById("votedDJ3");
-        mobile.classList.add("chosen_mobile");
-    } else {
-        document.getElementById("votedDJ3_desk").style.display = "none";
-        document.getElementById("votedDJ3").style.display = "none";
-
-        var desk = document.getElementById("votedDJ3_desk");
-        if (desk.classList.contains("chosen_desk")) {
-            desk.classList.remove("chosen_desk");
-        }
-        var mobile = document.getElementById("votedDJ3");
-        if (mobile.classList.contains("chosen_mobile")) {
-            mobile.classList.remove("chosen_mobile");
-        }
-    }
-
-    if (voteDJ4.checked == true) {
-        document.getElementById("votedDJ4_desk").style.display = "";
-        document.getElementById("votedDJ4").style.display = "";
-
-        if (checkBefore(4) == 0 && checkAfter(4) == 0) {
-            document.getElementById("votedDJ4_desk").style.gridColumn = "1 / span 4";
-        } else if (checkBefore(4) == 0 && checkAfter(4) == 1) {
-            document.getElementById("votedDJ4_desk").style.gridColumn = "1 / span 2";
-        } else if (checkBefore(4) == 1 && checkAfter(4) == 0) {
-            document.getElementById("votedDJ4_desk").style.gridColumn = "3 / span 2";
-        } else if (checkBefore(4) == 1 && checkAfter(4) == 1) {
-            document.getElementById("votedDJ4_desk").style.gridColumn = "2 / span 2";
-        } else {
-            document.getElementById("votedDJ4_desk").style.gridColumn = "";
-        }
-
-        var desk = document.getElementById("votedDJ4_desk");
-        desk.classList.add("chosen_desk");
-        var mobile = document.getElementById("votedDJ4");
-        mobile.classList.add("chosen_mobile");
-    } else {
-        document.getElementById("votedDJ4_desk").style.display = "none";
-        document.getElementById("votedDJ4").style.display = "none";
-
-        var desk = document.getElementById("votedDJ4_desk");
-        if (desk.classList.contains("chosen_desk")) {
-            desk.classList.remove("chosen_desk");
-        }
-        var mobile = document.getElementById("votedDJ4");
-        if (mobile.classList.contains("chosen_mobile")) {
-            mobile.classList.remove("chosen_mobile");
-        }
-    }
-
-    if (voteDJ5.checked == true) {
-        document.getElementById("votedDJ5_desk").style.display = "";
-        document.getElementById("votedDJ5").style.display = "";
-
-        if ((checkBefore(5) == 0 || checkBefore(5) == 4) && checkAfter(5) == 0) {
-            document.getElementById("votedDJ5_desk").style.gridColumn = "1 / span 4";
-        } else if ((checkBefore(5) == 0 || checkBefore(5) == 4) && checkAfter(5) == 1) {
-            document.getElementById("votedDJ5_desk").style.gridColumn = "1 / span 2";
-        } else if (checkBefore(5) == 1 && checkAfter(5) == 0) {
-            document.getElementById("votedDJ5_desk").style.gridColumn = "3 / span 2";
-        } else if (checkBefore(5) == 1 && checkAfter(5) == 1) {
-            document.getElementById("votedDJ5_desk").style.gridColumn = "2 / span 2";
-        } else {
-            document.getElementById("votedDJ5_desk").style.gridColumn = "";
-        }
-
-        var desk = document.getElementById("votedDJ5_desk");
-        desk.classList.add("chosen_desk");
-        var mobile = document.getElementById("votedDJ5");
-        mobile.classList.add("chosen_mobile");
-    } else {
-        document.getElementById("votedDJ5_desk").style.display = "none";
-        document.getElementById("votedDJ5").style.display = "none";
-
-        var desk = document.getElementById("votedDJ5_desk");
-        if (desk.classList.contains("chosen_desk")) {
-            desk.classList.remove("chosen_desk");
-        }
-        var mobile = document.getElementById("votedDJ5");
-        if (mobile.classList.contains("chosen_mobile")) {
-            mobile.classList.remove("chosen_mobile");
-        }
-    }
-
-    if (voteDJ6.checked == true) {
-        document.getElementById("votedDJ6_desk").style.display = "";
-        document.getElementById("votedDJ6").style.display = "";
-
-        if ((checkBefore(6) == 0 || checkBefore(6) == 4) && checkAfter(6) == 0) {
-            document.getElementById("votedDJ6_desk").style.gridColumn = "2 / span 2";
-        } else if ((checkBefore(6) == 0 || checkBefore(6) == 4) && checkAfter(6) == 1) {
-            document.getElementById("votedDJ6_desk").style.gridColumn = "1 / span 2";
-        } else if ((checkBefore(6) == 1 || checkBefore(6) == 5) && checkAfter(6) == 0) {
-            document.getElementById("votedDJ6_desk").style.gridColumn = "3 / span 2";
-        } else if ((checkBefore(6) == 1 || checkBefore(6) == 5) && checkAfter(6) == 1) {
-            document.getElementById("votedDJ6_desk").style.gridColumn = "2 / span 2";
-        } else {
-            document.getElementById("votedDJ6_desk").style.gridColumn = "";
-        }
-
-        var desk = document.getElementById("votedDJ6_desk");
-        desk.classList.add("chosen_desk");
-        var mobile = document.getElementById("votedDJ6");
-        mobile.classList.add("chosen_mobile");
-    } else {
-        document.getElementById("votedDJ6_desk").style.display = "none";
-        document.getElementById("votedDJ6").style.display = "none";
-
-        var desk = document.getElementById("votedDJ6_desk");
-        if (desk.classList.contains("chosen_desk")) {
-            desk.classList.remove("chosen_desk");
-        }
-        var mobile = document.getElementById("votedDJ6");
-        if (mobile.classList.contains("chosen_mobile")) {
-            mobile.classList.remove("chosen_mobile");
-        }
-    }
-
-    if (voteDJ7.checked == true) {
-        document.getElementById("votedDJ7_desk").style.display = "";
-        document.getElementById("votedDJ7").style.display = "";
-
-        if ((checkBefore(7) == 0 || checkBefore(7) == 4) && checkAfter(7) == 0) {
-            document.getElementById("votedDJ7_desk").style.gridColumn = "2 / span 2";
-        } else if ((checkBefore(7) == 0 || checkBefore(7) == 4) && checkAfter(7) == 1) {
-            document.getElementById("votedDJ7_desk").style.gridColumn = "1 / span 2";
-        } else if ((checkBefore(7) == 1 || checkBefore(7) == 5) && checkAfter(7) == 0) {
-            document.getElementById("votedDJ7_desk").style.gridColumn = "3 / span 2";
-        } else if ((checkBefore(7) == 1 || checkBefore(7) == 5) && checkAfter(7) == 1) {
-            document.getElementById("votedDJ7_desk").style.gridColumn = "2 / span 2";
-        } else {
-            document.getElementById("votedDJ7_desk").style.gridColumn = "";
-        }
-
-        var desk = document.getElementById("votedDJ7_desk");
-        desk.classList.add("chosen_desk");
-        var mobile = document.getElementById("votedDJ7");
-        mobile.classList.add("chosen_mobile");
-    } else {
-        document.getElementById("votedDJ7_desk").style.display = "none";
-        document.getElementById("votedDJ7").style.display = "none";
-
-        var desk = document.getElementById("votedDJ7_desk");
-        if (desk.classList.contains("chosen_desk")) {
-            desk.classList.remove("chosen_desk");
-        }
-        var mobile = document.getElementById("votedDJ7");
-        if (mobile.classList.contains("chosen_mobile")) {
-            mobile.classList.remove("chosen_mobile");
-        }
-    }
-
-    if (voteDJ8.checked == true) {
-        document.getElementById("votedDJ8_desk").style.display = "";
-        document.getElementById("votedDJ8").style.display = "";
-
-        if ((checkBefore(8) == 0 || checkBefore(8) == 4)) {
-            document.getElementById("votedDJ8_desk").style.gridColumn = "1 / span 4";
-        } else if ((checkBefore(8) == 1 || checkBefore(8) == 5)) {
-            document.getElementById("votedDJ8_desk").style.gridColumn = "3 / span 2";
-        } else {
-            document.getElementById("votedDJ8_desk").style.gridColumn = "";
-        }
-
-        var desk = document.getElementById("votedDJ8_desk");
-        desk.classList.add("chosen_desk");
-        var mobile = document.getElementById("votedDJ8");
-        mobile.classList.add("chosen_mobile");
-    } else {
-        document.getElementById("votedDJ8_desk").style.display = "none";
-        document.getElementById("votedDJ8").style.display = "none";
-
-        var desk = document.getElementById("votedDJ8_desk");
-        if (desk.classList.contains("chosen_desk")) {
-            desk.classList.remove("chosen_desk");
-        }
-        var mobile = document.getElementById("votedDJ8");
-        if (mobile.classList.contains("chosen_mobile")) {
-            mobile.classList.remove("chosen_mobile");
-        }
-    }
 
     var elementsA = document.querySelectorAll(".grid-item-dj");
     for (let i = 0; i < elementsA.length; i++) {
