@@ -323,8 +323,8 @@ function changeDate() {
 
     if (start_date && end_date) {
 
-        hitlist.start_date = document.getElementById('start-date').value
-        hitlist.end_date = document.getElementById('end-date').value
+        hitlist.start_date = start_date
+        hitlist.end_date = end_date
     
         $.ajax({ // this one works
             method: 'put',
