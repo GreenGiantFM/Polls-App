@@ -1,6 +1,6 @@
 /*----- Global Variables -----*/
 const djs = []
-let djhunt
+let djhunt, user, hasVoted = false
 
 /*----- Retrieve Data from Database -----*/
 $(document).ready(() => {
@@ -58,8 +58,8 @@ $(document).ready(() => {
                 //              <img class="dj-background" src="assets/img/DJs/d1.jpg">
                 const djbackground = document.createElement('img')
                 djbackground.setAttribute('class', "dj-background")
-                if (rt.picture_path)
-                    djbackground.setAttribute('src', rt.picture_path)
+                if (rt.picture_path) 
+                    djbackground.setAttribute('src', `uploads/djhunt/images/${rt.picture_path}`)
                 else
                     djbackground.setAttribute('src', '../img/GGFM_Favicon.png')
 
@@ -134,6 +134,7 @@ $(document).ready(() => {
 
                 //    <div class="grid-container-DJ-desk">
                 const voteddjdesk = document.createElement('div')
+
                 voteddjdesk.setAttribute('class', 'grid-container-DJ-desk')
 
                 //        <div class="grid-item-DJ-desk-photo">
@@ -191,7 +192,7 @@ $(document).ready(() => {
                 const votedImage = document.createElement('img')
                 votedImage.setAttribute('class', "votedImage")
                 if (rt.picture_path)
-                    votedImage.setAttribute('src', rt.picture_path)
+                    votedImage.setAttribute('src', `uploads/djhunt/images/${rt.picture_path}`)
                 else
                     votedImage.setAttribute('src', '../img/GGFM_Favicon.png')
                 votedBackground.appendChild(votedImage)
@@ -228,6 +229,8 @@ $(document).ready(() => {
             live_rank.map(s => {
                 totalVotes += s.vote_count
             })
+            if (totalVotes===0) 
+                totalVotes=1
 
             live_rank.map((rt, index) => {
                 const percent = Math.round((rt.vote_count/totalVotes)*100)
@@ -289,24 +292,22 @@ function openDJPage(djNum){
 
     const dj = djhunt.radio_talents[djNum-1]
 
-    document.getElementById('dj-image-mobile').src = dj.picture_path;
-    document.getElementById('dj-image-desk').src = dj.picture_path;
+    document.getElementById('dj-image-mobile').src = `uploads/djhunt/images/${dj.picture_path}`;
+    document.getElementById('dj-image-desk').src = `uploads/djhunt/images/${dj.picture_path}`;
     document.getElementById('djName-mobile').innerHTML = `DJ ${dj.dj_name}`;
     document.getElementById('djName-desk').innerHTML = `DJ ${dj.dj_name}`;
     document.getElementById('fullName-mobile').innerHTML = dj.actual_name;
     document.getElementById('fullName').innerHTML = dj.actual_name;
-    document.getElementById('djVideo-mobile').src = dj.youtube_promotional;
-    document.getElementById('djVideo-desk').src = dj.youtube_promotional;
-    document.getElementById('djStinger-mobile').src = dj.stinger_path;
-    document.getElementById('djStinger-desk').src = dj.stinger_path;
+    document.getElementById('djVideo-mobile').src = dj.youtube_video;
+    document.getElementById('djVideo-desk').src = dj.youtube_video;
+    document.getElementById('djStinger-mobile').src = `uploads/djhunt/audio/${dj.stinger_path}`;
+    document.getElementById('djStinger-desk').src = `uploads/djhunt/audio/${dj.stinger_path}`;
     document.getElementById('djAudio-mobile').load();
     document.getElementById('djAudio-desk').load();
     document.getElementById('djPlaylist-mobile').src = dj.spotify_playlist;
     document.getElementById('djPlaylist-desk').src = dj.spotify_playlist;
     document.getElementById("details-tagline-desk").innerText = dj.tagline;
     document.getElementById("details-tagline-mobile").innerText = dj.tagline;
-    console.log(dj.facebook, dj.twitter, dj.instagram)
-    console.log(dj)
     document.getElementById("desk-facebook").href = dj.facebook;
     document.getElementById("mobile-facebook").href = dj.facebook;
     document.getElementById("desk-twitter").href = dj.twitter;
@@ -385,6 +386,7 @@ function signIn() {
     document.getElementById("confirmation").style.display = "none";
     document.getElementById("huntSubmit").type = "hidden";
     document.getElementById("djSignIn").style.display = "block";
+    hasVoted = true
 }
 
 /*----- Confirm Vote -----*/
@@ -720,27 +722,35 @@ function submitVote(){
                 if (dj.checked)
                     djhunt.radio_talents[index].vote_count++
             }
+
+            if (djhunt.voters_email.find(email => email === user.getEmail())) {
+                signOut()
+                document.getElementById("overlay").style.display = "block";
+            } else {
+                djhunt.voters_email.push(user.getEmail())
+
+                $.ajax({
+                    method: 'put',
+                    url: `/api/DjHunt/${djhunt._id}`,
+                    data: djhunt,
+                    success: data => {
+            
+                        document.getElementById("vote").style.display = "none";
+                        document.getElementById("djvote").style.display = "none";
+                        document.getElementById("confirmation").style.display = "none";
+                        document.getElementById("voteSubmitted").style.display = "grid";
+                        document.getElementById("voteTab").style.display = "none";
+                        document.getElementById("liveTab").style.display = "none";
+                        document.getElementById("djSignIn").style.display = "none";
+                        document.body.style.background = '#aad68a';
+                        document.body.style.background = "linear-gradient(to bottom, #f1faeb, #569429)";
+                    
+                        for (let dj of djs)
+                            dj.checked = false
+                    }
+                })
+            }
         
-            $.ajax({
-                method: 'put',
-                url: `/api/DjHunt/${djhunt._id}`,
-                data: djhunt,
-                success: data => {
-        
-                    document.getElementById("vote").style.display = "none";
-                    document.getElementById("djvote").style.display = "none";
-                    document.getElementById("confirmation").style.display = "none";
-                    document.getElementById("voteSubmitted").style.display = "grid";
-                    document.getElementById("voteTab").style.display = "none";
-                    document.getElementById("liveTab").style.display = "none";
-                    document.getElementById("djSignIn").style.display = "none";
-                    document.body.style.background = '#aad68a';
-                    document.body.style.background = "linear-gradient(to bottom, #f1faeb, #569429)";
-                
-                    for (let dj of djs)
-                        dj.checked = false
-                }
-            })
         }
     })
 }
@@ -767,7 +777,10 @@ function closeConfirm() {
     document.getElementById("huntSubmit").type = "button";
     document.getElementById("huntSubmit").disabled = true;
     document.getElementById("huntSubmit").style.cursor = "not-allowed";
+    document.getElementById("djSignIn").style.display = "none";
     document.body.style.background = '#ffffff';
+    document.getElementById("overlay").style.display = "none";
+    signOut()
 }
 
 /*----- Countdown Timer -----*/
@@ -880,4 +893,20 @@ function clickDrop() {
 
 function gotoPolls() {
     document.getElementById("liveTab").click();
+}
+
+function onSignIn(googleUser) {
+    if (hasVoted) {
+        user = googleUser.getBasicProfile()
+        submitVote()
+    }
+}
+
+function signOut() {
+    if (gapi.auth2.getAuthInstance().isSignedIn.get()) {
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+        console.log('User signed out.');
+        });
+    }
 }

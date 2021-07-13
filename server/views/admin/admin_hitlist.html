@@ -22,40 +22,27 @@
     <body>
     
         <!-- Header -->
-        <header id="upper" style="background-color: black;">
+        <header id="upper" style="background-color: black;height:120px;">
             <ul class="upper-link">
-                <li><img src="/assets/img/GGFM/GGFM_LOGO.png" alt='Green Giant FM' style="width:175px;"></li>
-                <li><a href="#" class="upperLink">Home</a></li>
-                <li><a href="#" class="upperLink">About Us</a></li>
-                <li><a href="#" class="upperLink">Radio Talents</a></li>
-                <li><a href="#" class="upperLink">Events</a></li>
-                <li><a href="#" class="upperLink">Blogs</a></li>
-                <li><a href="#" class="upperLink">Contact Us</a></li>
-                <li>
-                    <div id="drop-menu" class="upperLink" onmouseover="openDrop()" onmouseout="closeDrop()">
-                        <p id="drop-polls" style="margin: 0px;">Live Polls</p>
-                        <div id="drop-inner-div" class="dropdown-content">
-                            <ul id="drop-list">
-                                <li><a href="/" class="pollsDrop"><i
-                                            class="fas fa-music"></i>&ensp;Hitlist</a></li>
-                                <li><a href="/dj-hunt" class="pollsDrop"><i class="fas fa-binoculars"></i>&ensp;DJ
-                                        Hunt</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li><a href="#" class="upperLink">Stream</a></li>
-                <li>
-                    <input type="text" placeholder="Search..." name="search" id="searchbar">
-                    <a href="#" id="searchbtn"><i class="fa fa-search" aria-hidden="true" id="searchIcon"></i></a>
-                    
-                </li>
+                <li><a href="https://www.greengiantfm.com/" class="upperLink"><img src="/assets/img/GGFM/GGFM_LOGO.png" alt='Green Giant FM' style="width:175px;"></a></li>
+                
+                
+                <ul class="llenos">
+                    <li><a href="/admin/home/hitlist" class="pollsDrop">Hitlist</a></li>
+                    <li><a href="/admin/home/dj-hunt" class="pollsDrop">DJ Hunt</a></li>
                 <button type="button" class="btn btn-default btn-sm" onclick="logout()">
                     <span class="log-out"></span> Log out
                   </button>
+               </ul>
+                
+                
+                <li>
+                   
+                    
+                </li>
+                
             </ul>
         </header>
-
             
         <!--**have yet to change the open tab parameter names**-->  
         <div class="w3-container tab" style="text-align: center;">
@@ -64,19 +51,17 @@
             <button id="liveTab" class="inactive" onclick="openTab(event, 'Live')" style="margin-left:35px;">Edit</button>
         </div>
 
+        <div class="w3-container tab" style="text-align: center;">
+            <h1 id="vote_count" style="font-size: large;">Total Vote Count: </h1>
+        </div>
+
         <!-- Menu -->
         <div id="sideMenu" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&#9776;&emsp;<em>Menu</em></a>
-            <a href="#" class="sideLink">Home</a>
-            <a href="#" class="sideLink">About Us</a>
-            <a href="#" class="sideLink">Radio Talents</a>
-            <a href="#" class="sideLink">Events</a>
-            <a href="#" class="sideLink">Blogs</a>
-            <a href="#" class="sideLink">Contact Us</a>
-            <a href="#" class="sideLink">Stream</a>
+            
             <span class="sideLink">Live Polls</span>
-            <a href="#" class="pollLink"><i class="fas fa-music"></i>&ensp;Hitlist</a>
-            <a href="#" class="pollLink"><i class="fas fa-binoculars"></i>&ensp;DJ Hunt</a>
+            <a href="/admin/home/hitlist" class="pollLink"><i class="fas fa-music"></i>&ensp;Hitlist</a>
+            <a href="/admin/home/dj-hunt" class="pollLink"><i class="fas fa-binoculars"></i>&ensp;DJ Hunt</a>
         </div>
 
         <!-- Menu Button -->
@@ -84,50 +69,9 @@
 
 <!-- Voting Tab -->
 <div id="vote" class="tabcontent w3-center" style="display: block;">
-    <form action="#">
-        <div class="grid-container">
-            <div class="grid-item-voting" id="song1">
-                <div class="grid-container-voting">
-                    <div class="grid-item-song">
-                       
-                    </div>
-                    <div class="grid-item-song">
-                        <label for="song1">
-                            
-                            <img class="album" src="/assets/img/grey.png" alt='Brain Damage' style="margin-left:200px;margin-bottom:350px;width:150px; height:150px">
-                        </label>
-                    </div>
-                    <div class="grid-item-song">
-                        
-                        
-                        
-                    </div>
-                    
-                    
-                </div>
-                
-            </div>
-           
-
-            
-            <br>
-            
-            <br>
-            
-        </div>
-        
-       
-          
-        
-        
-        
-    </form>
     
     <form onsubmit="return false">
        
-        <div class="icon">
-          
-        </div>
         <div class="add-dj-container">
             
             <div class="add-photo-container"></div>
@@ -191,16 +135,28 @@
                 <input type="date" id="start-date" name="start-date">
                 <label for="end-date">End Date:</label>
                 <input type="date" id="end-date" name="end-date">
-                
             </div>
-              <button id="doneDate" onclick="changeDate()">Save Date</button>
+            <div class="date-container">
+                <button style="display: block" id="doneDate" onclick="changeDate()">Save Date</button>
+            </div>
             <form action="#">
                 <div class="grid-container" id='grid-container'>
                     
                     <br>
                     <br>
                 </div>
-                <input type="button" id="remove" disabled onclick="openConfirm()"style="margin-left:575px;" value="Remove">
+                <div class="date-container">
+                    <input type="button" id="remove" disabled onclick="openConfirm()" value="Remove">
+                    <input type="button" id="removeAll" onclick="deleteConfirmModal()" value="Remove All">
+                </div>
+
+                <div id="deleteModal">
+                    <h2>Delete All Songs</h2>
+                    <p>Are you sure you want to delete all songs?</p>
+                    <button id="songDeleteAll" onclick="deleteAllSongs()" >Delete All</button>
+                    <button id="songCancelDelete" onclick="deleteCancelModal()" style="margin-bottom: 15px; margin-top: 15px; background-color: rgb(20, 20, 20);">Cancel</button>
+                </div>
+                <!-- Voting Tab Overlay -->
                 <!-- Voting Tab Overlay -->
                 <div id="overlay">
                     <div id="confirmation" class="overlayItems">

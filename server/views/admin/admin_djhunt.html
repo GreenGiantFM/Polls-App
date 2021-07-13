@@ -16,38 +16,31 @@
         <link rel="stylesheet" href="/assets/css/DJHuntAdmin.css">
         <link rel="stylesheet" href= "/assets/css/custom.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
         
         
     </head>
     <body>
         <!-- Header (Menu) -->
-        <header id="upper" style="background-color: black;">
+        <header id="upper" style="background-color: black;height:120px;">
             <ul class="upper-link">
-                <li><img src="/assets/img/GGFM/GGFM_LOGO.png" alt='Green Giant FM' style="width:175px;"></li>
-                <li><a href="#" class="upperLink">Home</a></li>
-                <li><a href="#" class="upperLink">About Us</a></li>
-                <li><a href="#" class="upperLink">Radio Talents</a></li>
-                <li><a href="#" class="upperLink">Events</a></li>
-                <li><a href="#" class="upperLink">Blogs</a></li>
-                <li><a href="#" class="upperLink">Contact Us</a></li>
+                <li><a href="https://www.greengiantfm.com/" class="upperLink"><img src="/assets/img/GGFM/GGFM_LOGO.png" alt='Green Giant FM' style="width:175px;"></a></li>
+                
+                
+                <ul class="llenos">
+                    <li><a href="/admin/home/hitlist" class="pollsDrop">Hitlist</a></li>
+                    <li><a href="/admin/home/dj-hunt" class="pollsDrop">DJ Hunt</a></li>
+                <button type="button" class="btn btn-default btn-sm" onclick="logout()">
+                    <span class="log-out"></span> Log out
+                  </button>
+               </ul>
+                
+                
                 <li>
-                    <div id="drop-menu" class="upperLink" onmouseover="openDrop()" onmouseout="closeDrop()">
-                        <p id="drop-polls" style="margin: 0px;">Live Polls</p>
-                        <div id="drop-inner-div" class="dropdown-content">
-                            <ul id="drop-list">
-                                <li><a href="/HITLIST_POLL/main.html" class="pollsDrop"><i
-                                            class="fas fa-music"></i>&ensp;Hitlist</a></li>
-                                <li><a href="/DJHUNT/djhunt.html" class="pollsDrop"><i class="fas fa-binoculars"></i>&ensp;DJ
-                                        Hunt</a></li>
-                            </ul>
-                        </div>
-                    </div>
+                   
+                    
                 </li>
-                <li><a href="#" class="upperLink">Stream</a></li>
-                <li>
-                    <input type="text" placeholder="Search..." name="search" id="searchbar">
-                    <a href="#" id="searchbtn"><i class="fa fa-search" aria-hidden="true" id="searchIcon"></i></a>
-                </li>
+                
             </ul>
         </header>
 
@@ -64,16 +57,10 @@
         <!-- Menu -->
         <div id="sideMenu" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&#9776;&emsp;<em>Menu</em></a>
-            <a href="#" class="sideLink">Home</a>
-            <a href="#" class="sideLink">About Us</a>
-            <a href="#" class="sideLink">Radio Talents</a>
-            <a href="#" class="sideLink">Events</a>
-            <a href="#" class="sideLink">Blogs</a>
-            <a href="#" class="sideLink">Contact Us</a>
-            <a href="#" class="sideLink">Stream</a>
+            
             <span class="sideLink">Live Polls</span>
-            <a href="/HITLIST_POLL/main.html" class="pollLink"><i class="fas fa-music"></i>&ensp;Hitlist</a>
-            <a href="/DJHUNT/djhunt.html" class="pollLink"><i class="fas fa-binoculars"></i>&ensp;DJ Hunt</a>
+            <a href="/admin/home/hitlist" class="pollLink"><i class="fas fa-music"></i>&ensp;Hitlist</a>
+            <a href="/admin/home/dj-hunt" class="pollLink"><i class="fas fa-binoculars"></i>&ensp;DJ Hunt</a>
         </div>
 
         <!-- Menu Button -->
@@ -82,13 +69,13 @@
         <!-- Voting Tab -->
         <div id="votingTab" class="tabcontent w3-center" style="display: block;">
             
-            <form id="dj-hunt-form" enctype="multipart/form-data">
+            <form id="dj-hunt-form" method="POST" enctype="multipart/form-data">
                 <div class="w3-container tab" style="border: 4px solid black; width: 315px; height: 700px; margin-left:520px; margin-top: 50px;">
                 
                     <div class="uploadplace">
                         <div class="form-input">
                           <label for="file-ip-1">Upload Image 315 x 300</label>
-                          <input type="file" id="file-ip-1" name="picture_path" accept="image/*" onchange="showPreview(event);">
+                          <input type="file" id="file-ip-1" name="picture_path" accept="image/*" onchange="showPreview(event);"  required>
                           <div class="preview">
                             <img id="file-ip-1-preview" style="object-fit: cover">
                           </div>
@@ -103,51 +90,52 @@
                     
     
                     <label for="dj_name"><b>DJ Name&nbsp;</b></label>
-                    <input type="text" id="dj_name" name="dj_name" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 10px;">
+                    <input type="text" id="dj_name" name="dj_name" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 10px;"  required>
                 
                         <br><br>
         
                     <label for="actual_name"><b>Actual Name&nbsp;</b></label>
-                    <input type="text" id="actual_name" name="actual_name" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 35px;">
+                    <input type="text" id="actual_name" name="actual_name" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 35px;"  required>
                     
                     <br><br>
                             
                     <label for="tagline"><b>Tagline&nbsp;</b></label>
-                    <input type="text" id="tagline" name="tagline" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 0px;">
+                    <input type="text" id="tagline" name="tagline" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 0px;"  required>
                         
                     <br><br>
-    
+                    
                     <label for="stinger_path"><b>Stinger File&nbsp;</b></label>
-                    <input type="file" id="stinger_path" name="stinger_path" accept="audio/*" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 25px;">
-                            
+                    <input type="file" id="stinger_path" name="stinger_path" accept="audio/*" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 25px;"  required>
+                    
                     <br><br>
     
                     <label for="facebook"><b>FB Profile Link&nbsp;</b></label>
-                    <input type="text" id="facebook" name="facebook" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 45px;">
+                    <input type="text" id="facebook" name="facebook" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 45px;"  required>
                 
                     <br><br>
     
                     <label for="instagram"><b>IG Profile Link&nbsp;</b></label>
-                    <input type="text" id="instagram" name="instagram" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 45px;">
+                    <input type="text" id="instagram" name="instagram" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 45px;"  required>
                     
                     <br><br>
     
                     <label for="twitter"><b>Twitter Link&nbsp;</b></label>
-                    <input type="text" id="twitter" name="twitter" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 25px;">
+                    <input type="text" id="twitter" name="twitter" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 25px;"  required>
                         
                     <br><br>
     
                     <label for="youtube_video"><b>Video Link&nbsp;</b></label>
-                    <input type="text" id="youtube_video" name="youtube_video" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 25px;">
+                    <input type="text" id="youtube_video" name="youtube_video" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 25px;"  required>
                 
                     <br><br>
     
                     <label for="spotify_playlist"><b>Spotify Link&nbsp;</b></label>
-                    <input type="text" id="spotify_playlist" name="spotify_playlist" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 25px;">
+                    <input type="text" id="spotify_playlist" name="spotify_playlist" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 25px;"  required>
                 
                     <br><br>
                     
                     <input type="submit" value="ADD">
+                    
                       
                 </div>
             </form>
@@ -156,24 +144,54 @@
         
         </div>
             
-            
+
                 
             
-            
-      
     
 
         <!-- Live Polls -->
         <div id="live" class="tabcontent">
             
-            <form action="#">
+            <form onsubmit="return false">
                 <div id="vote" class="grid-container-djs">
-                    
+                    <div class="Shaun">
+                        <div class="date-container">
+                            <label for="start-date">Start Date:</label>
+                            <input type="date" id="start-date" name="start-date">
+                            <label for="end-date">End Date:</label>
+                            <input type="date" id="end-date" name="end-date">
+                            
+                        </div>
+                        <button id="doneDate" onclick="changeDate()">Save Date</button>
                 </div>
-                <input type="button" id="huntSubmit" onclick="openConfirm()" value="VOTE" disabled>
+                </div>
+
+                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <!--<input type="button" id="huntSubmit" onclick="openConfirm()" value="VOTE"  disabled> -->
+                    <input type="button" id="huntDeleteSelected" onclick="openDeleteConfirm()" value="Delete Selected" style="margin-top: 15px;" disabled>
+                    <input type="button" id="huntDeleteAll"  onclick="deleteConfirmModal()" value="Delete All" style="margin-top: 15px;" >
+                    
+
+                </div>
+
+                <div id="deleteModal">
+                    <h2>Delete All Djs</h2>
+                    <p>Are you sure you want to delete all djs?</p>
+                    <button id="huntDeleteAllDj" onclick="deleteAllDjs()" >Delete All</button>
+                    <button id="huntCancelDelete" onclick="deleteCancelModal()" style="margin-bottom: 15px; margin-top: 15px; background-color: rgb(20, 20, 20);">Cancel</button>
+                </div>
+
+                <div id="deleteSelectedModal">
+                    <h2>Delete Selected Djs</h2>
+                    <p>Are you sure you want to delete the selected djs?</p>
+                    <button id="huntDeleteSelectedDj" onclick="deleteSelectedDjs()" >Delete Selected</button>
+                    <button id="huntCancelDeleteSelected" onclick="deleteSelectedCancelModal()" style="margin-bottom: 15px; margin-top: 15px; background-color: rgb(20, 20, 20);">Cancel</button>
+                </div>
+                
                 <div id="djvote" class="tabcontent">
-                    <h1 id="confirm_desk">Confirm Vote?</h1>
+                    <h1 id="confirm_desk">Delete Selected?</h1>
                     <div class="grid-container-confirm">
+                        <!--
                         <div class="grid-item-dj" id="votedDJ1_desk">
                             <div class="grid-container-DJ-desk">
                                 <a class="grid-item-DJ-desk-photo" href="djpage.html">
@@ -310,8 +328,9 @@
                                 <p class="votedTagline"><em class="votedName">Tony</em><br>Tagline</p>
                             </div>
                         </div>
+                    -->
                         <div id="confirmation">
-                            <p id="confirm_mobile">Confirm Vote?</p>
+                            <p id="confirm_mobile">Delete Selected?</p>
                             <input type="button" id="huntConfirm" onclick="submitVote()" value="Confirm">
                             <input type="button" id="huntCancel" onclick="cancelVote()" value="Back">
                         </div>
@@ -380,6 +399,8 @@
                 <button id="exitDJPage-mobile" onclick="closeDJPage()"><i class="fa fa-times" aria-hidden="true"></i></button>
             </div>
         </div>
+
+
         <div id="djPage-desk" style="text-align: center; justify-content: center; display: none;">
             <div id="djInfo-desk">
                 <div class="grid-container-details" style="margin-top: 20px;">
@@ -390,15 +411,73 @@
                     </div>
                     <div class="grid-item-misc">
                         <div class="grid-item-handle" style="text-align: left;">
+
+                            
+                        <form id="dj-hunt-update" method="POST" enctype="multipart/form-data">
+
+                                <label for="picture_path"><b>Profile Photo&nbsp;</b></label>
+                                <input type="file" id="picture_path" name="picture_path" accept="image/*" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 25px;" required>
+
+                                <br><br>
+
+                                <label for="dj_name"><b>DJ Name&nbsp;</b></label>
+                                <input type="text" id="dj_name" name="dj_name" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 10px;" required>
+                            
+                                <br><br>
+                    
+                                <label for="actual_name"><b>Actual Name&nbsp;</b></label>
+                                <input type="text" id="actual_name" name="actual_name" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 35px;" required> 
+                                
+                                <br><br>
+                                        
+                                <label for="tagline"><b>Tagline&nbsp;</b></label>
+                                <input type="text" id="tagline" name="tagline" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 0px;" required>
+                                    
+                                <br><br>
+                
+                                <label for="stinger_path"><b>Stinger File&nbsp;</b></label>
+                                <input type="file" id="stinger_path" name="stinger_path" accept="audio/*" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 25px;" required>
+                                        
+                                <br><br>
+                
+                                <label for="facebook"><b>FB Profile Link&nbsp;</b></label>
+                                <input type="text" id="facebook" name="facebook" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 45px;" required>
+                            
+                                <br><br>
+                
+                                <label for="instagram"><b>IG Profile Link&nbsp;</b></label>
+                                <input type="text" id="instagram" name="instagram" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 45px;" required>
+                                
+                                <br><br>
+                
+                                <label for="twitter"><b>Twitter Link&nbsp;</b></label>
+                                <input type="text" id="twitter" name="twitter" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 25px;" required>
+                                    
+                                <br><br>
+                
+                                <label for="youtube_video"><b>Video Link&nbsp;</b></label>
+                                <input type="text" id="youtube_video" name="youtube_video" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 25px;" required>
+                            
+                                <br><br>
+                
+                                <label for="spotify_playlist"><b>Spotify Link&nbsp;</b></label>
+                                <input type="text" id="spotify_playlist" name="spotify_playlist" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 25px;" required>
+                            
+                                <br><br>
+                                
+                                <input type="submit" value="EDIT">
+                            
+                            </form>
+
                             <h1 id="djName-desk"></h1>
+                            <h1 id="actual_name"></h1>
                             <h6 id="fullName" style="font-weight: bolder; color: #000000;"></h6>
-                            <h5 id="details-tagline-desk">Lorem Ipsum is simply dummy text of the printing and typesetting
-                                industry. Lorem Ipsum
-                                has been the industry's standard dummy text ever since...</h5>
+                            <h5 id="details-tagline-desk"></h5>
                             <audio id="djAudio-desk" class="stinger" controls>
                                 <source id="djStinger-desk" type="audio/mp3">
                             </audio>
                         </div>
+
                     </div>
                     <div class="grid-item-misc" style="width: 45px;">
                         <a href="https://www.fb.com/" id="desk-facebook"><img id="fb" class="handles"
@@ -428,4 +507,5 @@
                 <button id="exitDJPage-desk" onclick="closeDJPage()"><i class="fa fa-times" aria-hidden="true"></i></button>
             </div>
         </div>
-        <script src="/assets/js/DJHuntAdmin.js"></script>
+        <!-- this thing stops the post request -->
+        <script src="/assets/js/DJHuntAdmin.js"></script> 

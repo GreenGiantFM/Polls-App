@@ -1,6 +1,8 @@
 /*----- Global Variables -----*/
 const djs = []
+let selectedDjs = []
 let djhunt
+let selectedDjID
 
 /*----- Retrieve Data from Database -----*/
 $(document).ready(() => {
@@ -9,6 +11,11 @@ $(document).ready(() => {
         url: '/api/All-DJHunt',
         success: data => {
             djhunt = data.data[0];
+
+            document.getElementById('start-date').value = djhunt.start_date.substr(0, 10);
+            document.getElementById('end-date').value = djhunt.end_date.substr(0, 10);
+
+            console.log(djhunt.radio_talents);
 
             const closing = document.getElementById('hunt-date')
             const formattedDate = new Date(djhunt.end_date)
@@ -52,7 +59,7 @@ $(document).ready(() => {
                 const djbackground = document.createElement('img')
                 djbackground.setAttribute('class', "dj-background")
                 if (rt.picture_path) 
-                    djbackground.setAttribute('src', `../../${rt.picture_path}`)
+                    djbackground.setAttribute('src', `../../uploads/djhunt/images/${rt.picture_path}`)
                 else
                     djbackground.setAttribute('src', '../img/GGFM_Favicon.png')
 
@@ -65,8 +72,9 @@ $(document).ready(() => {
                 round.setAttribute('class', 'round-check')
                 const checkbox = document.createElement('input')
                 checkbox.setAttribute('type', 'checkbox')
+                checkbox.setAttribute('name', 'unchecked')
                 checkbox.setAttribute('id', `checkbox${index+1}`)
-                checkbox.setAttribute('onclick', `huntButton()`)
+                checkbox.setAttribute('onclick', `huntButton(${index+1})`)
                 const label = document.createElement('label')
                 label.setAttribute('for', `checkbox${index+1}`)
                 round.appendChild(checkbox)
@@ -140,7 +148,7 @@ $(document).ready(() => {
                 const votedImage = document.createElement('img')
                 votedImage.setAttribute('class', "votedImage")
                 if (rt.picture_path)
-                    votedImage.setAttribute('src', `../../${rt.picture_path}`)
+                    votedImage.setAttribute('src', `../../uploads/djhunt/images${rt.picture_path}`)
                 else
                     votedImage.setAttribute('src', '../img/GGFM_Favicon.png')
                 votedBackground.appendChild(votedImage)
@@ -224,17 +232,18 @@ function openTab(evt, tabName) {
 function openDJPage(djNum){
 
     const dj = djhunt.radio_talents[djNum-1]
+    selectedDjID = dj._id
 
-    document.getElementById('dj-image-mobile').src = `../../${dj.picture_path}`;
-    document.getElementById('dj-image-desk').src = `../../${dj.picture_path}`;
+    document.getElementById('dj-image-mobile').src = `../../uploads/djhunt/images/${dj.picture_path}`;
+    document.getElementById('dj-image-desk').src = `../../uploads/djhunt/images/${dj.picture_path}`;
     document.getElementById('djName-mobile').innerHTML = `DJ ${dj.dj_name}`;
     document.getElementById('djName-desk').innerHTML = `DJ ${dj.dj_name}`;
     document.getElementById('fullName-mobile').innerHTML = dj.actual_name;
     document.getElementById('fullName').innerHTML = dj.actual_name;
-    document.getElementById('djVideo-mobile').src = dj.youtube_promotional;
-    document.getElementById('djVideo-desk').src = dj.youtube_promotional;
-    document.getElementById('djStinger-mobile').src = `../../${dj.stinger_path}`;
-    document.getElementById('djStinger-desk').src = `../../${dj.stinger_path}`;
+    document.getElementById('djVideo-mobile').src = dj.youtube_video;
+    document.getElementById('djVideo-desk').src = dj.youtube_video;
+    document.getElementById('djStinger-mobile').src = `../../uploads/djhunt/audio/${dj.stinger_path}`;
+    document.getElementById('djStinger-desk').src = `../../uploads/djhunt/audio/${dj.stinger_path}`;
     document.getElementById('djAudio-mobile').load();
     document.getElementById('djAudio-desk').load();
     document.getElementById('djPlaylist-mobile').src = dj.spotify_playlist;
@@ -243,12 +252,12 @@ function openDJPage(djNum){
     document.getElementById("details-tagline-mobile").innerText = dj.tagline;
     console.log(dj.facebook, dj.twitter, dj.instagram)
     console.log(dj)
-    document.getElementById("desk-facebook").href = dj.facebook;
-    document.getElementById("mobile-facebook").href = dj.facebook;
-    document.getElementById("desk-twitter").href = dj.twitter;
-    document.getElementById("mobile-twitter").href = dj.twitter;
-    document.getElementById("desk-instagram").href = dj.instagram;
-    document.getElementById("mobile-instagram").href = dj.instagram;
+    document.getElementById("desk-facebook").href = dj.facebook.toString();
+    document.getElementById("mobile-facebook").href = dj.facebook.toString();
+    document.getElementById("desk-twitter").href = dj.twitter.toString();
+    document.getElementById("mobile-twitter").href = dj.twitter.toString();
+    document.getElementById("desk-instagram").href = dj.instagram.toString();
+    document.getElementById("mobile-instagram").href = dj.instagram.toString();
 
     document.getElementById('djPage-mobile').style.display = "";
     document.getElementById('djPage-desk').style.display = "";
@@ -286,6 +295,62 @@ function closeDJPage() {
     }
 }
 
+/*----- Enable / Disable vote Button -----*/
+function huntButton(djNum) {
+
+    const dj = djhunt.radio_talents[djNum-1]
+    
+    let value = true;
+
+    
+
+    for (let dj of djs)
+        if (dj.checked)
+            value = false;
+
+    //document.getElementById("huntSubmit").disabled = value
+    document.getElementById("huntDeleteSelected").disabled = value
+    if (value) {
+        //document.getElementById("huntSubmit").style.cursor = "not-allowed";
+        document.getElementById("huntDeleteSelected").style.cursor = "not-allowed";
+
+    } else {
+        //document.getElementById("huntSubmit").style.cursor = "pointer";
+        document.getElementById("huntDeleteSelected").style.cursor = "not-allowed";
+
+    }
+
+    //console.log(document.getElementById(`checkbox${djNum}`).getAttribute('name'));
+    let status = document.getElementById(`checkbox${djNum}`).checked;
+
+    if (status) {
+        let id = dj._id;
+        selectedDjs.push(id);
+    } else {
+        selectedDjs = selectedDjs.filter((rt)=>{
+            return rt !== dj._id;
+        })
+    }
+
+   
+
+    
+
+    console.log("selected djs",selectedDjs);
+        
+
+    // if (dj1.checked == true || dj2.checked == true || dj3.checked == true || dj4.checked == true) {
+    //     document.getElementById("huntSubmit").disabled = false;
+    //     document.getElementById("huntSubmit").style.cursor = "pointer";
+    // } else if (dj5.checked == true || dj6.checked == true || dj7.checked == true || dj8.checked == true) {
+    //     document.getElementById("huntSubmit").disabled = false;
+    //     document.getElementById("huntSubmit").style.cursor = "pointer";
+    // } else {
+    //     document.getElementById("huntSubmit").disabled = true;
+    //     document.getElementById("huntSubmit").style.cursor = "not-allowed";
+    // }
+}
+
 /*----- Check number of DJs voted -----*/
 function checkBefore(num) {
     let count = 0;
@@ -319,326 +384,6 @@ function signIn() {
     document.getElementById("confirmation").style.display = "none";
     document.getElementById("huntSubmit").type = "hidden";
     document.getElementById("djSignIn").style.display = "block";
-}
-
-/*----- Confirm Vote -----*/
-function openConfirm() {
-    document.getElementById("vote").style.display = "none";
-    document.getElementById("djvote").style.display = "block";
-    document.getElementById("confirmation").style.display = "block";
-    document.getElementById("huntSubmit").type = "hidden";
-    document.getElementById("djSignIn").style.display = "none";
-
-    var voteDJ1 = djs[0]
-    var voteDJ2 = djs[1]
-    var voteDJ3 = djs[2]
-    var voteDJ4 = djs[3]
-    var voteDJ5 = djs[4]
-    var voteDJ6 = djs[5]
-    var voteDJ7 = djs[6]
-    var voteDJ8 = djs[7]
-
-    if (voteDJ1.checked == true) {
-        document.getElementById("votedDJ1_desk").style.display = "";
-        document.getElementById("votedDJ1").style.display = "";
-
-        if (checkAfter(1) == 0) {
-            document.getElementById("votedDJ1_desk").style.gridColumn = "1 / span 4";
-        } else if (checkAfter(1) == 1) {
-            document.getElementById("votedDJ1_desk").style.gridColumn = "1 / span 2";
-        } else {
-            document.getElementById("votedDJ1_desk").style.gridColumn = "";
-        }
-
-        var desk = document.getElementById("votedDJ1_desk");
-        desk.classList.add("chosen_desk");
-        var mobile = document.getElementById("votedDJ1");
-        mobile.classList.add("chosen_mobile");
-    } else {
-        document.getElementById("votedDJ1_desk").style.display = "none";
-        document.getElementById("votedDJ1").style.display = "none";
-
-        var desk = document.getElementById("votedDJ1_desk");
-        if (desk.classList.contains("chosen_desk")) {
-            desk.classList.remove("chosen_desk");
-        }
-        var mobile = document.getElementById("votedDJ1");
-        if (mobile.classList.contains("chosen_mobile")) {
-            mobile.classList.remove("chosen_mobile");
-        }
-    }
-
-    if (voteDJ2.checked == true) {
-        document.getElementById("votedDJ2_desk").style.display = "";
-        document.getElementById("votedDJ2").style.display = "";
-
-        if (checkBefore(2) == 0 && checkAfter(2) == 0) {
-            document.getElementById("votedDJ2_desk").style.gridColumn = "1 / span 4";
-        } else if (checkBefore(2) == 0 && checkAfter(2) == 1) {
-            document.getElementById("votedDJ2_desk").style.gridColumn = "1 / span 2";
-        } else if (checkBefore(2) == 1 && checkAfter(2) == 0) {
-            document.getElementById("votedDJ2_desk").style.gridColumn = "3 / span 2";
-        } else if (checkBefore(2) == 1 && checkAfter(2) == 1) {
-            document.getElementById("votedDJ2_desk").style.gridColumn = "2 / span 2";
-        } else {
-            document.getElementById("votedDJ2_desk").style.gridColumn = "";
-        }
-
-        var desk = document.getElementById("votedDJ2_desk");
-        desk.classList.add("chosen_desk");
-        var mobile = document.getElementById("votedDJ2");
-        mobile.classList.add("chosen_mobile");
-    } else {
-        document.getElementById("votedDJ2_desk").style.display = "none";
-        document.getElementById("votedDJ2").style.display = "none";
-
-        var desk = document.getElementById("votedDJ2_desk");
-        if (desk.classList.contains("chosen_desk")) {
-            desk.classList.remove("chosen_desk");
-        }
-        var mobile = document.getElementById("votedDJ2");
-        if (mobile.classList.contains("chosen_mobile")) {
-            mobile.classList.remove("chosen_mobile");
-        }
-    }
-
-    if (voteDJ3.checked == true) {
-        document.getElementById("votedDJ3_desk").style.display = "";
-        document.getElementById("votedDJ3").style.display = "";
-
-        if (checkBefore(3) == 0 && checkAfter(3) == 0) {
-            document.getElementById("votedDJ3_desk").style.gridColumn = "1 / span 4";
-        } else if (checkBefore(3) == 0 && checkAfter(3) == 1) {
-            document.getElementById("votedDJ3_desk").style.gridColumn = "1 / span 2";
-        } else if (checkBefore(3) == 1 && checkAfter(3) == 0) {
-            document.getElementById("votedDJ3_desk").style.gridColumn = "3 / span 2";
-        } else if (checkBefore(3) == 1 && checkAfter(3) == 1) {
-            document.getElementById("votedDJ3_desk").style.gridColumn = "2 / span 2";
-        } else {
-            document.getElementById("votedDJ3_desk").style.gridColumn = "";
-        }
-
-        var desk = document.getElementById("votedDJ3_desk");
-        desk.classList.add("chosen_desk");
-        var mobile = document.getElementById("votedDJ3");
-        mobile.classList.add("chosen_mobile");
-    } else {
-        document.getElementById("votedDJ3_desk").style.display = "none";
-        document.getElementById("votedDJ3").style.display = "none";
-
-        var desk = document.getElementById("votedDJ3_desk");
-        if (desk.classList.contains("chosen_desk")) {
-            desk.classList.remove("chosen_desk");
-        }
-        var mobile = document.getElementById("votedDJ3");
-        if (mobile.classList.contains("chosen_mobile")) {
-            mobile.classList.remove("chosen_mobile");
-        }
-    }
-
-    if (voteDJ4.checked == true) {
-        document.getElementById("votedDJ4_desk").style.display = "";
-        document.getElementById("votedDJ4").style.display = "";
-
-        if (checkBefore(4) == 0 && checkAfter(4) == 0) {
-            document.getElementById("votedDJ4_desk").style.gridColumn = "1 / span 4";
-        } else if (checkBefore(4) == 0 && checkAfter(4) == 1) {
-            document.getElementById("votedDJ4_desk").style.gridColumn = "1 / span 2";
-        } else if (checkBefore(4) == 1 && checkAfter(4) == 0) {
-            document.getElementById("votedDJ4_desk").style.gridColumn = "3 / span 2";
-        } else if (checkBefore(4) == 1 && checkAfter(4) == 1) {
-            document.getElementById("votedDJ4_desk").style.gridColumn = "2 / span 2";
-        } else {
-            document.getElementById("votedDJ4_desk").style.gridColumn = "";
-        }
-
-        var desk = document.getElementById("votedDJ4_desk");
-        desk.classList.add("chosen_desk");
-        var mobile = document.getElementById("votedDJ4");
-        mobile.classList.add("chosen_mobile");
-    } else {
-        document.getElementById("votedDJ4_desk").style.display = "none";
-        document.getElementById("votedDJ4").style.display = "none";
-
-        var desk = document.getElementById("votedDJ4_desk");
-        if (desk.classList.contains("chosen_desk")) {
-            desk.classList.remove("chosen_desk");
-        }
-        var mobile = document.getElementById("votedDJ4");
-        if (mobile.classList.contains("chosen_mobile")) {
-            mobile.classList.remove("chosen_mobile");
-        }
-    }
-
-    if (voteDJ5.checked == true) {
-        document.getElementById("votedDJ5_desk").style.display = "";
-        document.getElementById("votedDJ5").style.display = "";
-
-        if ((checkBefore(5) == 0 || checkBefore(5) == 4) && checkAfter(5) == 0) {
-            document.getElementById("votedDJ5_desk").style.gridColumn = "1 / span 4";
-        } else if ((checkBefore(5) == 0 || checkBefore(5) == 4) && checkAfter(5) == 1) {
-            document.getElementById("votedDJ5_desk").style.gridColumn = "1 / span 2";
-        } else if (checkBefore(5) == 1 && checkAfter(5) == 0) {
-            document.getElementById("votedDJ5_desk").style.gridColumn = "3 / span 2";
-        } else if (checkBefore(5) == 1 && checkAfter(5) == 1) {
-            document.getElementById("votedDJ5_desk").style.gridColumn = "2 / span 2";
-        } else {
-            document.getElementById("votedDJ5_desk").style.gridColumn = "";
-        }
-
-        var desk = document.getElementById("votedDJ5_desk");
-        desk.classList.add("chosen_desk");
-        var mobile = document.getElementById("votedDJ5");
-        mobile.classList.add("chosen_mobile");
-    } else {
-        document.getElementById("votedDJ5_desk").style.display = "none";
-        document.getElementById("votedDJ5").style.display = "none";
-
-        var desk = document.getElementById("votedDJ5_desk");
-        if (desk.classList.contains("chosen_desk")) {
-            desk.classList.remove("chosen_desk");
-        }
-        var mobile = document.getElementById("votedDJ5");
-        if (mobile.classList.contains("chosen_mobile")) {
-            mobile.classList.remove("chosen_mobile");
-        }
-    }
-
-    if (voteDJ6.checked == true) {
-        document.getElementById("votedDJ6_desk").style.display = "";
-        document.getElementById("votedDJ6").style.display = "";
-
-        if ((checkBefore(6) == 0 || checkBefore(6) == 4) && checkAfter(6) == 0) {
-            document.getElementById("votedDJ6_desk").style.gridColumn = "2 / span 2";
-        } else if ((checkBefore(6) == 0 || checkBefore(6) == 4) && checkAfter(6) == 1) {
-            document.getElementById("votedDJ6_desk").style.gridColumn = "1 / span 2";
-        } else if ((checkBefore(6) == 1 || checkBefore(6) == 5) && checkAfter(6) == 0) {
-            document.getElementById("votedDJ6_desk").style.gridColumn = "3 / span 2";
-        } else if ((checkBefore(6) == 1 || checkBefore(6) == 5) && checkAfter(6) == 1) {
-            document.getElementById("votedDJ6_desk").style.gridColumn = "2 / span 2";
-        } else {
-            document.getElementById("votedDJ6_desk").style.gridColumn = "";
-        }
-
-        var desk = document.getElementById("votedDJ6_desk");
-        desk.classList.add("chosen_desk");
-        var mobile = document.getElementById("votedDJ6");
-        mobile.classList.add("chosen_mobile");
-    } else {
-        document.getElementById("votedDJ6_desk").style.display = "none";
-        document.getElementById("votedDJ6").style.display = "none";
-
-        var desk = document.getElementById("votedDJ6_desk");
-        if (desk.classList.contains("chosen_desk")) {
-            desk.classList.remove("chosen_desk");
-        }
-        var mobile = document.getElementById("votedDJ6");
-        if (mobile.classList.contains("chosen_mobile")) {
-            mobile.classList.remove("chosen_mobile");
-        }
-    }
-
-    if (voteDJ7.checked == true) {
-        document.getElementById("votedDJ7_desk").style.display = "";
-        document.getElementById("votedDJ7").style.display = "";
-
-        if ((checkBefore(7) == 0 || checkBefore(7) == 4) && checkAfter(7) == 0) {
-            document.getElementById("votedDJ7_desk").style.gridColumn = "2 / span 2";
-        } else if ((checkBefore(7) == 0 || checkBefore(7) == 4) && checkAfter(7) == 1) {
-            document.getElementById("votedDJ7_desk").style.gridColumn = "1 / span 2";
-        } else if ((checkBefore(7) == 1 || checkBefore(7) == 5) && checkAfter(7) == 0) {
-            document.getElementById("votedDJ7_desk").style.gridColumn = "3 / span 2";
-        } else if ((checkBefore(7) == 1 || checkBefore(7) == 5) && checkAfter(7) == 1) {
-            document.getElementById("votedDJ7_desk").style.gridColumn = "2 / span 2";
-        } else {
-            document.getElementById("votedDJ7_desk").style.gridColumn = "";
-        }
-
-        var desk = document.getElementById("votedDJ7_desk");
-        desk.classList.add("chosen_desk");
-        var mobile = document.getElementById("votedDJ7");
-        mobile.classList.add("chosen_mobile");
-    } else {
-        document.getElementById("votedDJ7_desk").style.display = "none";
-        document.getElementById("votedDJ7").style.display = "none";
-
-        var desk = document.getElementById("votedDJ7_desk");
-        if (desk.classList.contains("chosen_desk")) {
-            desk.classList.remove("chosen_desk");
-        }
-        var mobile = document.getElementById("votedDJ7");
-        if (mobile.classList.contains("chosen_mobile")) {
-            mobile.classList.remove("chosen_mobile");
-        }
-    }
-
-    if (voteDJ8.checked == true) {
-        document.getElementById("votedDJ8_desk").style.display = "";
-        document.getElementById("votedDJ8").style.display = "";
-
-        if ((checkBefore(8) == 0 || checkBefore(8) == 4)) {
-            document.getElementById("votedDJ8_desk").style.gridColumn = "1 / span 4";
-        } else if ((checkBefore(8) == 1 || checkBefore(8) == 5)) {
-            document.getElementById("votedDJ8_desk").style.gridColumn = "3 / span 2";
-        } else {
-            document.getElementById("votedDJ8_desk").style.gridColumn = "";
-        }
-
-        var desk = document.getElementById("votedDJ8_desk");
-        desk.classList.add("chosen_desk");
-        var mobile = document.getElementById("votedDJ8");
-        mobile.classList.add("chosen_mobile");
-    } else {
-        document.getElementById("votedDJ8_desk").style.display = "none";
-        document.getElementById("votedDJ8").style.display = "none";
-
-        var desk = document.getElementById("votedDJ8_desk");
-        if (desk.classList.contains("chosen_desk")) {
-            desk.classList.remove("chosen_desk");
-        }
-        var mobile = document.getElementById("votedDJ8");
-        if (mobile.classList.contains("chosen_mobile")) {
-            mobile.classList.remove("chosen_mobile");
-        }
-    }
-
-    var elementsA = document.querySelectorAll(".grid-item-dj");
-    for (let i = 0; i < elementsA.length; i++) {
-        elementsA[i].style.cursor = "default";
-    }
-
-    var elementsB = document.querySelectorAll(".grid-item-DJ-desk-photo");
-    for (let i = 0; i < elementsB.length; i++) {
-        elementsB[i].style.cursor = "default";
-    }
-
-}
-
-/*----- Enable / Disable vote Button -----*/
-function huntButton() {
-    
-    let value = true;
-
-    for (let dj of djs)
-        if (dj.checked)
-            value = false;
-
-    document.getElementById("huntSubmit").disabled = value
-    if (value)
-        document.getElementById("huntSubmit").style.cursor = "not-allowed";
-    else
-        document.getElementById("huntSubmit").style.cursor = "pointer";
-
-    // if (dj1.checked == true || dj2.checked == true || dj3.checked == true || dj4.checked == true) {
-    //     document.getElementById("huntSubmit").disabled = false;
-    //     document.getElementById("huntSubmit").style.cursor = "pointer";
-    // } else if (dj5.checked == true || dj6.checked == true || dj7.checked == true || dj8.checked == true) {
-    //     document.getElementById("huntSubmit").disabled = false;
-    //     document.getElementById("huntSubmit").style.cursor = "pointer";
-    // } else {
-    //     document.getElementById("huntSubmit").disabled = true;
-    //     document.getElementById("huntSubmit").style.cursor = "not-allowed";
-    // }
 }
 
 /*----- Submit Vote -----*/
@@ -686,6 +431,8 @@ function cancelVote() {
     document.getElementById("djSignIn").style.display = "none";
     document.getElementById("vote").style.display = "grid";
     document.getElementById("huntSubmit").type = "button";
+    document.getElementById("huntDeleteAll").type = "button";
+    document.getElementById("huntDeleteSelected").type = "button";
     document.body.style.background = '#ffffff';
 }
 
@@ -759,23 +506,6 @@ function setTimer() {
     }, 1000);
 }
 
-/*----- Vote Ended Message -----*/
-// $(window).on('scroll', function () {
-//     var scrollTop = $(window).scrollTop();
-//     if (scrollTop > 25) {
-//         $('#hunt_end').stop().animate({ top: "0" }, 25);
-//     }
-//     else {
-//         if (window.innerWidth >= 1024){
-//             $('#hunt_end').stop().animate({ top: "300px" }, 100);
-//         } else if (window.innerWidth >= 350 && window.innerWidth <= 1023) {
-//             $('#hunt_end').stop().animate({ top: "175px" }, 100);
-//         } else if (window.innerWidth <= 349) {
-//             $('#hunt_end').stop().animate({ top: "140px" }, 100);
-//         }
-//     }
-// });
-
 /*----- Open Menu -----*/
 function openNav() {
     document.getElementById("sideMenu").style.width = "250px";
@@ -828,46 +558,199 @@ function showPreview(event){
 const form = document.getElementById("dj-hunt-form")
 form.addEventListener('submit', function(event) {
     event.preventDefault()
-    // const formData = new FormData(this)
+    const formData = new FormData(this)
 
     $.ajax({
-        method: 'get',
-        url: '/admin/All-DjHunt',
+        method: 'post',
+        url: '/admin/home/dj-hunt',
+        data: formData,
+        processData: false,
+        contentType: false,
         success: data => {
-            djhunt = data.data[0]
-            const djhuntform = document.forms['dj-hunt-form']
-
-            djhunt.radio_talents.push({
-                dj_name: djhuntform.elements['dj_name'].value,
-                actual_name: djhuntform.elements['actual_name'].value,
-                tagline: djhuntform.elements['tagline'].value,
-                stinger_path: djhuntform.elements['stinger_path'].value,
-                facebook: djhuntform.elements['facebook'].value,
-                instagram: djhuntform.elements['instagram'].value,
-                twitter: djhuntform.elements['twitter'].value,
-                youtube_video: djhuntform.elements['youtube_video'].value,
-                spotify_playlist: djhuntform.elements['spotify_playlist'].value,
-                picture_path: djhuntform.elements['picture_path'].value,
+            Swal.fire({
+                title: 'Success!',
+                icon: 'success',
+                iconColor: "#569429",
+                timer: 10000,
+                timerProgressBar: true,
+                position: "center",
+                confirmButtonText: 'Awesome!',
             })
 
-            alert(djhunt.radio_talents)
-            console.log(djhunt.radio_talents)
-            
-            // $.ajax({
-            //     method: 'put',
-            //     url: '/admin/DjHunt',
-            //     data: formData,
-            //     success: data => {
-            //         console.log(data)
-            //         alert('success')
-            //     },
-            //     error: error => {
-            //         console.log(error)
-            //         console.log(error.statusText)
-            //         alert('error')
-            //     }
-            // })
+        },
+        error: e => {
+            alert('error')
         }
     })
+    
+})
+
+function logout() {
+    $.ajax({
+        method: 'get',
+        url: '/admin/logout',
+        success: data => {
+            window.location = "/admin"
+        }
+    })
+}
+
+function deleteConfirmModal(){
+    document.getElementById("deleteModal").style.display = "block";
+
+}
+
+function deleteCancelModal(){
+    document.getElementById("deleteModal").style.display = "none";
+
+}
+
+function deleteAllDjs(){
+    
+
+    document.getElementById("deleteModal").style.display = "none";
+
+    $.ajax({
+        method: 'post',
+        url: '/admin/dj-hunt/delete/all',
+        success: () => {
+            Swal.fire({
+                title: 'Successfly deleted all djs!',
+                icon: 'success',
+                iconColor: "#569429",
+                timer: 10000,
+                timerProgressBar: true,
+                position: "center",
+                confirmButtonText: 'Awesome!',
+            })
+
+        },
+        error: e => {
+            alert('error')
+        }
+    })
+
+}
+
+function changeDate() {
+    const start_date = document.getElementById('start-date').value
+    const end_date = document.getElementById('end-date').value
+
+    if (start_date && end_date) {
+
+        djhunt.start_date = start_date
+        djhunt.end_date = end_date
+
+        $.ajax({
+            method: 'put',
+            url: `/admin/djhunt/${djhunt._id}`,
+            data: djhunt,
+            success: function (data) {
+                Swal.fire({
+                    title: 'Success!',
+                    icon: 'success',
+                    iconColor: "#569429",
+                    timer: 10000,
+                    timerProgressBar: true,
+                    position: "center",
+                    confirmButtonText: 'Awesome!',
+                })
+            },
+            error: function () {
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Invalid date',
+                    icon: 'error',
+                    confirmButtonText: 'Okay'
+                })
+            }
+        })
+    } else {
+        Swal.fire({
+            title: 'Error!',
+            text: 'Invalid date',
+            icon: 'error',
+            confirmButtonText: 'Okay'
+        })
+    }
+}
+
+function openDeleteConfirm(){
+
+    document.getElementById("deleteSelectedModal").style.display = "block";
+
+}
+
+function deleteSelectedCancelModal(){
+    document.getElementById("deleteSelectedModal").style.display = "block";
+
+}
+
+function deleteSelectedDjs(){
+
+    document.getElementById("deleteSelectedModal").style.display = "none";
+
+    const selectedData = selectedDjs;
+    
+
+    //console.log("THE DATA:",selectedData);
+
+    //alert(selectedData)
+    
+    $.ajax({
+        method: 'post',
+        url: '/admin/dj-hunt/delete/selected',
+        data: {selectedData:selectedData},
+        success: (data) => {
+            Swal.fire({
+                title: 'Successfly deleted selected djs!',
+                icon: 'success',
+                iconColor: "#569429",
+                timer: 10000,
+                timerProgressBar: true,
+                position: "center",
+                confirmButtonText: 'Awesome!',
+            })
+
+        },
+        error: e => {
+            alert('error')
+        }
+    })
+    
+}
+
+
+const form2 = document.getElementById("dj-hunt-update")
+form2.addEventListener('submit', function(event) {
+    event.preventDefault()
+    const formData = new FormData(this)
+
+    console.log(formData)
+    console.log(selectedDjID)
+    
+    $.ajax({
+        method: 'post',
+        url: `/admin/dj-hunt/edit/${selectedDjID}`,
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: data => {
+            Swal.fire({
+                title: 'Success!',
+                icon: 'success',
+                iconColor: "#569429",
+                timer: 10000,
+                timerProgressBar: true,
+                position: "center",
+                confirmButtonText: 'Awesome!',
+            })
+
+        },
+        error: e => {
+            alert('error')
+        }
+    })
+    
     
 })

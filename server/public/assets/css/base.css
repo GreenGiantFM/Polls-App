@@ -618,3 +618,7 @@ input[disabled] {
     from {opacity: 0;}
     to {opacity: 1;}
 }
+
+#exitButton{
+    float:right;
+}

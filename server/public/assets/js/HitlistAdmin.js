@@ -27,6 +27,8 @@ function retrieveSongs() {
         totalVotes += s.vote_count
     })
 
+    document.getElementById('vote_count').innerText = `Total Vote Count: ${totalVotes}`;
+
     // set songs
     hitlist.songs.map((s, index) => {
         /*-----  Create Elements -----*/
@@ -159,6 +161,13 @@ function changeBackground() {
         }
     }
 }
+
+function clearAll(){
+    document.getElementbyId("title").value='';
+    document.getElementbyId("artist").value='';
+    document.getElementbyId("link").value='';
+}
+
 
 /*----- Confirm Vote -----*/
 function openConfirm() {
@@ -314,8 +323,8 @@ function changeDate() {
 
     if (start_date && end_date) {
 
-        hitlist.start_date = document.getElementById('start-date').value
-        hitlist.end_date = document.getElementById('end-date').value
+        hitlist.start_date = start_date
+        hitlist.end_date = end_date
     
         $.ajax({ // this one works
             method: 'put',
@@ -376,4 +385,41 @@ function logout() {
             window.location = "/admin"
         }
     })
+}
+
+function deleteConfirmModal(){
+    document.getElementById("deleteModal").style.display = "flex";
+
+}
+
+function deleteCancelModal(){
+    document.getElementById("deleteModal").style.display = "none";
+
+}
+
+function deleteAllSongs(){
+    
+
+    document.getElementById("deleteModal").style.display = "none";
+
+    $.ajax({
+        method: 'post',
+        url: '/admin/hitlist/delete/all',
+        success: () => {
+            Swal.fire({
+                title: 'Successfly deleted all songs!',
+                icon: 'success',
+                iconColor: "#569429",
+                timer: 10000,
+                timerProgressBar: true,
+                position: "center",
+                confirmButtonText: 'Awesome!',
+            })
+
+        },
+        error: e => {
+            alert('error')
+        }
+    })
+
 }
