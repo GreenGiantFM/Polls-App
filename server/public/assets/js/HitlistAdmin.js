@@ -111,9 +111,6 @@ function retrieveSongs() {
         });
 
     })
-
-    document.getElementById('grid-container').append(document.createElement('br'))
-    document.getElementById('grid-container').append(document.createElement('br'))
 }
 
 /*----- Open Menu -----*/
@@ -240,26 +237,26 @@ function closeConfirm() {
 
 /*----- Open selected Tab -----*/
 function openTab(evt, tabName) {
-    if(tabName == 'Live'){
-        let inactive_content = document.getElementById("vote");
+    if(tabName == 'Edit'){
+        let inactive_content = document.getElementById("add");
         inactive_content.style.display = "none";
-        let inactive_tab = document.getElementById("voteTab");
+        let inactive_tab = document.getElementById("addTab");
         inactive_tab.className = "inactive";
 
-        let active_content = document.getElementById("live");
+        let active_content = document.getElementById("edit");
         active_content.style.display = "block";
-        let active_tab = document.getElementById("liveTab");
+        let active_tab = document.getElementById("editTab");
         active_tab.className = "active";
         evt.currentTarget.className += " active";
-    }else if (tabName == 'Vote') {
-        let inactive_content = document.getElementById("live");
+    }else if (tabName == 'Add') {
+        let inactive_content = document.getElementById("edit");
         inactive_content.style.display = "none";
-        let inactive_tab = document.getElementById("liveTab");
+        let inactive_tab = document.getElementById("editTab");
         inactive_tab.className = "inactive";
 
-        let active_content = document.getElementById("vote");
+        let active_content = document.getElementById("add");
         active_content.style.display = "block";
-        let active_tab = document.getElementById("voteTab");
+        let active_tab = document.getElementById("addTab");
         active_tab.className = "active";
         evt.currentTarget.className += " active";
     }

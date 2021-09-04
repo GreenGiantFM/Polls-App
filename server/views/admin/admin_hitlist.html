@@ -11,141 +11,97 @@
         <link rel="stylesheet" href="/assets/fonts/line-awesome.min.css">
         <link rel="stylesheet" href="/assets/fonts/fontawesome5-overrides.min.css">
         <link rel="stylesheet" href="/assets/css/base.css">
+        <link rel="stylesheet" href="/assets/css/HitlistAdmin.css">
         <link rel="icon" href="/assets/img/GGFM/GGFM_ICON.png" type="image/png" />
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
         <script src="/assets/js/HitlistAdmin.js"></script>
 </head>
-<link rel="stylesheet" href="/assets/css/HitlistAdmin.css">
-
-
     <body>
-    
         <!-- Header -->
         <header id="upper" style="background-color: black;height:120px;">
             <ul class="upper-link">
                 <li><a href="https://www.greengiantfm.com/" class="upperLink"><img src="/assets/img/GGFM/GGFM_LOGO.png" alt='Green Giant FM' style="width:175px;"></a></li>
-                
-                
-                <ul class="llenos">
+                <ul id="header-admin">
                     <li><a href="/admin/home/hitlist" class="pollsDrop">Hitlist</a></li>
                     <li><a href="/admin/home/dj-hunt" class="pollsDrop">DJ Hunt</a></li>
-                <button type="button" class="btn btn-default btn-sm" onclick="logout()">
-                    <span class="log-out"></span> Log out
-                  </button>
+                    <li>
+                        <button type="button" id="logout-button" onclick="logout()">Log Out</button>
+                    </li>
                </ul>
-                
-                
-                <li>
-                   
-                    
-                </li>
-                
             </ul>
         </header>
-            
-        <!--**have yet to change the open tab parameter names**-->  
-        <div class="w3-container tab" style="text-align: center;">
-            <h1 id="page_title" style="font-weight: bolder; color: #569429"><i class="fas fa-music"></i>&ensp;The Hitlist</h1>
-            <button id="voteTab" class="active" onclick="openTab(event, 'Vote')" style="margin-right:35px;">Add</button>
-            <button id="liveTab" class="inactive" onclick="openTab(event, 'Live')" style="margin-left:35px;">Edit</button>
-        </div>
-
-        <div class="w3-container tab" style="text-align: center;">
-            <h1 id="vote_count" style="font-size: large;">Total Vote Count: </h1>
-        </div>
 
         <!-- Menu -->
         <div id="sideMenu" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&#9776;&emsp;<em>Menu</em></a>
-            
             <span class="sideLink">Live Polls</span>
             <a href="/admin/home/hitlist" class="pollLink"><i class="fas fa-music"></i>&ensp;Hitlist</a>
             <a href="/admin/home/dj-hunt" class="pollLink"><i class="fas fa-binoculars"></i>&ensp;DJ Hunt</a>
         </div>
-
+        
         <!-- Menu Button -->
         <span id="sideMenuBtn" onclick="openNav()" style="margin-right:1200px;">&#9776;</span>
-
-<!-- Voting Tab -->
-<div id="vote" class="tabcontent w3-center" style="display: block;">
-    
-    <form onsubmit="return false">
-       
-        <div class="add-dj-container">
             
-            <div class="add-photo-container"></div>
-            <div class="inputheader-flex-container">
-                <p style="text-align: right;"><b>Title</b></p>
-                <p style="text-align: right;"><b>Artist</b></p>
-                <p style="text-align: right;"><b>Spotify Link</b></p>
-                
-            </div>
-
-            
-            <div class="inputbox-flex-container">
-                
-                <label for="title"></label>
-                <input type="text" id="title" name="title">
-                <br>
-                
-                <label for="artist"></label>
-                <input type="text" id="artist" name="artist">
-                <br>
-                
-                <label for="spotify_link"></label>
-                <input type="text" id="spotify_link" name="spotify_link">
-                <br>
-                
-                
-                
-            </div>
-            <button id="voteSubmit" onclick="addSong()"style="margin-bottom:300px;">Add Song</button> 
-            <label style="padding-left: -15px">
-                
-          
-            </label>
-        </div>
-        </form>
-        </div>
-        
-       
-
-        
-
-        <!-- Voting Tab Overlay -->
-        <div id="overlay">
-            <div id="confirmation" class="overlayItems">
-                <h1 style="text-align: center; font-weight: bold; letter-spacing: 2px;">CONFIRM</h1>
-                <button id="confirmVote" onclick="submitVote()" style="margin-right:5px;">Yes</button>
-                <button id="cancelVote" onclick="cancelVote()" style="margin-left:5px;">Cancel</button>
-            </div>
-            <div id="voteConfirmed" class="overlayItems">
-                <h1 style="text-align: center; font-weight: bold; letter-spacing: 2px;">EDIT CONFIRMED</h1>
-                <button id="doneVote" onclick="closeConfirm()">DONE</button>
-            </div>
+        <!-- Tabs -->  
+        <div class="tab" style="text-align: center;">
+            <h1 id="page_title" style="font-weight: bolder; color: #569429"><i class="fas fa-music"></i>&ensp;The Hitlist</h1>
+            <button id="addTab" class="active" onclick="openTab(event, 'Add')" style="margin-right:35px;">Add</button>
+            <button id="editTab" class="inactive" onclick="openTab(event, 'Edit')" style="margin-left:35px;">Edit</button>
         </div>
 
-        <!-- Live Polls -->
-        
-        
-        <div id="live" class="tabcontent">
+        <!-- Vote Count -->
+        <div style="text-align: center;">
+            <h1 id="vote_count" style="font-size: large;">Total Vote Count: </h1>
+        </div>
+
+        <!-- Add Tab -->
+        <div id="add" class="tabcontent" style="display: block;">
+            <form onsubmit="return false">
+                <div class="add-song-container">
+                    <div class="add-song-grid-item-label">
+                        <label for="title">Title</label>
+                    </div>
+                    <div class="add-song-grid-item-field">
+                        <input type="text" id="title" name="title" required>
+                    </div>
+                    <div class="add-song-grid-item-label">
+                        <label for="artist">Artist</label>
+                    </div>
+                    <div class="add-song-grid-item-field">
+                        <input type="text" id="artist" name="artist" required>
+                    </div>
+                    <div class="add-song-grid-item-label">
+                        <label for="spotify_link">Spotify Link</label>
+                    </div>
+                    <div class="add-song-grid-item-field">
+                        <input type="text" id="spotify_link" name="spotify_link" required>
+                    </div>
+                    <button id="addSubmit" onclick="addSong()">Add Song</button> 
+                </div>
+            </form>
+        </div>
+
+        <!-- Edit Tab -->
+        <div id="edit" class="tabcontent">
             <div class="date-container">
-                <label for="start-date">Start Date:</label>
-                <input type="date" id="start-date" name="start-date">
-                <label for="end-date">End Date:</label>
-                <input type="date" id="end-date" name="end-date">
-            </div>
-            <div class="date-container">
-                <button style="display: block" id="doneDate" onclick="changeDate()">Save Date</button>
+                <div class="date-item">
+                    <label for="start-date">Start Date:</label>
+                    <input type="date" id="start-date" name="start-date">
+                </div>
+                <div class="date-item">
+                    <label for="end-date">End Date:</label>
+                    <input type="date" id="end-date" name="end-date">
+                </div>
+                <div class="date-button">
+                    <button style="display: block" id="doneDate" onclick="changeDate()">Save Date</button>
+                </div>
             </div>
             <form action="#">
                 <div class="grid-container" id='grid-container'>
                     
-                    <br>
-                    <br>
                 </div>
-                <div class="date-container">
+                <div class="remove-container">
                     <input type="button" id="remove" disabled onclick="openConfirm()" value="Remove">
                     <input type="button" id="removeAll" onclick="deleteConfirmModal()" value="Remove All">
                 </div>

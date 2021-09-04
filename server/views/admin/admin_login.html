@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="../assets/fonts/line-awesome.min.css">
         <link rel="stylesheet" href="../assets/fonts/fontawesome5-overrides.min.css">
         <link rel="stylesheet" href="../assets/css/base.css">
+        <link rel="stylesheet" href="../assets/css/admin-login.css">
         <link rel="stylesheet" href="assets/css/dj_page_css.css">
         <link rel="icon" href="../assets/img/GGFM/GGFM_ICON.png" type="image/png" />
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -18,13 +19,9 @@
     </head>
     <body>
         <!-- Header (Menu) -->
-        <header id="upper" style="background-color: black;display:flex;align-items: center;justify-content: space-between;">
+        <header id="upper" style="background-color: black; display:flex; align-items: center; justify-content: space-between;">
             <ul class="upper-link"style="display:inline;">
-                <li><img src="../assets/img/GGFM/GGFM_LOGO.png" alt='Green Giant FM' style="width:175px;margin:0 0 20px 20px;"></li>
-                
-                
-                   
-                
+                <li><img src="../assets/img/GGFM/GGFM_LOGO.png" alt='Green Giant FM' style="width:175px; margin:0 0 20px 20px;"></li>
             </ul>
             <a href="/" id="exitButton"class="upperLink"style="margin-right:50px;">Exit</a>
         </header>
@@ -48,71 +45,43 @@
         <span id="sideMenuBtn" onclick="openNav()">&#9776;</span>
 
         <!-- Admin Header -->
-        <header class="w3-container tab" style="text-align: center;">
-            <br>
-            <br>
-            <br>
-            <h1 style="font-weight: bolder; color: #569429">Hello, admin!</h1>
+        <header style="text-align: center;">
+            <h1 style="font-weight: bolder; color: #569429; margin-top: 20px;">Hello, admin!</h1>
             <br><br>
-            <h5 style="font-weight: 500; color: black">Fill out the following details.</h5>
+            <h5 style="font-weight: 500; color: black">Fill out the following details:</h5>
         </header>
-
-        <!-- Menu -->
-        <div id="sideMenu" class="sidenav">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&#9776;&emsp;<em>Menu</em></a>
-            <a href="#" class="sideLink">Home</a>
-            <a href="#" class="sideLink">About Us</a>
-            <a href="#" class="sideLink">Radio Talents</a>
-            <a href="#" class="sideLink">Events</a>
-            <a href="#" class="sideLink">Blogs</a>
-            <a href="#" class="sideLink">Contact Us</a>
-            <a href="#" class="sideLink">Stream</a>
-            <span class="sideLink">Live Polls</span>
-            <a href="#" class="pollLink"><i class="fas fa-music"></i>&ensp;Hitlist</a>
-            <a href="#" class="pollLink"><i class="fas fa-binoculars"></i>&ensp;DJ Hunt</a>
-        </div>
-
-        <!-- Menu Button -->
-        <span id="sideMenuBtn" onclick="openNav()">&#9776;</span>
-
         
-
         <!--User input-->
-        <div class="w3-container tab" style="text-align: center">
+        <div style="text-align: center">
             <br>
             <form id="login-form">
-                <label for="username">Username&nbsp;</label>
-                <input type="text" id="username" name="username" style="border-radius: 10px; border: none; background-color: #ECECEC;">
-            
-                    <br><br>
-
-                <label for="pass">Password&nbsp;</label>
-                <input type="password" id="pass" name="password" style="border-radius: 10px; border: none; background-color: #ECECEC;">
-
-                <br><br><br>
-
+                <div class="login-field">
+                    <label for="username">Username&nbsp;</label>
+                    <input type="text" id="username" class="form-admin" name="username">
+                </div>
+                <div class="login-field">
+                    <label for="pass">Password&nbsp;</label>
+                    <input type="password" id="pass" class="form-admin" name="password">
+                </div>
                 <h3 style="font-weight: bolder; color: #569429">Login&nbsp;
                     <a href="#">
-                    <button class="fas fa-arrow-circle-right" style="color: #569429; cursor: pointer;" type="submit"></button>
+                    <button id="login-button" class="fas fa-arrow-circle-right" type="submit"></button>
                     </a>
                 </h1>
             </form>           
         </div>
 
         <!--If not admin-->
-        <header class="w3-container tab" style="text-align: center">
-            <br><br>
-            <h5 style="font-weight: bolder; color: #569429">
-                
-                <a href="https://greengiantfm.com" class="sideLink" style="text-decoration: none">Oops, I'm not an admin.</a>
-
-                </h1>
-        </header>
+        <div style="text-align: center;">
+            <h5 style="font-weight: bolder; color: #569429; margin-top: 20px;">
+                <a href="/" id="not-admin">Oops, I'm not an admin.</a>
+            </h5>
+        </div>
 
         <div class="arrow">
             <div class="arrow-top"></div>
             <div class="arrow-bottom"></div>
-          </div>
+        </div>
 
 
     <script src="/assets/js/login.js">

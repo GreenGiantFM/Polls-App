@@ -1,70 +1,125 @@
-/* .words{
-    text-align:left;
-    font-size: 30px;
-    color: #000000;  
-    top:100px;
-}
-
-.boxy{
-    text-align:left;
-    font-size: 30px;
-    color: #000000;  
-    top:100px;
-}
-
-.box{
-    text-align:left;
-    font-size: 30px;
-    color: #000000;  
-    top:100px;
-}
-
-.formcontainer {
-    text-align: left;
-    margin: 24px 50px 12px;
-    }
-   
- .container {
-    padding: 16px 0;
-    text-align:left;
-    } */
-
-.add-dj-container {
-  margin-top: 40px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 450px;
-  height: 500px;
-}
-.inputheader-flex-container {
-  width: 120px;
-  height: 200px;
-  display: flex;
-  flex-direction: column;
-  justify-content: left;
-  margin-left: 30px;
-  margin-top: 40px;
-}
-
-.inputbox-flex-container {
-  margin-top: -185px;
-  margin-left: 170px;
-  width: 235px;
-  height: 200px;
-  display: flex;
-  flex-direction: column;
-}
+/*----- Font -----*/
 body {
   font-family: "Raleway";
 }
 
-/*----- Upper Menu Grid Container -----*/
-.upperGrid {
+/*----- Tab Buttons -----*/
+#addTab:hover, #editTab:hover {
+  background-color: rgb(240, 236, 236);
+}
+
+/*----- Add Song Grid Container -----*/
+.add-song-container {
   display: grid;
-  grid-auto-flow: column;
-  gap: 4px;
+  grid-template-columns: auto auto;
+  grid-gap: 20px 20px;
+  justify-content: center;
   align-items: center;
-  justify-items: center;
+  margin-top: 40px;
+}
+/*----- Add Song Grid Item (Label) -----*/
+.add-song-grid-item-label {
+  text-align: left;
+  font-weight: bolder;
+}
+/*----- Add Song Grid Item (Field) -----*/
+.add-song-grid-item-field input[type="text"] {
+  width: 300px;
+  background-color: #ECECEC;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+}
+/*----- Add Song Submit Button -----*/
+#addSubmit {
+  grid-column: 1 / span 2;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*----- Add & Date Submit Button -----*/
+#addSubmit, #doneDate {
+  background-color: #569429;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  width: 200px;
+  height: 40px;
+  font-size: 20px;
+  font-weight: bolder;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+/*----- Date Grid Container -----*/
+.date-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 30px 30px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+}
+/*----- Date Input Fields -----*/
+.date-item {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 5px;
+  justify-content: center;
+  align-items: center;
+}
+.date-item input[type="date"] {
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  background-color: #ECECEC;
+  cursor: pointer;
+}
+/*----- Date Submit Button -----*/
+.date-button {
+  grid-column: 1 / span 2;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*----- Song Grid Item -----*/
+.grid-item-voting {
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+/*----- Remove Buttons Grid Container -----*/
+.remove-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 20px 20px;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 0px 20px 0px;
+}
+/*----- Remove Buttons -----*/
+#remove, #removeAll {
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  width: 300px;
+  height: 40px;
+  font-size: 20px;
+  font-weight: bolder;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+/*----- Remove Button (One / Multiple) -----*/
+#remove {
+  background-color: #569429;
+}
+/*----- Remove Button (All) -----*/
+#removeAll {
+  background-color: #ff0000;
 }
 
 /*----- Upper Menu Container Items (Links) -----*/
@@ -92,8 +147,26 @@ body {
   margin-left: 100px;
 }
 
-.llenos {
+/*----- Admin Options Header -----*/
+#header-admin {
   float: right;
+}
+
+/*----- Admin Log Out Button -----*/
+#logout-button {
+  border: none;
+  outline: none;
+  color: #FFFFFF;
+  background-color: #569429;
+  font-size: 12px;
+  font-weight: bolder;
+  cursor: pointer;
+  transition: 0.5s;
+}
+#logout-button:hover {
+  background-color: #FFFFFF;
+  color: #569429;
+  transition: 0.5s;
 }
 
 /*----- Upper Menu hover over links -----*/
@@ -185,10 +258,10 @@ body {
   }
 
   /*----- Margins of Tab Buttons -----*/
-  #voteTab {
+  #addTab {
     margin-right: 15px;
   }
-  #liveTab {
+  #editTab {
     margin-left: 15px;
   }
 
@@ -258,20 +331,6 @@ body {
     height: 80px;
     box-shadow: 0 1px 3px 1px rgba(85, 85, 85, 0.24);
     /* Right Bottom Fade Solid */
-  }
-
-  /*----- Voting buttons -----*/
-  #voteSubmit,
-  #doneVote {
-    background-color: #569429;
-    color: #ffffff;
-    border: none;
-    border-radius: 8px;
-    width: 330px;
-    height: 45px;
-    font-size: x-large;
-    font-weight: bolder;
-    letter-spacing: 2px;
   }
 
   /*----- Texts for vote submission -----*/
@@ -446,10 +505,10 @@ body {
   }
 
   /*----- Margins of Tab Buttons -----*/
-  #voteTab {
+  #addTab {
     margin-right: 15px;
   }
-  #liveTab {
+  #editTab {
     margin-left: 15px;
   }
 
@@ -512,20 +571,6 @@ body {
     align-items: center;
     padding: 0px 0px 0px 10px;
     width: 175px;
-  }
-
-  /*----- Voting buttons -----*/
-  #voteSubmit,
-  #doneVote {
-    background-color: #569429;
-    color: #ffffff;
-    border: none;
-    border-radius: 8px;
-    width: 330px;
-    height: 45px;
-    font-size: x-large;
-    font-weight: bolder;
-    letter-spacing: 2px;
   }
 
   /*----- Texts in vote submission -----*/
@@ -710,10 +755,10 @@ body {
   }
 
   /*----- Margins of Tab Buttons -----*/
-  #voteTab {
+  #addTab {
     margin-right: 5px;
   }
-  #liveTab {
+  #editTab {
     margin-left: 5px;
   }
 
@@ -776,20 +821,6 @@ body {
     align-items: center;
     padding: 0px 0px 0px 10px;
     width: 70px;
-  }
-
-  /*----- Voting buttons -----*/
-  #voteSubmit,
-  #doneVote {
-    background-color: #569429;
-    color: #ffffff;
-    border: none;
-    border-radius: 8px;
-    width: 175px;
-    height: 25px;
-    font-size: large;
-    font-weight: bolder;
-    letter-spacing: 2px;
   }
 
   /*----- Texts in vote submission -----*/
@@ -877,21 +908,22 @@ input[disabled] {
 }
 
 /*----- Hover over voting buttons -----*/
-#voteSubmit:hover,
+#addSubmit:hover,
 #doneVote:hover,
 #confirmVote:hover,
 #cancelVote:hover,
-#doneDate,
+#doneDate:hover,
 #removeAll:hover,
 #songDeleteAll:hover,
 #songCancelDelete:hover,
 #remove:hover {
   box-shadow: 0 10px 14px 0 rgba(0, 0, 0, 0.24),
     0 15px 48px 0 rgba(0, 0, 0, 0.19);
+  transition: 0.5s;
 }
 
 /*----- Voting buttons -----*/
-#voteSubmit:focus,
+#addSubmit:focus,
 #doneVote:focus,
 #confirmVote:focus,
 #cancelVote:focus,
@@ -951,6 +983,8 @@ input[disabled] {
 .tabcontent {
   display: none;
   padding: 6px 12px;
+  align-items: center;
+  justify-content: center;
   animation: fadeEffect 1.5s;
 }
 
@@ -963,39 +997,7 @@ input[disabled] {
     opacity: 1;
   }
 }
-#doneDate {
-  background-color: #569429;
-  color: #ffffff;
-  border: none;
-  border-radius: 8px;
-  width: 200px;
-  height: 40px;
-  font-size: x-large;
-  font-weight: bolder;
-  letter-spacing: 2px;
-  margin-top: 20px;
-}
-#doneDate {
-  box-shadow: 0 10px 14px 0 rgba(0, 0, 0, 0.24),
-    0 15px 48px 0 rgba(0, 0, 0, 0.19);
-}
-#remove {
-  background-color: #569429;
-  color: #ffffff;
-  border: none;
-  border-radius: 8px;
-  width: 350px;
-  height: 50px;
-  font-size: 30px;
-  font-weight: bolder;
-  letter-spacing: 2px;
-}
-.date-container {
-  justify-content: center;
-  align-items: center;
-}
 
-#removeAll,
 #songDeleteAll,
 #songCancelDelete {
   background-color: #ff0000;
@@ -1024,11 +1026,4 @@ input[disabled] {
   align-items: center;
   justify-content: center;
   display: none;
-}
-
-.date-container {
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
 }

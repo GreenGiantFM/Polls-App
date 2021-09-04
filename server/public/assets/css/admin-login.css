@@ -1,0 +1,49 @@
+/*----- Login Form Fields (div) -----*/
+#login-field {
+    display: block;
+}
+/*----- Login Form Fields (Input) -----*/
+.form-admin {
+    border-radius: 10px;
+    border: none;
+    background-color: #ECECEC;
+    outline: none;
+}
+
+/*----- Fields (Margin) -----*/
+#username {
+    margin: 20px 0px;
+}
+#pass {
+    margin-bottom: 20px;
+}
+
+/*----- Login Admin Button -----*/
+#login-button {
+    outline: none;
+    border: none;
+    color: #569429;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    transition: 0.5s;
+}
+#login-button:hover {
+    background-color: #ECECEC;
+    transition: 0.5s;
+}
+
+/*----- Not Admin Button -----*/
+#not-admin {
+    text-align: center;
+    text-decoration: none;
+    color: #569429;
+    transition: 0.5s;
+}
+#not-admin:hover {
+    text-align: center;
+    color: #191919;
+    transition: 0.5s;
+}
