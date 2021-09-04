@@ -26,7 +26,6 @@ $(document).ready(() => {
             closing.innerText = `${sp[0]} ${sp[1]} ${sp[2]}`
             setTimer()
             
-            djhunt = data.data;
             djhunt.radio_talents.map((rt, index) => {
                 const grid_container_djs = document.getElementById("vote")
                 // <a class="grid-item-dj grid-item-dj-vote"  href="djpage.html">
