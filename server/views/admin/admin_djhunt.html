@@ -356,11 +356,10 @@
                     <form id="dj-hunt-update" method="POST" enctype="multipart/form-data">
                         <div class="update-grid-container">
                             <div class="update-grid-item">
-                                <div id="update-dj-photo" class="uploadplace">No Image Uploaded</div>
+                                <div id="update-dj-photo" class="uploadplace"></div>
                                 <div id="update-input" class="update-input">
-                                    <label id="update-label-file-ip-1" for="file-ip-1">Upload Image</label>
-                                    <input type="file" id="update-file-ip-1" name="picture_path" accept="image/*" onchange="showPreview(event);"
-                                        required>
+                                    <label id="update-label-file-ip-1" for="update-file-ip-1">Change Image</label>
+                                    <input type="file" id="update-file-ip-1" name="update-picture_path" accept="image/*" onchange="showUpdatePreview(event)">
                                 </div>
                             </div>
                             <div class="update-grid-item">
@@ -369,19 +368,19 @@
                                         <b class="update-labels">DJ Name&nbsp;</b>
                                     </div>
                                     <div class="update-grid-item-field">
-                                        <input type="text" class="update-field" id="update-dj_name" name="dj_name" required>
+                                        <input type="text" class="update-field" id="update-dj_name" name="dj_name">
                                     </div>
                                     <div class="update-grid-item-label">
                                         <b class="update-labels">Actual Name&nbsp;</b>
                                     </div>
                                     <div class="update-grid-item-field">
-                                        <input type="text" class="update-field" id="update-actual_name" name="actual_name" required>
+                                        <input type="text" class="update-field" id="update-actual_name" name="actual_name">
                                     </div>
                                     <div class="update-grid-item-label">
                                         <b class="update-labels">Tagline&nbsp;</b>
                                     </div>
                                     <div class="update-grid-item-field">
-                                        <input type="text" class="update-field" id="update-tagline" name="tagline" required>
+                                        <input type="text" class="update-field" id="update-tagline" name="tagline">
                                     </div>
                                     <div class="update-grid-item-label">
                                         <b class="update-labels">Stinger File&nbsp;</b>
@@ -389,7 +388,7 @@
                                     <div class="update-grid-item-field">
                                         <label for="stinger_path" class="for-stinger-path" id="update-stinger-label">
                                             <input type="file" id="update-stinger_path" name="stinger_path" accept="audio/*"
-                                                style="display: none;" onchange="showName(event)" required>
+                                                style="display: none;" onchange="showUpdateName(event)">
                                             Upload Stinger File
                                         </label>
                                     </div>
@@ -397,31 +396,31 @@
                                         <b class="update-labels">FB Profile Link&nbsp;</b>
                                     </div>
                                     <div class="update-grid-item-field">
-                                        <input type="text" class="update-field" id="update-facebook" name="facebook" required>
+                                        <input type="text" class="update-field" id="update-facebook" name="facebook">
                                     </div>
                                     <div class="update-grid-item-label">
                                         <b class="update-labels">IG Profile Link&nbsp;</b>
                                     </div>
                                     <div class="update-grid-item-field">
-                                        <input type="text" class="update-field" id="update-instagram" name="instagram" required>
+                                        <input type="text" class="update-field" id="update-instagram" name="instagram">
                                     </div>
                                     <div class="update-grid-item-label">
                                         <b class="update-labels">Twitter Link&nbsp;</b>
                                     </div>
                                     <div class="update-grid-item-field">
-                                        <input type="text" class="update-field" id="update-twitter" name="twitter" required>
+                                        <input type="text" class="update-field" id="update-twitter" name="twitter">
                                     </div>
                                     <div class="update-grid-item-label">
                                         <b class="update-labels">Video Link&nbsp;</b>
                                     </div>
                                     <div class="update-grid-item-field">
-                                        <input type="text" class="update-field" id="update-youtube_video" name="youtube_video" required>
+                                        <input type="text" class="update-field" id="update-youtube_video" name="youtube_video">
                                     </div>
                                     <div class="update-grid-item-label">
                                         <b class="update-labels">Spotify Link&nbsp;</b>
                                     </div>
                                     <div class="update-grid-item-field">
-                                        <input type="text" class="update-field" id="update-spotify_playlist" name="spotify_playlist" required>
+                                        <input type="text" class="update-field" id="update-spotify_playlist" name="spotify_playlist">
                                     </div>
                                 </div>
                                 <input type="submit" id="submit-edit" value="Save Changes">

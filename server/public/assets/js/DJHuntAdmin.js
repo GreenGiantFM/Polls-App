@@ -235,7 +235,7 @@ function openDJEdit(djNum){
     const dj = djhunt.radio_talents[djNum-1]
     selectedDjID = dj._id
 
-    document.getElementById('update-dj-photo').style.backgroundImage = `../../uploads/djhunt/images/${dj.picture_path}`;
+    document.getElementById('update-dj-photo').style.backgroundImage = `url(../../uploads/djhunt/images/${dj.picture_path})`;
     document.getElementById('update-dj_name').placeholder = `DJ ${dj.dj_name}`;
     document.getElementById('update-actual_name').placeholder = dj.actual_name;
     document.getElementById('update-tagline').placeholder = dj.tagline;
@@ -510,6 +510,7 @@ function gotoPolls() {
     document.getElementById("liveTab").click();
 }
 
+/*------------Add-------------*/
 /*show Image Preview*/
 function showPreview(event){
     if(event.target.files.length > 0){
@@ -525,11 +526,36 @@ function showPreview(event){
         upload.innerHTML = "Change Image";
     }
 }
-
 /*show Stinger File Preview*/
 function showName(event) {
     if (event.target.files.length > 0) {
         var preview = document.getElementById("stinger-label");
+        const reader = new FileReader();
+        reader.onload = function () {
+            preview.innerHTML = event.target.files[0].name;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+    }
+}
+
+/*------------Edit------------*/
+/*show Image Preview*/
+function showUpdatePreview(event) {
+    if (event.target.files.length > 0) {
+        var preview = document.getElementById("update-dj-photo");
+        const reader = new FileReader();
+        reader.onload = function () {
+            const result = reader.result;
+            preview.style.backgroundImage = "url(" + result + ")";
+        }
+        reader.readAsDataURL(event.target.files[0]);
+    }
+}
+
+/*show Stinger File Preview*/
+function showName(event) {
+    if (event.target.files.length > 0) {
+        var preview = document.getElementById("update-stinger-label");
         const reader = new FileReader();
         reader.onload = function () {
             preview.innerHTML = event.target.files[0].name;
