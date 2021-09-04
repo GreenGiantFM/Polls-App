@@ -25,7 +25,8 @@ $(document).ready(() => {
             const sp = formattedDate.split(' ')
             closing.innerText = `${sp[0]} ${sp[1]} ${sp[2]}`
             setTimer()
-
+            
+            djhunt = data.data;
             djhunt.radio_talents.map((rt, index) => {
                 const grid_container_djs = document.getElementById("vote")
                 // <a class="grid-item-dj grid-item-dj-vote"  href="djpage.html">
@@ -64,7 +65,7 @@ $(document).ready(() => {
                     djbackground.setAttribute('src', '../img/GGFM_Favicon.png')
 
                 djbackground.setAttribute('alt', rt.dj_name)
-                djbackground.setAttribute('onclick', `openDJPage(${index+1})`)
+                djbackground.setAttribute('onclick', `openDJEdit(${index+1})`)
                 const djname = document.createElement('p')
                 djname.setAttribute('class', 'dj-name')
                 djname.innerText = rt.dj_name
@@ -210,7 +211,7 @@ function openTab(evt, tabName) {
         inactive_tab.className = "inactive";
 
         let active_content = document.getElementById("live");
-        active_content.style.display = "flex";
+        active_content.style.display = "block";
         let active_tab = document.getElementById("editTab");
         active_tab.className = "active";
         evt.currentTarget.className += " active";
@@ -228,71 +229,35 @@ function openTab(evt, tabName) {
     }
 }
 
-/*----- Open DJ Page -----*/
-function openDJPage(djNum){
+/*----- Open DJ Edit -----*/
+function openDJEdit(djNum){
 
     const dj = djhunt.radio_talents[djNum-1]
     selectedDjID = dj._id
 
-    document.getElementById('dj-image-mobile').src = `../../uploads/djhunt/images/${dj.picture_path}`;
-    document.getElementById('dj-image-desk').src = `../../uploads/djhunt/images/${dj.picture_path}`;
-    document.getElementById('djName-mobile').innerHTML = `DJ ${dj.dj_name}`;
-    document.getElementById('djName-desk').innerHTML = `DJ ${dj.dj_name}`;
-    document.getElementById('fullName-mobile').innerHTML = dj.actual_name;
-    document.getElementById('fullName').innerHTML = dj.actual_name;
-    document.getElementById('djVideo-mobile').src = dj.youtube_video;
-    document.getElementById('djVideo-desk').src = dj.youtube_video;
-    document.getElementById('djStinger-mobile').src = `../../uploads/djhunt/audio/${dj.stinger_path}`;
-    document.getElementById('djStinger-desk').src = `../../uploads/djhunt/audio/${dj.stinger_path}`;
-    document.getElementById('djAudio-mobile').load();
-    document.getElementById('djAudio-desk').load();
-    document.getElementById('djPlaylist-mobile').src = dj.spotify_playlist;
-    document.getElementById('djPlaylist-desk').src = dj.spotify_playlist;
-    document.getElementById("details-tagline-desk").innerText = dj.tagline;
-    document.getElementById("details-tagline-mobile").innerText = dj.tagline;
-    console.log(dj.facebook, dj.twitter, dj.instagram)
-    console.log(dj)
-    document.getElementById("desk-facebook").href = dj.facebook.toString();
-    document.getElementById("mobile-facebook").href = dj.facebook.toString();
-    document.getElementById("desk-twitter").href = dj.twitter.toString();
-    document.getElementById("mobile-twitter").href = dj.twitter.toString();
-    document.getElementById("desk-instagram").href = dj.instagram.toString();
-    document.getElementById("mobile-instagram").href = dj.instagram.toString();
+    document.getElementById('update-dj-photo').style.backgroundImage = `../../uploads/djhunt/images/${dj.picture_path}`;
+    document.getElementById('update-dj_name').placeholder = `DJ ${dj.dj_name}`;
+    document.getElementById('update-actual_name').placeholder = dj.actual_name;
+    document.getElementById('update-tagline').placeholder = dj.tagline;
+    document.getElementById('update-stinger_path').placeholder = `../../uploads/djhunt/audio/${dj.stinger_path}`;
+    document.getElementById('update-facebook').placeholder = dj.facebook;
+    document.getElementById('update-instagram').placeholder = dj.instagram;
+    document.getElementById('update-twitter').placeholder = dj.twitter;
+    document.getElementById('update-youtube_video').placeholder = dj.youtube_video;
+    document.getElementById('update-spotify_playlist').placeholder = dj.spotify_playlist;
 
-    document.getElementById('djPage-mobile').style.display = "";
     document.getElementById('djPage-desk').style.display = "";
-
-    var mobile = document.getElementById("djPage-mobile");
-    mobile.classList.add("chosen-DJPage-mobile");
     var desk = document.getElementById("djPage-desk");
     desk.classList.add("chosen-DJPage-desk");
 }
 
 /*----- Close DJ Page -----*/
-function closeDJPage() {
-    /*----- Reset youtube video -----*/
-    document.getElementById('djVideo-mobile').src = document.getElementById('djVideo-mobile').src;
-    document.getElementById("djVideo-desk").src = document.getElementById("djVideo-desk").src ;
-    
-    /*----- Reset audio player -----*/
-    document.getElementById('djAudio-mobile').pause()
-    document.getElementById('djAudio-desk').pause()
-    
-    /*----- Reset spotify player -----*/
-    document.getElementById('djPlaylist-mobile').src = document.getElementById('djPlaylist-mobile').src
-    document.getElementById('djPlaylist-desk').src = document.getElementById('djPlaylist-desk').src
-    
-    document.getElementById('djPage-mobile').style.display = "none";
-    document.getElementById("djPage-desk").style.display = "none";
-
-    var mobile = document.getElementById("djPage-mobile");
-    if (mobile.classList.contains("chosen-DJPage-mobile")) {
-        mobile.classList.remove("chosen-DJPage-mobile");
-    }
+function closeDJEdit() {    
     var desk = document.getElementById("djPage-desk");
     if (desk.classList.contains("chosen-DJPage-desk")) {
         desk.classList.remove("chosen-DJPage-desk");
     }
+    desk.style.display = "none";
 }
 
 /*----- Enable / Disable vote Button -----*/
@@ -548,12 +513,30 @@ function gotoPolls() {
 /*show Image Preview*/
 function showPreview(event){
     if(event.target.files.length > 0){
-      var src = URL.createObjectURL(event.target.files[0]);
-      var preview = document.getElementById("file-ip-1-preview");
-      preview.src = src;
-      preview.style.display = "block";
+        var preview = document.getElementById("file-ip-1-preview");
+        preview.innerHTML = "";
+        const reader = new FileReader();
+        reader.onload = function() {
+            const result = reader.result;
+            preview.style.backgroundImage = "url("+result+")";
+        }
+        reader.readAsDataURL(event.target.files[0]);
+        var upload = document.getElementById("label-file-ip-1");
+        upload.innerHTML = "Change Image";
     }
-  }
+}
+
+/*show Stinger File Preview*/
+function showName(event) {
+    if (event.target.files.length > 0) {
+        var preview = document.getElementById("stinger-label");
+        const reader = new FileReader();
+        reader.onload = function () {
+            preview.innerHTML = event.target.files[0].name;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+    }
+}
 
 const form = document.getElementById("dj-hunt-form")
 form.addEventListener('submit', function(event) {

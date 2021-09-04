@@ -30,9 +30,11 @@
                 <ul class="llenos">
                     <li><a href="/admin/home/hitlist" class="pollsDrop">Hitlist</a></li>
                     <li><a href="/admin/home/dj-hunt" class="pollsDrop">DJ Hunt</a></li>
-                <button type="button" class="btn btn-default btn-sm" onclick="logout()">
-                    <span class="log-out"></span> Log out
-                  </button>
+                    <li>
+                        <button type="button" class="btn btn-default btn-sm" onclick="logout()">
+                            <span class="log-out"></span> Log out
+                        </button>
+                    </li>
                </ul>
                 
                 
@@ -70,85 +72,81 @@
         <div id="votingTab" class="tabcontent w3-center" style="display: block;">
             
             <form id="dj-hunt-form" method="POST" enctype="multipart/form-data">
-                <div class="w3-container tab" style="border: 4px solid black; width: 315px; height: 700px; margin-left:520px; margin-top: 50px;">
-                
-                    <div class="uploadplace">
-                        <div class="form-input">
-                          <label for="file-ip-1">Upload Image 315 x 300</label>
-                          <input type="file" id="file-ip-1" name="picture_path" accept="image/*" onchange="showPreview(event);"  required>
-                          <div class="preview">
-                            <img id="file-ip-1-preview" style="object-fit: cover">
-                          </div>
+                <div class="form-grid-container">
+                    <div class="form-grid-item">
+                        <div id="file-ip-1-preview" class="uploadplace">No Image Uploaded</div>
+                        <div id="form-input" class="form-input">
+                            <label id="label-file-ip-1" for="file-ip-1">Upload Image</label>
+                            <input type="file" id="file-ip-1" name="picture_path" accept="image/*" onchange="showPreview(event);" required>
                         </div>
                     </div>
-                </div>
-            
-                   
-                <div class="w3-container tab" style="border: 0px solid black; width: 500px; margin-left: 850px; margin-top: -700px;">
-                    
-                    <br>
-                    
-    
-                    <label for="dj_name"><b>DJ Name&nbsp;</b></label>
-                    <input type="text" id="dj_name" name="dj_name" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 10px;"  required>
-                
-                        <br><br>
-        
-                    <label for="actual_name"><b>Actual Name&nbsp;</b></label>
-                    <input type="text" id="actual_name" name="actual_name" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 35px;"  required>
-                    
-                    <br><br>
-                            
-                    <label for="tagline"><b>Tagline&nbsp;</b></label>
-                    <input type="text" id="tagline" name="tagline" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 0px;"  required>
-                        
-                    <br><br>
-                    
-                    <label for="stinger_path"><b>Stinger File&nbsp;</b></label>
-                    <input type="file" id="stinger_path" name="stinger_path" accept="audio/*" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 25px;"  required>
-                    
-                    <br><br>
-    
-                    <label for="facebook"><b>FB Profile Link&nbsp;</b></label>
-                    <input type="text" id="facebook" name="facebook" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 45px;"  required>
-                
-                    <br><br>
-    
-                    <label for="instagram"><b>IG Profile Link&nbsp;</b></label>
-                    <input type="text" id="instagram" name="instagram" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 45px;"  required>
-                    
-                    <br><br>
-    
-                    <label for="twitter"><b>Twitter Link&nbsp;</b></label>
-                    <input type="text" id="twitter" name="twitter" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 25px;"  required>
-                        
-                    <br><br>
-    
-                    <label for="youtube_video"><b>Video Link&nbsp;</b></label>
-                    <input type="text" id="youtube_video" name="youtube_video" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 25px;"  required>
-                
-                    <br><br>
-    
-                    <label for="spotify_playlist"><b>Spotify Link&nbsp;</b></label>
-                    <input type="text" id="spotify_playlist" name="spotify_playlist" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 25px;"  required>
-                
-                    <br><br>
-                    
-                    <input type="submit" value="ADD">
-                    
-                      
+                    <div class="form-grid-item">
+                        <div class="add-grid-container">
+                            <div class="add-grid-item-label">
+                                <b class="add-labels">DJ Name&nbsp;</b>
+                            </div>
+                            <div class="add-grid-item-field">
+                                <input type="text" class="add-field" id="dj_name" name="dj_name" required>
+                            </div>
+                            <div class="add-grid-item-label">
+                                <b class="add-labels">Actual Name&nbsp;</b>
+                            </div>
+                            <div class="add-grid-item-field">
+                                <input type="text" class="add-field" id="actual_name" name="actual_name" required>
+                            </div>
+                            <div class="add-grid-item-label">
+                                <b class="add-labels">Tagline&nbsp;</b>
+                            </div>
+                            <div class="add-grid-item-field">
+                                <input type="text" class="add-field" id="tagline" name="tagline" required>
+                            </div>
+                            <div class="add-grid-item-label">
+                                <b class="add-labels">Stinger File&nbsp;</b>
+                            </div>
+                            <div class="add-grid-item-field">
+                                <label for="stinger_path" class="for-stinger-path" id="stinger-label">
+                                    <input type="file" id="stinger_path" name="stinger_path" accept="audio/*" style="display: none;" onchange="showName(event)" required>
+                                    Upload Stinger File
+                                </label>
+                            </div>
+                            <div class="add-grid-item-label">
+                                <b class="add-labels">FB Profile Link&nbsp;</b>
+                            </div>
+                            <div class="add-grid-item-field">
+                                <input type="text" class="add-field" id="facebook" name="facebook" required>
+                            </div>
+                            <div class="add-grid-item-label">
+                                <b class="add-labels">IG Profile Link&nbsp;</b>
+                            </div>
+                            <div class="add-grid-item-field">
+                                <input type="text" class="add-field" id="instagram" name="instagram" required>
+                            </div>
+                            <div class="add-grid-item-label">
+                                <b class="add-labels">Twitter Link&nbsp;</b>
+                            </div>
+                            <div class="add-grid-item-field">
+                                <input type="text" class="add-field" id="twitter" name="twitter" required>
+                            </div>
+                            <div class="add-grid-item-label">
+                                <b class="add-labels">Video Link&nbsp;</b>
+                            </div>
+                            <div class="add-grid-item-field">
+                                <input type="text" class="add-field" id="youtube_video" name="youtube_video" required>
+                            </div>
+                            <div class="add-grid-item-label">
+                                <b class="add-labels">Spotify Link&nbsp;</b>
+                            </div>
+                            <div class="add-grid-item-field">
+                                <input type="text" class="add-field" id="spotify_playlist" name="spotify_playlist" required>
+                            </div>
+                        </div>
+                        <input type="submit" id="form-add-button" value="Add DJ">
+                    </div>
                 </div>
             </form>
 
-
-        
         </div>
-            
-
-                
-            
-    
-
+        
         <!-- Live Polls -->
         <div id="live" class="tabcontent">
             
@@ -351,160 +349,88 @@
             </div>
         </div>
 
-        <!-- DJ Page -->
-        <div id="djPage-mobile" style="text-align: center; justify-content: center; display: none;">
-            <div id="djInfo-mobile">
-                <h1 id="djName-mobile" style="font-weight: bolder; color: #569429; text-align:center;"></h1>
-                <div class="grid-container-details">
-                    <div class="grid-item-misc">
-                        <div class="grid-container-handle">
-                            <div class="grid-item-photo">
-                                <img id="dj-image-mobile" class="dj-background">
-                            </div>
-                            <div class="grid-item-handle">
-                                <h6 id="fullName-mobile" style="font-weight: bolder; color: #000000;"></h6>
-                                <a href="https://www.fb.com/" id="mobile-facebook"><img id="fb" class="handles"
-                                        src="../../assets/img/SOC_MED/FB.png"
-                                        onmouseover="this.src='../../assets/img/SOC_MED/FB_G.png';"
-                                        onmouseout="this.src='../../assets/img/SOC_MED/FB.png';"></a>
-                                <a href="https://www.twitter.com/" id="mobile-twitter"><img id="tw" class="handles"
-                                        src="../../assets/img/SOC_MED/TW.png"
-                                        onmouseover="this.src='../../assets/img/SOC_MED/TW_G.png';"
-                                        onmouseout="this.src='../../assets/img/SOC_MED/TW.png';"></a>
-                                <a href="https://www.instagram.com/" id="mobile-instagram"><img id="ig" class="handles"
-                                        src="../../assets/img/SOC_MED/IG.png"
-                                        onmouseover="this.src='../../assets/img/SOC_MED/IG_G.png';"
-                                        onmouseout="this.src='../../assets/img/SOC_MED/IG.png';"></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="grid-item-misc">
-                        <iframe id="djVideo-mobile" title="YouTube video player"
-                            frameborder="0" allowfullscreen></iframe>
-                    </div>
-                    <div class="grid-item-misc">
-                        <audio id="djAudio-mobile" class="stinger" controls>
-                            <source id="djStinger-mobile" type="audio/mp3">
-                        </audio>
-                    </div>
-                    <div class="grid-item-misc">
-                        <h3 id="djPlaylist-title"
-                            style="font-weight: bolder; color: #000000; text-align: left; margin-left: 7px;">DJ's Playlist</h3>
-                        <iframe id="djPlaylist-mobile" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-                    </div>
-                    <div class="grid-item-misc info-tagline">
-                        <h5 id="details-tagline-mobile">Hi! Lorem Ipsum...</h5>
-                    </div>
-                </div>
-                <button id="exitDJPage-mobile" onclick="closeDJPage()"><i class="fa fa-times" aria-hidden="true"></i></button>
-            </div>
-        </div>
-
-
+        <!-- DJ Edit -->
         <div id="djPage-desk" style="text-align: center; justify-content: center; display: none;">
-            <div id="djInfo-desk">
-                <div class="grid-container-details" style="margin-top: 20px;">
-                    <div class="grid-item-misc" style="text-align: right; justify-content: right;">
-                        <div class="grid-item-photo">
-                            <img id="dj-image-desk" class="dj-background">
+            <div id="djEdit-desk">
+                <div class="grid-container-edit" style="margin-top: 20px;">
+                    <form id="dj-hunt-update" method="POST" enctype="multipart/form-data">
+                        <div class="update-grid-container">
+                            <div class="update-grid-item">
+                                <div id="update-dj-photo" class="uploadplace">No Image Uploaded</div>
+                                <div id="update-input" class="update-input">
+                                    <label id="update-label-file-ip-1" for="file-ip-1">Upload Image</label>
+                                    <input type="file" id="update-file-ip-1" name="picture_path" accept="image/*" onchange="showPreview(event);"
+                                        required>
+                                </div>
+                            </div>
+                            <div class="update-grid-item">
+                                <div class="update-grid-container">
+                                    <div class="update-grid-item-label">
+                                        <b class="update-labels">DJ Name&nbsp;</b>
+                                    </div>
+                                    <div class="update-grid-item-field">
+                                        <input type="text" class="update-field" id="update-dj_name" name="dj_name" required>
+                                    </div>
+                                    <div class="update-grid-item-label">
+                                        <b class="update-labels">Actual Name&nbsp;</b>
+                                    </div>
+                                    <div class="update-grid-item-field">
+                                        <input type="text" class="update-field" id="update-actual_name" name="actual_name" required>
+                                    </div>
+                                    <div class="update-grid-item-label">
+                                        <b class="update-labels">Tagline&nbsp;</b>
+                                    </div>
+                                    <div class="update-grid-item-field">
+                                        <input type="text" class="update-field" id="update-tagline" name="tagline" required>
+                                    </div>
+                                    <div class="update-grid-item-label">
+                                        <b class="update-labels">Stinger File&nbsp;</b>
+                                    </div>
+                                    <div class="update-grid-item-field">
+                                        <label for="stinger_path" class="for-stinger-path" id="update-stinger-label">
+                                            <input type="file" id="update-stinger_path" name="stinger_path" accept="audio/*"
+                                                style="display: none;" onchange="showName(event)" required>
+                                            Upload Stinger File
+                                        </label>
+                                    </div>
+                                    <div class="update-grid-item-label">
+                                        <b class="update-labels">FB Profile Link&nbsp;</b>
+                                    </div>
+                                    <div class="update-grid-item-field">
+                                        <input type="text" class="update-field" id="update-facebook" name="facebook" required>
+                                    </div>
+                                    <div class="update-grid-item-label">
+                                        <b class="update-labels">IG Profile Link&nbsp;</b>
+                                    </div>
+                                    <div class="update-grid-item-field">
+                                        <input type="text" class="update-field" id="update-instagram" name="instagram" required>
+                                    </div>
+                                    <div class="update-grid-item-label">
+                                        <b class="update-labels">Twitter Link&nbsp;</b>
+                                    </div>
+                                    <div class="update-grid-item-field">
+                                        <input type="text" class="update-field" id="update-twitter" name="twitter" required>
+                                    </div>
+                                    <div class="update-grid-item-label">
+                                        <b class="update-labels">Video Link&nbsp;</b>
+                                    </div>
+                                    <div class="update-grid-item-field">
+                                        <input type="text" class="update-field" id="update-youtube_video" name="youtube_video" required>
+                                    </div>
+                                    <div class="update-grid-item-label">
+                                        <b class="update-labels">Spotify Link&nbsp;</b>
+                                    </div>
+                                    <div class="update-grid-item-field">
+                                        <input type="text" class="update-field" id="update-spotify_playlist" name="spotify_playlist" required>
+                                    </div>
+                                </div>
+                                <input type="submit" id="submit-edit" value="Save Changes">
+                            </div>
                         </div>
-                    </div>
-                    <div class="grid-item-misc">
-                        <div class="grid-item-handle" style="text-align: left;">
-
-                            
-                        <form id="dj-hunt-update" method="POST" enctype="multipart/form-data">
-
-                                <label for="picture_path"><b>Profile Photo&nbsp;</b></label>
-                                <input type="file" id="picture_path" name="picture_path" accept="image/*" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 25px;" required>
-
-                                <br><br>
-
-                                <label for="dj_name"><b>DJ Name&nbsp;</b></label>
-                                <input type="text" id="dj_name" name="dj_name" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 10px;" required>
-                            
-                                <br><br>
                     
-                                <label for="actual_name"><b>Actual Name&nbsp;</b></label>
-                                <input type="text" id="actual_name" name="actual_name" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 35px;" required> 
-                                
-                                <br><br>
-                                        
-                                <label for="tagline"><b>Tagline&nbsp;</b></label>
-                                <input type="text" id="tagline" name="tagline" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 0px;" required>
-                                    
-                                <br><br>
-                
-                                <label for="stinger_path"><b>Stinger File&nbsp;</b></label>
-                                <input type="file" id="stinger_path" name="stinger_path" accept="audio/*" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 25px;" required>
-                                        
-                                <br><br>
-                
-                                <label for="facebook"><b>FB Profile Link&nbsp;</b></label>
-                                <input type="text" id="facebook" name="facebook" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 45px;" required>
-                            
-                                <br><br>
-                
-                                <label for="instagram"><b>IG Profile Link&nbsp;</b></label>
-                                <input type="text" id="instagram" name="instagram" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 45px;" required>
-                                
-                                <br><br>
-                
-                                <label for="twitter"><b>Twitter Link&nbsp;</b></label>
-                                <input type="text" id="twitter" name="twitter" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 25px;" required>
-                                    
-                                <br><br>
-                
-                                <label for="youtube_video"><b>Video Link&nbsp;</b></label>
-                                <input type="text" id="youtube_video" name="youtube_video" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 25px;" required>
-                            
-                                <br><br>
-                
-                                <label for="spotify_playlist"><b>Spotify Link&nbsp;</b></label>
-                                <input type="text" id="spotify_playlist" name="spotify_playlist" style="width: 300px;border-radius: 10px; border: none; background-color: #ECECEC; margin-right: 25px;" required>
-                            
-                                <br><br>
-                                
-                                <input type="submit" value="EDIT">
-                            
-                            </form>
-
-                            <h1 id="djName-desk"></h1>
-                            <h1 id="actual_name"></h1>
-                            <h6 id="fullName" style="font-weight: bolder; color: #000000;"></h6>
-                            <h5 id="details-tagline-desk"></h5>
-                            <audio id="djAudio-desk" class="stinger" controls>
-                                <source id="djStinger-desk" type="audio/mp3">
-                            </audio>
-                        </div>
-
-                    </div>
-                    <div class="grid-item-misc" style="width: 45px;">
-                        <a href="https://www.fb.com/" id="desk-facebook"><img id="fb" class="handles"
-                                src="../../assets/img/SOC_MED/FB.png" onmouseover="this.src='../../assets/img/SOC_MED/FB_G.png';"
-                                onmouseout="this.src='../../assets/img/SOC_MED/FB.png';"></a>
-                        <a href="https://www.twitter.com/" id="desk-twitter"><img id="tw" class="handles" src="../../assets/img/SOC_MED/TW.png"
-                                onmouseover="this.src='../../assets/img/SOC_MED/TW_G.png';"
-                                onmouseout="this.src='../../assets/img/SOC_MED/TW.png';"></a>
-                        <a href="https://www.instagram.com/" id="desk-instagram"><img id="ig" class="handles" src="../../assets/img/SOC_MED/IG.png"
-                                onmouseover="this.src='../../assets/img/SOC_MED/IG_G.png';"
-                                onmouseout="this.src='../../assets/img/SOC_MED/IG.png';"></a>
-                    </div>
-                    <div class="grid-item-misc" style="grid-column: 1 / span 3;">
-                        <div class="grid-container-handle">
-                            <div class="grid-item-misc">
-                                <iframe id="djVideo-desk" width="350" height="225" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
-                            </div>
-                            <div class="grid-item-misc">
-                                <h5 style="font-weight: bolder; color: #000000; text-align: left; margin-left: 7px; margin-top: 0px; padding-top: 0px;">
-                                    DJ's Playlist</h5>
-                                <iframe id="djPlaylist-desk" width="300"
-                                    height="190" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-                            </div>
-                        </div>
-                    </div>
+                    </form>
                 </div>
-                <button id="exitDJPage-desk" onclick="closeDJPage()"><i class="fa fa-times" aria-hidden="true"></i></button>
+                <button id="exitDJPage-desk" onclick="closeDJEdit()"><i class="fa fa-times" aria-hidden="true"></i></button>
             </div>
         </div>
         <!-- this thing stops the post request -->

@@ -1,37 +1,32 @@
+.uploadplace {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
 
-  .uploadplace {
-    height:100%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-  }
-  .form-input {
-    width:250px;
-    padding:20px;
-    background:#fff;
-  }
-  .form-input input {
-    display:none;
-  }
-  .form-input label {
-    display:block;
-    width:100%;
-    height:50px;
-    line-height:50px;
-    text-align:center;
-    background: #569429;
-    color:#fff;
-    font-size:15px;
-    font-family:"Open Sans",sans-serif;
-    text-transform:Uppercase;
-    font-weight:600;
-    border-radius:10px;
-    cursor:pointer;
-  }
-   
-  .form-input img {
-    width:315px;
-    height: 300px;
-    display:none;
-    margin-top:10px;
-  }
+.form-input input,
+.update-input input {
+  display:none;
+}
+.form-input label,
+.update-input label {
+  display:block;
+  width:100%;
+  height: 35px;
+  background-color: #000000;
+  color: #FFFFFF;
+  font-weight: bolder;
+  border: none;
+  border-radius: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  padding-top: 5px;
+}
+  
+.form-input img
+.update-input img {
+  width:315px;
+  height: 300px;
+  display:none;
+  margin-top:10px;
+}
