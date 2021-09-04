@@ -8,6 +8,20 @@ body {
   background-color: rgb(240, 236, 236);
 }
 
+/*----- Vote Count -----*/
+#vote-count {
+  text-align: center;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+#vote-count-p {
+  color: #569429;
+  letter-spacing: 2px;
+  font-size: 17px;
+  font-weight: bolder;
+}
+
 /*----- Add Song Grid Container -----*/
 .add-song-container {
   display: grid;
