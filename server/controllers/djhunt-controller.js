@@ -48,7 +48,18 @@ const editDj = async(req, res) => {
     console.log(req.body)
     console.log(req.files)
 
-    let djnewEdit = {dj_name: dj_name, actual_name: actual_name, tagline: tagline, stinger_path: req.files['stinger_path'][0].filename, spotify_playlist: spotify_playlist, youtube_video: youtube_video, picture_path: req.files['picture_path'][0].filename, facebook: facebook, twitter: twitter, instagram: instagram}
+    let djnewEdit = {
+        dj_name: dj_name,
+        actual_name: actual_name,
+        tagline: tagline,
+        stinger_path: req.files['update-stinger_path'][0].filename,
+        spotify_playlist: spotify_playlist,
+        youtube_video: youtube_video,
+        picture_path: req.files['update-picture_path'][0].filename,
+        facebook: facebook,
+        twitter: twitter,
+        instagram: instagram
+    }
 
     let djID = req.params.id
 

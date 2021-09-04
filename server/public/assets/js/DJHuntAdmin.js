@@ -235,15 +235,31 @@ function openDJEdit(djNum){
     selectedDjID = dj._id
 
     document.getElementById('update-dj-photo').style.backgroundImage = `url(../../uploads/djhunt/images/${dj.picture_path})`;
+    document.getElementById('update-dj-photo').value = dj.picture_path;
+
     document.getElementById('update-dj_name').placeholder = `DJ ${dj.dj_name}`;
+    document.getElementById('update-dj_name').value = dj.dj_name;
+
     document.getElementById('update-actual_name').placeholder = dj.actual_name;
+    document.getElementById('update-actual_name').value = dj.actual_name;
+
     document.getElementById('update-tagline').placeholder = dj.tagline;
+    document.getElementById('update-tagline').value = dj.tagline;
+
     document.getElementById('update-stinger_path').placeholder = `../../uploads/djhunt/audio/${dj.stinger_path}`;
+    document.getElementById('update-stinger_path').value = dj.stinger_path;
+
     document.getElementById('update-facebook').placeholder = dj.facebook;
     document.getElementById('update-instagram').placeholder = dj.instagram;
     document.getElementById('update-twitter').placeholder = dj.twitter;
     document.getElementById('update-youtube_video').placeholder = dj.youtube_video;
     document.getElementById('update-spotify_playlist').placeholder = dj.spotify_playlist;
+
+    document.getElementById('update-facebook').value = dj.facebook;
+    document.getElementById('update-instagram').value = dj.instagram;
+    document.getElementById('update-twitter').value = dj.twitter;
+    document.getElementById('update-youtube_video').value = dj.youtube_video;
+    document.getElementById('update-spotify_playlist').value = dj.spotify_playlist;
 
     document.getElementById('djPage-desk').style.display = "";
     var desk = document.getElementById("djPage-desk");
@@ -552,7 +568,7 @@ function showUpdatePreview(event) {
 }
 
 /*show Stinger File Preview*/
-function showName(event) {
+function showUpdateName(event) {
     if (event.target.files.length > 0) {
         var preview = document.getElementById("update-stinger-label");
         const reader = new FileReader();
