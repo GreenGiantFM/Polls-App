@@ -3,6 +3,12 @@ body {
   font-family: "Raleway";
 }
 
+/*----- Side Menu Log Out Button -----*/
+#sideLogOut {
+  margin: 0px;
+  cursor: pointer;
+}
+
 /*----- Tab Buttons -----*/
 #addTab:hover, #editTab:hover {
   background-color: rgb(240, 236, 236);
@@ -224,6 +230,11 @@ body {
   .sidenav {
     height: 0;
     width: 0;
+  }
+
+  /*----- Side Logout -----*/
+  #sideLogOut {
+    display: none;
   }
 
   /*----- Side Menu Content -----*/
@@ -453,7 +464,7 @@ body {
 
   /*----- Side Menu Content -----*/
   .sidenav a,
-  span {
+  span, p {
     text-decoration: none;
     width: 250px;
     font-size: 25px;
@@ -463,7 +474,7 @@ body {
   }
 
   /*----- Side Menu hover over links -----*/
-  .sidenav a:hover {
+  .sidenav a:hover, p:hover {
     background-color: #71b342;
   }
 
@@ -485,7 +496,7 @@ body {
   }
 
   /*----- Side Menu Links -----*/
-  .sidenav .sideLink {
+  .sidenav .sideLink, #sideLogOut {
     padding: 8px 8px 3px 30px;
     line-height: 40px;
     font-size: 15px;
