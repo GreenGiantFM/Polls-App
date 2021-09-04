@@ -15,8 +15,6 @@ $(document).ready(() => {
             document.getElementById('start-date').value = djhunt.start_date.substr(0, 10);
             document.getElementById('end-date').value = djhunt.end_date.substr(0, 10);
 
-            console.log(djhunt.radio_talents);
-
             const closing = document.getElementById('hunt-date')
             const formattedDate = new Date(djhunt.end_date)
             .toLocaleDateString({},
@@ -234,7 +232,7 @@ function openDJEdit(djNum){
     const dj = djhunt.radio_talents[djNum-1]
     selectedDjID = dj._id
 
-    document.getElementById('update-dj-photo').style.backgroundImage = `url(../../uploads/djhunt/images/${dj.picture_path})`;
+    document.getElementById('update-dj-photo').style.backgroundImage = `url('../../uploads/djhunt/images/${dj.picture_path}')`;
     document.getElementById('update-dj-photo').value = dj.picture_path;
 
     document.getElementById('update-dj_name').placeholder = `DJ ${dj.dj_name}`;
@@ -247,7 +245,7 @@ function openDJEdit(djNum){
     document.getElementById('update-tagline').value = dj.tagline;
 
     document.getElementById('update-stinger_path').placeholder = `../../uploads/djhunt/audio/${dj.stinger_path}`;
-    document.getElementById('update-stinger_path').value = dj.stinger_path;
+    document.getElementById('update-stinger_path').src = `../../uploads/djhunt/audio/${dj.stinger_path}`;
 
     document.getElementById('update-facebook').placeholder = dj.facebook;
     document.getElementById('update-instagram').placeholder = dj.instagram;
@@ -314,9 +312,6 @@ function huntButton(djNum) {
 
    
 
-    
-
-    console.log("selected djs",selectedDjs);
         
 
     // if (dj1.checked == true || dj2.checked == true || dj3.checked == true || dj4.checked == true) {
@@ -603,6 +598,7 @@ form.addEventListener('submit', function(event) {
 
         },
         error: e => {
+            console.log(e)
             alert('error')
         }
     })
@@ -749,9 +745,6 @@ const form2 = document.getElementById("dj-hunt-update")
 form2.addEventListener('submit', function(event) {
     event.preventDefault()
     const formData = new FormData(this)
-
-    console.log(formData)
-    console.log(selectedDjID)
     
     $.ajax({
         method: 'post',
@@ -772,6 +765,7 @@ form2.addEventListener('submit', function(event) {
 
         },
         error: e => {
+            console.log(e)
             alert('error')
         }
     })
