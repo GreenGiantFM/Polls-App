@@ -9,11 +9,10 @@ const router = express.Router()
 
 // hasSession
 const hasSession = (req, res, next) => {
-    console.log(req.session)
+    
     if (req.session.token)
         next();
     else {
-        console.log(req.session.token)
         res.redirect('/admin')
     }
 }
