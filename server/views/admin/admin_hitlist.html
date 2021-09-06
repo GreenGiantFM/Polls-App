@@ -11,20 +11,21 @@
         <link rel="stylesheet" href="/assets/fonts/line-awesome.min.css">
         <link rel="stylesheet" href="/assets/fonts/fontawesome5-overrides.min.css">
         <link rel="stylesheet" href="/assets/css/base.css">
+        <link rel="stylesheet" href="/assets/css/admin-base.css">
         <link rel="stylesheet" href="/assets/css/HitlistAdmin.css">
         <link rel="icon" href="/assets/img/GGFM/GGFM_ICON.png" type="image/png" />
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
         <script src="/assets/js/HitlistAdmin.js"></script>
-</head>
+    </head>
     <body>
         <!-- Header -->
         <header id="upper" style="background-color: black;height:120px;">
             <ul class="upper-link">
-                <li><a href="https://www.greengiantfm.com/" class="upperLink"><img src="/assets/img/GGFM/GGFM_LOGO.png" alt='Green Giant FM' style="width:175px;"></a></li>
+                <li><a href="https://www.greengiantfm.com/"><img src="/assets/img/GGFM/GGFM_LOGO.png" id="upperLogo" alt='Green Giant FM'></a></li>
                 <ul id="header-admin">
-                    <li><a href="/admin/home/hitlist" class="pollsDrop">Hitlist</a></li>
-                    <li><a href="/admin/home/dj-hunt" class="pollsDrop">DJ Hunt</a></li>
+                    <li><a href="/admin/home/hitlist" class="upperLink">Hitlist</a></li>
+                    <li><a href="/admin/home/dj-hunt" class="upperLink">DJ Hunt</a></li>
                     <li>
                         <button type="button" id="logout-button" onclick="logout()">Log Out</button>
                     </li>
@@ -106,24 +107,17 @@
                     <input type="button" id="remove" disabled onclick="openConfirm()" value="Remove">
                     <input type="button" id="removeAll" onclick="deleteConfirmModal()" value="Remove All">
                 </div>
-
-                <div id="deleteModal">
-                    <h2>Delete All Songs</h2>
-                    <p>Are you sure you want to delete all songs?</p>
-                    <button id="songDeleteAll" onclick="deleteAllSongs()" >Delete All</button>
-                    <button id="songCancelDelete" onclick="deleteCancelModal()" style="margin-bottom: 15px; margin-top: 15px; background-color: rgb(20, 20, 20);">Cancel</button>
-                </div>
-                <!-- Voting Tab Overlay -->
-                <!-- Voting Tab Overlay -->
+                
                 <div id="overlay">
                     <div id="confirmation" class="overlayItems">
-                        <h1 id="confirm_text">CONFIRM VOTE</h1>
-                        <input type="button" id="confirmVote" onclick="submitVote()" style="margin-right:5px;" value="Yes">
-                        <input type="button" id="cancelVote" onclick="closeConfirm()" style="margin-left:5px;" value="Cancel">
+                        <p id="confirm_text">Confirm Delete Song/s</p>
+                        <input type="button" id="confirmRemove" onclick="submitRemove()" value="Yes">
+                        <input type="button" id="cancelRemove" onclick="closeConfirm()" value="Cancel">
                     </div>
-                    <div id="voteConfirmed" class="overlayItems">
-                        <h1 id="submit_text">VOTE CONFIRMED</h1>
-                        <input type="submit" id="doneVote" onclick="closeConfirm()" value="DONE">
+                    <div id="deleteModal">
+                        <p id="all_confirm_text">Are you sure you want to delete all songs?</p>
+                        <input type="button" id="songDeleteAll" onclick="deleteAllSongs()" value="Delete All">
+                        <input type="button" id="songCancelDelete" onclick="deleteCancelModal()" value="Cancel">
                     </div>
                 </div>
             </form>
