@@ -4,13 +4,11 @@
         <title>Hitlist</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
         <link rel="stylesheet" href="/assets/fonts/fontawesome-all.min.css">
         <link rel="stylesheet" href="/assets/fonts/font-awesome.min.css">
         <link rel="stylesheet" href="/assets/fonts/line-awesome.min.css">
         <link rel="stylesheet" href="/assets/fonts/fontawesome5-overrides.min.css">
-        <link rel="stylesheet" href="/assets/css/base.css">
         <link rel="stylesheet" href="/assets/css/admin-base.css">
         <link rel="stylesheet" href="/assets/css/HitlistAdmin.css">
         <link rel="icon" href="/assets/img/GGFM/GGFM_ICON.png" type="image/png" />
@@ -20,14 +18,14 @@
     </head>
     <body>
         <!-- Header -->
-        <header id="upper" style="background-color: black;height:120px;">
-            <ul class="upper-link">
+        <header id="upper" style="background-color: black; height: 120px;">
+            <ul id="ul-upper-link">
                 <li><a href="https://www.greengiantfm.com/"><img src="/assets/img/GGFM/GGFM_LOGO.png" id="upperLogo" alt='Green Giant FM'></a></li>
                 <ul id="header-admin">
                     <li><a href="/admin/home/hitlist" class="upperLink">Hitlist</a></li>
                     <li><a href="/admin/home/dj-hunt" class="upperLink">DJ Hunt</a></li>
                     <li>
-                        <button type="button" id="logout-button" onclick="logout()">Log Out</button>
+                        <button id="logout-button" onclick="logout()">Log Out</button>
                     </li>
                </ul>
             </ul>
@@ -43,13 +41,13 @@
         </div>
         
         <!-- Menu Button -->
-        <span id="sideMenuBtn" onclick="openNav()" style="margin-right:1200px;">&#9776;</span>
+        <span id="sideMenuBtn" onclick="openNav()">&#9776;</span>
             
         <!-- Tabs -->  
         <div class="tab" style="text-align: center;">
-            <h1 id="page_title" style="font-weight: bolder; color: #569429"><i class="fas fa-music"></i>&ensp;The Hitlist</h1>
-            <button id="addTab" class="active" onclick="openTab(event, 'Add')" style="margin-right:35px;">Add</button>
-            <button id="editTab" class="inactive" onclick="openTab(event, 'Edit')" style="margin-left:35px;">Edit</button>
+            <h1 class="page-title"><i class="fas fa-music"></i>&ensp;The Hitlist</h1>
+            <button id="addTab" class="active" onclick="openTab(event, 'Add')">Add</button>
+            <button id="editTab" class="inactive" onclick="openTab(event, 'Edit')">Edit</button>
         </div>
 
         <!-- Vote Count -->

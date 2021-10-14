@@ -202,23 +202,23 @@ $(document).ready(() => {
 function openTab(evt, tabName) {
     document.body.style.background = '#ffffff';
     if (tabName == 'Edit') {
-        let inactive_content = document.getElementById("votingTab");
+        let inactive_content = document.getElementById("addDJTab");
         inactive_content.style.display = "none";
         let inactive_tab = document.getElementById("addTab");
         inactive_tab.className = "inactive";
 
-        let active_content = document.getElementById("live");
+        let active_content = document.getElementById("editDJTab");
         active_content.style.display = "block";
         let active_tab = document.getElementById("editTab");
         active_tab.className = "active";
         evt.currentTarget.className += " active";
     } else if (tabName == 'Add') {
-        let inactive_content = document.getElementById("live");
+        let inactive_content = document.getElementById("editDJTab");
         inactive_content.style.display = "none";
         let inactive_tab = document.getElementById("editTab");
         inactive_tab.className = "inactive";
 
-        let active_content = document.getElementById("votingTab");
+        let active_content = document.getElementById("addDJTab");
         active_content.style.display = "block";
         let active_tab = document.getElementById("addTab");
         active_tab.className = "active";

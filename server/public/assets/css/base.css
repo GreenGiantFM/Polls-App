@@ -99,23 +99,6 @@ body{
     color: #569429;
 }
 
-/*----- Upper Menu Search Bar -----*/
-#searchbar {
-    outline: none;
-    border: none;
-    font-size: smaller;
-    border-radius: 15px;
-}
-
-/*----- Upper Menu Search Button -----*/
-#searchbtn {
-    background-color: #000000;
-    color: #ffffff;
-    border: none;
-    text-decoration: none;
-    cursor: pointer;
-}
-
 /*----- Voting Time -----*/
 #hitlist_time, #hunt_time {
     font-style: normal;

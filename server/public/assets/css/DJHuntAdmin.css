@@ -4,7 +4,6 @@
 
 /*----- Graident Background -----*/
 html {
-  min-height: 100%;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -13,7 +12,16 @@ html {
   background-color: linear-gradient(to bottom, #f1faeb, #569429);
 }
 
-/*----- Add Tab -----*/
+/*----- Add and Edit Tabs -----*/
+#addDJTab, #editDJTab {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*----- Add Tab Form -----*/
 #dj-hunt-form {
   align-items: center;
   justify-content: center;
@@ -21,18 +29,137 @@ html {
   margin-left: auto;
   margin-right: auto;
 }
-
-/*----- Live Tab -----*/
-#live {
-  align-items: center;
+.form-grid-container {
+  display: grid;
   justify-content: center;
-  text-align: center;
+  align-items: center;
+}
+/*----- Image Upload Preview -----*/
+#form-input-image, .update-input {
+  margin-top: 20px;
+}
+.uploadplace {
+  border-radius: 5px;
+  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.24), 0 3px 5px 0 rgba(0, 0, 0, 0.19);
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: 0.25s;
+}
+#file-ip-1 {
+  display: none;
+}
+#file-ip-1-preview {
   margin-left: auto;
   margin-right: auto;
+}
+/*----- Image Upload Button -----*/
+#label-file-ip-1 {
+  background-color: #000000;
+  color: #FFFFFF;
+  font-size: 15px;
+  font-weight: bolder;
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
+  transition: 0.5s;
+}
+#label-file-ip-1:hover, .update-input label:hover,
+#submit-edit:hover {
+  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.24), 0 3px 5px 0 rgba(0, 0, 0, 0.19);
+}
+/*----- Field & Label Grid Containers -----*/
+.add-grid-container, .update-grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 10px 20px;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+/*----- Labels -----*/
+.add-labels, .update-labels {
+  text-align: left;
+}
+/*----- Fields -----*/
+.add-field, .update-field {
+  width: 300px;
+  border-radius: 10px;
+  border: none;
+  background-color: #ECECEC;
+  margin-right: 10px;
+  outline: none;
+}
+/*----- Field & Label Divs -----*/
+.add-grid-item-label, .add-grid-item-field,
+.update-grid-item-label, .update-grid-item-field {
+  text-align: left;
+}
+/*----- Stinger Field -----*/
+.for-stinger-path {
+  display: inline-block;
+  border-radius: 10px;
+  border: none;
+  background-color: #ECECEC;
+  font-weight: bolder;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.for-stinger-path:hover {
+  background-color: #d4d4d4;
+  color: #FFFFFF;
+  transition: 0.5s;
+}
+/*----- Add DJ Button -----*/
+#form-add-button {
+  background-color: #569429;
+  border: none;
+  border-radius: 10px;
+  text-decoration: none;
+  font-family: "Raleway";
+  font-size: 15px;
+  font-weight: bolder;
+  color: #FFFFFF;
+  transition: 0.5s;
+  cursor: pointer;
+}
+#form-add-button:hover {
+  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.24), 0 3px 5px 0 rgba(0, 0, 0, 0.19);
+  transition: 0.5s;
 }
 
 /*----- Desktop View (at least 1024px) -----*/
 @media screen and (min-width: 1024px) {
+  /*----- Add Tab Form -----*/
+  .form-grid-container {
+    grid-template-columns: auto auto;
+    grid-gap: 40px 30px;
+    padding: 10px;
+  }
+  /*----- Image Upload Preview -----*/
+  .uploadplace {
+    width: 315px;
+    height: 300px;
+  }
+  /*----- Image Upload Button -----*/
+  #label-file-ip-1 {
+    padding: 10px 55px;
+  }
+  /*----- Fields -----*/
+  .add-field, .update-field, .for-stinger-path {
+    width: 300px;
+    margin-right: 10px;
+  }
+  /*----- Add DJ Button -----*/
+  #form-add-button {
+    width: 300px;
+    height: 50px;
+  }
+
+
+  /*-----------------------------------------------*/
+
+
   /*----- Main Grid Container (Voting / Live) -----*/
   /*----- Main Grid Container (Confirmation) -----*/
   .grid-container-djs,
@@ -134,7 +261,7 @@ html {
     color: #ffffff;
     border: none;
     outline: none;
-    border-radius: 8px;
+    border-radius: 10px;
     width: 330px;
     height: 45px;
     font-size: x-large;
@@ -278,7 +405,7 @@ html {
   /*----- Stinger -----*/
   audio {
     border: 2px solid #569429;
-    border-radius: 8px;
+    border-radius: 10px;
     width: 330px;
     height: 45px;
     font-size: x-large;
@@ -305,6 +432,36 @@ html {
 
 /*----- Mobile View (at least 350 px and at most 1023px) -----*/
 @media screen and (min-width: 350px) and (max-width: 1023px) {
+  /*----- Add Tab Form -----*/
+  .form-grid-container {
+    grid-template-columns: auto;
+    grid-gap: 40px 30px;
+    padding: 10px;
+  }
+  /*----- Image Upload Preview -----*/
+  .uploadplace {
+    width: 300px;
+    height: 285px;
+  }
+  /*----- Image Upload Button -----*/
+  #label-file-ip-1 {
+    padding: 10px 35px;
+  }
+  /*----- Fields -----*/
+  .add-field, .update-field, .for-stinger-path {
+    width: 275px;
+    margin-right: 8px;
+  }
+  /*----- Add DJ Button -----*/
+  #form-add-button {
+    width: 275px;
+    height: 40px;
+  }
+
+
+  /*-----------------------------------------------*/
+
+
   /*----- Main Grid Container (Voting / Live) -----*/
   .grid-container-djs {
     display: grid;
@@ -426,7 +583,7 @@ html {
     color: #ffffff;
     border: none;
     outline: none;
-    border-radius: 8px;
+    border-radius: 10px;
     width: 330px;
     height: 45px;
     font-size: x-large;
@@ -554,7 +711,7 @@ html {
   /*----- Stinger -----*/
   audio {
     border: 2px solid #569429;
-    border-radius: 8px;
+    border-radius: 10px;
     width: 330px;
     height: 45px;
     font-size: x-large;
@@ -593,6 +750,36 @@ html {
 
 /*----- Mobile View (at most 349px) -----*/
 @media screen and (max-width: 349px) {
+  /*----- Add Tab Form -----*/
+  .form-grid-container {
+    grid-template-columns: auto;
+    grid-gap: 40px 30px;
+    padding: 10px;
+  }
+  /*----- Image Upload Preview -----*/
+  .uploadplace {
+    width: 285px;
+    height: 270px;
+  }
+  /*----- Image Upload Button -----*/
+  #label-file-ip-1 {
+    padding: 10px 25px;
+  }
+  /*----- Fields -----*/
+  .add-field, .update-field, .for-stinger-path {
+    width: 250px;
+    margin-right: 5px;
+  }
+  /*----- Add DJ Button -----*/
+  #form-add-button {
+    width: 250px;
+    height: 40px;
+  }
+
+
+  /*-----------------------------------------------*/
+
+
   /*----- Main Grid Container (Voting / Live) -----*/
   .grid-container-djs {
     display: grid;
@@ -714,7 +901,7 @@ html {
     color: #ffffff;
     border: none;
     outline: none;
-    border-radius: 8px;
+    border-radius: 10px;
     width: 175px;
     height: 25px;
     font-size: large;
@@ -834,7 +1021,7 @@ html {
   /*----- Stinger -----*/
   audio {
     border: 2px solid #569429;
-    border-radius: 8px;
+    border-radius: 10px;
     width: 165px;
     height: 25px;
     font-size: x-large;
@@ -1015,25 +1202,11 @@ html {
   float:right;
 }
 
-.upperLink{
-  float: left;
-  text-align: center;
-  text-decoration:none;
-  font-weight: bolder;
-  font-size: 12px;
-  color: white;
-  width: 200px;
- 
-  float:left;
- 
-  
-}
-
 #doneDate {
   background-color: #569429;
   color: #ffffff;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   width: 200px;
   height: 40px;
   font-size: x-large;
@@ -1049,91 +1222,6 @@ html {
 
 .date-container{
   margin-bottom: 20px;
-}
-
-.form-grid-container {
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-gap: 40px 30px;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-}
-
-.for-stinger-path {
-  display: inline-block;
-  width: 300px;
-  border-radius: 10px;
-  border: none;
-  background-color: #ECECEC;
-  font-weight: bolder;
-  margin-right: 25px;
-  cursor: pointer;
-  transition: 0.5s;
-}
-.for-stinger-path:hover {
-  background-color: #d4d4d4;
-  color: #FFFFFF;
-  transition: 0.5s;
-}
-
-#form-add-button {
-  width: 300px;
-  height: 50px;
-  background-color: #569429;
-  color: #FFFFFF;
-  font-weight: bolder;
-  border: none;
-  border-radius: 10px;
-  text-decoration: none;
-  cursor: pointer;
-}
-#form-add-button:hover {
-  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.24), 0 3px 5px 0 rgba(0, 0, 0, 0.19);
-}
-
-.uploadplace {
-  width: 315px;
-  height: 300px;
-  margin: 0px;
-  border-radius: 5px;
-  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.24), 0 3px 5px 0 rgba(0, 0, 0, 0.19);
-  background-size: cover;
-  background-repeat: no-repeat;
-  transition: 0.25s;
-}
-
-.form-input, .update-input {
-  margin-top: 20px;
-}
-.form-input label:hover, .update-input label:hover,
-#submit-edit:hover {
-  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.24), 0 3px 5px 0 rgba(0, 0, 0, 0.19);
-}
-
-.add-labels, .update-labels {
-  text-align: left;
-}
-.add-field, .update-field {
-  width: 300px;
-  border-radius: 10px;
-  border: none;
-  background-color: #ECECEC;
-  margin-right: 10px;
-  outline: none;
-}
-
-.add-grid-container, .update-grid-container {
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-gap: 10px 20px;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-}
-.add-grid-item-label, .add-grid-item-field,
-.update-grid-item-label, .update-grid-item-field {
-  text-align: left;
 }
 
 /*----- DJ Edit Container -----*/
